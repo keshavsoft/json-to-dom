@@ -1,10 +1,11 @@
+import { buildSpecElement } from "./build/buildSpecElement.js";
 import inputJson from "./input.json" with { type: "json" };
 
 const renderStandaloneDom = ({ inTargetContainerId = "app" } = {}) => {
     const localTargetContainerId = inTargetContainerId;
     const container = document.getElementById(localTargetContainerId) || document.body;
 
-    const domElements = window.ks["json-to-dom"].buildSpecElement({ inSpec: inputJson });
+    const domElements = buildSpecElement({ inSpec: inputJson });
 
     if (Array.isArray(domElements)) {
         container.append(...domElements);
