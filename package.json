@@ -1,0 +1,46 @@
+{
+  "name": "json-to-dom",
+  "version": "1.2.1",
+  "description": "Zero-dependency Custom HTML Web Components and Tailwind CSS tokens for high-performance forms and tables.",
+  "main": "index.js",
+  "bin": {
+    "json-to-dom": "bin/cli.js"
+  },
+  "files": [
+    "bin",
+    "index.js",
+    "webComponents",
+    "docs",
+    "DETAILS.md",
+    "README.md"
+  ],
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "vite",
+    "test": "node --test test/unit.test.js",
+    "build": "vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keshavsoft/json-to-dom.git"
+  },
+  "keywords": [
+    "web-components",
+    "table-cell-content",
+    "tailwind-tokens",
+    "custom-elements"
+  ],
+  "author": "KeshavSoft",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/keshavsoft/json-to-dom/issues"
+  },
+  "homepage": "https://keshavsoft.github.io/json-to-dom/",
+  "devDependencies": {
+    "vite": "^8.2.1"
+  },
+  "dependencies": {}
+}
