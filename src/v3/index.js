@@ -15,15 +15,3 @@ const renderStandaloneDom = ({ inTargetContainerId = "app" } = {}) => {
 };
 
 renderStandaloneDom();
-
-window.ks ??= {};
-window.ks["json-to-dom"] = {
-    buildSpecElement,
-    renderStandaloneDom
-};
-
-export {
-    renderStandaloneDom
-};
-
-export default renderStandaloneDom;

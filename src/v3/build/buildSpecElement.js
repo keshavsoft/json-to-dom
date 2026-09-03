@@ -18,4 +18,9 @@ export const buildSpecElement = (inSpec) => {
     return buildSingleElement({ inSpec: localSpec });
 };
 
+window.ks ??= {};
+window.ks["json-to-dom"] = {
+    buildSpecElement
+};
+
 export default buildSpecElement;

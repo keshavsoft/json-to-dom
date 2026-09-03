@@ -69,5 +69,6 @@ var e = ({ inSpec: e }) => !e, t = ({ inSpec: e }) => e instanceof Node, n = ({ 
 	let o = a && typeof a == "object" && "inSpec" in a && !(a instanceof Node) && !Array.isArray(a) ? a.inSpec : a;
 	return e({ inSpec: o }) ? null : t({ inSpec: o }) ? o : n({ inSpec: o }) ? i({ inSpec: o }) : r({ inSpec: o }) ? m({ inSpec: o }) : null;
 };
+window.ks ??= {}, window.ks["json-to-dom"] = { buildSpecElement: h };
 //#endregion
 export { h as buildSpecElement, h as default };
