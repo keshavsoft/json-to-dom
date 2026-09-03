@@ -2,6 +2,12 @@
 
 > **Declarative, zero-dependency JSON-to-DOM creation engine for modern web interfaces.**
 
+[🌐 **Live Docs Website**](https://keshavsoft.github.io/json-to-dom/) &bull; 
+[📝 **Form Alignment Styles**](https://keshavsoft.github.io/json-to-dom/samples/forms/) &bull; 
+[💡 **Samples Gallery**](https://keshavsoft.github.io/json-to-dom/samples/) &bull; 
+[⚡ **Live Engine Demo**](https://keshavsoft.github.io/json-to-dom/demo.html) &bull; 
+[🏗️ **Architecture Guide**](https://keshavsoft.github.io/json-to-dom/architecture-and-pipeline.html)
+
 `json-to-dom` is a lightweight, pure JavaScript engine that converts declarative JSON specifications into live browser DOM element trees. It enforces a strict architectural boundary between the **JSON Specification World** (serializable, transformable data) and the **DOM World** (browser element instances and events).
 
 ---
@@ -28,18 +34,27 @@ json-to-dom/
 │   ├── architecture-and-pipeline.md    # Deep dive: Markdown version
 │   ├── architecture-and-pipeline.html  # Deep dive: Web/HTML version (with Mermaid diagrams)
 │   ├── spec-schema-and-guide.md        # Spec reference: Markdown version
-│   └── spec-schema-and-guide.html      # Spec reference: Web/HTML version
+│   ├── spec-schema-and-guide.html      # Spec reference: Web/HTML version
+│   ├── dist/v3/min.js                  # Engine standalone bundle (window.ks["json-to-dom"])
+│   └── samples/                        # Categorized standalone sample pages
+│       ├── index.html                  # Master samples directory
+│       ├── forms/                      # Form label/input alignment styles (01-05)
+│       ├── cards/                      # Card & container components
+│       ├── tables/                     # Data grids & financial tables
+│       ├── interactive/                # Interactive counters & dynamic CRUD
+│       └── dashboards/                 # Complex dashboard layouts
 ├── package.json
 └── src/
-    ├── v1/                             # Initial implementation baseline
-    └── v2/                             # Current modular engine
-        ├── index.html                  # Browser entry point (Tailwind CSS container)
-        ├── index.js                    # Demo runner importing input.json & building DOM
-        ├── input.json                  # Real-world declarative spec (Search bar + Data Table)
+    ├── v1/                             # Baseline implementation
+    ├── v2/                             # Legacy modular engine
+    └── v3/                             # Current modular engine & bundle source
+        ├── index.html                  # Demo runner entry point
+        ├── index.js                    # Demo runner script
+        ├── input.json                  # Sample declarative spec
         └── build/
-            ├── buildSpecElement.js     # Primary recursive dispatcher entry point
-            ├── buildSpec/              # Validation, array unwrapping & recursive traversal
-            └── elementBuilder/         # Low-level DOM construction & attribute/event application
+            ├── buildSpecElement.js     # Primary recursive dispatcher
+            ├── buildSpec/              # Validation & traversal
+            └── elementBuilder/         # Low-level DOM construction & binding
 ```
 
 ---
@@ -120,18 +135,29 @@ buildSpecElement({ inSpec })  ──► Validates spec type (Null, Node, Array, 
 
 ## 📖 Documentation Index
 
-You can read the guides in Markdown or open their styled HTML versions directly in your browser:
+### 🌐 Live Web Documentation (GitHub Pages)
+- 🚀 **[Live Interactive Docs Hub](https://keshavsoft.github.io/json-to-dom/)** — Central portal with visual cards, quick starts, and guide navigation.
+- 📝 **[Form Alignment Styles Gallery](https://keshavsoft.github.io/json-to-dom/samples/forms/)** — Focused label & input alignment patterns (Label Above, Label Left, Right-Aligned Label, Joined Addon Box).
+- 💡 **[Component Samples Directory](https://keshavsoft.github.io/json-to-dom/samples/)** — Categorized samples for Forms, Cards, Data Tables, Interactive State, and Dashboards.
+- 🏗️ **[Architecture & Pipeline Deep Dive](https://keshavsoft.github.io/json-to-dom/architecture-and-pipeline.html)** — Interactive Mermaid.js execution diagram and runtime flow.
+- 📋 **[JSON Specification Schema Guide](https://keshavsoft.github.io/json-to-dom/spec-schema-and-guide.html)** — Full reference for `tagName`, `attributes`, `properties`, and `events`.
+- ⚡ **[Live V3 Engine Demo](https://keshavsoft.github.io/json-to-dom/demo.html)** — Real-world interactive rendering running live in the browser.
 
-1. **Architecture & Pipeline Deep Dive**:
-   - [Markdown Version](docs/architecture-and-pipeline.md)
-   - [HTML Web Version](docs/architecture-and-pipeline.html) — includes interactive Mermaid.js diagram.
-2. **JSON Specification Schema & Authoring Guide**:
-   - [Markdown Version](docs/spec-schema-and-guide.md)
-   - [HTML Web Version](docs/spec-schema-and-guide.html)
-3. **[Interactive Docs Hub](docs/index.html)**:
-   - Central portal with card navigation and quick-start snippets.
-4. **[DETAILS.md](DETAILS.md)**:
-   - Complete architectural blueprint for transformation pipelines and theme tasks.
+---
+
+### 📂 Repository Guides (Markdown & Source)
+1. **Architecture & Pipeline**:
+   - [Markdown Guide](docs/architecture-and-pipeline.md)
+   - [Live HTML Version](https://keshavsoft.github.io/json-to-dom/architecture-and-pipeline.html) ([source file](docs/architecture-and-pipeline.html))
+2. **JSON Specification Schema & Authoring**:
+   - [Markdown Guide](docs/spec-schema-and-guide.md)
+   - [Live HTML Version](https://keshavsoft.github.io/json-to-dom/spec-schema-and-guide.html) ([source file](docs/spec-schema-and-guide.html))
+3. **Form Alignment Styles**:
+   - [Live Forms Gallery](https://keshavsoft.github.io/json-to-dom/samples/forms/) ([source folder](docs/samples/forms/))
+4. **Interactive Samples Suite**:
+   - [Live Samples Hub](https://keshavsoft.github.io/json-to-dom/samples/) ([source folder](docs/samples/))
+5. **Architectural Blueprint**:
+   - [DETAILS.md](DETAILS.md) — Comprehensive design document for transformation pipelines.
 
 ---
 
