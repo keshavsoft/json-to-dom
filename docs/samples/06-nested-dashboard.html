@@ -97,10 +97,11 @@
         json-to-dom &bull; KeshavSoft &bull; ISC License
     </footer>
 
+    <!-- Engine Standalone Bundle -->
+    <script type="module" src="../dist/v3/min.js"></script>
+
     <!-- Execution Script -->
     <script type="module">
-        import { buildSpecElement } from "../dist/v3/min.js";
-
         // Dashboard Metric Spec Helper following { in... } naming convention
         const createMetricCardSpec = ({ inTitle, inValue, inChange, inChangeType, inIcon }) => {
             const localTitle = inTitle;
@@ -283,7 +284,8 @@
             const localTargetContainerId = inTargetContainerId;
             const container = document.getElementById(localTargetContainerId);
 
-            const domElement = buildSpecElement({ inSpec: localSpec });
+            // Access engine via window.ks["json-to-dom"]
+            const domElement = window.ks["json-to-dom"].buildSpecElement({ inSpec: localSpec });
             if (domElement) {
                 container.appendChild(domElement);
             }
@@ -291,8 +293,10 @@
 
         renderSample({ inSpec: dashboardSpec, inTargetContainerId: "dashboard-container" });
 
-        const snippet = `import { buildSpecElement } from "../dist/v3/min.js";
+        const snippet = `<!-- Include standalone bundle -->
+<script type="module" src="https://keshavsoft.github.io/json-to-dom/dist/v3/min.js"><\\/script>
 
+<script type="module">
 const dashboardSpec = {
   tagName: "div",
   attributes: { class: "space-y-6" },
@@ -326,8 +330,10 @@ const dashboardSpec = {
   ]
 };
 
-const dom = buildSpecElement({ inSpec: dashboardSpec });
-document.getElementById("dashboard-container").appendChild(dom);`;
+// Render using window.ks["json-to-dom"]
+const dom = window.ks["json-to-dom"].buildSpecElement({ inSpec: dashboardSpec });
+document.getElementById("dashboard-container").appendChild(dom);
+<\\/script>`.replaceAll('\\/', '/');
 
         document.getElementById("code-display").textContent = snippet;
 

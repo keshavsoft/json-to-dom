@@ -105,10 +105,11 @@
         json-to-dom &bull; KeshavSoft &bull; ISC License
     </footer>
 
+    <!-- Engine Standalone Bundle -->
+    <script type="module" src="../dist/v3/min.js"></script>
+
     <!-- Execution Script -->
     <script type="module">
-        import { buildSpecElement } from "../dist/v3/min.js";
-
         // Form Submission handler conforming to { in... } naming convention
         const handleFormSubmit = ({ inEvent }) => {
             const localEvent = inEvent;
@@ -246,7 +247,8 @@
             const localTargetContainerId = inTargetContainerId;
             const container = document.getElementById(localTargetContainerId);
 
-            const domElement = buildSpecElement({ inSpec: localSpec });
+            // Access engine via window.ks["json-to-dom"]
+            const domElement = window.ks["json-to-dom"].buildSpecElement({ inSpec: localSpec });
             if (domElement) {
                 container.appendChild(domElement);
             }
@@ -254,8 +256,10 @@
 
         renderSample({ inSpec: formSpec, inTargetContainerId: "form-container" });
 
-        const formCodeString = `import { buildSpecElement } from "../dist/v3/min.js";
+        const formCodeString = `<!-- Include standalone bundle -->
+<script type="module" src="https://keshavsoft.github.io/json-to-dom/dist/v3/min.js"><\\/script>
 
+<script type="module">
 const formSpec = {
   tagName: "form",
   attributes: { class: "space-y-4" },
@@ -296,8 +300,10 @@ const formSpec = {
   ]
 };
 
-const dom = buildSpecElement({ inSpec: formSpec });
-document.getElementById("form-container").appendChild(dom);`;
+// Render using window.ks["json-to-dom"]
+const dom = window.ks["json-to-dom"].buildSpecElement({ inSpec: formSpec });
+document.getElementById("form-container").appendChild(dom);
+<\\/script>`.replaceAll('\\/', '/');
 
         document.getElementById("code-display").textContent = formCodeString;
 

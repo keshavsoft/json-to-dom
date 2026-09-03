@@ -99,10 +99,11 @@
         json-to-dom &bull; KeshavSoft &bull; ISC License
     </footer>
 
+    <!-- Engine Standalone Bundle -->
+    <script type="module" src="../dist/v3/min.js"></script>
+
     <!-- Execution Script -->
     <script type="module">
-        import { buildSpecElement } from "../dist/v3/min.js";
-
         // State holder
         let currentCount = 0;
 
@@ -119,9 +120,6 @@
                         : "text-5xl font-black text-slate-800 transition-all duration-200";
             }
         };
-
-        // DOM reference placeholder
-        let valueDisplayNode = null;
 
         // Specification with interactive events
         const counterSpec = {
@@ -186,7 +184,8 @@
             const localTargetContainerId = inTargetContainerId;
             const container = document.getElementById(localTargetContainerId);
 
-            const domElement = buildSpecElement({ inSpec: localSpec });
+            // Access engine via window.ks["json-to-dom"]
+            const domElement = window.ks["json-to-dom"].buildSpecElement({ inSpec: localSpec });
             if (domElement) {
                 container.appendChild(domElement);
             }
@@ -195,8 +194,10 @@
         renderSample({ inSpec: counterSpec, inTargetContainerId: "counter-container" });
 
         // Display snippet
-        const snippet = `import { buildSpecElement } from "../dist/v3/min.js";
+        const snippet = `<!-- Include standalone bundle -->
+<script type="module" src="https://keshavsoft.github.io/json-to-dom/dist/v3/min.js"><\\/script>
 
+<script type="module">
 let count = 0;
 
 const counterSpec = {
@@ -239,8 +240,10 @@ const counterSpec = {
   ]
 };
 
-const dom = buildSpecElement({ inSpec: counterSpec });
-document.getElementById("counter-container").appendChild(dom);`;
+// Render using window.ks["json-to-dom"]
+const dom = window.ks["json-to-dom"].buildSpecElement({ inSpec: counterSpec });
+document.getElementById("counter-container").appendChild(dom);
+<\\/script>`.replaceAll('\\/', '/');
 
         document.getElementById("code-display").textContent = snippet;
 

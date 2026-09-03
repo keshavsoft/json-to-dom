@@ -108,10 +108,11 @@
         json-to-dom &bull; KeshavSoft &bull; ISC License
     </footer>
 
+    <!-- Engine Standalone Bundle -->
+    <script type="module" src="../dist/v3/min.js"></script>
+
     <!-- Execution Script -->
     <script type="module">
-        import { buildSpecElement } from "../dist/v3/min.js";
-
         const listContainer = document.getElementById("items-list");
         const inputField = document.getElementById("new-item-input");
         const addBtn = document.getElementById("add-item-btn");
@@ -180,7 +181,8 @@
 
             const timeString = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
             const spec = createItemSpec({ inText: localText.trim(), inTimestamp: timeString });
-            const itemElement = buildSpecElement({ inSpec: spec });
+            // Access engine via window.ks["json-to-dom"]
+            const itemElement = window.ks["json-to-dom"].buildSpecElement({ inSpec: spec });
 
             if (itemElement) {
                 listContainer.prepend(itemElement);
@@ -207,8 +209,10 @@
             }
         });
 
-        const codeString = `import { buildSpecElement } from "../dist/v3/min.js";
+        const codeString = `<!-- Include standalone bundle -->
+<script type="module" src="https://keshavsoft.github.io/json-to-dom/dist/v3/min.js"><\\/script>
 
+<script type="module">
 // Factory conforming to { in... } convention
 const createItemSpec = ({ inText, inTimestamp }) => {
   const localText = inText;
@@ -237,11 +241,12 @@ const createItemSpec = ({ inText, inTimestamp }) => {
   };
 };
 
-// Build and append dynamically
-const node = buildSpecElement({ 
+// Build and append dynamically using window.ks["json-to-dom"]
+const node = window.ks["json-to-dom"].buildSpecElement({ 
   inSpec: createItemSpec({ inText: "New Order #1042", inTimestamp: "12:30 PM" }) 
 });
-document.getElementById("items-list").prepend(node);`;
+document.getElementById("items-list").prepend(node);
+<\\/script>`.replaceAll('\\/', '/');
 
         document.getElementById("code-display").textContent = codeString;
 

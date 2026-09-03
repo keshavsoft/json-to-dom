@@ -99,10 +99,11 @@
         json-to-dom &bull; KeshavSoft &bull; ISC License
     </footer>
 
+    <!-- Engine Standalone Bundle -->
+    <script type="module" src="../dist/v3/min.js"></script>
+
     <!-- Execution Script -->
     <script type="module">
-        import { buildSpecElement } from "../dist/v3/min.js";
-
         // Declarative JSON Spec
         const cardSpec = {
             tagName: "div",
@@ -185,7 +186,8 @@
             const localTargetContainerId = inTargetContainerId;
             const container = document.getElementById(localTargetContainerId);
 
-            const domElement = buildSpecElement({ inSpec: localSpec });
+            // Access engine via window.ks["json-to-dom"]
+            const domElement = window.ks["json-to-dom"].buildSpecElement({ inSpec: localSpec });
             if (domElement) {
                 container.appendChild(domElement);
             }
