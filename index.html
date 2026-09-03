@@ -28,7 +28,8 @@
                 <a href="docs/index.html" class="text-slate-600 hover:text-slate-900 transition">Documentation</a>
                 <a href="docs/architecture-and-pipeline.html" class="text-slate-600 hover:text-slate-900 transition">Architecture</a>
                 <a href="docs/spec-schema-and-guide.html" class="text-slate-600 hover:text-slate-900 transition">Spec Schema</a>
-                <a href="src/v2/index.html" class="px-3.5 py-1.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 shadow-sm transition">Live Demo</a>
+                <a href="docs/samples/index.html" class="text-slate-600 hover:text-slate-900 transition">Samples</a>
+                <a href="src/v3/index.html" class="px-3.5 py-1.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 shadow-sm transition">Live Demo</a>
             </nav>
         </div>
     </header>
@@ -41,7 +42,7 @@
                 <span>•</span>
                 <span>Pure Native DOM</span>
                 <span>•</span>
-                <span>Modular v2</span>
+                <span>Modular v3</span>
             </div>
             <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-4 leading-tight">
                 Declarative JSON to Browser DOM Engine
@@ -50,8 +51,8 @@
                 Transform declarative JSON specifications into high-performance, live browser DOM trees with strict separation between data specifications and runtime element manipulation.
             </p>
             <div class="flex flex-wrap items-center justify-center gap-4">
-                <a href="src/v2/index.html" class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl shadow hover:bg-blue-700 transition flex items-center space-x-2">
-                    <span>Open Live Demo</span>
+                <a href="docs/samples/index.html" class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl shadow hover:bg-blue-700 transition flex items-center space-x-2">
+                    <span>Explore 6 Live Samples</span>
                     <span>&rarr;</span>
                 </a>
                 <a href="docs/index.html" class="px-6 py-3 bg-white text-slate-700 font-semibold rounded-xl border border-slate-300 hover:bg-slate-50 shadow-sm transition">
@@ -62,15 +63,15 @@
     </section>
 
     <!-- Cards Section -->
-    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1 w-full">
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1 w-full">
         <h2 class="text-xl font-bold text-slate-900 mb-6 text-center sm:text-left">Project Guides & Documentation</h2>
-        <div class="grid md:grid-cols-3 gap-6">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- Documentation Hub -->
             <a href="docs/index.html" class="group block p-6 bg-white rounded-xl border border-slate-200 hover:border-blue-500 hover:shadow-md transition">
                 <div class="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-xl mb-4">
                     📚
                 </div>
-                <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition">Docs Hub</h3>
+                <h3 class="text-base font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition">Docs Hub</h3>
                 <p class="text-xs text-slate-600 leading-relaxed mb-4">
                     Central documentation portal with guides, architectural overviews, and quick start usage instructions.
                 </p>
@@ -82,7 +83,7 @@
                 <div class="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-xl mb-4">
                     🏗️
                 </div>
-                <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-indigo-600 transition">Architecture & Pipeline</h3>
+                <h3 class="text-base font-bold text-slate-900 mb-2 group-hover:text-indigo-600 transition">Architecture</h3>
                 <p class="text-xs text-slate-600 leading-relaxed mb-4">
                     Deep dive into the recursive bridge, element builder lifecycle, and parameter convention (<code>in...</code> / <code>local...</code>).
                 </p>
@@ -94,11 +95,23 @@
                 <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-xl mb-4">
                     📋
                 </div>
-                <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-emerald-600 transition">Spec Schema & Guide</h3>
+                <h3 class="text-base font-bold text-slate-900 mb-2 group-hover:text-emerald-600 transition">Spec Schema</h3>
                 <p class="text-xs text-slate-600 leading-relaxed mb-4">
-                    Authoring reference for <code>tagName</code>, <code>attributes</code>, <code>properties</code>, <code>events</code>, and data table templates.
+                    Authoring reference for <code>tagName</code>, <code>attributes</code>, <code>properties</code>, <code>events</code>, and data tables.
                 </p>
                 <span class="text-xs font-semibold text-emerald-600">View Schema &rarr;</span>
+            </a>
+
+            <!-- Interactive Samples -->
+            <a href="docs/samples/index.html" class="group block p-6 bg-white rounded-xl border border-slate-200 hover:border-purple-500 hover:shadow-md transition">
+                <div class="w-10 h-10 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center font-bold text-xl mb-4">
+                    💡
+                </div>
+                <h3 class="text-base font-bold text-slate-900 mb-2 group-hover:text-purple-600 transition">Live Samples</h3>
+                <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                    6 standalone interactive examples: cards, counters, tables, forms, dynamic CRUD lists, and dashboards.
+                </p>
+                <span class="text-xs font-semibold text-purple-600">Explore Samples &rarr;</span>
             </a>
         </div>
     </main>

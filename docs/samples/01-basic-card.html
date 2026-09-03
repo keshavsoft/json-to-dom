@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample 01: Basic Card & Elements | JSON to DOM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        code, pre { font-family: 'JetBrains Mono', monospace; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="../index.html" class="flex items-center space-x-2 font-bold text-lg text-slate-900 hover:text-blue-600 transition">
+                    <span class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-black text-sm">JD</span>
+                    <span>json-to-dom</span>
+                </a>
+                <span class="text-xs bg-slate-100 text-slate-700 font-semibold px-2 py-0.5 rounded-full border border-slate-200">Sample 01</span>
+            </div>
+            <nav class="flex items-center space-x-4 text-sm font-medium">
+                <a href="index.html" class="text-blue-600 font-semibold">&larr; All Samples</a>
+                <a href="../spec-schema-and-guide.html" class="text-slate-600 hover:text-slate-900 transition">Spec Schema</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full">
+        <!-- Title & Breadcrumb -->
+        <div class="mb-6">
+            <nav class="text-xs text-slate-500 mb-2">
+                <a href="../index.html" class="hover:underline">Docs</a> / 
+                <a href="index.html" class="hover:underline">Samples</a> / 
+                <span class="text-slate-800 font-medium">01. Basic Card & Elements</span>
+            </nav>
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+                Basic Elements & Product Card
+            </h1>
+            <p class="text-sm text-slate-600 mt-1">
+                Demonstrating foundational tags, Tailwind class attributes, badges, and hierarchical nesting with pure declarative JSON.
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-6 items-start">
+            <!-- Left: Live Render Target -->
+            <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                <div class="px-5 py-4 border-b border-slate-200 bg-slate-50 flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <h2 class="text-xs font-bold uppercase tracking-wider text-slate-700">Live Rendered DOM</h2>
+                    </div>
+                    <span class="text-[11px] font-mono bg-white border border-slate-200 text-slate-600 px-2 py-0.5 rounded">#app-container</span>
+                </div>
+                <div class="p-6 flex items-center justify-center min-h-[380px] bg-slate-50/50">
+                    <div id="app-container" class="w-full max-w-sm"></div>
+                </div>
+            </div>
+
+            <!-- Right: JSON Specification & Explanation -->
+            <div class="bg-slate-900 rounded-xl border border-slate-800 shadow-sm overflow-hidden flex flex-col">
+                <div class="px-5 py-3 border-b border-slate-800 flex items-center justify-between">
+                    <span class="text-xs font-mono font-semibold text-slate-400">spec.json</span>
+                    <button id="copy-btn" class="px-2.5 py-1 text-xs font-medium text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 rounded transition flex items-center space-x-1">
+                        <span>Copy JSON</span>
+                    </button>
+                </div>
+                <pre class="p-5 text-xs font-mono text-emerald-400 overflow-x-auto leading-relaxed max-h-[460px]"><code id="spec-code-display"></code></pre>
+            </div>
+        </div>
+
+        <!-- Explanation Section -->
+        <div class="mt-8 bg-white rounded-xl border border-slate-200 p-6">
+            <h3 class="text-base font-bold text-slate-900 mb-3">Key Concepts Used</h3>
+            <div class="grid sm:grid-cols-3 gap-4 text-xs text-slate-600">
+                <div class="p-3 bg-slate-50 rounded-lg border border-slate-100">
+                    <span class="font-bold text-slate-800 block mb-1">1. <code>tagName</code></span>
+                    Creates standard HTML tags (<code>div</code>, <code>h3</code>, <code>p</code>, <code>button</code>, <code>span</code>).
+                </div>
+                <div class="p-3 bg-slate-50 rounded-lg border border-slate-100">
+                    <span class="font-bold text-slate-800 block mb-1">2. <code>attributes.class</code></span>
+                    Applied directly to element <code>className</code> for clean styling with Tailwind utility classes.
+                </div>
+                <div class="p-3 bg-slate-50 rounded-lg border border-slate-100">
+                    <span class="font-bold text-slate-800 block mb-1">3. <code>children</code></span>
+                    Recursively built child specs automatically appended to parent in tree order.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-auto bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
+        json-to-dom &bull; KeshavSoft &bull; ISC License
+    </footer>
+
+    <!-- Execution Script -->
+    <script type="module">
+        import { buildSpecElement } from "../dist/v3/min.js";
+
+        // Declarative JSON Spec
+        const cardSpec = {
+            tagName: "div",
+            attributes: {
+                class: "bg-white rounded-2xl border border-slate-200 shadow-md p-6 hover:shadow-xl transition duration-300"
+            },
+            children: [
+                {
+                    tagName: "div",
+                    attributes: { class: "flex items-center justify-between mb-3" },
+                    children: [
+                        {
+                            tagName: "span",
+                            textContent: "Featured Plan",
+                            attributes: { class: "px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-100 text-blue-800 border border-blue-200" }
+                        },
+                        {
+                            tagName: "span",
+                            textContent: "$49 / mo",
+                            attributes: { class: "text-xs font-bold text-slate-500 uppercase tracking-wider" }
+                        }
+                    ]
+                },
+                {
+                    tagName: "h3",
+                    textContent: "Professional Tier",
+                    attributes: { class: "text-xl font-bold text-slate-900 mb-2" }
+                },
+                {
+                    tagName: "p",
+                    textContent: "Automate pure native DOM tree transformations directly from server or database JSON schemas with zero overhead.",
+                    attributes: { class: "text-xs text-slate-600 leading-relaxed mb-6" }
+                },
+                {
+                    tagName: "div",
+                    attributes: { class: "space-y-2 mb-6" },
+                    children: [
+                        {
+                            tagName: "div",
+                            attributes: { class: "flex items-center text-xs text-slate-700" },
+                            children: [
+                                { tagName: "span", textContent: "✓", attributes: { class: "text-emerald-500 font-bold mr-2" } },
+                                { tagName: "span", textContent: "Pure Vanilla DOM (No Virtual DOM overhead)" }
+                            ]
+                        },
+                        {
+                            tagName: "div",
+                            attributes: { class: "flex items-center text-xs text-slate-700" },
+                            children: [
+                                { tagName: "span", textContent: "✓", attributes: { class: "text-emerald-500 font-bold mr-2" } },
+                                { tagName: "span", textContent: "Zero dependencies (< 2.5 KB minified)" }
+                            ]
+                        },
+                        {
+                            tagName: "div",
+                            attributes: { class: "flex items-center text-xs text-slate-700" },
+                            children: [
+                                { tagName: "span", textContent: "✓", attributes: { class: "text-emerald-500 font-bold mr-2" } },
+                                { tagName: "span", textContent: "Full event listener and property support" }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    tagName: "button",
+                    textContent: "Select Plan",
+                    attributes: {
+                        class: "w-full py-2.5 px-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs rounded-xl shadow-sm hover:shadow transition active:scale-[0.99]"
+                    },
+                    events: {
+                        click: () => alert("Selected 'Professional Tier' plan!")
+                    }
+                }
+            ]
+        };
+
+        // Render helper conforming to { in... } naming convention
+        const renderSample = ({ inSpec, inTargetContainerId }) => {
+            const localSpec = inSpec;
+            const localTargetContainerId = inTargetContainerId;
+            const container = document.getElementById(localTargetContainerId);
+
+            const domElement = buildSpecElement({ inSpec: localSpec });
+            if (domElement) {
+                container.appendChild(domElement);
+            }
+        };
+
+        // Execute rendering
+        renderSample({ inSpec: cardSpec, inTargetContainerId: "app-container" });
+
+        // Show formatted spec in code block
+        const specCode = JSON.stringify(cardSpec, (k, v) => typeof v === 'function' ? "[Event Handler Function]" : v, 2);
+        document.getElementById("spec-code-display").textContent = specCode;
+
+        // Copy button handler
+        document.getElementById("copy-btn").addEventListener("click", () => {
+            navigator.clipboard.writeText(specCode).then(() => {
+                const btn = document.getElementById("copy-btn");
+                btn.textContent = "Copied!";
+                setTimeout(() => { btn.textContent = "Copy JSON"; }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
