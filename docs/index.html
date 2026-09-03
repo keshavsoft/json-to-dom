@@ -28,6 +28,7 @@
                 <a href="index.html" class="text-blue-600 font-semibold">Docs Hub</a>
                 <a href="architecture-and-pipeline.html" class="text-slate-600 hover:text-slate-900 transition">Architecture</a>
                 <a href="spec-schema-and-guide.html" class="text-slate-600 hover:text-slate-900 transition">Spec Schema</a>
+                <a href="samples/forms/index.html" class="text-slate-600 hover:text-slate-900 transition">Forms</a>
                 <a href="samples/index.html" class="text-slate-600 hover:text-slate-900 transition">Samples</a>
                 <a href="../src/v3/index.html" class="px-3 py-1.5 bg-slate-900 text-white rounded-md hover:bg-slate-800 transition">Live Demo</a>
             </nav>
@@ -48,22 +49,21 @@
 
     <!-- Main Content Cards -->
     <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1">
-        <div class="grid md:grid-cols-3 gap-6 mb-10">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
             <!-- Card 1: Architecture & Pipeline -->
             <a href="architecture-and-pipeline.html" class="group block p-6 bg-white rounded-xl border border-slate-200 hover:border-blue-500 hover:shadow-md transition">
                 <div class="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-lg mb-4 group-hover:bg-blue-600 group-hover:text-white transition">
                     🏗️
                 </div>
-                <h2 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition flex items-center justify-between">
-                    <span>Architecture & Pipeline</span>
+                <h2 class="text-base font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition flex items-center justify-between">
+                    <span>Architecture</span>
                     <span class="text-slate-400 group-hover:translate-x-1 transition">&rarr;</span>
                 </h2>
                 <p class="text-xs text-slate-600 leading-relaxed mb-4">
-                    Learn about the separation between the JSON Specification World and DOM World, recursive tree resolution, and the 5-step element builder lifecycle.
+                    Separation between the JSON Spec World and DOM World, recursive tree resolution, and builder lifecycle.
                 </p>
                 <div class="flex flex-wrap gap-1.5 text-[11px]">
-                    <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded font-mono">buildSpecElement</span>
-                    <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded">Recursive Flow</span>
+                    <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded font-mono">buildSpec</span>
                 </div>
             </a>
 
@@ -72,34 +72,49 @@
                 <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-lg mb-4 group-hover:bg-emerald-600 group-hover:text-white transition">
                     📋
                 </div>
-                <h2 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-emerald-600 transition flex items-center justify-between">
-                    <span>Spec Schema Guide</span>
+                <h2 class="text-base font-bold text-slate-900 mb-2 group-hover:text-emerald-600 transition flex items-center justify-between">
+                    <span>Spec Guide</span>
                     <span class="text-slate-400 group-hover:translate-x-1 transition">&rarr;</span>
                 </h2>
                 <p class="text-xs text-slate-600 leading-relaxed mb-4">
-                    Complete reference for node properties (<code>tagName</code>, <code>attributes</code>, <code>properties</code>, <code>events</code>, <code>children</code>) and syntax guidelines.
+                    Complete reference for node properties (<code>tagName</code>, <code>attributes</code>, <code>events</code>, <code>children</code>).
                 </p>
                 <div class="flex flex-wrap gap-1.5 text-[11px]">
-                    <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded font-mono">Schema Rules</span>
-                    <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded">Events & Props</span>
+                    <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded font-mono">Schema</span>
                 </div>
             </a>
 
-            <!-- Card 3: Interactive Samples -->
+            <!-- Card 3: Form Styles Series -->
+            <a href="samples/forms/index.html" class="group block p-6 bg-white rounded-xl border border-slate-200 hover:border-amber-500 hover:shadow-md transition">
+                <div class="w-10 h-10 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-lg mb-4 group-hover:bg-amber-600 group-hover:text-white transition">
+                    📝
+                </div>
+                <h2 class="text-base font-bold text-slate-900 mb-2 group-hover:text-amber-600 transition flex items-center justify-between">
+                    <span>Form Styles</span>
+                    <span class="text-slate-400 group-hover:translate-x-1 transition">&rarr;</span>
+                </h2>
+                <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                    Pure layout specifications: Label Above, Label Left, Right-Aligned Label, and Joined Addon Box.
+                </p>
+                <div class="flex flex-wrap gap-1.5 text-[11px]">
+                    <span class="px-2 py-0.5 bg-amber-100 text-amber-800 rounded font-mono">5 Styles</span>
+                </div>
+            </a>
+
+            <!-- Card 4: All Samples -->
             <a href="samples/index.html" class="group block p-6 bg-white rounded-xl border border-slate-200 hover:border-purple-500 hover:shadow-md transition">
                 <div class="w-10 h-10 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center font-bold text-lg mb-4 group-hover:bg-purple-600 group-hover:text-white transition">
                     💡
                 </div>
-                <h2 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-purple-600 transition flex items-center justify-between">
-                    <span>Interactive Samples</span>
+                <h2 class="text-base font-bold text-slate-900 mb-2 group-hover:text-purple-600 transition flex items-center justify-between">
+                    <span>All Samples</span>
                     <span class="text-slate-400 group-hover:translate-x-1 transition">&rarr;</span>
                 </h2>
                 <p class="text-xs text-slate-600 leading-relaxed mb-4">
-                    Explore 6 standalone HTML examples: cards, counters, tables, forms, dynamic CRUD lists, and dashboards with live DOM outputs.
+                    Organized directory covering Forms, Cards, Data Tables, Interactive State, and Dashboards.
                 </p>
                 <div class="flex flex-wrap gap-1.5 text-[11px]">
-                    <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded font-mono">6 Live Samples</span>
-                    <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded">Copyable JSON</span>
+                    <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded font-mono">5 Folders</span>
                 </div>
             </a>
         </div>

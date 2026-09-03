@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Components | JSON to DOM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        code, pre { font-family: 'JetBrains Mono', monospace; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="../../index.html" class="flex items-center space-x-2 font-bold text-lg text-slate-900 hover:text-blue-600 transition">
+                    <span class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-black text-sm">JD</span>
+                    <span>json-to-dom</span>
+                </a>
+                <span class="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2 py-0.5 rounded-full border border-emerald-200">Interactive</span>
+            </div>
+            <nav class="flex items-center space-x-4 text-sm font-medium">
+                <a href="../index.html" class="text-slate-600 hover:text-slate-900 transition">&larr; All Categories</a>
+                <a href="../forms/index.html" class="text-slate-600 hover:text-slate-900 transition">Forms</a>
+                <a href="../../spec-schema-and-guide.html" class="text-slate-600 hover:text-slate-900 transition">Spec Schema</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Header -->
+    <section class="bg-gradient-to-b from-white to-slate-50 border-b border-slate-200 py-10 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-semibold mb-3 border border-emerald-200">
+                <span>⚡ Events & Dynamic DOM</span>
+                <span>•</span>
+                <span>State & Mutation</span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-2">
+                Interactive Components & State
+            </h1>
+            <p class="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto">
+                Explore event binding, dynamic additions, and removals with native DOM handlers without external frameworks.
+            </p>
+        </div>
+    </section>
+
+    <!-- Grid -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1 w-full">
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- Counter -->
+            <a href="01-counter.html" class="group bg-white rounded-xl border border-slate-200 hover:border-emerald-500 hover:shadow-lg transition p-6 flex flex-col">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">Widget 01</span>
+                    <span class="text-xs text-slate-400 font-medium">State & Events</span>
+                </div>
+                <h2 class="text-lg font-bold text-slate-900 mb-1 group-hover:text-emerald-600 transition">
+                    Interactive Events & Counter
+                </h2>
+                <p class="text-xs text-slate-600 leading-relaxed mb-4 flex-1">
+                    Increment, decrement, and reset counters by attaching native `events: { click: fn }` inside declarative specs.
+                </p>
+                <div class="border-t border-slate-100 pt-3 flex items-center justify-between text-xs">
+                    <span class="text-slate-500">Pure DOM click listeners</span>
+                    <span class="text-emerald-600 font-semibold group-hover:translate-x-1 transition">&rarr;</span>
+                </div>
+            </a>
+
+            <!-- Dynamic CRUD -->
+            <a href="02-dynamic-crud.html" class="group bg-white rounded-xl border border-slate-200 hover:border-emerald-500 hover:shadow-lg transition p-6 flex flex-col">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">Widget 02</span>
+                    <span class="text-xs text-slate-400 font-medium">Dynamic CRUD</span>
+                </div>
+                <h2 class="text-lg font-bold text-slate-900 mb-1 group-hover:text-emerald-600 transition">
+                    Dynamic Runtime Add & Remove
+                </h2>
+                <p class="text-xs text-slate-600 leading-relaxed mb-4 flex-1">
+                    Generate nodes on-the-fly when users submit new items, and bind contextual remove handlers for instant deletion.
+                </p>
+                <div class="border-t border-slate-100 pt-3 flex items-center justify-between text-xs">
+                    <span class="text-slate-500">Factory functions & node.remove()</span>
+                    <span class="text-emerald-600 font-semibold group-hover:translate-x-1 transition">&rarr;</span>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <footer class="mt-auto bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
+        json-to-dom &bull; KeshavSoft &bull; ISC License
+    </footer>
+</body>
+</html>

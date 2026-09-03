@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style 01: Label Above & Input Below | JSON to DOM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        code, pre { font-family: 'JetBrains Mono', monospace; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="../../index.html" class="flex items-center space-x-2 font-bold text-lg text-slate-900 hover:text-blue-600 transition">
+                    <span class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-black text-sm">JD</span>
+                    <span>json-to-dom</span>
+                </a>
+                <span class="text-xs bg-slate-100 text-slate-700 font-semibold px-2 py-0.5 rounded-full border border-slate-200">Form Style 01</span>
+            </div>
+            <nav class="flex items-center space-x-4 text-sm font-medium">
+                <a href="index.html" class="text-blue-600 font-semibold">&larr; All Form Styles</a>
+                <a href="../index.html" class="text-slate-600 hover:text-slate-900 transition">Samples Hub</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full">
+        <!-- Breadcrumb & Title -->
+        <div class="mb-6">
+            <nav class="text-xs text-slate-500 mb-2">
+                <a href="../../index.html" class="hover:underline">Docs</a> / 
+                <a href="../index.html" class="hover:underline">Samples</a> / 
+                <a href="index.html" class="hover:underline">Forms</a> / 
+                <span class="text-slate-800 font-medium">Style 01: Label Above</span>
+            </nav>
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+                Label Above, Input Below (Vertical Stack)
+            </h1>
+            <p class="text-sm text-slate-600 mt-1">
+                Standard stacked layout with one input per row. Clear labels positioned directly above full-width inputs.
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-6 items-start">
+            <!-- Left: Live Form Render -->
+            <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                <div class="px-5 py-4 border-b border-slate-200 bg-slate-50 flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+                        <h2 class="text-xs font-bold uppercase tracking-wider text-slate-700">Rendered Form (Label Above)</h2>
+                    </div>
+                    <span class="text-[11px] font-mono bg-white border border-slate-200 text-slate-600 px-2 py-0.5 rounded">#form-container</span>
+                </div>
+                <div class="p-6">
+                    <div id="form-container"></div>
+                </div>
+            </div>
+
+            <!-- Right: JSON Specification & Code -->
+            <div class="bg-slate-900 rounded-xl border border-slate-800 shadow-sm overflow-hidden flex flex-col">
+                <div class="px-5 py-3 border-b border-slate-800 flex items-center justify-between">
+                    <span class="text-xs font-mono font-semibold text-slate-400">labelAboveSpec.json</span>
+                    <button id="copy-btn" class="px-2.5 py-1 text-xs font-medium text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 rounded transition flex items-center space-x-1">
+                        <span>Copy JSON</span>
+                    </button>
+                </div>
+                <pre class="p-5 text-xs font-mono text-emerald-400 overflow-x-auto leading-relaxed max-h-[500px]"><code id="code-display"></code></pre>
+            </div>
+        </div>
+
+        <!-- Explanation Section -->
+        <div class="mt-8 bg-white rounded-xl border border-slate-200 p-6">
+            <h3 class="text-base font-bold text-slate-900 mb-2">CSS Architecture for Label Above</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+                Each field is enclosed in a block <code>&lt;div&gt;</code>. The <code>&lt;label&gt;</code> uses <code>block text-xs font-semibold text-slate-700 mb-1.5</code>, and the <code>&lt;input&gt;</code> uses <code>w-full px-3 py-2 border rounded-lg</code>. No JavaScript events are attached—pure layout specification.
+            </p>
+        </div>
+    </main>
+
+    <footer class="mt-auto bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
+        json-to-dom &bull; KeshavSoft &bull; ISC License
+    </footer>
+
+    <!-- Engine Standalone Bundle -->
+    <script type="module" src="../../dist/v3/min.js"></script>
+
+    <!-- Execution Script -->
+    <script type="module">
+        // Declarative Form Specification (Pure Layout - No Events)
+        const formSpec = {
+            tagName: "form",
+            attributes: { class: "space-y-4 max-w-md mx-auto" },
+            children: [
+                // Row 1: Stock Item Name
+                {
+                    tagName: "div",
+                    children: [
+                        {
+                            tagName: "label",
+                            textContent: "Stock Item Name",
+                            attributes: { class: "block text-xs font-semibold text-slate-700 mb-1.5" }
+                        },
+                        {
+                            tagName: "input",
+                            attributes: {
+                                type: "text",
+                                placeholder: "e.g. Shading Net Kgs",
+                                class: "w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white"
+                            }
+                        }
+                    ]
+                },
+                // Row 2: Batch Name
+                {
+                    tagName: "div",
+                    children: [
+                        {
+                            tagName: "label",
+                            textContent: "Batch Name / Lot No",
+                            attributes: { class: "block text-xs font-semibold text-slate-700 mb-1.5" }
+                        },
+                        {
+                            tagName: "input",
+                            attributes: {
+                                type: "text",
+                                placeholder: "e.g. Rishi-Rs.205/-",
+                                class: "w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white"
+                            }
+                        }
+                    ]
+                },
+                // Row 3: Godown Location
+                {
+                    tagName: "div",
+                    children: [
+                        {
+                            tagName: "label",
+                            textContent: "Godown / Storage Location",
+                            attributes: { class: "block text-xs font-semibold text-slate-700 mb-1.5" }
+                        },
+                        {
+                            tagName: "input",
+                            attributes: {
+                                type: "text",
+                                placeholder: "e.g. Main Location",
+                                class: "w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white"
+                            }
+                        }
+                    ]
+                },
+                // Row 4: Quantity
+                {
+                    tagName: "div",
+                    children: [
+                        {
+                            tagName: "label",
+                            textContent: "Actual Quantity (kgs / Nos)",
+                            attributes: { class: "block text-xs font-semibold text-slate-700 mb-1.5" }
+                        },
+                        {
+                            tagName: "input",
+                            attributes: {
+                                type: "text",
+                                placeholder: "e.g. 3.560 kgs",
+                                class: "w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white"
+                            }
+                        }
+                    ]
+                }
+            ]
+        };
+
+        // Render helper conforming to { in... } naming convention
+        const renderSample = ({ inSpec, inTargetContainerId }) => {
+            const localSpec = inSpec;
+            const localTargetContainerId = inTargetContainerId;
+            const container = document.getElementById(localTargetContainerId);
+
+            // Access engine via window.ks["json-to-dom"]
+            const domElement = window.ks["json-to-dom"].buildSpecElement({ inSpec: localSpec });
+            if (domElement) {
+                container.appendChild(domElement);
+            }
+        };
+
+        renderSample({ inSpec: formSpec, inTargetContainerId: "form-container" });
+
+        // Show formatted spec in code block
+        const specJson = JSON.stringify(formSpec, null, 2);
+        document.getElementById("code-display").textContent = specJson;
+
+        document.getElementById("copy-btn").addEventListener("click", () => {
+            navigator.clipboard.writeText(specJson).then(() => {
+                const btn = document.getElementById("copy-btn");
+                btn.textContent = "Copied!";
+                setTimeout(() => { btn.textContent = "Copy JSON"; }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>

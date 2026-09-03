@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Alignment Styles | JSON to DOM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        code, pre { font-family: 'JetBrains Mono', monospace; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="../../index.html" class="flex items-center space-x-2 font-bold text-lg text-slate-900 hover:text-blue-600 transition">
+                    <span class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-black text-sm">JD</span>
+                    <span>json-to-dom</span>
+                </a>
+                <span class="text-xs bg-amber-100 text-amber-800 font-semibold px-2 py-0.5 rounded-full border border-amber-200">Form Styles</span>
+            </div>
+            <nav class="flex items-center space-x-4 text-sm font-medium">
+                <a href="../index.html" class="text-slate-600 hover:text-slate-900 transition">&larr; All Samples</a>
+                <a href="../../spec-schema-and-guide.html" class="text-slate-600 hover:text-slate-900 transition">Spec Schema</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Header -->
+    <section class="bg-gradient-to-b from-white to-slate-50 border-b border-slate-200 py-10 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-50 text-amber-800 text-xs font-semibold mb-3 border border-amber-200">
+                <span>🎨 Pure Layout Styles</span>
+                <span>•</span>
+                <span>No JS / Events</span>
+                <span>•</span>
+                <span>Single Input Per Row</span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-2">
+                Form Label & Input Alignment Styles
+            </h1>
+            <p class="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto">
+                Compare different label and input alignment patterns in declarative JSON. Concentrated exclusively on label/input positioning without events or complex multi-column grids.
+            </p>
+        </div>
+    </section>
+
+    <!-- Styles Grid -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1 w-full">
+        <div class="grid md:grid-cols-2 gap-6">
+
+            <!-- Style 01: Label Above (Stacked) -->
+            <a href="01-label-top.html" class="group bg-white rounded-xl border border-slate-200 hover:border-blue-500 hover:shadow-lg transition p-6 flex flex-col">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">Style 01</span>
+                    <span class="text-xs text-slate-400 font-medium">Vertical Stack</span>
+                </div>
+                <h2 class="text-lg font-bold text-slate-900 mb-1 group-hover:text-blue-600 transition">
+                    Label Above, Input Below (Vertical)
+                </h2>
+                <p class="text-xs text-slate-600 leading-relaxed mb-4 flex-1">
+                    The standard mobile-first layout. Labels are stacked directly over the input fields with standard vertical margins for maximum clarity and scannability.
+                </p>
+                <div class="bg-slate-50 border border-slate-100 rounded-lg p-3 text-xs mb-4">
+                    <div class="text-[11px] font-semibold text-slate-500 mb-1">Preview Pattern:</div>
+                    <div class="space-y-1">
+                        <div class="text-[11px] font-medium text-slate-700">Stock Item Name</div>
+                        <div class="h-7 bg-white border border-slate-300 rounded px-2 text-[11px] text-slate-400 flex items-center">e.g. Shading Net Kgs</div>
+                    </div>
+                </div>
+                <div class="border-t border-slate-100 pt-3 flex items-center justify-between text-xs">
+                    <span class="text-slate-500">Tag hierarchy: <code>div &gt; label + input</code></span>
+                    <span class="text-blue-600 font-semibold group-hover:translate-x-1 transition">&rarr;</span>
+                </div>
+            </a>
+
+            <!-- Style 02: Label Left (Left-Aligned) -->
+            <a href="02-label-left.html" class="group bg-white rounded-xl border border-slate-200 hover:border-emerald-500 hover:shadow-lg transition p-6 flex flex-col">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">Style 02</span>
+                    <span class="text-xs text-slate-400 font-medium">Horizontal Flex</span>
+                </div>
+                <h2 class="text-lg font-bold text-slate-900 mb-1 group-hover:text-emerald-600 transition">
+                    Label Left (Left-Aligned), Input Right
+                </h2>
+                <p class="text-xs text-slate-600 leading-relaxed mb-4 flex-1">
+                    Label sits on the left with a fixed width, text aligned left. The input occupies the remaining horizontal row space.
+                </p>
+                <div class="bg-slate-50 border border-slate-100 rounded-lg p-3 text-xs mb-4">
+                    <div class="text-[11px] font-semibold text-slate-500 mb-1">Preview Pattern:</div>
+                    <div class="flex items-center space-x-2">
+                        <span class="w-24 text-[11px] font-medium text-slate-700 truncate">Voucher No</span>
+                        <div class="flex-1 h-7 bg-white border border-slate-300 rounded px-2 text-[11px] text-slate-400 flex items-center">1042</div>
+                    </div>
+                </div>
+                <div class="border-t border-slate-100 pt-3 flex items-center justify-between text-xs">
+                    <span class="text-slate-500">Flex row: <code>w-32 text-left</code> + <code>flex-1</code></span>
+                    <span class="text-emerald-600 font-semibold group-hover:translate-x-1 transition">&rarr;</span>
+                </div>
+            </a>
+
+            <!-- Style 03: Label Left (Right-Aligned) -->
+            <a href="03-label-left-aligned-right.html" class="group bg-white rounded-xl border border-slate-200 hover:border-purple-500 hover:shadow-lg transition p-6 flex flex-col">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-purple-50 text-purple-700 border border-purple-200">Style 03</span>
+                    <span class="text-xs text-slate-400 font-medium">Enterprise Accounting</span>
+                </div>
+                <h2 class="text-lg font-bold text-slate-900 mb-1 group-hover:text-purple-600 transition">
+                    Label Left (Right-Aligned), Input Right
+                </h2>
+                <p class="text-xs text-slate-600 leading-relaxed mb-4 flex-1">
+                    Classic desktop ERP/accounting layout. Labels are aligned to the right close to the input border with a trailing colon, creating a clean central gutter.
+                </p>
+                <div class="bg-slate-50 border border-slate-100 rounded-lg p-3 text-xs mb-4">
+                    <div class="text-[11px] font-semibold text-slate-500 mb-1">Preview Pattern:</div>
+                    <div class="flex items-center space-x-2">
+                        <span class="w-28 text-[11px] font-medium text-slate-700 text-right">Batch Name :</span>
+                        <div class="flex-1 h-7 bg-white border border-slate-300 rounded px-2 text-[11px] text-slate-400 flex items-center">Tuf-Rs.170</div>
+                    </div>
+                </div>
+                <div class="border-t border-slate-100 pt-3 flex items-center justify-between text-xs">
+                    <span class="text-slate-500">Flex row: <code>w-36 text-right pr-3</code></span>
+                    <span class="text-purple-600 font-semibold group-hover:translate-x-1 transition">&rarr;</span>
+                </div>
+            </a>
+
+            <!-- Style 04: Connected Addon Group -->
+            <a href="04-label-addon-group.html" class="group bg-white rounded-xl border border-slate-200 hover:border-amber-500 hover:shadow-lg transition p-6 flex flex-col">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200">Style 04</span>
+                    <span class="text-xs text-slate-400 font-medium">Joined Addon Box</span>
+                </div>
+                <h2 class="text-lg font-bold text-slate-900 mb-1 group-hover:text-amber-600 transition">
+                    Label as Joined Addon Box
+                </h2>
+                <p class="text-xs text-slate-600 leading-relaxed mb-4 flex-1">
+                    Label is formatted as a shaded prefix box physically attached to the input field, forming a single compact visual unit.
+                </p>
+                <div class="bg-slate-50 border border-slate-100 rounded-lg p-3 text-xs mb-4">
+                    <div class="text-[11px] font-semibold text-slate-500 mb-1">Preview Pattern:</div>
+                    <div class="flex items-center rounded border border-slate-300 overflow-hidden">
+                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[11px] border-r border-slate-300 font-medium">Godown</span>
+                        <span class="px-2 py-1 bg-white text-[11px] text-slate-400 flex-1">Main Location</span>
+                    </div>
+                </div>
+                <div class="border-t border-slate-100 pt-3 flex items-center justify-between text-xs">
+                    <span class="text-slate-500">Addon group: <code>rounded-l-lg</code> + <code>rounded-r-lg</code></span>
+                    <span class="text-amber-600 font-semibold group-hover:translate-x-1 transition">&rarr;</span>
+                </div>
+            </a>
+
+            <!-- Style 05: Form Submission & State -->
+            <a href="05-interactive-form.html" class="group bg-white rounded-xl border border-slate-200 hover:border-blue-500 hover:shadow-lg transition p-6 flex flex-col md:col-span-2">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">Full Form</span>
+                    <span class="text-xs text-slate-400 font-medium">Controls & Submit</span>
+                </div>
+                <h2 class="text-lg font-bold text-slate-900 mb-1 group-hover:text-blue-600 transition">
+                    Full Form Controls & Submission (Select, Checkbox, Textarea)
+                </h2>
+                <p class="text-xs text-slate-600 leading-relaxed mb-4 flex-1">
+                    Complete form with multiple input types (text, dropdown select, checkboxes) and form submission state capture.
+                </p>
+                <div class="border-t border-slate-100 pt-3 flex items-center justify-between text-xs">
+                    <span class="text-slate-500">Multi-control form handling</span>
+                    <span class="text-blue-600 font-semibold group-hover:translate-x-1 transition">&rarr;</span>
+                </div>
+            </a>
+
+        </div>
+    </main>
+
+    <footer class="mt-auto bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
+        json-to-dom &bull; KeshavSoft &bull; ISC License
+    </footer>
+</body>
+</html>
