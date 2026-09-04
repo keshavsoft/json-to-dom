@@ -1,0 +1,34 @@
+[
+    {
+        "name": "summaryRow",
+        "title": "Total",
+        "type": "aggregate",
+        "values": {
+            "amount": "sum"
+        }
+    },
+    {
+        "name": "taxRow",
+        "title": "GST (18%)",
+        "type": "eval",
+        "dependsOn": "summaryRow",
+        "values": {
+            "amount": {
+                "operation": "percent",
+                "rate": 18
+            }
+        }
+    },
+    {
+        "name": "balanceRow",
+        "title": "Grand Total",
+        "type": "eval",
+        "dependsOn": ["summaryRow", "taxRow"],
+        "values": {
+            "amount": {
+                "operation": "add",
+                "sources": ["summaryRow", "taxRow"]
+            }
+        }
+    }
+]
