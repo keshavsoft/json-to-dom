@@ -5,7 +5,7 @@ export const filterData = ({ inData = [], inQuery = "" } = {}) => {
     if (!Array.isArray(localData)) return [];
 
     const normalizedQuery = String(localQuery ?? "").trim().toLowerCase();
-    if (!normalizedQuery) return localData;
+    if (!normalizedQuery) return [...localData];
 
     return localData.filter(row => {
         if (!row || typeof row !== "object") return false;

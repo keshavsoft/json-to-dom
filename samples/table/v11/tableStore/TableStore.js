@@ -7,7 +7,10 @@ export class TableStore {
         const localColumns = inColumns;
         const localConfig = inConfig;
 
-        this.rawData = localData;
+        // Clone original data to ensure the source data cannot be mutated from outside
+        this.originalData = Array.isArray(localData)
+            ? (typeof structuredClone === "function" ? structuredClone(localData) : JSON.parse(JSON.stringify(localData)))
+            : [];
         this.columnsCatalog = localColumns;
         this.config = localConfig;
 
@@ -16,12 +19,31 @@ export class TableStore {
             inHeadConfig: this.config?.head
         });
 
-        this.filteredData = Array.isArray(this.rawData) ? [...this.rawData] : [];
+        // Dedicated filter state protecting actual data
+        this.filterState = {
+            query: "",
+            data: [...this.originalData]
+        };
 
         this.computedFooter = calculateFooter({
-            inData: this.filteredData,
+            inData: this.filterState.data,
             inFooterConfig: this.config?.foot
         });
+    }
+
+    get rawData() {
+        return this.originalData;
+    }
+
+    get filteredData() {
+        return this.filterState.data;
+    }
+
+    getFilterState() {
+        return {
+            query: this.filterState.query,
+            data: [...this.filterState.data]
+        };
     }
 
     _resolveActiveColumns({ inColumnsCatalog = [], inHeadConfig = {} } = {}) {
@@ -41,20 +63,22 @@ export class TableStore {
     filter({ inQuery = "" } = {}) {
         const localQuery = inQuery;
 
-        this.filteredData = filterData({
-            inData: this.rawData,
+        this.filterState.query = localQuery;
+        this.filterState.data = filterData({
+            inData: this.originalData,
             inQuery: localQuery
         });
 
         this.computedFooter = calculateFooter({
-            inData: this.filteredData,
+            inData: this.filterState.data,
             inFooterConfig: this.config?.foot
         });
 
         return {
             activeColumns: this.activeColumns,
-            filteredData: this.filteredData,
-            computedFooter: this.computedFooter
+            filteredData: this.filterState.data,
+            computedFooter: this.computedFooter,
+            filterState: this.getFilterState()
         };
     }
 }
