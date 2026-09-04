@@ -1,0 +1,175 @@
+//#region src/v6/buildSpec/isNullOrUndefined.js
+var e = ({ inSpec: e }) => !e, t = ({ inSpec: e }) => e instanceof Node, n = ({ inSpec: e }) => {
+	let t = e;
+	return Array.isArray(t);
+}, r = ({ inSpec: e }) => {
+	let t = e;
+	return typeof t == "object" && !!t;
+}, i = ({ inSpec: e }) => e.map((e) => y(e)).flat().filter(Boolean), a = ({ inTagName: e }) => {
+	let t = e?.toLowerCase();
+	if (t === "checkbox") {
+		let e = document.createElement("input");
+		return e.type = "checkbox", e;
+	}
+	return document.createElement(t);
+}, o = ({ inElement: e, inTextContent: t, inAllowsTextContent: n = !0, inTagName: r, inShowLog: i = !1 }) => {
+	let a = e, o = t;
+	return o ? n ? (a.textContent = o, a) : (i && console.warn(`[json-to-dom] textContent is not allowed on <${r}>; discarded "${o}"`), a) : a;
+}, s = ({ inElement: e, inProperties: t }) => {
+	let n = e, r = t;
+	return r && Object.assign(n, r), n;
+}, c = ({ inAttributes: e, inAllowedAttributes: t, inTagName: n, inShowLog: r = !1 }) => {
+	let i = e, a = t, o = n, s = r;
+	if (!i || typeof i != "object") return {};
+	if (!Array.isArray(a)) return i;
+	let c = {}, l = [];
+	return Object.entries(i).forEach(([e, t]) => {
+		a.includes(e) ? c[e] = t : l.push(e);
+	}), l.length > 0 && s && console.warn(`[json-to-dom] Discarded invalid attributes for <${o}>:`, l), c;
+}, l = ({ inElement: e, inAttributes: t, inAllowedAttributes: n, inTagName: r, inShowLog: i = !1 }) => {
+	let a = e, o = t, s = n, l = r, u = i;
+	if (!o) return a;
+	let d = c({
+		inAttributes: o,
+		inAllowedAttributes: s,
+		inTagName: l,
+		inShowLog: u
+	});
+	return Object.entries(d).forEach(([e, t]) => {
+		e === "class" ? a.className = t : typeof t == "boolean" ? t ? a.setAttribute(e, "") : a.removeAttribute(e) : a.setAttribute(e, t);
+	}), a;
+}, u = ({ inElement: e, inClassList: t }) => {
+	let n = e, r = t;
+	return r && n.classList.add(...r.split(/\s+/).filter(Boolean)), n;
+}, d = ({ inElement: e, inEvents: t }) => {
+	let n = e, r = t;
+	return r && typeof r == "object" && Object.entries(r).forEach(([e, t]) => {
+		n.addEventListener(e, t);
+	}), n;
+}, f = ({ inElement: e, inChildren: t, inAllowsChildren: n = !0, inTagName: r, inShowLog: i = !1 }) => {
+	let a = e, o = t, s = n, c = r, l = i;
+	return !Array.isArray(o) || o.length === 0 ? a : s ? (o.forEach((e) => {
+		e instanceof Node && a.appendChild(e);
+	}), a) : (l && console.warn(`[json-to-dom] children are not allowed on <${c}>; discarded ${o.length} child nodes`), a);
+}, p = ({ inSpec: e, inTagDef: t, inClassList: n, inShowLog: r = !1 }) => {
+	let i = e, c = t, p = n, m = r;
+	if (!i || !i.tagName) return null;
+	let h = a({ inTagName: i.tagName });
+	return o({
+		inElement: h,
+		inTextContent: i.textContent,
+		inAllowsTextContent: c?.allowsTextContent,
+		inTagName: i.tagName,
+		inShowLog: m
+	}), s({
+		inElement: h,
+		inProperties: i.properties
+	}), l({
+		inElement: h,
+		inAttributes: i.attributes,
+		inAllowedAttributes: c?.allowedAttributes,
+		inTagName: i.tagName,
+		inShowLog: m
+	}), u({
+		inElement: h,
+		inClassList: p
+	}), d({
+		inElement: h,
+		inEvents: i.events
+	}), f({
+		inElement: h,
+		inChildren: i.children,
+		inAllowsChildren: c?.allowsChildren,
+		inTagName: i.tagName,
+		inShowLog: m
+	}), h;
+}, m = ({ inChildren: e }) => {
+	let t = e;
+	return Array.isArray(t) ? t.map((e) => y(e)).flat().filter(Boolean) : [];
+}, h = {
+	div: {
+		allowsTextContent: !1,
+		allowsChildren: !0,
+		allowedAttributes: [
+			"class",
+			"id",
+			"style",
+			"title",
+			"role"
+		]
+	},
+	input: {
+		allowsTextContent: !1,
+		allowsChildren: !1,
+		allowedAttributes: [
+			"type",
+			"placeholder",
+			"value",
+			"name",
+			"disabled",
+			"readonly",
+			"required",
+			"class",
+			"id"
+		]
+	},
+	checkbox: {
+		allowsTextContent: !1,
+		allowsChildren: !1,
+		allowedAttributes: [
+			"type",
+			"checked",
+			"name",
+			"value",
+			"disabled",
+			"required",
+			"class",
+			"id"
+		]
+	},
+	label: {
+		allowsTextContent: !0,
+		allowsChildren: !0,
+		allowedAttributes: [
+			"for",
+			"class",
+			"id"
+		]
+	},
+	button: {
+		allowsTextContent: !0,
+		allowsChildren: !0,
+		allowedAttributes: [
+			"type",
+			"disabled",
+			"class",
+			"id",
+			"name",
+			"value"
+		]
+	}
+}, g = ({ inTagName: e }) => {
+	let t = e?.toLowerCase();
+	return !!(t && t in h);
+}, _ = ({ inTagName: e }) => h[e?.toLowerCase()] || null, v = ({ inSpec: e, inShowLog: t = !1 }) => {
+	let n = e, r = t;
+	if (!n?.tagName || !g({ inTagName: n.tagName })) return r && console.warn(`[json-to-dom] Not a valid element: "${n?.tagName}"`, n), null;
+	let i = _({ inTagName: n.tagName }), a = i?.allowsChildren ? m({ inChildren: n.children }) : [];
+	return p({
+		inSpec: {
+			...n,
+			children: a
+		},
+		inTagDef: i,
+		inShowLog: r
+	});
+}, y = (a) => {
+	let o = a && typeof a == "object" && "inSpec" in a && !(a instanceof Node) && !Array.isArray(a) ? a.inSpec : a, s = !!window?.ks?.showLog;
+	return e({ inSpec: o }) ? null : t({ inSpec: o }) ? o : n({ inSpec: o }) ? i({ inSpec: o }) : r({ inSpec: o }) ? v({
+		inSpec: o,
+		inShowLog: s
+	}) : null;
+};
+window.ks ??= {}, window.ks.showLog = !0, window.ks["json-to-dom"] = { buildSpecElement: y };
+//#endregion
+export { y as buildSpecElement, y as default };

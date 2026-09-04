@@ -1,11 +1,5 @@
 [
     {
-        "tagName": "ks",
-        "attributes": {
-            "class": "flex items-center"
-        }
-    },
-    {
         "tagName": "div",
         "attributes": {
             "class": "flex items-center"

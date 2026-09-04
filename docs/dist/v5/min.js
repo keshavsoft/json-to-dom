@@ -71,18 +71,21 @@ var e = ({ inSpec: e }) => !e, t = ({ inSpec: e }) => e instanceof Node, n = ({ 
 }, h = ({ inTagName: e }) => {
 	let t = e?.toLowerCase();
 	return !!(t && t in m);
-}, g = ({ inSpec: e }) => {
-	let t = e;
-	if (!t?.tagName || !h({ inTagName: t.tagName })) return null;
-	let n = p({ inChildren: t.children });
+}, g = ({ inSpec: e, inShowLog: t = !1 }) => {
+	let n = e, r = t;
+	if (!n?.tagName || !h({ inTagName: n.tagName })) return r && console.warn(`[json-to-dom] Not a valid element: "${n?.tagName}"`, n), null;
+	let i = p({ inChildren: n.children });
 	return f({ inSpec: {
-		...t,
-		children: n
+		...n,
+		children: i
 	} });
 }, _ = (a) => {
-	let o = a && typeof a == "object" && "inSpec" in a && !(a instanceof Node) && !Array.isArray(a) ? a.inSpec : a;
-	return e({ inSpec: o }) ? null : t({ inSpec: o }) ? o : n({ inSpec: o }) ? i({ inSpec: o }) : r({ inSpec: o }) ? g({ inSpec: o }) : null;
+	let o = a && typeof a == "object" && "inSpec" in a && !(a instanceof Node) && !Array.isArray(a) ? a.inSpec : a, s = !!window?.ks?.showLog;
+	return e({ inSpec: o }) ? null : t({ inSpec: o }) ? o : n({ inSpec: o }) ? i({ inSpec: o }) : r({ inSpec: o }) ? g({
+		inSpec: o,
+		inShowLog: s
+	}) : null;
 };
-window.ks ??= {}, window.ks["json-to-dom"] = { buildSpecElement: _ };
+window.ks ??= {}, window.ks.showLog = !0, window.ks["json-to-dom"] = { buildSpecElement: _ };
 //#endregion
 export { _ as buildSpecElement, _ as default };

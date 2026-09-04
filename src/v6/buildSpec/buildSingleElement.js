@@ -1,6 +1,7 @@
 import domElementBuilder from "../elementBuilder/index.js";
 import buildChildrenNodes from "./buildChildrenNodes.js";
-import isTagValid from "./isTagValid.js";
+import isTagValid from "../validate/isTagValid.js";
+import getTagDefinition from "../validate/getTagDefinition.js";
 
 export const buildSingleElement = ({ inSpec, inShowLog = false }) => {
     const localSpec = inSpec;
@@ -13,13 +14,19 @@ export const buildSingleElement = ({ inSpec, inShowLog = false }) => {
         return null;
     }
 
-    const localChildrenNodes = buildChildrenNodes({ inChildren: localSpec.children });
+    const tagDef = getTagDefinition({ inTagName: localSpec.tagName });
+
+    const localChildrenNodes = tagDef?.allowsChildren
+        ? buildChildrenNodes({ inChildren: localSpec.children })
+        : [];
 
     return domElementBuilder({
         inSpec: {
             ...localSpec,
             children: localChildrenNodes
-        }
+        },
+        inTagDef: tagDef,
+        inShowLog: localShowLog
     });
 };
 

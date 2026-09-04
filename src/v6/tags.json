@@ -1,0 +1,27 @@
+{
+    "div": {
+        "allowsTextContent": false,
+        "allowsChildren": true,
+        "allowedAttributes": ["class", "id", "style", "title", "role"]
+    },
+    "input": {
+        "allowsTextContent": false,
+        "allowsChildren": false,
+        "allowedAttributes": ["type", "placeholder", "value", "name", "disabled", "readonly", "required", "class", "id"]
+    },
+    "checkbox": {
+        "allowsTextContent": false,
+        "allowsChildren": false,
+        "allowedAttributes": ["type", "checked", "name", "value", "disabled", "required", "class", "id"]
+    },
+    "label": {
+        "allowsTextContent": true,
+        "allowsChildren": true,
+        "allowedAttributes": ["for", "class", "id"]
+    },
+    "button": {
+        "allowsTextContent": true,
+        "allowsChildren": true,
+        "allowedAttributes": ["type", "disabled", "class", "id", "name", "value"]
+    }
+}
