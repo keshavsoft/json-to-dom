@@ -1,0 +1,8 @@
+[
+    { "key": "vchtype", "label": "Vch Type" },
+    { "key": "vouchernumber", "label": "Vch No" },
+    { "key": "stockitemname", "label": "Stock Item Name" },
+    { "key": "batchname", "label": "Batch Name" },
+    { "key": "amount", "label": "Amount", "align": "right" },
+    { "key": "actualqty", "label": "Actual Qty" }
+]
