@@ -147,6 +147,54 @@ var e = ({ inSpec: e }) => !e, t = ({ inSpec: e }) => e instanceof Node, n = ({ 
 			"name",
 			"value"
 		]
+	},
+	table: {
+		allowsTextContent: !1,
+		allowsChildren: !0,
+		allowedAttributes: [
+			"class",
+			"id",
+			"style",
+			"border",
+			"cellpadding",
+			"cellspacing"
+		]
+	},
+	thead: {
+		allowsTextContent: !1,
+		allowsChildren: !0,
+		allowedAttributes: ["class", "id"]
+	},
+	tbody: {
+		allowsTextContent: !1,
+		allowsChildren: !0,
+		allowedAttributes: ["class", "id"]
+	},
+	tr: {
+		allowsTextContent: !1,
+		allowsChildren: !0,
+		allowedAttributes: ["class", "id"]
+	},
+	th: {
+		allowsTextContent: !0,
+		allowsChildren: !0,
+		allowedAttributes: [
+			"class",
+			"id",
+			"scope",
+			"colspan",
+			"rowspan"
+		]
+	},
+	td: {
+		allowsTextContent: !0,
+		allowsChildren: !0,
+		allowedAttributes: [
+			"class",
+			"id",
+			"colspan",
+			"rowspan"
+		]
 	}
 }, g = ({ inTagName: e }) => {
 	let t = e?.toLowerCase();
