@@ -1,0 +1,72 @@
+[
+    {
+        "vchtype": "Sales/CA",
+        "vouchernumber": "1",
+        "stockitemname": "Shading Net Kgs",
+        "batchname": "Rishi-Rs.205/-",
+        "godownname": "Main Location",
+        "amount": 1000.00,
+        "actualqty": "3.560 kgs",
+        "billedqty": "3.560 kgs"
+    },
+    {
+        "vchtype": "Sales/CA",
+        "vouchernumber": "1",
+        "stockitemname": "ROPE",
+        "batchname": "Tuf-Rs.170",
+        "godownname": "Main Location",
+        "amount": 100.00,
+        "actualqty": "0.320 kgs",
+        "billedqty": "0.320 kgs"
+    },
+    {
+        "vchtype": "Sales/CA",
+        "vouchernumber": "1",
+        "stockitemname": "ROPE",
+        "batchname": "Tuf-Rs.170",
+        "godownname": "Main Location",
+        "amount": 420.00,
+        "actualqty": "1.620 kgs",
+        "billedqty": "1.620 kgs"
+    },
+    {
+        "vchtype": "Sales/CA",
+        "vouchernumber": "1",
+        "stockitemname": "ROPE",
+        "batchname": "Tuf-Rs.170",
+        "godownname": "Main Location",
+        "amount": 200.00,
+        "actualqty": "0.800 kgs",
+        "billedqty": "0.800 kgs"
+    },
+    {
+        "vchtype": "Sales/CA",
+        "vouchernumber": "1",
+        "stockitemname": "Nylon Cheeses",
+        "batchname": "Kumaran-250gms-Rs.126/-",
+        "godownname": "Main Location",
+        "amount": 1440.00,
+        "actualqty": "8 Nos",
+        "billedqty": "8 Nos"
+    },
+    {
+        "vchtype": "Sales/CA",
+        "vouchernumber": "1",
+        "stockitemname": "0.75/90/50",
+        "batchname": "Tri-Rs.273/-",
+        "godownname": "Nalam Godown",
+        "amount": 1300.00,
+        "actualqty": "3.020 kgs",
+        "billedqty": "3.020 kgs"
+    },
+    {
+        "vchtype": "Sales/CA",
+        "vouchernumber": "1",
+        "stockitemname": "Export Surplus New",
+        "batchname": "1.20-275/-",
+        "godownname": "Main Location",
+        "amount": 300.00,
+        "actualqty": "0.520 kgs",
+        "billedqty": "0.520 kgs"
+    }
+]

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Creation | JSON to DOM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 p-6">
+    <div id="table-container" class="max-w-7xl mx-auto overflow-x-auto rounded-lg border border-slate-200 shadow-sm bg-white"></div>
+
+    <script type="module">
+        import { buildSpecElement } from "../../../src/v3/build/buildSpecElement.js";
+
+        // Sample financial records
+        const sampleRows = [
+            { vchtype: "Sales/CA", vouchernumber: "1", stockitemname: "Shading Net Kgs", batchname: "Rishi-Rs.205/-", godownname: "Main Location", amount: 1000.00, actualqty: "3.560 kgs", billedqty: "3.560 kgs" },
+            { vchtype: "Sales/CA", vouchernumber: "1", stockitemname: "ROPE", batchname: "Tuf-Rs.170", godownname: "Main Location", amount: 100.00, actualqty: "0.320 kgs", billedqty: "0.320 kgs" },
+            { vchtype: "Sales/CA", vouchernumber: "1", stockitemname: "ROPE", batchname: "Tuf-Rs.170", godownname: "Main Location", amount: 420.00, actualqty: "1.620 kgs", billedqty: "1.620 kgs" },
+            { vchtype: "Sales/CA", vouchernumber: "1", stockitemname: "ROPE", batchname: "Tuf-Rs.170", godownname: "Main Location", amount: 200.00, actualqty: "0.800 kgs", billedqty: "0.800 kgs" },
+            { vchtype: "Sales/CA", vouchernumber: "1", stockitemname: "Nylon Cheeses", batchname: "Kumaran-250gms-Rs.126/-", godownname: "Main Location", amount: 1440.00, actualqty: "8 Nos", billedqty: "8 Nos" },
+            { vchtype: "Sales/CA", vouchernumber: "1", stockitemname: "0.75/90/50", batchname: "Tri-Rs.273/-", godownname: "Nalam Godown", amount: 1300.00, actualqty: "3.020 kgs", billedqty: "3.020 kgs" },
+            { vchtype: "Sales/CA", vouchernumber: "1", stockitemname: "Export Surplus New", batchname: "1.20-275/-", godownname: "Main Location", amount: 300.00, actualqty: "0.520 kgs", billedqty: "0.520 kgs" }
+        ];
+
+        // Spec generator adhering to the { in... } naming convention
+        const generateTableSpec = ({ inData }) => {
+            const localData = inData;
+            const headers = ["Vch Type", "Vch No", "Stock Item Name", "Batch Name", "Godown Name", "Amount", "Actual Qty", "Billed Qty"];
+
+            return {
+                tagName: "table",
+                attributes: { class: "w-full text-left text-xs text-slate-700 divide-y divide-slate-200" },
+                children: [
+                    {
+                        tagName: "thead",
+                        attributes: { class: "bg-slate-100 text-slate-800 uppercase font-semibold text-[11px] tracking-wider" },
+                        children: [
+                            {
+                                tagName: "tr",
+                                children: headers.map(headerText => ({
+                                    tagName: "th",
+                                    textContent: headerText,
+                                    attributes: { class: `px-4 py-3 ${headerText === "Amount" ? "text-right" : ""}` }
+                                }))
+                            }
+                        ]
+                    },
+                    {
+                        tagName: "tbody",
+                        attributes: { class: "divide-y divide-slate-100 bg-white" },
+                        children: localData.map((row, idx) => ({
+                            tagName: "tr",
+                            attributes: { class: idx % 2 === 0 ? "hover:bg-slate-50" : "bg-slate-50/50 hover:bg-slate-50" },
+                            children: [
+                                { tagName: "td", textContent: row.vchtype, attributes: { class: "px-4 py-3 font-medium text-slate-900" } },
+                                { tagName: "td", textContent: row.vouchernumber, attributes: { class: "px-4 py-3 text-slate-600" } },
+                                { tagName: "td", textContent: row.stockitemname, attributes: { class: "px-4 py-3 font-semibold text-slate-800" } },
+                                { tagName: "td", textContent: row.batchname, attributes: { class: "px-4 py-3 text-slate-500 font-mono text-[11px]" } },
+                                { tagName: "td", textContent: row.godownname, attributes: { class: "px-4 py-3 text-slate-600" } },
+                                { tagName: "td", textContent: Number(row.amount).toFixed(2), attributes: { class: "px-4 py-3 text-right font-mono font-bold text-slate-900" } },
+                                { tagName: "td", textContent: row.actualqty, attributes: { class: "px-4 py-3 text-slate-600 font-mono text-[11px]" } },
+                                { tagName: "td", textContent: row.billedqty, attributes: { class: "px-4 py-3 text-slate-600 font-mono text-[11px]" } }
+                            ]
+                        }))
+                    }
+                ]
+            };
+        };
+
+        // Render helper adhering to the { in... } naming convention
+        const renderTable = ({ inSpec, inTargetContainerId }) => {
+            const localSpec = inSpec;
+            const localTargetContainerId = inTargetContainerId;
+            const container = document.getElementById(localTargetContainerId);
+
+            const builder = buildSpecElement || window.ks?.["json-to-dom"]?.buildSpecElement;
+            const domElement = builder({ inSpec: localSpec });
+
+            if (domElement) {
+                container.appendChild(domElement);
+            }
+        };
+
+        const tableSpec = generateTableSpec({ inData: sampleRows });
+        renderTable({ inSpec: tableSpec, inTargetContainerId: "table-container" });
+    </script>
+</body>
+</html>
