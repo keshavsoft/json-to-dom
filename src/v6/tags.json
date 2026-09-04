@@ -2,56 +2,127 @@
     "div": {
         "allowsTextContent": false,
         "allowsChildren": true,
-        "allowedAttributes": ["class", "id", "style", "title", "role"]
+        "allowedAttributes": [
+            "class",
+            "id",
+            "style",
+            "title",
+            "role"
+        ]
     },
     "input": {
         "allowsTextContent": false,
         "allowsChildren": false,
-        "allowedAttributes": ["type", "placeholder", "value", "name", "disabled", "readonly", "required", "class", "id"]
+        "allowedAttributes": [
+            "type",
+            "placeholder",
+            "value",
+            "name",
+            "disabled",
+            "readonly",
+            "required",
+            "class",
+            "id"
+        ]
     },
     "checkbox": {
         "allowsTextContent": false,
         "allowsChildren": false,
-        "allowedAttributes": ["type", "checked", "name", "value", "disabled", "required", "class", "id"]
+        "allowedAttributes": [
+            "type",
+            "checked",
+            "name",
+            "value",
+            "disabled",
+            "required",
+            "class",
+            "id"
+        ]
     },
     "label": {
         "allowsTextContent": true,
         "allowsChildren": true,
-        "allowedAttributes": ["for", "class", "id"]
+        "allowedAttributes": [
+            "for",
+            "class",
+            "id"
+        ]
     },
     "button": {
         "allowsTextContent": true,
         "allowsChildren": true,
-        "allowedAttributes": ["type", "disabled", "class", "id", "name", "value"]
+        "allowedAttributes": [
+            "type",
+            "disabled",
+            "class",
+            "id",
+            "name",
+            "value"
+        ]
     },
     "table": {
         "allowsTextContent": false,
         "allowsChildren": true,
-        "allowedAttributes": ["class", "id", "style", "border", "cellpadding", "cellspacing"]
+        "allowedAttributes": [
+            "class",
+            "id",
+            "style",
+            "border",
+            "cellpadding",
+            "cellspacing"
+        ]
     },
     "thead": {
         "allowsTextContent": false,
         "allowsChildren": true,
-        "allowedAttributes": ["class", "id"]
+        "allowedAttributes": [
+            "class",
+            "id"
+        ]
     },
     "tbody": {
         "allowsTextContent": false,
         "allowsChildren": true,
-        "allowedAttributes": ["class", "id"]
+        "allowedAttributes": [
+            "class",
+            "id"
+        ]
+    },
+    "tfoot": {
+        "allowsTextContent": false,
+        "allowsChildren": true,
+        "allowedAttributes": [
+            "class",
+            "id"
+        ]
     },
     "tr": {
         "allowsTextContent": false,
         "allowsChildren": true,
-        "allowedAttributes": ["class", "id"]
+        "allowedAttributes": [
+            "class",
+            "id"
+        ]
     },
     "th": {
         "allowsTextContent": true,
         "allowsChildren": true,
-        "allowedAttributes": ["class", "id", "scope", "colspan", "rowspan"]
+        "allowedAttributes": [
+            "class",
+            "id",
+            "scope",
+            "colspan",
+            "rowspan"
+        ]
     },
     "td": {
         "allowsTextContent": true,
         "allowsChildren": true,
-        "allowedAttributes": ["class", "id", "colspan", "rowspan"]
+        "allowedAttributes": [
+            "class",
+            "id",
+            "colspan",
+            "rowspan"
+        ]
     }
 }
