@@ -1,7 +1,7 @@
 import { TableStore } from "../tableStore/TableStore.js";
 import { buildTable } from "../tableBuilder/buildTable.js";
-import { buildBody } from "../tableBuilder/parts/buildBody.js";
-import { buildFoot } from "../tableBuilder/parts/buildFoot.js";
+import { repaintBody } from "./repaints/repaintBody.js";
+import { repaintFoot } from "./repaints/repaintFoot.js";
 
 export class Table {
     constructor({ data = [], columns = [], config = {}, targetContainerId = "table-container" } = {}) {
@@ -44,44 +44,35 @@ export class Table {
         container.appendChild(this.tableElement);
     }
 
+    repaintBody() {
+        if (!this.tableElement) return;
+
+        repaintBody({
+            inTableElement: this.tableElement,
+            inColumns: this.store.activeColumns,
+            inData: this.store.filteredData,
+            inRowConfig: this.store.config?.row
+        });
+    }
+
+    repaintFoot() {
+        if (!this.tableElement) return;
+
+        repaintFoot({
+            inTableElement: this.tableElement,
+            inColumns: this.store.activeColumns,
+            inComputedFooter: this.store.computedFooter
+        });
+    }
+
     filter({ query = "" } = {}) {
         const localQuery = query;
 
         if (!this.tableElement) return;
 
         this.store.filter({ inQuery: localQuery });
-
-        const newBodySpec = buildBody({
-            inColumns: this.store.activeColumns,
-            inData: this.store.filteredData,
-            inRowConfig: this.store.config?.row
-        });
-
-        const newFootSpec = buildFoot({
-            inColumns: this.store.activeColumns,
-            inComputedFooter: this.store.computedFooter
-        });
-
-        const builder = window.ks?.["json-to-dom"]?.buildSpecElement;
-        if (typeof builder !== "function") return;
-
-        const newTbody = builder({ inSpec: newBodySpec });
-        const newTfoot = newFootSpec ? builder({ inSpec: newFootSpec }) : null;
-
-        const currentTbody = this.tableElement.querySelector("tbody");
-        const currentTfoot = this.tableElement.querySelector("tfoot");
-
-        if (currentTbody && newTbody) {
-            currentTbody.replaceWith(newTbody);
-        }
-
-        if (currentTfoot && newTfoot) {
-            currentTfoot.replaceWith(newTfoot);
-        } else if (currentTfoot && !newTfoot) {
-            currentTfoot.remove();
-        } else if (!currentTfoot && newTfoot) {
-            this.tableElement.appendChild(newTfoot);
-        }
+        this.repaintBody();
+        this.repaintFoot();
     }
 }
 
