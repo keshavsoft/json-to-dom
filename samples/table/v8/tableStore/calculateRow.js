@@ -1,27 +1,32 @@
 import { sum } from "./aggregates/sum.js";
 import { count } from "./aggregates/count.js";
-import { percent } from "./evaluations/percent.js";
-import { add } from "./evaluations/add.js";
-import { multiply } from "./evaluations/multiply.js";
 
 const aggregateFunctions = {
     sum,
     count
 };
 
-const evalFunctions = {
-    percent,
-    add,
-    multiply
+const evaluateExpression = ({ inExpression = "", inScope = {} } = {}) => {
+    const localExpression = inExpression;
+    const localScope = inScope;
+
+    try {
+        const scopeKeys = Object.keys(localScope);
+        const scopeValues = Object.values(localScope);
+        const fn = new Function(...scopeKeys, `return ${localExpression};`);
+        return fn(...scopeValues);
+    } catch (err) {
+        console.error(`Error evaluating expression "${localExpression}":`, err);
+        return 0;
+    }
 };
 
-export const calculateRow = ({ inRowConfig = {}, inData = [], inAccumulator = {}, inPreviousRow = null } = {}) => {
+export const calculateRow = ({ inRowConfig = {}, inData = [], inScope = {} } = {}) => {
     const localRowConfig = inRowConfig;
     const localData = inData;
-    const localAccumulator = inAccumulator;
-    const localPreviousRow = inPreviousRow;
+    const localScope = inScope;
 
-    const rowName = localRowConfig.name || "";
+    const rowId = localRowConfig.id || "";
     const rowTitle = localRowConfig.title || "";
     const rowType = localRowConfig.type || "aggregate";
     const valuesConfig = localRowConfig.values || {};
@@ -35,34 +40,18 @@ export const calculateRow = ({ inRowConfig = {}, inData = [], inAccumulator = {}
             }
         });
     } else if (rowType === "eval") {
-        Object.entries(valuesConfig).forEach(([colKey, rule]) => {
-            if (typeof rule === "object" && rule !== null) {
-                const op = rule.operation;
-                const evalFn = evalFunctions[op];
-
-                if (typeof evalFn === "function") {
-                    if (op === "percent") {
-                        const targetRowName = rule.source || localRowConfig.dependsOn;
-                        const sourceRow = localAccumulator[targetRowName] || localPreviousRow;
-                        const sourceVal = sourceRow?.values?.[colKey] ?? 0;
-                        computedValues[colKey] = evalFn({ inValue: sourceVal, inRate: rule.rate });
-                    } else if (op === "add") {
-                        const sourceNames = rule.sources || (Array.isArray(localRowConfig.dependsOn) ? localRowConfig.dependsOn : [localRowConfig.dependsOn]);
-                        const inValues = sourceNames.map(name => localAccumulator[name]?.values?.[colKey] ?? 0);
-                        computedValues[colKey] = evalFn({ inValues });
-                    } else if (op === "multiply") {
-                        const targetRowName = rule.source || localRowConfig.dependsOn;
-                        const sourceRow = localAccumulator[targetRowName] || localPreviousRow;
-                        const sourceVal = sourceRow?.values?.[colKey] ?? 0;
-                        computedValues[colKey] = evalFn({ inValue: sourceVal, inFactor: rule.factor });
-                    }
-                }
+        Object.entries(valuesConfig).forEach(([colKey, expression]) => {
+            if (typeof expression === "string") {
+                computedValues[colKey] = evaluateExpression({
+                    inExpression: expression,
+                    inScope: localScope
+                });
             }
         });
     }
 
     return {
-        name: rowName,
+        id: rowId,
         title: rowTitle,
         values: computedValues
     };

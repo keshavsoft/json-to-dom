@@ -6,22 +6,20 @@ export const calculateFooter = ({ inData = [], inFooterConfig = [] } = {}) => {
 
     if (!Array.isArray(localFooterConfig)) return [];
 
-    const localAccumulator = {};
-    let localPreviousRow = null;
+    const localScope = {};
     const localComputedRows = [];
 
     localFooterConfig.forEach(rowConfig => {
         const computedRow = calculateRow({
             inRowConfig: rowConfig,
             inData: localData,
-            inAccumulator: localAccumulator,
-            inPreviousRow: localPreviousRow
+            inScope: localScope
         });
 
-        if (rowConfig.name) {
-            localAccumulator[rowConfig.name] = computedRow;
+        if (rowConfig.id) {
+            localScope[rowConfig.id] = computedRow.values;
         }
-        localPreviousRow = computedRow;
+
         localComputedRows.push(computedRow);
     });
 
