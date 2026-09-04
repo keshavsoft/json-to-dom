@@ -5,7 +5,8 @@ export const buildHead = ({ inColumns = [] } = {}) => {
 
     const headerCells = localColumns.map(col => ({
         textContent: col.label,
-        align: col.align
+        align: col.align,
+        id: col.id
     }));
 
     const headerRow = buildRow({
