@@ -1,5 +1,4 @@
-import { calculateFooter } from "../tableStore/calculateFooter.js";
-import { filterData } from "../tableStore/filterData.js";
+import { TableStore } from "../tableStore/TableStore.js";
 import { buildTable } from "../tableBuilder/buildTable.js";
 import { buildBody } from "../tableBuilder/parts/buildBody.js";
 import { buildFoot } from "../tableBuilder/parts/buildFoot.js";
@@ -11,46 +10,25 @@ export class Table {
         const localConfig = config;
         const localTargetContainerId = targetContainerId;
 
-        this.rawData = localData;
-        this.columnsCatalog = localColumns;
-        this.config = localConfig;
         this.containerId = localTargetContainerId;
         this.tableElement = null;
 
-        this.activeColumns = this._resolveActiveColumns({
-            inColumnsCatalog: this.columnsCatalog,
-            inHeadConfig: this.config?.head
+        this.store = new TableStore({
+            inData: localData,
+            inColumns: localColumns,
+            inConfig: localConfig
         });
-    }
-
-    _resolveActiveColumns({ inColumnsCatalog = [], inHeadConfig = {} } = {}) {
-        const localCatalog = inColumnsCatalog;
-        const localHead = inHeadConfig;
-
-        if (Array.isArray(localHead?.columns) && localHead.columns.length > 0) {
-            const catalogMap = new Map(localCatalog.map(col => [col.key, col]));
-            return localHead.columns
-                .map(key => catalogMap.get(key))
-                .filter(Boolean);
-        }
-
-        return localCatalog;
     }
 
     render() {
         const container = document.getElementById(this.containerId);
         if (!container) return;
 
-        const initialComputedFooter = calculateFooter({
-            inData: this.rawData,
-            inFooterConfig: this.config?.foot
-        });
-
         const tableSpec = buildTable({
-            inColumns: this.activeColumns,
-            inData: this.rawData,
-            inComputedFooter: initialComputedFooter,
-            inRowConfig: this.config?.row
+            inColumns: this.store.activeColumns,
+            inData: this.store.filteredData,
+            inComputedFooter: this.store.computedFooter,
+            inRowConfig: this.store.config?.row
         });
 
         const builder = window.ks?.["json-to-dom"]?.buildSpecElement;
@@ -71,25 +49,17 @@ export class Table {
 
         if (!this.tableElement) return;
 
-        const filteredData = filterData({
-            inData: this.rawData,
-            inQuery: localQuery
-        });
-
-        const updatedComputedFooter = calculateFooter({
-            inData: filteredData,
-            inFooterConfig: this.config?.foot
-        });
+        this.store.filter({ inQuery: localQuery });
 
         const newBodySpec = buildBody({
-            inColumns: this.activeColumns,
-            inData: filteredData,
-            inRowConfig: this.config?.row
+            inColumns: this.store.activeColumns,
+            inData: this.store.filteredData,
+            inRowConfig: this.store.config?.row
         });
 
         const newFootSpec = buildFoot({
-            inColumns: this.activeColumns,
-            inComputedFooter: updatedComputedFooter
+            inColumns: this.store.activeColumns,
+            inComputedFooter: this.store.computedFooter
         });
 
         const builder = window.ks?.["json-to-dom"]?.buildSpecElement;
