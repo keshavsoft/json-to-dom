@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table v11 | JSON to DOM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-50 p-6">
+    <div class="max-w-7xl mx-auto space-y-4">
+        <!-- Static Search Input Bar -->
+        <div class="flex items-center justify-between gap-4 bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
+            <div class="relative flex-1 max-w-sm">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+                <input type="text" id="SearchInputId" placeholder="Search vouchers, items, batch..."
+                    class="block w-full pl-9 pr-4 py-2 border border-slate-300 rounded-md text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out" />
+            </div>
+            <div class="text-xs text-slate-500 font-medium">
+                Unified Configuration: <code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700">{ head, row, foot }</code>
+            </div>
+        </div>
+
+        <!-- Table Container -->
+        <div id="table-container"
+            class="overflow-x-auto rounded-lg border border-slate-200 shadow-sm bg-white"></div>
+    </div>
+
+    <script type="module" src="../../../src/v6/index.js"></script>
+    <script type="module" src="./index.js"></script>
+</body>
+
+</html>
