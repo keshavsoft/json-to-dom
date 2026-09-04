@@ -1,0 +1,24 @@
+{
+    "head": {
+        "title": "Voucher Entry Form",
+        "subtitle": "Create and record a new voucher"
+    },
+    "foot": {
+        "buttons": [
+            {
+                "id": "btn-clear",
+                "name": "clear",
+                "label": "Clear Form",
+                "type": "button",
+                "variant": "secondary"
+            },
+            {
+                "id": "btn-save",
+                "name": "save",
+                "label": "Save Voucher",
+                "type": "button",
+                "variant": "primary"
+            }
+        ]
+    }
+}
