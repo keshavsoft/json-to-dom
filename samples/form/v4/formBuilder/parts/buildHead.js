@@ -10,20 +10,20 @@ export const buildHead = ({ inHeadConfig = {} } = {}) => {
 
     if (title) {
         children.push({
-            tagName: "h2",
+            tagName: "label",
             textContent: title,
             attributes: {
-                class: "text-lg font-bold text-slate-900"
+                class: "block text-lg font-bold text-slate-900"
             }
         });
     }
 
     if (subtitle) {
         children.push({
-            tagName: "p",
+            tagName: "label",
             textContent: subtitle,
             attributes: {
-                class: "text-xs text-slate-500 mt-0.5"
+                class: "block text-xs text-slate-500 mt-0.5"
             }
         });
     }
