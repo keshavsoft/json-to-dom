@@ -1,5 +1,5 @@
 import columns from "./columns.json" with { type: "json" };
-import data from "./data.json" with { type: "json" };
+import data from "./flat.json" with { type: "json" };
 import tableConfig from "./table/config.json" with { type: "json" };
 import { Table } from "../../../renderers/v3/table/Table.js";
 

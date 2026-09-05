@@ -11,7 +11,7 @@
         "type": "string"
     },
     {
-        "key": "stockitemname",
+        "key": "allinventoryentries.stockitemname",
         "label": "Stock Item Name",
         "type": "string"
     },
