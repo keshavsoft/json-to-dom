@@ -1,4 +1,5 @@
 {
+    "serial": true,
     "head": {
         "columns": [
             "vchtype",
