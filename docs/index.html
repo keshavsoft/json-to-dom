@@ -1,174 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentation Hub | JSON to DOM</title>
+    <title>json-to-dom | Zero-Dependency Declarative DOM Compiler</title>
+    <meta name="description"
+        content="json-to-dom: The zero-dependency native DOM engine that compiles declarative JSON specifications into real browser elements with blistering speed.">
+
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
     <style>
         body { font-family: 'Inter', sans-serif; }
-        code { font-family: 'JetBrains Mono', monospace; }
+        code, pre { font-family: 'JetBrains Mono', monospace; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
-    <!-- Navbar -->
-    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
+
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased">
+
+    <!-- Top Navbar -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <a href="../index.html" class="flex items-center space-x-2 font-bold text-lg text-slate-900 hover:text-blue-600 transition">
-                    <span class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-black text-sm">JD</span>
+                <a href="index.html" class="flex items-center space-x-2 font-black text-lg text-slate-900 hover:text-blue-600 transition">
+                    <span class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-black text-sm shadow-sm">JD</span>
                     <span>json-to-dom</span>
                 </a>
-                <span class="text-xs bg-slate-100 text-slate-700 font-semibold px-2 py-0.5 rounded-full border border-slate-200">Docs Portal</span>
+                <span class="text-xs bg-slate-100 text-slate-600 font-semibold px-2 py-0.5 rounded-full border border-slate-200">v7.0</span>
             </div>
-            <nav class="flex items-center space-x-4 text-sm font-medium">
-                <a href="index.html" class="text-blue-600 font-semibold">Docs Hub</a>
-                <a href="architecture-and-pipeline.html" class="text-slate-600 hover:text-slate-900 transition">Architecture</a>
-                <a href="spec-schema-and-guide.html" class="text-slate-600 hover:text-slate-900 transition">Spec Schema</a>
-                <a href="tags/html/index.html" class="text-slate-600 hover:text-slate-900 transition">Tag Guides</a>
-                <a href="samples/forms/index.html" class="text-slate-600 hover:text-slate-900 transition">Forms</a>
-                <a href="samples/index.html" class="text-slate-600 hover:text-slate-900 transition">Samples</a>
-                <a href="demo.html" class="px-3 py-1.5 bg-slate-900 text-white rounded-md hover:bg-slate-800 transition">Live Demo</a>
+            <nav class="flex items-center space-x-5 text-sm font-medium">
+                <a href="tags/html/index.html" class="text-slate-600 hover:text-blue-600 transition">Tag Guides</a>
+                <a href="spec-schema-and-guide.html" class="text-slate-600 hover:text-blue-600 transition">Spec Schema</a>
+                <a href="architecture-and-pipeline.html" class="text-slate-600 hover:text-blue-600 transition">Architecture</a>
+                <a href="demo.html" class="px-3 py-1.5 bg-blue-600 text-white text-xs font-semibold rounded-lg hover:bg-blue-700 shadow-sm transition">Live Playground</a>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Header -->
-    <section class="bg-gradient-to-b from-white to-slate-50 border-b border-slate-200 py-12 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
-                Documentation & Knowledge Base
+    <!-- Minimalist Hero: The Small Story -->
+    <section class="bg-gradient-to-b from-white to-slate-50 border-b border-slate-200 py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold mb-4">
+                <span>⚡ Zero Virtual DOM</span>
+                <span>•</span>
+                <span>Zero Dependencies</span>
+                <span>•</span>
+                <span>Native Speed</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+                Writing HTML is Tough.<br>
+                <span class="text-blue-600">We Made It Declarative.</span>
             </h1>
-            <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto">
-                Explore the internal architecture, recursive runtime flow, declarative JSON specification schema, and interactive standalone samples for the <code>json-to-dom</code> engine.
+            <p class="text-base sm:text-lg text-slate-600 leading-relaxed mb-6 max-w-2xl mx-auto">
+                Handwriting verbose HTML string concatenations and nested trees is exhausting and error-prone. 
+                <code>json-to-dom</code> translates pure, portable JSON specifications into native browser DOM nodes with blistering speed.
             </p>
+            <div class="flex items-center justify-center gap-3 flex-wrap">
+                <a href="tags/html/index.html" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-xl shadow-sm transition flex items-center gap-2">
+                    <span>Explore Tag Guides Hub</span>
+                    <span>&rarr;</span>
+                </a>
+                <a href="demo.html" class="px-5 py-2.5 bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 text-sm font-semibold rounded-xl shadow-sm transition flex items-center gap-2">
+                    <span>Try Live Compiler</span>
+                </a>
+            </div>
         </div>
     </section>
 
-    <!-- Main Content Cards -->
-    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1">
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-            <!-- Card 1: Architecture & Pipeline -->
-            <a href="architecture-and-pipeline.html" class="group block p-6 bg-white rounded-xl border border-slate-200 hover:border-blue-500 hover:shadow-md transition">
-                <div class="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-lg mb-4 group-hover:bg-blue-600 group-hover:text-white transition">
-                    🏗️
-                </div>
-                <h2 class="text-base font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition flex items-center justify-between">
-                    <span>Architecture</span>
-                    <span class="text-slate-400 group-hover:translate-x-1 transition">&rarr;</span>
-                </h2>
-                <p class="text-xs text-slate-600 leading-relaxed mb-4">
-                    Separation between the JSON Spec World and DOM World, recursive tree resolution, and builder lifecycle.
-                </p>
-                <div class="flex flex-wrap gap-1.5 text-[11px]">
-                    <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded font-mono">buildSpec</span>
-                </div>
-            </a>
-
-            <!-- Card 2: Spec Schema & Guide -->
-            <a href="spec-schema-and-guide.html" class="group block p-6 bg-white rounded-xl border border-slate-200 hover:border-emerald-500 hover:shadow-md transition">
-                <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-lg mb-4 group-hover:bg-emerald-600 group-hover:text-white transition">
-                    📋
-                </div>
-                <h2 class="text-base font-bold text-slate-900 mb-2 group-hover:text-emerald-600 transition flex items-center justify-between">
-                    <span>Spec Guide</span>
-                    <span class="text-slate-400 group-hover:translate-x-1 transition">&rarr;</span>
-                </h2>
-                <p class="text-xs text-slate-600 leading-relaxed mb-4">
-                    Complete reference for node properties (<code>tagName</code>, <code>attributes</code>, <code>events</code>, <code>children</code>).
-                </p>
-                <div class="flex flex-wrap gap-1.5 text-[11px]">
-                    <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded font-mono">Schema</span>
-                </div>
-            </a>
-
-            <!-- Card 3: Form Styles Series -->
-            <a href="samples/forms/index.html" class="group block p-6 bg-white rounded-xl border border-slate-200 hover:border-amber-500 hover:shadow-md transition">
-                <div class="w-10 h-10 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-lg mb-4 group-hover:bg-amber-600 group-hover:text-white transition">
-                    📝
-                </div>
-                <h2 class="text-base font-bold text-slate-900 mb-2 group-hover:text-amber-600 transition flex items-center justify-between">
-                    <span>Form Styles</span>
-                    <span class="text-slate-400 group-hover:translate-x-1 transition">&rarr;</span>
-                </h2>
-                <p class="text-xs text-slate-600 leading-relaxed mb-4">
-                    Pure layout specifications: Label Above, Label Left, Right-Aligned Label, and Joined Addon Box.
-                </p>
-                <div class="flex flex-wrap gap-1.5 text-[11px]">
-                    <span class="px-2 py-0.5 bg-amber-100 text-amber-800 rounded font-mono">5 Styles</span>
-                </div>
-            </a>
-
-            <!-- Card 4: All Samples -->
-            <a href="samples/index.html" class="group block p-6 bg-white rounded-xl border border-slate-200 hover:border-purple-500 hover:shadow-md transition">
-                <div class="w-10 h-10 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center font-bold text-lg mb-4 group-hover:bg-purple-600 group-hover:text-white transition">
-                    💡
-                </div>
-                <h2 class="text-base font-bold text-slate-900 mb-2 group-hover:text-purple-600 transition flex items-center justify-between">
-                    <span>All Samples</span>
-                    <span class="text-slate-400 group-hover:translate-x-1 transition">&rarr;</span>
-                </h2>
-                <p class="text-xs text-slate-600 leading-relaxed mb-4">
-                    Organized directory covering Forms, Cards, Data Tables, Interactive State, and Dashboards.
-                </p>
-                <div class="flex flex-wrap gap-1.5 text-[11px]">
-                    <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded font-mono">5 Folders</span>
-                </div>
-            </a>
-        </div>
-
-        <!-- Tags Specification Banner -->
-        <div class="bg-gradient-to-r from-blue-900 to-indigo-950 text-white rounded-xl p-6 shadow-md border border-blue-800 mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+    <!-- The 4 Main Gateways: Shifting the Story to Inners -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1 w-full">
+        <div class="mb-6 flex items-center justify-between border-b border-slate-200 pb-3">
             <div>
-                <div class="flex items-center gap-2 mb-1">
-                    <span class="px-2 py-0.5 bg-blue-500/30 text-blue-300 rounded text-xs font-mono">docs/tags/html/</span>
-                    <span class="text-xs text-blue-200">W3C HTML Tag Specifications</span>
-                </div>
-                <h3 class="text-lg font-bold">The HTML Grammar Engine &amp; Element Guides</h3>
-                <p class="text-xs text-blue-200 max-w-2xl leading-relaxed">
-                    Explore deep-dive guides for every tag recognized by <code>json-to-dom</code> &mdash; covering allowed text, child nesting, legal attributes, and theme variants.
-                </p>
+                <h2 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Documentation Gateways</h2>
+                <p class="text-sm font-semibold text-slate-800">Everything you need to master json-to-dom</p>
             </div>
-            <div class="flex items-center gap-2 shrink-0 flex-wrap">
-                <a href="tags/html/index.html" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-semibold flex items-center gap-1.5 transition">
-                    <span>Tag Guides Hub</span>
-                    <span>&rarr;</span>
-                </a>
-                <a href="tags/html/label.html" class="px-3 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-mono transition">
-                    &lt;label&gt; Guide
-                </a>
-                <a href="tags/tags.json" target="_blank" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-xs font-mono transition">
-                    tags.json &nearr;
-                </a>
-            </div>
+            <span class="text-xs text-slate-400 font-mono">4 Core Hubs</span>
         </div>
 
-        <!-- Quick Code Preview -->
-        <div class="bg-slate-900 text-slate-100 rounded-xl p-6 shadow-sm border border-slate-800">
-            <div class="flex items-center justify-between mb-3">
-                <span class="text-xs uppercase font-semibold text-slate-400 tracking-wider">Quick Usage Example</span>
-                <span class="text-xs text-slate-400 font-mono">JavaScript Module</span>
-            </div>
-            <pre class="text-xs font-mono overflow-x-auto leading-relaxed text-slate-200"><code>import { buildSpecElement } from "../src/v2/build/buildSpecElement.js";
+        <div class="grid sm:grid-cols-2 gap-6 mb-12">
 
-const spec = {
-    tagName: "button",
-    textContent: "Generate Invoice",
-    attributes: { class: "px-4 py-2 bg-blue-600 text-white rounded shadow hover:bg-blue-700" },
-    events: { click: () => alert("Invoice created!") }
+            <!-- Gateway 1: Tag Guides -->
+            <a href="tags/html/index.html" class="group p-6 bg-white rounded-2xl border border-slate-200 hover:border-blue-500 hover:shadow-lg transition flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl font-bold group-hover:bg-blue-600 group-hover:text-white transition">
+                            🏷️
+                        </div>
+                        <span class="px-2 py-0.5 bg-blue-50 text-blue-700 border border-blue-100 rounded-full font-mono text-xs font-semibold">14 Tags</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition mb-2 flex items-center justify-between">
+                        <span>HTML Tag Guides</span>
+                        <span class="text-blue-500 group-hover:translate-x-1 transition">&rarr;</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Deep dive into the 14 fundamental composite Table and Form tags (<label>, <input>, <table>, etc.) with W3C grammar rules, text/children constraints, and theme variants.
+                    </p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-blue-600 flex items-center gap-1">
+                    <span>Enter Tag Directory Hub</span>
+                    <span>&rarr;</span>
+                </div>
+            </a>
+
+            <!-- Gateway 2: Spec Schema -->
+            <a href="spec-schema-and-guide.html" class="group p-6 bg-white rounded-2xl border border-slate-200 hover:border-emerald-500 hover:shadow-lg transition flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl font-bold group-hover:bg-emerald-600 group-hover:text-white transition">
+                            📋
+                        </div>
+                        <span class="px-2 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-100 rounded-full font-mono text-xs font-semibold">Spec Contract</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition mb-2 flex items-center justify-between">
+                        <span>Specification Schema &amp; Guide</span>
+                        <span class="text-emerald-500 group-hover:translate-x-1 transition">&rarr;</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        The complete JSON authoring reference. Comprehensive rules for <code>tagName</code>, <code>attributes</code>, <code>classList</code>, <code>textContent</code>, <code>events</code>, and <code>children</code>.
+                    </p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-emerald-600 flex items-center gap-1">
+                    <span>Read Specification Schema</span>
+                    <span>&rarr;</span>
+                </div>
+            </a>
+
+            <!-- Gateway 3: Architecture -->
+            <a href="architecture-and-pipeline.html" class="group p-6 bg-white rounded-2xl border border-slate-200 hover:border-indigo-500 hover:shadow-lg transition flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl font-bold group-hover:bg-indigo-600 group-hover:text-white transition">
+                            🏗️
+                        </div>
+                        <span class="px-2 py-0.5 bg-indigo-50 text-indigo-700 border border-indigo-100 rounded-full font-mono text-xs font-semibold">Pipeline</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition mb-2 flex items-center justify-between">
+                        <span>Runtime Architecture</span>
+                        <span class="text-indigo-500 group-hover:translate-x-1 transition">&rarr;</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        The structural boundary crossing. Learn how the engine separates the JSON Spec World from the DOM World, executes recursive node creation, and attaches native listeners.
+                    </p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-indigo-600 flex items-center gap-1">
+                    <span>Explore Architecture Diagrams</span>
+                    <span>&rarr;</span>
+                </div>
+            </a>
+
+            <!-- Gateway 4: Live Compiler Playground -->
+            <a href="demo.html" class="group p-6 bg-white rounded-2xl border border-slate-200 hover:border-amber-500 hover:shadow-lg transition flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl font-bold group-hover:bg-amber-600 group-hover:text-white transition">
+                            ⚡
+                        </div>
+                        <span class="px-2 py-0.5 bg-amber-50 text-amber-800 border border-amber-100 rounded-full font-mono text-xs font-semibold">Live v7</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 group-hover:text-amber-600 transition mb-2 flex items-center justify-between">
+                        <span>Interactive Playground</span>
+                        <span class="text-amber-500 group-hover:translate-x-1 transition">&rarr;</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Test and compile specifications live in the browser. Watch <code>dist/v7/min.js</code> build living HTML nodes with instant preview and interactive event execution.
+                    </p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-amber-600 flex items-center gap-1">
+                    <span>Launch Live Playground</span>
+                    <span>&rarr;</span>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- 30-Second Quick Start -->
+        <div class="bg-slate-900 text-slate-100 rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-800">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <span class="text-xs uppercase font-bold text-slate-400 tracking-wider">30-Second Integration</span>
+                    <h3 class="text-base font-bold text-white">How It Works in Your App</h3>
+                </div>
+                <span class="text-xs text-emerald-400 font-mono">dist/v7/min.js</span>
+            </div>
+            <div class="bg-slate-950 p-4 rounded-xl font-mono text-xs overflow-x-auto text-slate-200 leading-relaxed border border-slate-800">
+<span class="text-slate-500">// 1. Import the zero-dependency compiler</span>
+<span class="text-blue-400">import</span> { buildSpecElement } <span class="text-blue-400">from</span> <span class="text-amber-300">"https://keshavsoft.github.io/json-to-dom/dist/v7/min.js"</span>;
+
+<span class="text-slate-500">// 2. Declare your element specification</span>
+<span class="text-blue-400">const</span> spec = {
+    tagName: <span class="text-emerald-400">"button"</span>,
+    textContent: <span class="text-emerald-400">"Save Voucher"</span>,
+    attributes: { type: <span class="text-emerald-400">"button"</span>, class: <span class="text-emerald-400">"btn btn-primary px-4 py-2"</span> },
+    events: { click: () => alert(<span class="text-emerald-400">"Saved!"</span>) }
 };
 
-// Generates native browser DOM element
-const buttonNode = buildSpecElement({ inSpec: spec });
-document.getElementById("app").appendChild(buttonNode);</code></pre>
+<span class="text-slate-500">// 3. Compile instantly into a native browser DOM node</span>
+<span class="text-blue-400">const</span> domNode = buildSpecElement({ inSpec: spec });
+document.getElementById(<span class="text-amber-300">"container"</span>).appendChild(domNode);
+            </div>
         </div>
     </main>
 
-    <footer class="mt-auto bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
-        json-to-dom &bull; KeshavSoft &bull; ISC License
+    <!-- Clean Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 mt-auto">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+            <div class="flex items-center space-x-2">
+                <span class="font-bold text-slate-700">json-to-dom v7</span>
+                <span>&bull;</span>
+                <span>KeshavSoft Declarative UI Architecture</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="tags/html/index.html" class="hover:text-blue-600 transition">Tag Guides</a>
+                <a href="spec-schema-and-guide.html" class="hover:text-blue-600 transition">Spec Schema</a>
+                <a href="architecture-and-pipeline.html" class="hover:text-blue-600 transition">Architecture</a>
+                <a href="demo.html" class="hover:text-blue-600 transition">Playground</a>
+            </div>
+        </div>
     </footer>
+
 </body>
+
 </html>

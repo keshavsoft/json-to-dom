@@ -30,12 +30,14 @@ json-to-dom/
 ├── README.md                           # Main project overview & quickstart (this file)
 ├── DETAILS.md                          # Comprehensive runtime architecture & pipeline concept
 ├── docs/
-│   ├── index.html                      # Interactive documentation portal
-│   ├── architecture-and-pipeline.md    # Deep dive: Markdown version
-│   ├── architecture-and-pipeline.html  # Deep dive: Web/HTML version (with Mermaid diagrams)
-│   ├── spec-schema-and-guide.md        # Spec reference: Markdown version
-│   ├── spec-schema-and-guide.html      # Spec reference: Web/HTML version
-│   ├── dist/v3/min.js                  # Engine standalone bundle (window.ks["json-to-dom"])
+│   ├── index.html                      # Minimalist documentation gateway
+│   ├── architecture-and-pipeline.html  # Runtime architecture & compiler pipeline
+│   ├── spec-schema-and-guide.html      # Specification schema & properties guide
+│   ├── demo.html                       # Live v7 browser compiler playground
+│   ├── tags/                           # W3C grammar specs & element guides
+│   │   ├── tags.json                   # Machine-readable grammar dictionary
+│   │   └── html/                       # HTML element deep-dive guides (label.html, etc.)
+│   ├── dist/v7/min.js                  # Latest production bundle
 │   └── samples/                        # Categorized standalone sample pages
 │       ├── index.html                  # Master samples directory
 │       ├── forms/                      # Form label/input alignment styles (01-05)
@@ -145,18 +147,19 @@ buildSpecElement({ inSpec })  ──► Validates spec type (Null, Node, Array, 
 
 ---
 
-### 📂 Repository Guides (Markdown & Source)
-1. **Architecture & Pipeline**:
-   - [Markdown Guide](docs/architecture-and-pipeline.md)
-   - [Live HTML Version](https://keshavsoft.github.io/json-to-dom/architecture-and-pipeline.html) ([source file](docs/architecture-and-pipeline.html))
-2. **JSON Specification Schema & Authoring**:
-   - [Markdown Guide](docs/spec-schema-and-guide.md)
-   - [Live HTML Version](https://keshavsoft.github.io/json-to-dom/spec-schema-and-guide.html) ([source file](docs/spec-schema-and-guide.html))
-3. **Form Alignment Styles**:
+### 📂 Repository Guides (HTML & Source)
+1. **HTML Tag Guides Hub (W3C Grammar & Element Guides)**:
+   - [Live Tag Guides](https://keshavsoft.github.io/json-to-dom/tags/html/) ([source](docs/tags/html/index.html))
+   - [W3C Grammar Dictionary (tags.json)](https://keshavsoft.github.io/json-to-dom/tags/tags.json) ([source](docs/tags/tags.json))
+2. **Architecture & Pipeline**:
+   - [Live Architecture Guide](https://keshavsoft.github.io/json-to-dom/architecture-and-pipeline.html) ([source file](docs/architecture-and-pipeline.html))
+3. **JSON Specification Schema & Authoring**:
+   - [Live Spec Schema Guide](https://keshavsoft.github.io/json-to-dom/spec-schema-and-guide.html) ([source file](docs/spec-schema-and-guide.html))
+4. **Form Alignment Styles**:
    - [Live Forms Gallery](https://keshavsoft.github.io/json-to-dom/samples/forms/) ([source folder](docs/samples/forms/))
-4. **Interactive Samples Suite**:
+5. **Interactive Samples Suite**:
    - [Live Samples Hub](https://keshavsoft.github.io/json-to-dom/samples/) ([source folder](docs/samples/))
-5. **Architectural Blueprint**:
+6. **Architectural Blueprint**:
    - [DETAILS.md](DETAILS.md) — Comprehensive design document for transformation pipelines.
 
 ---

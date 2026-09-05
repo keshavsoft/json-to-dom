@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Demo | JSON to DOM</title>
+    <title>Live Compiler Playground | JSON to DOM</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
-        code, pre { font-family: 'JetBrains Mono', monospace; }
+        code, pre, textarea { font-family: 'JetBrains Mono', monospace; }
     </style>
 </head>
+
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
     <!-- Navbar -->
     <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
@@ -22,100 +26,211 @@
                     <span class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-black text-sm">JD</span>
                     <span>json-to-dom</span>
                 </a>
-                <span class="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2 py-0.5 rounded-full border border-emerald-200">Live Demo</span>
+                <span class="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2 py-0.5 rounded-full border border-emerald-200">v7 Compiler</span>
             </div>
             <nav class="flex items-center space-x-4 text-sm font-medium">
                 <a href="index.html" class="text-slate-600 hover:text-slate-900 transition">Docs Hub</a>
+                <a href="tags/html/index.html" class="text-slate-600 hover:text-slate-900 transition">Tag Guides</a>
                 <a href="architecture-and-pipeline.html" class="text-slate-600 hover:text-slate-900 transition">Architecture</a>
                 <a href="spec-schema-and-guide.html" class="text-slate-600 hover:text-slate-900 transition">Spec Schema</a>
-                <a href="samples/forms/index.html" class="text-slate-600 hover:text-slate-900 transition">Forms</a>
-                <a href="samples/index.html" class="text-slate-600 hover:text-slate-900 transition">Samples</a>
-                <a href="demo.html" class="px-3 py-1.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 shadow-sm transition">Live Demo</a>
+                <a href="demo.html" class="px-3 py-1.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 shadow-sm transition">Live Playground</a>
             </nav>
         </div>
     </header>
 
     <!-- Main Container -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full">
-        <!-- Title & Breadcrumbs -->
+        <!-- Title & Presets -->
         <div class="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
                 <nav class="text-xs text-slate-500 mb-1">
-                    <a href="index.html" class="hover:underline">Docs</a> / 
-                    <span class="text-slate-800 font-medium">Engine Live Demo</span>
+                    <a href="index.html" class="hover:underline">Docs Hub</a> / 
+                    <span class="text-slate-800 font-medium">Live Compiler Playground</span>
                 </nav>
                 <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                    V3 Standalone Engine Live Demonstration
+                    v7 Interactive Compiler Playground
                 </h1>
                 <p class="text-xs sm:text-sm text-slate-600 mt-1">
-                    Rendering large datasets and complex UI trees directly from JSON specifications using <code>dist/v3/min.js</code>.
+                    Edit declarative JSON on the left &mdash; watch <code>dist/v7/min.js</code> compile it into native DOM nodes with zero Virtual DOM overhead.
                 </p>
             </div>
-            <div class="flex items-center space-x-2">
-                <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-lg text-xs font-mono font-semibold">
-                    v3 minified (< 2.5 KB)
-                </span>
+            <div class="flex items-center gap-2 flex-wrap">
+                <span class="text-xs text-slate-500 font-medium">Load Preset:</span>
+                <button id="preset-form" class="px-2.5 py-1 bg-white border border-slate-300 rounded text-xs hover:bg-slate-50 font-medium transition">Form Input</button>
+                <button id="preset-table" class="px-2.5 py-1 bg-white border border-slate-300 rounded text-xs hover:bg-slate-50 font-medium transition">Table Grid</button>
+                <button id="preset-button" class="px-2.5 py-1 bg-white border border-slate-300 rounded text-xs hover:bg-slate-50 font-medium transition">Action Button</button>
             </div>
         </div>
 
-        <!-- Render Target Box -->
-        <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden p-6">
-            <div id="app" class="overflow-x-auto">
-                <div class="text-center py-12 text-slate-400 text-sm">
-                    <div class="animate-spin inline-block w-6 h-6 border-2 border-blue-600 border-t-transparent rounded-full mb-2"></div>
-                    <div>Constructing DOM elements from JSON specification...</div>
+        <!-- Interactive Split Screen -->
+        <div class="grid lg:grid-cols-2 gap-6">
+            <!-- Left: JSON Editor -->
+            <div class="bg-slate-900 rounded-xl border border-slate-800 shadow-sm overflow-hidden flex flex-col h-[520px]">
+                <div class="px-4 py-3 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                        <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                        <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                        <span class="text-xs font-mono text-slate-400 ms-2">spec.json</span>
+                    </div>
+                    <button id="compile-btn" class="px-3 py-1 bg-blue-600 hover:bg-blue-500 text-white rounded text-xs font-semibold flex items-center gap-1 transition">
+                        <span>Compile Spec</span>
+                        <span>&rarr;</span>
+                    </button>
+                </div>
+                <div class="p-3 flex-1 flex flex-col">
+                    <textarea id="spec-editor" class="w-full flex-1 bg-slate-900 text-emerald-400 p-3 text-xs leading-relaxed focus:outline-none resize-none" spellcheck="false"></textarea>
+                </div>
+            </div>
+
+            <!-- Right: Native DOM Output -->
+            <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-[520px]">
+                <div class="px-4 py-3 bg-slate-100 border-b border-slate-200 flex items-center justify-between">
+                    <span class="text-xs font-semibold text-slate-700">Native Browser DOM (Output)</span>
+                    <span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded font-mono text-xs">Live DOM Node</span>
+                </div>
+                <div class="p-6 flex-1 overflow-auto flex items-center justify-center bg-slate-50/50" id="output-wrapper">
+                    <div id="app" class="w-full">
+                        <!-- Compiled DOM inserted here -->
+                    </div>
                 </div>
             </div>
         </div>
     </main>
 
     <footer class="mt-auto bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
-        json-to-dom &bull; KeshavSoft &bull; ISC License
+        json-to-dom v7 &bull; KeshavSoft &bull; ISC License
     </footer>
 
-    <!-- Engine Standalone Bundle -->
-    <script type="module" src="./dist/v3/min.js"></script>
+    <!-- Engine Standalone Bundle v7 -->
+    <script type="module" src="./dist/v7/min.js"></script>
 
-    <!-- Demo Script -->
+    <!-- Playground Controller -->
     <script type="module">
-        // Fetch input.json spec and render
-        fetch('../src/v3/input.json')
-            .catch(() => fetch('./demo-input.json'))
-            .then(res => res.json())
-            .then(spec => {
-                const container = document.getElementById("app");
-                container.innerHTML = "";
-                const domElements = window.ks["json-to-dom"].buildSpecElement({ inSpec: spec });
-                if (Array.isArray(domElements)) {
-                    container.append(...domElements);
-                } else if (domElements) {
-                    container.appendChild(domElements);
-                }
-            })
-            .catch(err => {
-                console.error("Failed to load demo spec:", err);
-                // Fallback rendering
-                const fallbackSpec = {
-                    tagName: "div",
-                    attributes: { class: "p-6 text-center bg-slate-50 rounded-lg border border-slate-200" },
-                    children: [
-                        { tagName: "h3", textContent: "Engine Initialized Successfully", attributes: { class: "text-base font-bold text-slate-800 mb-2" } },
-                        { tagName: "p", textContent: "Standalone bundle window.ks['json-to-dom'] is active and ready.", attributes: { class: "text-xs text-slate-600 mb-4" } },
-                        { 
-                            tagName: "a", 
-                            textContent: "Browse Form Styles →", 
-                            attributes: { 
-                                href: "samples/forms/index.html", 
-                                class: "inline-block px-4 py-2 bg-blue-600 text-white font-semibold text-xs rounded-lg hover:bg-blue-700" 
-                            } 
+        import { buildSpecElement } from "./dist/v7/min.js";
+
+        const PRESETS = {
+            form: {
+                tagName: "div",
+                attributes: { class: "p-6 bg-white rounded-xl border border-slate-200 shadow-sm max-w-md mx-auto" },
+                children: [
+                    {
+                        tagName: "label",
+                        textContent: "Email Address",
+                        attributes: { for: "user-email", class: "block text-xs font-bold text-slate-700 uppercase tracking-wide mb-1" }
+                    },
+                    {
+                        tagName: "input",
+                        attributes: {
+                            id: "user-email",
+                            type: "text",
+                            placeholder: "you@example.com",
+                            class: "w-full px-3 py-2 border border-slate-300 rounded-lg text-sm mb-3 focus:outline-none focus:border-blue-600"
                         }
-                    ]
-                };
-                const container = document.getElementById("app");
-                container.innerHTML = "";
-                const dom = window.ks["json-to-dom"].buildSpecElement({ inSpec: fallbackSpec });
-                container.appendChild(dom);
-            });
+                    },
+                    {
+                        tagName: "button",
+                        textContent: "Verify Account",
+                        attributes: { type: "button", class: "w-full py-2 bg-blue-600 text-white font-semibold text-sm rounded-lg hover:bg-blue-700 transition" }
+                    }
+                ]
+            },
+            table: {
+                tagName: "table",
+                attributes: { class: "w-full text-xs text-left border-collapse border border-slate-200 bg-white rounded-lg shadow-sm" },
+                children: [
+                    {
+                        tagName: "thead",
+                        attributes: { class: "bg-slate-100 text-slate-700 uppercase" },
+                        children: [
+                            {
+                                tagName: "tr",
+                                children: [
+                                    { tagName: "th", textContent: "#", attributes: { class: "p-2.5 border-b" } },
+                                    { tagName: "th", textContent: "Product Name", attributes: { class: "p-2.5 border-b" } },
+                                    { tagName: "th", textContent: "Amount", attributes: { class: "p-2.5 border-b text-right" } }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        tagName: "tbody",
+                        children: [
+                            {
+                                tagName: "tr",
+                                attributes: { class: "border-b hover:bg-slate-50" },
+                                children: [
+                                    { tagName: "td", textContent: "1", attributes: { class: "p-2.5 font-bold" } },
+                                    { tagName: "td", textContent: "ROPE 10MM High Tensile", attributes: { class: "p-2.5" } },
+                                    { tagName: "td", textContent: "₹ 3,000.00", attributes: { class: "p-2.5 text-right font-mono" } }
+                                ]
+                            },
+                            {
+                                tagName: "tr",
+                                attributes: { class: "border-b hover:bg-slate-50" },
+                                children: [
+                                    { tagName: "td", textContent: "2", attributes: { class: "p-2.5 font-bold" } },
+                                    { tagName: "td", textContent: "Shading Net 50% Green", attributes: { class: "p-2.5" } },
+                                    { tagName: "td", textContent: "₹ 1,250.00", attributes: { class: "p-2.5 text-right font-mono" } }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            button: {
+                tagName: "div",
+                attributes: { class: "text-center py-8" },
+                children: [
+                    {
+                        tagName: "button",
+                        textContent: "⚡ Execute Instant DOM Mutation",
+                        attributes: { class: "px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg shadow-md transition" }
+                    }
+                ]
+            }
+        };
+
+        const editor = document.getElementById("spec-editor");
+        const app = document.getElementById("app");
+        const compileBtn = document.getElementById("compile-btn");
+
+        const compileSpec = ({ inSpecJson }) => {
+            const localSpecJson = inSpecJson;
+            try {
+                const spec = JSON.parse(localSpecJson);
+                app.innerHTML = "";
+                const builder = window.ks?.["json-to-dom"]?.buildSpecElement || buildSpecElement;
+                const domNode = builder({ inSpec: spec });
+                if (domNode) {
+                    if (Array.isArray(domNode)) {
+                        app.append(...domNode);
+                    } else {
+                        app.appendChild(domNode);
+                    }
+                }
+            } catch (err) {
+                app.innerHTML = `<div class="p-4 bg-red-50 text-red-700 rounded-lg text-xs font-mono"><strong>Syntax / Compilation Error:</strong><br>${err.message}</div>`;
+            }
+        };
+
+        const loadPreset = ({ inPresetKey }) => {
+            const localPresetKey = inPresetKey;
+            const spec = PRESETS[localPresetKey];
+            if (spec) {
+                editor.value = JSON.stringify(spec, null, 2);
+                compileSpec({ inSpecJson: editor.value });
+            }
+        };
+
+        document.getElementById("preset-form").addEventListener("click", () => loadPreset({ inPresetKey: "form" }));
+        document.getElementById("preset-table").addEventListener("click", () => loadPreset({ inPresetKey: "table" }));
+        document.getElementById("preset-button").addEventListener("click", () => loadPreset({ inPresetKey: "button" }));
+        compileBtn.addEventListener("click", () => compileSpec({ inSpecJson: editor.value }));
+
+        // Initial load
+        loadPreset({ inPresetKey: "form" });
     </script>
 </body>
+
 </html>
