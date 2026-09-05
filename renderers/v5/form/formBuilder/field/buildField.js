@@ -13,17 +13,23 @@ export const buildField = ({ inColumn = {} } = {}) => {
         }
     };
 
+    const hasDatalist = localColumn.datalist === true || (localColumn.datalist !== false && inputType !== "number");
     const datalistId = localColumn.datalistId || `${key}-datalist`;
+
+    const inputAttributes = {
+        type: inputType,
+        name: key,
+        placeholder: `Enter ${labelText}...`,
+        class: "block w-full flex-1 min-w-0 px-3 py-2 border border-slate-300 rounded-md shadow-sm text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+    };
+
+    if (hasDatalist) {
+        inputAttributes.list = datalistId;
+    }
 
     const inputNode = {
         tagName: "input",
-        attributes: {
-            type: inputType,
-            name: key,
-            list: datalistId,
-            placeholder: `Enter ${labelText}...`,
-            class: "block w-full flex-1 min-w-0 px-3 py-2 border border-slate-300 rounded-md shadow-sm text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-        }
+        attributes: inputAttributes
     };
 
     // Only assign ID if explicitly passed in columns.json

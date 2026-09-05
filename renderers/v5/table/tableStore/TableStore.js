@@ -1,55 +1,40 @@
+import { SourceStore } from "../../common/SourceStore.js";
 import { calculateFooter } from "./calculateFooter.js";
 import { filterData } from "./filterData.js";
 import { queryToQueryObject } from "./queryToQueryObject.js";
 
-export class TableStore {
+export class TableStore extends SourceStore {
     constructor({ inData = [], inColumns = [], inConfig = {} } = {}) {
         const localData = inData;
         const localColumns = inColumns;
         const localConfig = inConfig;
 
-        // 1. Pristine raw input universe
-        this.source = this._buildSource({
+        super({
             inData: localData,
             inColumns: localColumns,
             inConfig: localConfig
         });
 
-        // 2. Working derived universe
         this.library = this._buildLibrary({
             inSource: this.source
         });
-    }
-
-    _buildSource({ inData = [], inColumns = [], inConfig = {} } = {}) {
-        const localData = inData;
-        const localColumns = inColumns;
-        const localConfig = inConfig;
-
-        return {
-            originalData: Array.isArray(localData)
-                ? (typeof structuredClone === "function" ? structuredClone(localData) : JSON.parse(JSON.stringify(localData)))
-                : [],
-            columns: localColumns,
-            config: localConfig
-        };
     }
 
     _buildLibrary({ inSource } = {}) {
         const localSource = inSource;
 
         const activeColumns = this._resolveActiveColumns({
-            inColumnsCatalog: localSource.columns,
-            inHeadConfig: localSource.config?.head
+            inColumnsCatalog: localSource?.columns,
+            inColumnKeys: localSource?.config?.head?.columns
         });
 
-        const stateData = Array.isArray(localSource.originalData)
+        const stateData = Array.isArray(localSource?.originalData)
             ? (typeof structuredClone === "function" ? structuredClone(localSource.originalData) : JSON.parse(JSON.stringify(localSource.originalData)))
             : [];
 
         const computedFooter = calculateFooter({
             inData: stateData,
-            inFooterConfig: localSource.config?.foot
+            inFooterConfig: localSource?.config?.foot
         });
 
         return {
@@ -57,10 +42,6 @@ export class TableStore {
             stateData,
             computedFooter
         };
-    }
-
-    get rawData() {
-        return this.source.originalData;
     }
 
     get stateData() {
@@ -77,24 +58,6 @@ export class TableStore {
 
     get computedFooter() {
         return this.library.computedFooter;
-    }
-
-    get config() {
-        return this.source.config;
-    }
-
-    _resolveActiveColumns({ inColumnsCatalog = [], inHeadConfig = {} } = {}) {
-        const localCatalog = inColumnsCatalog;
-        const localHead = inHeadConfig;
-
-        if (Array.isArray(localHead?.columns) && localHead.columns.length > 0) {
-            const catalogMap = new Map(localCatalog.map(col => [col.key, col]));
-            return localHead.columns
-                .map(key => catalogMap.get(key))
-                .filter(Boolean);
-        }
-
-        return localCatalog;
     }
 
     filterOriginalData({ inQuery = "" } = {}) {

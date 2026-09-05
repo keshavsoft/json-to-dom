@@ -1,19 +1,37 @@
 import { buildDataList } from "./datalistBuilder/buildDataList.js";
 import { buildOptions } from "./datalistBuilder/parts/buildOptions.js";
+import { DataListStore } from "./datalistStore/DataListStore.js";
 
 export class DataList {
-    constructor({ inData = [], inColumns = [], inTargetContainerId = "datalist-container", inTopN = 100, data, columns, targetContainerId, topN } = {}) {
+    constructor({ inData = [], inColumns = [], inConfig = {}, inTargetContainerId = "datalist-container", inTopN = 100, data, columns, config, targetContainerId, topN } = {}) {
         const localData = inData || data || [];
         const localColumns = inColumns || columns || [];
+        const localConfig = inConfig || config || {};
         const localTargetContainerId = inTargetContainerId || targetContainerId || "datalist-container";
         const localTopN = inTopN ?? topN ?? 100;
 
-        this.data = localData;
-        this.columns = localColumns;
         this.containerId = localTargetContainerId;
-        this.topN = localTopN;
         this.element = null;
         this.spec = null;
+
+        this.store = new DataListStore({
+            inData: localData,
+            inColumns: localColumns,
+            inConfig: localConfig,
+            inTopN: localTopN
+        });
+    }
+
+    get data() {
+        return this.store.stateData;
+    }
+
+    get columns() {
+        return this.store.activeColumns;
+    }
+
+    get config() {
+        return this.store.config;
     }
 
     render() {
@@ -27,9 +45,9 @@ export class DataList {
         }
 
         const dataListSpec = buildDataList({
-            inData: this.data,
-            inColumns: this.columns,
-            inTopN: this.topN
+            inData: this.store.stateData,
+            inColumns: this.store.activeColumns,
+            inTopN: this.store.topN
         });
 
         this.spec = dataListSpec;
@@ -47,16 +65,16 @@ export class DataList {
             const wrapper = document.createElement("div");
             wrapper.id = "ks-datalists-wrapper";
 
-            for (const col of this.columns) {
+            for (const col of this.store.activeColumns) {
                 const key = col.key || "";
                 const datalistId = col.datalistId || `${key}-datalist`;
                 const datalist = document.createElement("datalist");
                 datalist.id = datalistId;
 
                 const options = buildOptions({
-                    inData: this.data,
+                    inData: this.store.stateData,
                     inKey: key,
-                    inTopN: this.topN
+                    inTopN: this.store.topN
                 });
 
                 for (const opt of options) {
@@ -87,7 +105,7 @@ export class DataList {
 
     update({ inData = [] } = {}) {
         const localData = inData;
-        this.data = localData;
+        this.store.updateData({ inData: localData });
         return this.render();
     }
 }

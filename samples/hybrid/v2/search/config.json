@@ -2,7 +2,8 @@
     "body": {
         "columns": [
             "allinventoryentries.stockitemname",
-            "allinventoryentries.batchallocations.batchname"
+            "allinventoryentries.batchallocations.batchname",
+            "allinventoryentries.batchallocations.amount"
         ]
     }
 }
