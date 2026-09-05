@@ -18,18 +18,7 @@ const startFunc = () => {
 
     const tableControlsTree = table.render();
 
-    // 2. Instantiate and render DataList for autocomplete with counts
-    const dataList = new DataList({
-        inData: data,
-        inColumns: columns,
-        inTargetContainerId: "datalist-container"
-    });
-
-    dataList.render();
-
-    console.log("dataList : ", dataList);
-
-    // 3. Instantiate and render Form
+    // 2. Instantiate and render Form with config-driven activeColumns
     const form = new Form({
         inColumns: columns,
         inConfig: searchConfig,
@@ -37,6 +26,17 @@ const startFunc = () => {
     });
 
     const fromForm = form.render();
+
+    // 3. Instantiate and render DataList for autocomplete with counts (only for active search columns)
+    const dataList = new DataList({
+        inData: data,
+        inColumns: form.store.activeColumns,
+        inTargetContainerId: "datalist-container"
+    });
+
+    dataList.render();
+
+    console.log("dataList : ", dataList);
 
     const formElement = fromForm.element;
 

@@ -1,5 +1,6 @@
 import { buildForm } from "./formBuilder/buildForm.js";
 import { pruneTreeWithIds } from "../common/pruneTreeWithIds.js";
+import { FormStore } from "./formStore/FormStore.js";
 
 export class Form {
     constructor({ inColumns = [], inConfig = {}, inTargetContainerId = "form-container", columns, config, targetContainerId } = {}) {
@@ -7,11 +8,22 @@ export class Form {
         const localConfig = inConfig || config || {};
         const localTargetContainerId = inTargetContainerId || targetContainerId || "form-container";
 
-        this.columns = localColumns;
-        this.config = localConfig;
         this.containerId = localTargetContainerId;
         this.formElement = null;
         this.controlsTree = null;
+
+        this.store = new FormStore({
+            inColumns: localColumns,
+            inConfig: localConfig
+        });
+    }
+
+    get columns() {
+        return this.store.activeColumns;
+    }
+
+    get config() {
+        return this.store.config;
     }
 
     render() {
@@ -19,8 +31,8 @@ export class Form {
         if (!container) return null;
 
         const formSpec = buildForm({
-            inColumns: this.columns,
-            inConfig: this.config
+            inColumns: this.store.activeColumns,
+            inConfig: this.store.config
         });
 
         // Extract pruned tree with controls having IDs only
