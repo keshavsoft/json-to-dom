@@ -1,40 +1,40 @@
 import columns from "./columns.json" with { type: "json" };
 import data from "./data.json" with { type: "json" };
 import tableConfig from "./table/config.json" with { type: "json" };
-import { Table } from "../../../renderers/v8/table/Table.js";
+import { Table } from "../../../renderers/v9/table/index.js";
 
 import searchConfig from "./search/config.json" with { type: "json" };
-import { Form } from "../../../renderers/v8/form/Form.js";
+import { Form } from "../../../renderers/v9/form/index.js";
 
 import datalistConfig from "./datalist/config.json" with { type: "json" };
-import { DataList } from "../../../renderers/v8/datalist/DataList.js";
+import { DataList } from "../../../renderers/v9/datalist/index.js";
 
 const startFunc = () => {
     // 1. Instantiate Table with clean public API
     const table = new Table({
-        inData: data,
-        inColumns: columns,
-        inConfig: tableConfig,
-        inTargetContainerId: "table-container"
+        data,
+        columns,
+        config: tableConfig,
+        targetContainerId: "table-container"
     });
 
     const tableControlsTree = table.render();
 
     // 2. Instantiate and render Form with config-driven activeColumns
     const form = new Form({
-        inColumns: columns,
-        inConfig: searchConfig,
-        inTargetContainerId: "filter-container"
+        columns,
+        config: searchConfig,
+        targetContainerId: "filter-container"
     });
 
     const fromForm = form.render();
 
     // 3. Instantiate and render DataList with its own independent config
     const dataList = new DataList({
-        inData: data,
-        inColumns: columns,
-        inConfig: datalistConfig,
-        inTargetContainerId: "datalist-container"
+        data,
+        columns,
+        config: datalistConfig,
+        targetContainerId: "datalist-container"
     });
 
     dataList.render();
@@ -55,10 +55,10 @@ const startFunc = () => {
             const query = {};
             query[name] = value;
 
-            table.filterStateData({ inQuery: query });
+            table.filterStateData({ query });
 
             // Update datalist autocomplete options with new filtered state counts
-            dataList.update({ inData: table.store.stateData });
+            dataList.update({ data: table.store.stateData });
         });
     });
 };
