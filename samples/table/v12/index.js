@@ -1,7 +1,7 @@
 import columns from "./columns.json" with { type: "json" };
 import data from "./data.json" with { type: "json" };
 import config from "./config.json" with { type: "json" };
-import { Table } from "../../../renderers/v2/table/Table.js";
+import { Table } from "../../../renderers/v3/table/Table.js";
 
 const startFunc = () => {
     // 1. Instantiate Table with clean public API
