@@ -4,6 +4,7 @@ import isSpecArray from "./buildSpec/isSpecArray.js";
 import isSpecObject from "./buildSpec/isSpecObject.js";
 import buildSpecArray from "./buildSpec/buildSpecArray.js";
 import buildSingleElement from "./buildSpec/buildSingleElement.js";
+import tags from "./tags.json" with { type: "json" };
 
 export const buildSpecElement = (inSpec) => {
     const localSpec = (inSpec && typeof inSpec === "object" && "inSpec" in inSpec && !(inSpec instanceof Node) && !Array.isArray(inSpec))
@@ -20,12 +21,16 @@ export const buildSpecElement = (inSpec) => {
     return buildSingleElement({ inSpec: localSpec, inShowLog: localShowLog });
 };
 
+export { tags };
+
 window.ks ??= {};
 
 window.ks.showLog = true;
 
 window.ks["json-to-dom"] = {
-    buildSpecElement
+    buildSpecElement,
+    tags
 };
 
 export default buildSpecElement;
+

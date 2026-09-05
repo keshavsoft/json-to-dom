@@ -218,6 +218,7 @@ var e = ({ inSpec: e }) => !e, t = ({ inSpec: e }) => e instanceof Node, n = ({ 
 		inShowLog: s
 	}) : null;
 };
-window.ks ??= {}, window.ks.showLog = !0, window.ks["json-to-dom"] = { buildSpecElement: y };
+window.ks ??= {}, window.ks.showLog = !0, window.ks["json-to-dom"] = { buildSpecElement: y, tags: h };
 //#endregion
-export { y as buildSpecElement, y as default };
+export { y as buildSpecElement, h as tags, y as default };
+
