@@ -16,18 +16,18 @@
         "type": "string"
     },
     {
-        "key": "batchname",
+        "key": "allinventoryentries.batchallocations.batchname",
         "label": "Batch Name",
         "type": "string"
     },
     {
-        "key": "amount",
+        "key": "allinventoryentries.batchallocations.amount",
         "label": "Amount",
         "type": "number",
         "align": "right"
     },
     {
-        "key": "actualqty",
+        "key": "allinventoryentries.batchallocations.actualqty",
         "label": "Actual Qty",
         "type": "string"
     }

@@ -1,10 +1,11 @@
 import columns from "./columns.json" with { type: "json" };
-import data from "./flat.json" with { type: "json" };
+import data from "./data.json" with { type: "json" };
 import tableConfig from "./table/config.json" with { type: "json" };
-import { Table } from "../../../renderers/v3/table/Table.js";
+import { Table } from "../../../renderers/v4/table/Table.js";
 
 import searchConfig from "./search/config.json" with { type: "json" };
-import { Form } from "../../../renderers/v3/form/Form.js";
+import { Form } from "../../../renderers/v4/form/Form.js";
+import { DataList } from "../../../renderers/v4/datalist/DataList.js";
 
 const startFunc = () => {
     // 1. Instantiate Table with clean public API
@@ -17,6 +18,18 @@ const startFunc = () => {
 
     const tableControlsTree = table.render();
 
+    // 2. Instantiate and render DataList for autocomplete with counts
+    const dataList = new DataList({
+        inData: data,
+        inColumns: columns,
+        inTargetContainerId: "datalist-container"
+    });
+
+    dataList.render();
+
+    console.log("dataList : ", dataList);
+
+    // 3. Instantiate and render Form
     const form = new Form({
         inColumns: columns,
         inConfig: searchConfig,
@@ -39,10 +52,12 @@ const startFunc = () => {
             const query = {};
             query[name] = value;
 
-            console.log("tableControlsTree : ", table.filterStateData({ inQuery: query }));
+            table.filterStateData({ inQuery: query });
+
+            // Update datalist autocomplete options with new filtered state counts
+            dataList.update({ inData: table.store.stateData });
         });
     });
-
 };
 
 startFunc();

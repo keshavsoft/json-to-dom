@@ -22,7 +22,8 @@
             "readonly",
             "required",
             "class",
-            "id"
+            "id",
+            "list"
         ]
     },
     "checkbox": {
@@ -123,6 +124,24 @@
             "id",
             "colspan",
             "rowspan"
+        ]
+    },
+    "datalist": {
+        "allowsTextContent": false,
+        "allowsChildren": true,
+        "allowedAttributes": [
+            "id",
+            "class"
+        ]
+    },
+    "option": {
+        "allowsTextContent": true,
+        "allowsChildren": false,
+        "allowedAttributes": [
+            "value",
+            "label",
+            "selected",
+            "disabled"
         ]
     }
 }

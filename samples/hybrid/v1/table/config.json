@@ -3,10 +3,10 @@
         "columns": [
             "vchtype",
             "vouchernumber",
-            "stockitemname",
-            "batchname",
-            "amount",
-            "actualqty"
+            "allinventoryentries.stockitemname",
+            "allinventoryentries.batchallocations.batchname",
+            "allinventoryentries.batchallocations.amount",
+            "allinventoryentries.batchallocations.actualqty"
         ]
     },
     "row": {
