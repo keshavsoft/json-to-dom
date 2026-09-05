@@ -28,7 +28,7 @@
                 <a href="index.html" class="text-blue-600 font-semibold">Docs Hub</a>
                 <a href="architecture-and-pipeline.html" class="text-slate-600 hover:text-slate-900 transition">Architecture</a>
                 <a href="spec-schema-and-guide.html" class="text-slate-600 hover:text-slate-900 transition">Spec Schema</a>
-                <a href="tags/tags.json" target="_blank" class="text-slate-600 hover:text-slate-900 transition font-mono text-xs px-2 py-1 bg-slate-100 rounded">tags.json</a>
+                <a href="tags/html/index.html" class="text-slate-600 hover:text-slate-900 transition">Tag Guides</a>
                 <a href="samples/forms/index.html" class="text-slate-600 hover:text-slate-900 transition">Forms</a>
                 <a href="samples/index.html" class="text-slate-600 hover:text-slate-900 transition">Samples</a>
                 <a href="demo.html" class="px-3 py-1.5 bg-slate-900 text-white rounded-md hover:bg-slate-800 transition">Live Demo</a>
@@ -124,21 +124,24 @@
         <div class="bg-gradient-to-r from-blue-900 to-indigo-950 text-white rounded-xl p-6 shadow-md border border-blue-800 mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div>
                 <div class="flex items-center gap-2 mb-1">
-                    <span class="px-2 py-0.5 bg-blue-500/30 text-blue-300 rounded text-xs font-mono">docs/tags/tags.json</span>
-                    <span class="text-xs text-blue-200">W3C HTML Tag Dictionary</span>
+                    <span class="px-2 py-0.5 bg-blue-500/30 text-blue-300 rounded text-xs font-mono">docs/tags/html/</span>
+                    <span class="text-xs text-blue-200">W3C HTML Tag Specifications</span>
                 </div>
-                <h3 class="text-lg font-bold">The HTML Grammar Engine</h3>
+                <h3 class="text-lg font-bold">The HTML Grammar Engine &amp; Element Guides</h3>
                 <p class="text-xs text-blue-200 max-w-2xl leading-relaxed">
-                    Defines child allowances (<code>allowsChildren</code>), text permissions (<code>allowsTextContent</code>), and legal attributes (<code>allowedAttributes</code>) for all 14 composite Table &amp; Form elements.
+                    Explore deep-dive guides for every tag recognized by <code>json-to-dom</code> &mdash; covering allowed text, child nesting, legal attributes, and theme variants.
                 </p>
             </div>
-            <div class="flex items-center gap-2 shrink-0">
-                <a href="tags/tags.json" target="_blank" class="px-3.5 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-semibold flex items-center gap-1.5 transition">
-                    <span>View tags.json</span>
-                    <span>&nearr;</span>
+            <div class="flex items-center gap-2 shrink-0 flex-wrap">
+                <a href="tags/html/index.html" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-semibold flex items-center gap-1.5 transition">
+                    <span>Tag Guides Hub</span>
+                    <span>&rarr;</span>
                 </a>
-                <a href="tags/v6.json" target="_blank" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-xs font-mono transition">
-                    v6.json
+                <a href="tags/html/label.html" class="px-3 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-mono transition">
+                    &lt;label&gt; Guide
+                </a>
+                <a href="tags/tags.json" target="_blank" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-xs font-mono transition">
+                    tags.json &nearr;
                 </a>
             </div>
         </div>
