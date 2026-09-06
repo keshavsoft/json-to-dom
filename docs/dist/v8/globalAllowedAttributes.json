@@ -1,0 +1,39 @@
+{
+    "title": "HTML Global Allowed Attributes",
+    "description": "Standard W3C/WHATWG Global Attributes permitted on all HTML elements.",
+    "attributes": [
+        "accesskey",
+        "autocapitalize",
+        "autofocus",
+        "class",
+        "contenteditable",
+        "dir",
+        "draggable",
+        "enterkeyhint",
+        "hidden",
+        "id",
+        "inert",
+        "inputmode",
+        "is",
+        "itemid",
+        "itemprop",
+        "itemref",
+        "itemscope",
+        "itemtype",
+        "lang",
+        "nonce",
+        "part",
+        "popover",
+        "role",
+        "slot",
+        "spellcheck",
+        "style",
+        "tabindex",
+        "title",
+        "translate"
+    ],
+    "wildcardPrefixes": [
+        "data-",
+        "aria-"
+    ]
+}

@@ -131,3 +131,95 @@ describe("v7 Validation & Tester Suite", () => {
         });
     });
 });
+
+import validateSpecV8 from "../src/v8/validate/validateSpec.js";
+import filterAttributesV8 from "../src/v8/validate/filterAttributes.js";
+import isAttributeAllowedV8 from "../src/v8/validate/isAttributeAllowed.js";
+
+describe("v8 Validation & Global Attributes Suite", () => {
+    describe("1. isAttributeAllowed ({ inAttributeName, inAllowedAttributes })", () => {
+        test("allows standard global attributes unconditionally", () => {
+            assert.equal(isAttributeAllowedV8({ inAttributeName: "style", inAllowedAttributes: [] }), true);
+            assert.equal(isAttributeAllowedV8({ inAttributeName: "title", inAllowedAttributes: [] }), true);
+            assert.equal(isAttributeAllowedV8({ inAttributeName: "tabindex", inAllowedAttributes: [] }), true);
+            assert.equal(isAttributeAllowedV8({ inAttributeName: "hidden", inAllowedAttributes: [] }), true);
+            assert.equal(isAttributeAllowedV8({ inAttributeName: "role", inAllowedAttributes: [] }), true);
+        });
+
+        test("allows wildcard data-* and aria-* attributes", () => {
+            assert.equal(isAttributeAllowedV8({ inAttributeName: "data-id", inAllowedAttributes: [] }), true);
+            assert.equal(isAttributeAllowedV8({ inAttributeName: "data-index-val", inAllowedAttributes: [] }), true);
+            assert.equal(isAttributeAllowedV8({ inAttributeName: "aria-label", inAllowedAttributes: [] }), true);
+            assert.equal(isAttributeAllowedV8({ inAttributeName: "aria-expanded", inAllowedAttributes: [] }), true);
+        });
+
+        test("allows tag-specific attributes when passed in inAllowedAttributes", () => {
+            assert.equal(isAttributeAllowedV8({ inAttributeName: "colspan", inAllowedAttributes: ["colspan", "rowspan"] }), true);
+        });
+
+        test("rejects attributes not in global list and not in tag-specific list", () => {
+            assert.equal(isAttributeAllowedV8({ inAttributeName: "colspan", inAllowedAttributes: ["type", "placeholder"] }), false);
+            assert.equal(isAttributeAllowedV8({ inAttributeName: "invalidAttrXYZ", inAllowedAttributes: [] }), false);
+        });
+    });
+
+    describe("2. filterAttributes in v8", () => {
+        test("retains global style and data attributes even if not in tag-specific list", () => {
+            const rawAttrs = {
+                style: "text-align: right;",
+                title: "Column Header",
+                "data-col": "amount",
+                colspan: 2,
+                illegalAttr: "discardMe"
+            };
+
+            // th only has ["class", "id", "scope", "colspan", "rowspan"] in tags.json
+            const filtered = filterAttributesV8({
+                inAttributes: rawAttrs,
+                inAllowedAttributes: ["class", "id", "scope", "colspan", "rowspan"],
+                inTagName: "th"
+            });
+
+            assert.equal(filtered.style, "text-align: right;");
+            assert.equal(filtered.title, "Column Header");
+            assert.equal(filtered["data-col"], "amount");
+            assert.equal(filtered.colspan, 2);
+            assert.equal(filtered.illegalAttr, undefined);
+        });
+    });
+
+    describe("3. validateSpec in v8", () => {
+        test("accepts style attribute on th and td elements without error", () => {
+            const thSpec = {
+                tagName: "th",
+                textContent: "Date",
+                attributes: {
+                    style: "text-align: right;",
+                    class: "text-end",
+                    "data-type": "date"
+                }
+            };
+
+            const result = validateSpecV8({ inSpec: thSpec });
+            assert.equal(result.isValid, true);
+            assert.equal(result.errors.length, 0);
+        });
+
+        test("still flags illegal tag-specific attributes", () => {
+            const spec = {
+                tagName: "input",
+                attributes: {
+                    type: "text",
+                    style: "width: 100%;", // global - allowed!
+                    colspan: 2 // tag-specific to th/td - NOT allowed on input!
+                }
+            };
+
+            const result = validateSpecV8({ inSpec: spec });
+            assert.equal(result.isValid, false);
+            assert.equal(result.invalidAttributes.length, 1);
+            assert.equal(result.invalidAttributes[0], "colspan");
+        });
+    });
+});
+

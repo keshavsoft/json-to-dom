@@ -35,9 +35,10 @@ json-to-dom/
 │   ├── spec-schema-and-guide.html      # Specification schema & properties guide
 │   ├── demo.html                       # Live v7 browser compiler playground
 │   ├── tags/                           # W3C grammar specs & element guides
-│   │   ├── tags.json                   # Machine-readable grammar dictionary
+│   │   ├── tags.json                   # Tag-specific grammar dictionary
+│   │   ├── globalAllowedAttributes.json# Standard W3C/WHATWG global attributes & wildcards (v8+)
 │   │   └── html/                       # HTML element deep-dive guides (label.html, etc.)
-│   ├── dist/v7/min.js                  # Latest production bundle
+│   ├── dist/v8/min.js                  # Latest production bundle (v8)
 │   └── samples/                        # Categorized standalone sample pages
 │       ├── index.html                  # Master samples directory
 │       ├── forms/                      # Form label/input alignment styles (01-05)
@@ -47,16 +48,11 @@ json-to-dom/
 │       └── dashboards/                 # Complex dashboard layouts
 ├── package.json
 └── src/
-    ├── v1/                             # Baseline implementation
-    ├── v2/                             # Legacy modular engine
-    └── v3/                             # Current modular engine & bundle source
-        ├── index.html                  # Demo runner entry point
-        ├── index.js                    # Demo runner script
-        ├── input.json                  # Sample declarative spec
-        └── build/
-            ├── buildSpecElement.js     # Primary recursive dispatcher
-            ├── buildSpec/              # Validation & traversal
-            └── elementBuilder/         # Low-level DOM construction & binding
+    ├── v7/                             # v7 Modular engine & validator
+    └── v8/                             # Latest engine with Two-Tier Global Attribute resolution
+        ├── buildSpec/                  # Spec validation & traversal
+        ├── elementBuilder/             # Native DOM construction & binding
+        └── validate/                   # isAttributeAllowed, filterAttributes, validateSpec
 ```
 
 ---
@@ -148,18 +144,22 @@ buildSpecElement({ inSpec })  ──► Validates spec type (Null, Node, Array, 
 ---
 
 ### 📂 Repository Guides (HTML & Source)
-1. **HTML Tag Guides Hub (W3C Grammar & Element Guides)**:
+1. **HTML Tag & Global Attribute Guides (W3C Grammar & Element Guides)**:
    - [Live Tag Guides](https://keshavsoft.github.io/json-to-dom/tags/html/) ([source](docs/tags/html/index.html))
-   - [W3C Grammar Dictionary (tags.json)](https://keshavsoft.github.io/json-to-dom/tags/tags.json) ([source](docs/tags/tags.json))
-2. **Architecture & Pipeline**:
+   - [Tag-Specific Grammar Dictionary (tags.json)](https://keshavsoft.github.io/json-to-dom/tags/tags.json) ([source](docs/tags/tags.json))
+   - [Global Allowed Attributes (globalAllowedAttributes.json)](https://keshavsoft.github.io/json-to-dom/tags/globalAllowedAttributes.json) ([source](docs/tags/globalAllowedAttributes.json)) — *Standard W3C global attributes (`style`, `title`, `hidden`, `tabindex`, `role`, `data-*`, `aria-*`) valid universally on all elements without tag-by-tag repetition.*
+2. **Two-Tier Attribute Validation Architecture (v8)**:
+   - **Tier 1 (Global)**: Attributes matching `globalAllowedAttributes.json` (or `data-*` / `aria-*` prefixes) are unconditionally accepted on all tags.
+   - **Tier 2 (Tag-Specific)**: Tag-scoped attributes (e.g., `colspan` on `<th>`/`<td>`, `type` on `<input>`) are validated against `tags.json`.
+3. **Architecture & Pipeline**:
    - [Live Architecture Guide](https://keshavsoft.github.io/json-to-dom/architecture-and-pipeline.html) ([source file](docs/architecture-and-pipeline.html))
-3. **JSON Specification Schema & Authoring**:
+4. **JSON Specification Schema & Authoring**:
    - [Live Spec Schema Guide](https://keshavsoft.github.io/json-to-dom/spec-schema-and-guide.html) ([source file](docs/spec-schema-and-guide.html))
-4. **Form Alignment Styles**:
+5. **Form Alignment Styles**:
    - [Live Forms Gallery](https://keshavsoft.github.io/json-to-dom/samples/forms/) ([source folder](docs/samples/forms/))
-5. **Interactive Samples Suite**:
+6. **Interactive Samples Suite**:
    - [Live Samples Hub](https://keshavsoft.github.io/json-to-dom/samples/) ([source folder](docs/samples/))
-6. **Architectural Blueprint**:
+7. **Architectural Blueprint**:
    - [DETAILS.md](DETAILS.md) — Comprehensive design document for transformation pipelines.
 
 ---
@@ -167,3 +167,4 @@ buildSpecElement({ inSpec })  ──► Validates spec type (Null, Node, Array, 
 ## 📜 License
 
 ISC © [KeshavSoft](https://github.com/keshavsoft)
+
