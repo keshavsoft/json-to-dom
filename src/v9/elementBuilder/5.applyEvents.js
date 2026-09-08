@@ -6,12 +6,11 @@ const localButtonClick = (event) => {
     const dataset = currentTarget.dataset;
     const dataClosestTarget = dataset.closestTarget;
     const closestElement = dataClosestTarget ? currentTarget.closest(`.${dataClosestTarget}`) : null;
-    console.log("jjjjjjjjjj", closestElement, dataset);
+    // console.log("jjjjjjjjjj", closestElement, dataset);
 
     if (dataset.highlight === "true" && dataset.highlightClass) {
-
         const classes = dataset.highlightClass.split(" ").filter(Boolean);
-        console.log("jjjjjjjjjj---", classes);
+        // console.log("jjjjjjjjjj---", classes);
         closestElement.classList.add(...classes);
     }
 
@@ -26,7 +25,7 @@ const localButtonClick = (event) => {
         name,
         value,
         input,
-        closestElement
+        closestElement,
     };
 
     // console.log("[json-to-dom] Internal button click, attached event.output:", event.output);

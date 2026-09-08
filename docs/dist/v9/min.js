@@ -102,9 +102,9 @@ var e = ({ inSpec: e }) => !e, t = ({ inSpec: e }) => e instanceof Node, n = ({ 
 	return Array.isArray(i) ? i.includes(r) : !1;
 }, h = (e) => {
 	let t = e.currentTarget, n = t.dataset, r = n.closestTarget, i = r ? t.closest(`.${r}`) : null;
-	if (console.log("jjjjjjjjjj", i, n), n.highlight === "true" && n.highlightClass) {
+	if (n.highlight === "true" && n.highlightClass) {
 		let e = n.highlightClass.split(" ").filter(Boolean);
-		console.log("jjjjjjjjjj---", e), i.classList.add(...e);
+		i.classList.add(...e);
 	}
 	let a = i ? i.querySelector("input") : null;
 	e.output = {
@@ -384,7 +384,7 @@ var e = ({ inSpec: e }) => !e, t = ({ inSpec: e }) => e instanceof Node, n = ({ 
 		invalidAttributes: a,
 		invalidEvents: o
 	};
-}, D = "v9.1", O = (a) => {
+}, D = "v9.2", O = (a) => {
 	let o = a && typeof a == "object" && "inSpec" in a && !(a instanceof Node) && !Array.isArray(a) ? a.inSpec : a, s = !!window?.ks?.showLog;
 	return e({ inSpec: o }) ? null : t({ inSpec: o }) ? o : n({ inSpec: o }) ? i({ inSpec: o }) : r({ inSpec: o }) ? C({
 		inSpec: o,
