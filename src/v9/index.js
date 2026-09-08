@@ -13,6 +13,8 @@ import validateSpec from "./validate/validateSpec.js";
 import isAttributeAllowed from "./validate/isAttributeAllowed.js";
 import isEventAllowed from "./validate/isEventAllowed.js";
 
+const version = "v9";
+
 export const buildSpecElement = (inSpec) => {
     const localSpec = (inSpec && typeof inSpec === "object" && "inSpec" in inSpec && !(inSpec instanceof Node) && !Array.isArray(inSpec))
         ? inSpec.inSpec
@@ -28,13 +30,14 @@ export const buildSpecElement = (inSpec) => {
     return buildSingleElement({ inSpec: localSpec, inShowLog: localShowLog });
 };
 
-export { tags, globalAllowedAttributes, allowedEvents, validateTag, validateSpec, isAttributeAllowed, isEventAllowed };
+export { version, tags, globalAllowedAttributes, allowedEvents, validateTag, validateSpec, isAttributeAllowed, isEventAllowed };
 
 window.ks ??= {};
 
 window.ks.showLog = true;
 
 window.ks["json-to-dom"] = {
+    version,
     buildSpecElement,
     tags,
     globalAllowedAttributes,
