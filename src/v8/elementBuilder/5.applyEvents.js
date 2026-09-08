@@ -1,4 +1,7 @@
 export const applyEvents = ({ inElement, inEvents }) => {
+
+    // console.log("lllllllllll", inElement, inEvents);
+
     const localElement = inElement;
     const localEvents = inEvents;
     if (localEvents && typeof localEvents === "object") {

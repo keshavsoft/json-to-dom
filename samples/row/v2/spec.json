@@ -2,7 +2,7 @@
     {
         "tagName": "div",
         "attributes": {
-            "class": "flex items-center"
+            "class": "flex items-center ksrow"
         },
         "children": [
             {
@@ -15,9 +15,20 @@
             {
                 "tagName": "input",
                 "attributes": {
+                    "name": "ks",
                     "type": "text",
                     "placeholder": "e.g. Sales/CA",
                     "class": "flex-1 px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-white"
+                }
+            },
+            {
+                "tagName": "button",
+                "textContent": "save",
+                "attributes": {
+                    "id": "saveButton",
+                    "type": "button",
+                    "data-closest-target": "ksrow",
+                    "class": "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                 }
             }
         ]

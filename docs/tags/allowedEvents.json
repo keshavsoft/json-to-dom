@@ -1,0 +1,48 @@
+{
+    "title": "Allowed Event Controls and Event Types",
+    "description": "Permitted HTML interactive controls and their allowed event types.",
+    "controls": {
+        "button": [
+            "click",
+            "dblclick",
+            "focus",
+            "blur",
+            "keydown",
+            "keyup"
+        ],
+        "input": [
+            "input",
+            "change",
+            "focus",
+            "blur",
+            "keydown",
+            "keyup",
+            "paste",
+            "click"
+        ],
+        "checkbox": [
+            "change",
+            "click",
+            "focus",
+            "blur"
+        ],
+        "select": [
+            "change",
+            "focus",
+            "blur"
+        ],
+        "textarea": [
+            "input",
+            "change",
+            "focus",
+            "blur",
+            "keydown",
+            "keyup",
+            "paste"
+        ],
+        "form": [
+            "submit",
+            "reset"
+        ]
+    }
+}
