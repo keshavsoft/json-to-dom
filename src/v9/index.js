@@ -13,7 +13,7 @@ import validateSpec from "./validate/validateSpec.js";
 import isAttributeAllowed from "./validate/isAttributeAllowed.js";
 import isEventAllowed from "./validate/isEventAllowed.js";
 
-const version = "v9";
+const version = "v9.1";
 
 export const buildSpecElement = (inSpec) => {
     const localSpec = (inSpec && typeof inSpec === "object" && "inSpec" in inSpec && !(inSpec instanceof Node) && !Array.isArray(inSpec))

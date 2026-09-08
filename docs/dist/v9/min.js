@@ -102,9 +102,9 @@ var e = ({ inSpec: e }) => !e, t = ({ inSpec: e }) => e instanceof Node, n = ({ 
 	return Array.isArray(i) ? i.includes(r) : !1;
 }, h = (e) => {
 	let t = e.currentTarget, n = t.dataset, r = n.closestTarget, i = r ? t.closest(`.${r}`) : null;
-	if (n.highlight === "true" && n.highlightClass) {
+	if (console.log("jjjjjjjjjj", i, n), n.highlight === "true" && n.highlightClass) {
 		let e = n.highlightClass.split(" ").filter(Boolean);
-		i.classList.add(...e);
+		console.log("jjjjjjjjjj---", e), i.classList.add(...e);
 	}
 	let a = i ? i.querySelector("input") : null;
 	e.output = {
@@ -384,7 +384,7 @@ var e = ({ inSpec: e }) => !e, t = ({ inSpec: e }) => e instanceof Node, n = ({ 
 		invalidAttributes: a,
 		invalidEvents: o
 	};
-}, D = "v9", O = (a) => {
+}, D = "v9.1", O = (a) => {
 	let o = a && typeof a == "object" && "inSpec" in a && !(a instanceof Node) && !Array.isArray(a) ? a.inSpec : a, s = !!window?.ks?.showLog;
 	return e({ inSpec: o }) ? null : t({ inSpec: o }) ? o : n({ inSpec: o }) ? i({ inSpec: o }) : r({ inSpec: o }) ? C({
 		inSpec: o,
@@ -392,7 +392,7 @@ var e = ({ inSpec: e }) => !e, t = ({ inSpec: e }) => e instanceof Node, n = ({ 
 	}) : null;
 };
 window.ks ??= {}, window.ks.showLog = !0, window.ks["json-to-dom"] = {
-	version: "v9",
+	version: D,
 	buildSpecElement: O,
 	tags: b,
 	globalAllowedAttributes: c,

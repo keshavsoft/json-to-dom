@@ -6,10 +6,12 @@ const localButtonClick = (event) => {
     const dataset = currentTarget.dataset;
     const dataClosestTarget = dataset.closestTarget;
     const closestElement = dataClosestTarget ? currentTarget.closest(`.${dataClosestTarget}`) : null;
-    // console.log("jjjjjjjjjj", closestElement);
+    console.log("jjjjjjjjjj", closestElement, dataset);
 
     if (dataset.highlight === "true" && dataset.highlightClass) {
+
         const classes = dataset.highlightClass.split(" ").filter(Boolean);
+        console.log("jjjjjjjjjj---", classes);
         closestElement.classList.add(...classes);
     }
 
