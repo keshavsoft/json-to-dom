@@ -6,7 +6,17 @@ const localButtonClick = (event) => {
     const dataset = currentTarget.dataset;
     const dataClosestTarget = dataset.closestTarget;
     const closestElement = dataClosestTarget ? currentTarget.closest(`.${dataClosestTarget}`) : null;
+    // console.log("jjjjjjjjjj", closestElement);
+
+    if (dataset.highlight === "true" && dataset.highlightClass) {
+        const classes = dataset.highlightClass.split(" ").filter(Boolean);
+        closestElement.classList.add(...classes);
+    }
+
+    // bg - primary bg - opacity - 10 rounded border border - primary border - opacity - 25
+
     const input = closestElement ? closestElement.querySelector("input") : null;
+
     const name = input?.name;
     const value = input?.value;
 

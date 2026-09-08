@@ -101,12 +101,17 @@ var e = ({ inSpec: e }) => !e, t = ({ inSpec: e }) => e instanceof Node, n = ({ 
 	let i = p.controls?.[n];
 	return Array.isArray(i) ? i.includes(r) : !1;
 }, h = (e) => {
-	let t = e.currentTarget, n = t.dataset.closestTarget, r = n ? t.closest(`.${n}`) : null, i = r ? r.querySelector("input") : null;
+	let t = e.currentTarget, n = t.dataset, r = n.closestTarget, i = r ? t.closest(`.${r}`) : null;
+	if (n.highlight === "true" && n.highlightClass) {
+		let e = n.highlightClass.split(" ").filter(Boolean);
+		i.classList.add(...e);
+	}
+	let a = i ? i.querySelector("input") : null;
 	e.output = {
-		name: i?.name,
-		value: i?.value,
-		input: i,
-		closestElement: r
+		name: a?.name,
+		value: a?.value,
+		input: a,
+		closestElement: i
 	};
 }, g = ({ inElement: e, inEvents: t, inTagName: n, inShowLog: r = !1 }) => {
 	let i = e, a = t, o = n, s = r;

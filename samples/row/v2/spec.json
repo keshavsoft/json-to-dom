@@ -28,6 +28,8 @@
                     "id": "saveButton",
                     "type": "button",
                     "data-closest-target": "ksrow",
+                    "data-highlight": "true",
+                    "data-highlight-class": "bg-primary bg-opacity-10 rounded border border-primary border-opacity-25",
                     "class": "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                 }
             }
