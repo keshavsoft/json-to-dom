@@ -1,24 +1,118 @@
-# JSON to DOM (`dom-builder-from-json`)
+# JSON to DOM (`json-to-dom`)
 
-> **Declarative, zero-dependency JSON-to-DOM creation engine for modern web interfaces.**
+> **Declarative, zero-dependency JSON-to-DOM compiler for high-performance web applications.**
 
-[🌐 **Live Docs Website**](https://keshavsoft.github.io/json-to-dom/) &bull; 
+[🌐 **Live Documentation**](https://keshavsoft.github.io/json-to-dom/) &bull; 
 [📝 **Form Alignment Styles**](https://keshavsoft.github.io/json-to-dom/samples/forms/) &bull; 
-[💡 **Samples Gallery**](https://keshavsoft.github.io/json-to-dom/samples/) &bull; 
-[⚡ **Live Engine Demo**](https://keshavsoft.github.io/json-to-dom/demo.html) &bull; 
+[💡 **Component Gallery**](https://keshavsoft.github.io/json-to-dom/samples/) &bull; 
+[⚡ **Interactive Playground**](https://keshavsoft.github.io/json-to-dom/demo.html) &bull; 
 [🏗️ **Architecture Guide**](https://keshavsoft.github.io/json-to-dom/architecture-and-pipeline.html)
 
-`json-to-dom` is a lightweight, pure JavaScript engine that converts declarative JSON specifications into live browser DOM element trees. It enforces a strict architectural boundary between the **JSON Specification World** (serializable, transformable data) and the **DOM World** (browser element instances and events).
+`json-to-dom` is a lightweight, pure JavaScript engine that converts declarative JSON specifications into live browser DOM element trees. It enforces a strict architectural boundary between the **JSON Specification World** (serializable, portable data) and the **DOM World** (browser element instances and mutations).
 
 ---
 
 ## 🌟 Key Highlights
 
-- ⚡ **Zero Dependencies**: Pure native DOM APIs (`document.createElement`, `classList`, `setAttribute`, `addEventListener`).
-- 🧩 **Strict Architectural Separation**: UI is defined and manipulated as pure data until the final recursive render stage.
-- 🔁 **Recursive & Fragment Friendly**: Seamlessly builds single elements, complex nested trees, arrays of root nodes, or mixes in existing DOM nodes.
-- 📐 **Standardized Codebase Architecture**: Every function adheres to KeshavSoft's parameter naming convention (`{ in... }` arguments mapped directly to `local...` variables).
-- 🎨 **Theme & Pipeline Ready**: Designed to pair with transformation pipelines for themes, filters, dynamic columns, and data hydration.
+- ⚡ **Zero Dependencies**: Pure native DOM APIs (`document.createElement`, `classList`, `setAttribute`, `addEventListener`, `createTextNode`).
+- 📦 **Instant Project Scaffolding via NPX**: Copy the latest standalone engine directly into your app with `npx json-to-dom`.
+- 🧩 **Modular v10 Architecture**: Pure core DOM element builder with decoupled, optional event handling.
+- 📖 **Story-Structured Events (`src/v10/events/`)**: The event pipeline is partitioned into an intuitive narrative:
+  1. `1.validate/` — Guarding permissions against `allowedEvents.json`.
+  2. `2.internal/buttonClick/` — Internal component hooks (`data-closest-target`, `data-highlight`, and `event.output`).
+  3. `3.declared/` — User-declared spec event listeners.
+- 📐 **KeshavSoft Parameter Convention**: 100% adherence to `{ in... }` argument destructuring mapped directly to `local...` variables.
+- 🔁 **Recursive & Fragment-Friendly**: Builds single nodes, nested trees, arrays of specs, or native DOM nodes seamlessly.
+
+---
+
+## 🚀 Quick Start
+
+### 1. Copy the Engine with NPX (Recommended)
+
+Run `npx json-to-dom` to automatically discover and copy the highest version (v10) directly into your project:
+
+```bash
+# Copy latest version (v10) to ./json-to-dom
+npx json-to-dom
+
+# Or specify a custom target directory
+npx json-to-dom ./src/lib/json-to-dom
+
+# View CLI options
+npx json-to-dom --help
+```
+
+### 2. Basic Usage in JavaScript
+
+```javascript
+import { buildSpecElement, buildSpecElementWithEvents } from "json-to-dom";
+// Or import directly from local path:
+// import { buildSpecElement } from "./json-to-dom/index.js";
+
+// 1. Pure DOM Building (Zero event overhead)
+const cardSpec = {
+    tagName: "div",
+    classList: "card shadow-sm p-4",
+    children: [
+        { tagName: "label", textContent: "User Account" },
+        { tagName: "input", attributes: { type: "text", placeholder: "Enter username" } }
+    ]
+};
+
+const domNode = buildSpecElement({ inSpec: cardSpec });
+document.getElementById("app").appendChild(domNode);
+
+// 2. Interactive DOM Building with Events
+const buttonSpec = {
+    tagName: "button",
+    textContent: "Submit Form",
+    attributes: { type: "button", class: "btn btn-primary" },
+    events: {
+        click: (e) => alert("Saved!")
+    }
+};
+
+const domButton = buildSpecElementWithEvents({ inSpec: buttonSpec });
+document.getElementById("app").appendChild(domButton);
+```
+
+---
+
+## 🏗️ Architecture & Engine Execution
+
+```
+[ Declarative JSON Spec ]
+          │
+          ▼
+buildSpecElement({ inSpec, inApplyEvents })  ──► Validates spec type (Null, Node, Array, or Object)
+          │
+          ├─► [Array of Specs] ──► buildSpecArray() ──► maps items recursively
+          │
+          └─► [Single Spec]    ──► buildSingleElement()
+                                          │
+                                          ▼
+                                 buildChildrenNodes()  (Recursive depth-first + text nodes)
+                                          │
+                                          ▼
+                                 domElementBuilder()
+                                   ├── 0. createElement(tagName)
+                                   ├── 1. applyTextContent (guarded by tagDef.allowsTextContent)
+                                   ├── 2. applyProperties (Object.assign)
+                                   ├── 3. applyAttributes (filtered by global + tag-specific attributes)
+                                   ├── 4. applyClassList (string or array)
+                                   ├── 5. appendChildren (Element nodes & Text nodes)
+                                   │
+                                   ▼
+                         [ Optional Event Story ]
+                         (when inApplyEvents is enabled)
+                                   ├── Chapter 1: isEventAllowed validation
+                                   ├── Chapter 2: Internal button click interactions
+                                   └── Chapter 3: Spec-declared event listeners
+                                          │
+                                          ▼
+                                    [ Live DOM Node ]
+```
 
 ---
 
@@ -26,145 +120,65 @@
 
 ```text
 json-to-dom/
-├── index.html                          # Root landing page (links to demo & docs portal)
+├── bin/
+│   └── cli.js                          # npx CLI (copies highest engine version dynamically)
+├── index.js                            # Root proxy entry exporting active v10 engine
+├── package.json                        # Package configuration & test runner
 ├── README.md                           # Main project overview & quickstart (this file)
-├── DETAILS.md                          # Comprehensive runtime architecture & pipeline concept
-├── docs/
-│   ├── index.html                      # Minimalist documentation gateway
-│   ├── architecture-and-pipeline.html  # Runtime architecture & compiler pipeline
-│   ├── spec-schema-and-guide.html      # Specification schema & properties guide
-│   ├── demo.html                       # Live v7 browser compiler playground
-│   ├── tags/                           # W3C grammar specs & element guides
+├── DETAILS.md                          # Comprehensive runtime architecture & pipeline concepts
+├── docs/                               # Live Documentation Portal (GitHub Pages)
+│   ├── index.html                      # Documentation landing portal
+│   ├── architecture-and-pipeline.html  # Runtime architecture & compiler flow
+│   ├── spec-schema-and-guide.html      # Specification schema & property guide
+│   ├── demo.html                       # Live browser compiler playground
+│   ├── tags/                           # W3C grammar specs & element dictionaries
 │   │   ├── tags.json                   # Tag-specific grammar dictionary
-│   │   ├── globalAllowedAttributes.json# Standard W3C/WHATWG global attributes & wildcards (v8+)
-│   │   └── html/                       # HTML element deep-dive guides (label.html, etc.)
-│   ├── dist/v8/min.js                  # Latest production bundle (v8)
-│   └── samples/                        # Categorized standalone sample pages
-│       ├── index.html                  # Master samples directory
-│       ├── forms/                      # Form label/input alignment styles (01-05)
-│       ├── cards/                      # Card & container components
-│       ├── tables/                     # Data grids & financial tables
-│       ├── interactive/                # Interactive counters & dynamic CRUD
-│       └── dashboards/                 # Complex dashboard layouts
-├── package.json
+│   │   ├── globalAllowedAttributes.json# Standard global attributes & wildcards
+│   │   └── allowedEvents.json          # Permitted controls & allowed event types
+│   └── samples/                        # Standalone sample gallery (forms, cards, tables)
 └── src/
-    ├── v7/                             # v7 Modular engine & validator
-    └── v8/                             # Latest engine with Two-Tier Global Attribute resolution
-        ├── buildSpec/                  # Spec validation & traversal
-        ├── elementBuilder/             # Native DOM construction & binding
-        └── validate/                   # isAttributeAllowed, filterAttributes, validateSpec
+    ├── v8/                             # Two-tier global attribute resolution
+    ├── v9/                             # Guarded event validation
+    └── v10/                            # Latest Engine: Modular Optional Events & Story Architecture
+        ├── buildSpec/                  # Traversal, single/array/children node building
+        ├── elementBuilder/             # Pure native DOM construction (steps 0 to 5)
+        ├── events/                     # Decoupled Event Story System
+        │   ├── 1.validate/             # Chapter 1: isEventAllowed & isControlWithEvents
+        │   ├── 2.internal/             # Chapter 2: Built-in component hooks & buttonClick
+        │   │   └── buttonClick/        # getClosestTarget, applyHighlight, extractOutput
+        │   ├── 3.declared/             # Chapter 3: User spec-declared event listeners
+        │   └── index.js                # applyEvents coordinator
+        ├── validate/                   # Attribute & spec validators
+        └── index.js                    # v10 Master Entry Point (buildSpecElement, applyEvents)
 ```
 
 ---
 
-## 🚀 Quick Start
+## 🧪 Testing
 
-### 1. Run the Local Demo
-
-You can preview the live rendered DOM with any local static server:
+The repository features comprehensive automated test suites covering all architectural generations:
 
 ```bash
-# Using npx serve
-npx serve
+# Run all unit tests (v7, v8, v9, and v10)
+npm test
 
-# Or using npm run dev
-npm run dev
-```
-
-Then open your browser at `http://localhost:3000/` or directly at `http://localhost:3000/src/v2/`.
-
-### 2. Basic Usage in JavaScript
-
-```javascript
-import { buildSpecElement } from "./src/v2/build/buildSpecElement.js";
-
-// 1. Define your declarative JSON UI specification
-const buttonSpec = {
-    tagName: "button",
-    textContent: "Click Me",
-    attributes: {
-        type: "button",
-        class: "px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-    },
-    events: {
-        click: (e) => alert("Button clicked!")
-    }
-};
-
-// 2. Build real DOM elements
-const domButton = buildSpecElement({ inSpec: buttonSpec });
-
-// 3. Append to your target container
-document.getElementById("app").appendChild(domButton);
-```
-
----
-
-## 🏗️ How It Works at a Glance
-
-The engine executes in two distinct phases:
-
-```
-[ JSON Specification ]
-         │
-         ▼
-buildSpecElement({ inSpec })  ──► Validates spec type (Null, Node, Array, or Object)
-         │
-         ├─► [Array of Specs] ──► buildSpecArray() ──► maps items recursively
-         │
-         └─► [Single Spec]    ──► buildSingleElement()
-                                         │
-                                         ▼
-                                buildChildrenNodes()  (Recursive depth-first)
-                                         │
-                                         ▼
-                               domElementBuilder()
-                                 ├── 1. createElement(tagName)
-                                 ├── 2. applyTextContent & applyProperties
-                                 ├── 3. applyAttributes & applyClassList
-                                 ├── 4. applyEvents
-                                 └── 5. appendChildren
-                                         │
-                                         ▼
-                                  [ Live DOM Node ]
+# Run only v10 unit tests
+node --test test/v10.unit.test.js
 ```
 
 ---
 
 ## 📖 Documentation Index
 
-### 🌐 Live Web Documentation (GitHub Pages)
-- 🚀 **[Live Interactive Docs Hub](https://keshavsoft.github.io/json-to-dom/)** — Central portal with visual cards, quick starts, and guide navigation.
-- 📝 **[Form Alignment Styles Gallery](https://keshavsoft.github.io/json-to-dom/samples/forms/)** — Focused label & input alignment patterns (Label Above, Label Left, Right-Aligned Label, Joined Addon Box).
-- 💡 **[Component Samples Directory](https://keshavsoft.github.io/json-to-dom/samples/)** — Categorized samples for Forms, Cards, Data Tables, Interactive State, and Dashboards.
-- 🏗️ **[Architecture & Pipeline Deep Dive](https://keshavsoft.github.io/json-to-dom/architecture-and-pipeline.html)** — Interactive Mermaid.js execution diagram and runtime flow.
-- 📋 **[JSON Specification Schema Guide](https://keshavsoft.github.io/json-to-dom/spec-schema-and-guide.html)** — Full reference for `tagName`, `attributes`, `properties`, and `events`.
-- ⚡ **[Live V3 Engine Demo](https://keshavsoft.github.io/json-to-dom/demo.html)** — Real-world interactive rendering running live in the browser.
-
----
-
-### 📂 Repository Guides (HTML & Source)
-1. **HTML Tag & Global Attribute Guides (W3C Grammar & Element Guides)**:
-   - [Live Tag Guides](https://keshavsoft.github.io/json-to-dom/tags/html/) ([source](docs/tags/html/index.html))
-   - [Tag-Specific Grammar Dictionary (tags.json)](https://keshavsoft.github.io/json-to-dom/tags/tags.json) ([source](docs/tags/tags.json))
-   - [Global Allowed Attributes (globalAllowedAttributes.json)](https://keshavsoft.github.io/json-to-dom/tags/globalAllowedAttributes.json) ([source](docs/tags/globalAllowedAttributes.json)) — *Standard W3C global attributes (`style`, `title`, `hidden`, `tabindex`, `role`, `data-*`, `aria-*`) valid universally on all elements without tag-by-tag repetition.*
-2. **Two-Tier Attribute Validation Architecture (v8)**:
-   - **Tier 1 (Global)**: Attributes matching `globalAllowedAttributes.json` (or `data-*` / `aria-*` prefixes) are unconditionally accepted on all tags.
-   - **Tier 2 (Tag-Specific)**: Tag-scoped attributes (e.g., `colspan` on `<th>`/`<td>`, `type` on `<input>`) are validated against `tags.json`.
-3. **Architecture & Pipeline**:
-   - [Live Architecture Guide](https://keshavsoft.github.io/json-to-dom/architecture-and-pipeline.html) ([source file](docs/architecture-and-pipeline.html))
-4. **JSON Specification Schema & Authoring**:
-   - [Live Spec Schema Guide](https://keshavsoft.github.io/json-to-dom/spec-schema-and-guide.html) ([source file](docs/spec-schema-and-guide.html))
-5. **Form Alignment Styles**:
-   - [Live Forms Gallery](https://keshavsoft.github.io/json-to-dom/samples/forms/) ([source folder](docs/samples/forms/))
-6. **Interactive Samples Suite**:
-   - [Live Samples Hub](https://keshavsoft.github.io/json-to-dom/samples/) ([source folder](docs/samples/))
-7. **Architectural Blueprint**:
-   - [DETAILS.md](DETAILS.md) — Comprehensive design document for transformation pipelines.
+- 🚀 **[Live Documentation Hub](https://keshavsoft.github.io/json-to-dom/)** — Central portal with visual cards and quick starts.
+- 📝 **[Form Alignment Styles Gallery](https://keshavsoft.github.io/json-to-dom/samples/forms/)** — Focused label & input alignment patterns.
+- 💡 **[Component Samples Directory](https://keshavsoft.github.io/json-to-dom/samples/)** — Categorized samples for Forms, Cards, Data Tables, and State.
+- 🏗️ **[Architecture & Pipeline Guide](https://keshavsoft.github.io/json-to-dom/architecture-and-pipeline.html)** — Interactive execution diagrams and runtime flow.
+- 📋 **[JSON Specification Schema Guide](https://keshavsoft.github.io/json-to-dom/spec-schema-and-guide.html)** — Reference for `tagName`, `attributes`, `classList`, `properties`, and `events`.
+- ⚡ **[Live Engine Playground](https://keshavsoft.github.io/json-to-dom/demo.html)** — Real-world interactive rendering running live in the browser.
 
 ---
 
 ## 📜 License
 
 ISC © [KeshavSoft](https://github.com/keshavsoft)
-

@@ -34,7 +34,7 @@
                     <span class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-black text-sm shadow-sm">JD</span>
                     <span>json-to-dom</span>
                 </a>
-                <span class="text-xs bg-slate-100 text-slate-600 font-semibold px-2 py-0.5 rounded-full border border-slate-200">v7.0</span>
+                <span class="text-xs bg-slate-100 text-slate-600 font-semibold px-2 py-0.5 rounded-full border border-slate-200">v10.0</span>
             </div>
             <nav class="flex items-center space-x-5 text-sm font-medium">
                 <a href="tags/html/index.html" class="text-slate-600 hover:text-blue-600 transition">Tag Guides</a>
@@ -54,7 +54,7 @@
                 <span>•</span>
                 <span>Zero Dependencies</span>
                 <span>•</span>
-                <span>Native Speed</span>
+                <span>v10 Modular Engine</span>
             </div>
             <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
                 Writing HTML is Tough.<br>
@@ -76,6 +76,12 @@
                 <a href="demo.html" class="px-5 py-2.5 bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 text-sm font-semibold rounded-xl shadow-sm transition flex items-center gap-2">
                     <span>Try Live Compiler</span>
                 </a>
+            </div>
+
+            <!-- CLI Fast Scaffold Callout -->
+            <div class="mt-8 max-w-md mx-auto bg-slate-900 text-slate-100 text-xs font-mono py-2.5 px-4 rounded-xl shadow-md flex items-center justify-between border border-slate-800">
+                <span class="text-blue-400">npx json-to-dom [destination]</span>
+                <span class="text-slate-400 text-[11px]"># Copies v10 engine</span>
             </div>
         </div>
     </section>
@@ -191,7 +197,7 @@
                         <span class="text-amber-500 group-hover:translate-x-1 transition">&rarr;</span>
                     </h3>
                     <p class="text-xs text-slate-600 leading-relaxed">
-                        Test and compile specifications live in the browser. Watch <code>dist/v7/min.js</code> build living HTML nodes with instant preview and interactive event execution.
+                        Test and compile specifications live in the browser. Watch <code>src/v10/</code> build living HTML nodes with instant preview and interactive event execution.
                     </p>
                 </div>
                 <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-amber-600 flex items-center gap-1">
@@ -207,13 +213,13 @@
             <div class="flex items-center justify-between mb-4">
                 <div>
                     <span class="text-xs uppercase font-bold text-slate-400 tracking-wider">30-Second Integration</span>
-                    <h3 class="text-base font-bold text-white">How It Works in Your App</h3>
+                    <h3 class="text-base font-bold text-white">How It Works in Your App (v10)</h3>
                 </div>
-                <span class="text-xs text-emerald-400 font-mono">dist/v7/min.js</span>
+                <span class="text-xs text-emerald-400 font-mono">v10 Modular Engine</span>
             </div>
             <div class="bg-slate-950 p-4 rounded-xl font-mono text-xs overflow-x-auto text-slate-200 leading-relaxed border border-slate-800">
-<span class="text-slate-500">// 1. Import the zero-dependency compiler</span>
-<span class="text-blue-400">import</span> { buildSpecElement } <span class="text-blue-400">from</span> <span class="text-amber-300">"https://keshavsoft.github.io/json-to-dom/dist/v7/min.js"</span>;
+<span class="text-slate-500">// 1. Import the zero-dependency compiler (or copy via `npx json-to-dom`)</span>
+<span class="text-blue-400">import</span> { buildSpecElement, buildSpecElementWithEvents } <span class="text-blue-400">from</span> <span class="text-amber-300">"json-to-dom"</span>;
 
 <span class="text-slate-500">// 2. Declare your element specification</span>
 <span class="text-blue-400">const</span> spec = {
@@ -223,8 +229,8 @@
     events: { click: () => alert(<span class="text-emerald-400">"Saved!"</span>) }
 };
 
-<span class="text-slate-500">// 3. Compile instantly into a native browser DOM node</span>
-<span class="text-blue-400">const</span> domNode = buildSpecElement({ inSpec: spec });
+<span class="text-slate-500">// 3. Compile instantly into a native browser DOM node (events optional)</span>
+<span class="text-blue-400">const</span> domNode = buildSpecElementWithEvents({ inSpec: spec });
 document.getElementById(<span class="text-amber-300">"container"</span>).appendChild(domNode);
             </div>
         </div>
@@ -234,7 +240,7 @@ document.getElementById(<span class="text-amber-300">"container"</span>).appendC
     <footer class="bg-white border-t border-slate-200 py-6 mt-auto">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
             <div class="flex items-center space-x-2">
-                <span class="font-bold text-slate-700">json-to-dom v7</span>
+                <span class="font-bold text-slate-700">json-to-dom v10</span>
                 <span>&bull;</span>
                 <span>KeshavSoft Declarative UI Architecture</span>
             </div>

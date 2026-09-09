@@ -1,4 +1,6 @@
 import tags from "../../../docs/tags/tags.json" with { type: "json" };
+import isAttributeAllowed from "./isAttributeAllowed.js";
+import isEventAllowed from "./isEventAllowed.js";
 
 const ALLOWED_SPEC_KEYS = [
     "tagName",
@@ -17,6 +19,7 @@ export const validateSpec = ({ inSpec }) => {
     const warnings = [];
     const unknownKeys = [];
     const invalidAttributes = [];
+    const invalidEvents = [];
 
     if (!localSpec || typeof localSpec !== "object" || Array.isArray(localSpec)) {
         return {
@@ -25,11 +28,12 @@ export const validateSpec = ({ inSpec }) => {
             errors: ["Specification must be a non-null object"],
             warnings,
             unknownKeys,
-            invalidAttributes
+            invalidAttributes,
+            invalidEvents
         };
     }
 
-    // 1. Check for unknown top-level keys in the supplied article
+    // 1. Check for unknown top-level keys in the supplied spec
     Object.keys(localSpec).forEach((key) => {
         if (!ALLOWED_SPEC_KEYS.includes(key)) {
             unknownKeys.push(key);
@@ -47,7 +51,8 @@ export const validateSpec = ({ inSpec }) => {
             errors,
             warnings,
             unknownKeys,
-            invalidAttributes
+            invalidAttributes,
+            invalidEvents
         };
     }
 
@@ -60,7 +65,8 @@ export const validateSpec = ({ inSpec }) => {
             errors,
             warnings,
             unknownKeys,
-            invalidAttributes
+            invalidAttributes,
+            invalidEvents
         };
     }
 
@@ -78,9 +84,19 @@ export const validateSpec = ({ inSpec }) => {
     if (localSpec.attributes && typeof localSpec.attributes === "object") {
         const allowed = Array.isArray(tagDef.allowedAttributes) ? tagDef.allowedAttributes : [];
         Object.keys(localSpec.attributes).forEach((attrKey) => {
-            if (!allowed.includes(attrKey) && !["class", "id", "style"].includes(attrKey)) {
+            if (!isAttributeAllowed({ inAttributeName: attrKey, inAllowedAttributes: allowed })) {
                 invalidAttributes.push(attrKey);
                 errors.push(`Attribute "${attrKey}" is not allowed on <${localTagName}>`);
+            }
+        });
+    }
+
+    // 6. Validate events allowance
+    if (localSpec.events && typeof localSpec.events === "object") {
+        Object.keys(localSpec.events).forEach((eventName) => {
+            if (!isEventAllowed({ inTagName: localTagName, inEventName: eventName })) {
+                invalidEvents.push(eventName);
+                warnings.push(`Event "${eventName}" is not permitted on <${localTagName}>`);
             }
         });
     }
@@ -91,7 +107,8 @@ export const validateSpec = ({ inSpec }) => {
         errors,
         warnings,
         unknownKeys,
-        invalidAttributes
+        invalidAttributes,
+        invalidEvents
     };
 };
 
