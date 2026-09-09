@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How it works | json-to-dom</title>
+  <link rel="stylesheet" href="./site.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <span class="brand-mark">J</span>
+        <span>json-to-dom</span>
+      </div>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="./overview.html">Overview</a>
+        <a href="./why.html">Why</a>
+        <a class="active" href="./how-it-works.html">How it works</a>
+        <a href="./architecture.html">Architecture</a>
+        <a href="./tasks.html">Tasks</a>
+        <a href="./demo.html">Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container hero">
+    <section class="hero-card">
+      <div class="hero-header">
+        <span class="kicker">Execution flow</span>
+        <h1>How it works.</h1>
+        <p>
+          From a plain JSON specification to a live browser DOM element, <code>json-to-dom</code> executes a deterministic, 
+          multi-stage compilation pipeline.
+        </p>
+      </div>
+      <div class="hero-body">
+        <div class="grid">
+          <article class="card col-12">
+            <h2>The 6-Stage Compilation Flow</h2>
+            <div class="codebox">
+<pre><code>[ JSON Specification ]
+        │
+        ▼
+1. Normalize Input       ──► Normalizes arguments & event options (1.normalizeInput.js)
+        │
+        ▼
+2. Grammar Validation    ──► Checks tagDef & allowed attributes against W3C dictionary
+        │
+        ▼
+3. Recursive Traversal   ──► Compiles child specs depth-first (buildChildrenNodes.js)
+        │
+        ▼
+4. Element Builder (0-5) ──► 0.createElement ──► 1.applyText ──► 2.applyProps ──► 3.applyAttrs ──► 4.applyClass ──► 5.appendChildren
+        │
+        ▼
+5. Event Story (Stage 6) ──► Chapter 1: isEventAllowed ──► Chapter 2: internal hooks ──► Chapter 3: declared listeners
+        │
+        ▼
+[ Live DOM Node / Fragment ]</code></pre>
+            </div>
+          </article>
+
+          <article class="card col-6">
+            <h2>The 7-Step Element Builder</h2>
+            <p>Every element is constructed sequentially through dedicated step files in <code>src/v11/elementBuilder/</code>:</p>
+            <ul class="checks">
+              <li><code>0.createElement.js</code> — Native element creation.</li>
+              <li><code>1.applyTextContent.js</code> — Guarded by tag allowance.</li>
+              <li><code>2.applyProperties.js</code> — Native element properties.</li>
+              <li><code>3.applyAttributes.js</code> — Whitelisted HTML attributes.</li>
+              <li><code>4.applyClassList.js</code> — String and array class lists.</li>
+              <li><code>5.appendChildren.js</code> — Appends recursive children.</li>
+              <li><code>6.applyEvents.js</code> — Optional & configurable events.</li>
+            </ul>
+          </article>
+
+          <article class="card col-6">
+            <h2>Configuring & Stopping Events</h2>
+            <p>Event hooking is decoupled and completely opt-out:</p>
+            <ul class="checks">
+              <li><strong>Stop All Events</strong>: <code>buildSpecElement({ inSpec, inApplyEvents: false })</code></li>
+              <li><strong>Stop Internal Hooks Only</strong>: <code>inAttachInternal: false</code> or <code>inApplyEvents: { internal: false }</code></li>
+              <li><strong>Stop Declared Events Only</strong>: <code>inApplyEvents: { declared: false }</code></li>
+              <li><strong>Per-Element Stop</strong>: In spec: <code>{ "tagName": "button", "attachInternal": false }</code></li>
+              <li><strong>Live Inspection</strong>: <code>element.__ksEvents</code> records <code>{ internal: [...], declared: [...] }</code></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    json-to-dom • declarative zero-dependency DOM compiler
+  </footer>
+</body>
+</html>

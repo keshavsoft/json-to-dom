@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tasks | json-to-dom</title>
+  <link rel="stylesheet" href="./site.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <span class="brand-mark">J</span>
+        <span>json-to-dom</span>
+      </div>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="./overview.html">Overview</a>
+        <a href="./why.html">Why</a>
+        <a href="./how-it-works.html">How it works</a>
+        <a href="./architecture.html">Architecture</a>
+        <a class="active" href="./tasks.html">Tasks</a>
+        <a href="./demo.html">Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container hero">
+    <section class="hero-card">
+      <div class="hero-header">
+        <span class="kicker">Roadmap & guardrails</span>
+        <h1>Tasks & scope.</h1>
+        <p>
+          <code>json-to-dom</code> is intentionally narrow, fast, and zero-dependency. Priorities, follow-ups,
+          and guardrails guide its evolution.
+        </p>
+      </div>
+      <div class="hero-body">
+        <div class="grid">
+          <article class="card col-6">
+            <h2>Current priorities</h2>
+            <ul class="checks">
+              <li>Keep the core compiler zero-dependency and ultra-fast.</li>
+              <li>Keep documentation and live samples synchronized with the active v11 engine.</li>
+              <li>Maintain strict KeshavSoft <code>{ in... }</code> / <code>local...</code> parameter standards.</li>
+              <li>Ensure transparent runtime event inspection (<code>getHookedEvents</code>, <code>__ksEvents</code>).</li>
+            </ul>
+          </article>
+
+          <article class="card col-6">
+            <h2>Useful follow-ups</h2>
+            <ul class="checks">
+              <li>Expand tag definitions in <code>tags.json</code> for modern semantic elements (<code>dialog</code>, <code>details</code>).</li>
+              <li>Benchmark performance against raw imperative DOM construction.</li>
+              <li>Provide additional live gallery templates for nested cards and data grids.</li>
+              <li>Enhance CLI copy feedback and scaffolding presets.</li>
+            </ul>
+          </article>
+
+          <article class="card col-12">
+            <h2>Scope guardrails</h2>
+            <ul class="warns">
+              <li>Do not add external npm runtime dependencies.</li>
+              <li>Do not introduce a heavy Virtual DOM reconciliation engine.</li>
+              <li>Do not turn the repo into an all-in-one application or routing platform.</li>
+              <li>Preserve the strict serializable boundary: JSON in, DOM out.</li>
+            </ul>
+            <p class="section-gap">
+              <strong>Project intent:</strong> <code>json-to-dom</code> remains a pure, reliable, zero-dependency compiler for declarative DOM generation.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    json-to-dom • declarative zero-dependency DOM compiler
+  </footer>
+</body>
+</html>
