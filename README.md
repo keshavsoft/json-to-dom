@@ -8,12 +8,13 @@ A declarative, zero-dependency JSON-to-DOM compiler for turning serializable spe
 - Why this repo exists: [docs/why.html](docs/why.html)
 - How it works: [docs/how-it-works.html](docs/how-it-works.html)
 - Architecture: [docs/architecture.html](docs/architecture.html)
+- Version strategy: [docs/versions.html](docs/versions.html)
 - Tasks / todo: [docs/tasks.html](docs/tasks.html)
 
 ## Quick start
 
 ```bash
-# Instant scaffolding via zero-dependency CLI (copies latest v11 engine)
+# Instant scaffolding via zero-dependency CLI (always copies src's highest version)
 npx json-to-dom
 
 # Or run tests and explore locally
@@ -30,7 +31,10 @@ Then open the local demo or visit:
 ## Minimal usage
 
 ```javascript
-import { buildSpecElement } from "./src/v11/index.js";
+// Import from package root proxy (automatically loads src's highest version)
+import { buildSpecElement } from "json-to-dom";
+// Or when scaffolded locally via npx json-to-dom:
+// import { buildSpecElement } from "./json-to-dom/index.js";
 
 // 1. Define a declarative UI specification
 const cardSpec = {
