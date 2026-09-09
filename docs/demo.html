@@ -26,14 +26,15 @@
                     <span class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-black text-sm">JD</span>
                     <span>json-to-dom</span>
                 </a>
-                <span class="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2 py-0.5 rounded-full border border-emerald-200">v7 Compiler</span>
+                <span class="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2 py-0.5 rounded-full border border-emerald-200">Live Compiler</span>
             </div>
             <nav class="flex items-center space-x-4 text-sm font-medium">
                 <a href="index.html" class="text-slate-600 hover:text-slate-900 transition">Docs Hub</a>
-                <a href="tags/html/index.html" class="text-slate-600 hover:text-slate-900 transition">Tag Guides</a>
-                <a href="architecture-and-pipeline.html" class="text-slate-600 hover:text-slate-900 transition">Architecture</a>
-                <a href="spec-schema-and-guide.html" class="text-slate-600 hover:text-slate-900 transition">Spec Schema</a>
-                <a href="demo.html" class="px-3 py-1.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 shadow-sm transition">Live Playground</a>
+                <a href="pages/overview.html" class="text-slate-600 hover:text-slate-900 transition">Overview</a>
+                <a href="pages/architecture.html" class="text-slate-600 hover:text-slate-900 transition">Architecture</a>
+                <a href="pages/how-it-works.html" class="text-slate-600 hover:text-slate-900 transition">Spec Schema</a>
+                <a href="samples/index.html" class="text-slate-600 hover:text-slate-900 transition">Samples</a>
+                <a href="demo.html" class="px-3 py-1.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 shadow-sm transition">Playground</a>
             </nav>
         </div>
     </header>
@@ -99,15 +100,15 @@
     </main>
 
     <footer class="mt-auto bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
-        json-to-dom v7 &bull; KeshavSoft &bull; ISC License
+        json-to-dom &bull; KeshavSoft &bull; ISC License
     </footer>
 
-    <!-- Engine Standalone Bundle v7 -->
-    <script type="module" src="./dist/v7/min.js"></script>
+    <!-- Engine Standalone Bundle (Latest) -->
+    <script type="module" src="./dist/min.js"></script>
 
     <!-- Playground Controller -->
     <script type="module">
-        import { buildSpecElement } from "./dist/v7/min.js";
+        import { buildSpecElement } from "./dist/min.js";
 
         const PRESETS = {
             form: {

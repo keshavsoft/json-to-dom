@@ -4,12 +4,12 @@ A declarative, zero-dependency JSON-to-DOM compiler for turning serializable spe
 
 ## Start here
 
-- Overview: [docs/overview.html](docs/overview.html)
-- Why this repo exists: [docs/why.html](docs/why.html)
-- How it works: [docs/how-it-works.html](docs/how-it-works.html)
-- Architecture: [docs/architecture.html](docs/architecture.html)
-- Version strategy: [docs/versions.html](docs/versions.html)
-- Tasks / todo: [docs/tasks.html](docs/tasks.html)
+- Overview: [docs/pages/overview.html](docs/pages/overview.html)
+- Why this repo exists: [docs/pages/why.html](docs/pages/why.html)
+- How it works: [docs/pages/how-it-works.html](docs/pages/how-it-works.html)
+- Architecture: [docs/pages/architecture.html](docs/pages/architecture.html)
+- Version strategy: [docs/pages/versions.html](docs/pages/versions.html)
+- Tasks / todo: [docs/pages/tasks.html](docs/pages/tasks.html)
 
 ## Quick start
 
