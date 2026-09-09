@@ -46,7 +46,7 @@ describe("v10 Modular Engine & Event Story Suite", () => {
             assert.equal(version, "v10.0");
         });
 
-        test("builds pure DOM node without events by default", () => {
+        test("builds pure DOM node without events when inApplyEvents is false", () => {
             let listenerCount = 0;
             const originalCreateElement = globalThis.document.createElement;
 
@@ -66,15 +66,15 @@ describe("v10 Modular Engine & Event Story Suite", () => {
                 }
             };
 
-            const element = buildSpecElement({ inSpec: spec });
+            const element = buildSpecElement({ inSpec: spec, inApplyEvents: false });
             assert.ok(element);
-            // By default inApplyEvents is false, so listenerCount should be 0
+            // When inApplyEvents is false, listenerCount should be 0
             assert.equal(listenerCount, 0);
 
             globalThis.document.createElement = originalCreateElement;
         });
 
-        test("builds DOM node with events when inApplyEvents is true", () => {
+        test("builds DOM node with events by default", () => {
             let registeredEvents = [];
             const originalCreateElement = globalThis.document.createElement;
 
@@ -94,9 +94,9 @@ describe("v10 Modular Engine & Event Story Suite", () => {
                 }
             };
 
-            buildSpecElement({ inSpec: spec, inApplyEvents: true });
+            buildSpecElement({ inSpec: spec });
 
-            // Should have registered internal button click + declared click
+            // Should have registered internal button click + declared click by default
             assert.ok(registeredEvents.includes("click"));
             assert.equal(registeredEvents.length, 2);
 

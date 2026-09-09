@@ -3,7 +3,7 @@
   "version": "1.2.1",
   "description": "Zero-dependency Custom HTML Web Components and Tailwind CSS tokens for high-performance forms and tables.",
   "main": "index.js",
-  "module": "./src/v10/index.js",
+  "module": "./src/v11/index.js",
   "bin": {
     "json-to-dom": "bin/cli.js"
   },
@@ -20,7 +20,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "test": "node --test test/unit.test.js test/v9.unit.test.js test/v10.unit.test.js",
+    "test": "node --test test/unit.test.js test/v9.unit.test.js test/v10.unit.test.js test/v11.unit.test.js",
     "build": "vite build"
   },
   "repository": {

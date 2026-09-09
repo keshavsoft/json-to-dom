@@ -10,7 +10,7 @@ export const buildSingleElement = ({ inSpec, inApplyEvents = true, inShowLog = f
 
     if (!localSpec?.tagName || !isTagValid({ inTagName: localSpec.tagName })) {
         if (localShowLog) {
-            console.warn(`[json-to-dom v10] Not a valid element: "${localSpec?.tagName}"`, localSpec);
+            console.warn(`[json-to-dom v11] Not a valid element: "${localSpec?.tagName}"`, localSpec);
         }
         return null;
     }

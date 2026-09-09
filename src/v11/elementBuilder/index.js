@@ -4,7 +4,7 @@ import applyProperties from "./2.applyProperties.js";
 import applyAttributes from "./3.applyAttributes.js";
 import applyClassList from "./4.applyClassList.js";
 import appendChildren from "./5.appendChildren.js";
-import { applyEvents as defaultApplyEvents } from "../events/index.js";
+import applyEvents from "./6.applyEvents.js";
 
 const domElementBuilder = ({ inSpec, inTagDef, inClassList, inApplyEvents = true, inShowLog = false }) => {
     const localSpec = inSpec;
@@ -58,19 +58,13 @@ const domElementBuilder = ({ inSpec, inTagDef, inClassList, inApplyEvents = true
         inShowLog: localShowLog
     });
 
-    // Optional Event Binding: Decoupled & Pluggable
-    if (localApplyEvents) {
-        const eventHandler = typeof localApplyEvents === "function"
-            ? localApplyEvents
-            : defaultApplyEvents;
-
-        eventHandler({
-            inElement: element,
-            inEvents: localSpec.events,
-            inTagName: localSpec.tagName,
-            inShowLog: localShowLog
-        });
-    }
+    // 6. Apply Events (Optional & Configurable Event Hooking)
+    applyEvents({
+        inElement: element,
+        inSpec: localSpec,
+        inApplyEvents: localApplyEvents,
+        inShowLog: localShowLog
+    });
 
     return element;
 };

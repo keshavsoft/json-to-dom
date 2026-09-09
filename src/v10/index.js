@@ -22,13 +22,13 @@ const version = "v10.0";
  */
 export const buildSpecElement = (inArgs) => {
     let localSpec = inArgs;
-    let localApplyEvents = false;
+    let localApplyEvents = true;
     let localShowLog = false;
 
     if (inArgs && typeof inArgs === "object" && !Array.isArray(inArgs) && !(typeof Node !== "undefined" && inArgs instanceof Node)) {
         if ("inSpec" in inArgs) {
             localSpec = inArgs.inSpec;
-            localApplyEvents = Boolean(inArgs.inApplyEvents);
+            localApplyEvents = inArgs.inApplyEvents !== false;
             localShowLog = Boolean(inArgs.inShowLog);
         }
     }

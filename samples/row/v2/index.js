@@ -10,7 +10,7 @@ const startFunc = () => {
 
     if (saveButton) {
         saveButton.addEventListener("click", (event) => {
-            console.log("[Outside listener] event.output:", event.output);
+            console.log("[Outside listener] event.output is:", event.output);
             alert(`Outside received from button click:\nName: ${event.output?.name}\nValue: ${event.output?.value}`);
         });
     }
