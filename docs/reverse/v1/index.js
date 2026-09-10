@@ -1,4 +1,4 @@
-import { buildSpecElement } from "../../index.js";
+import { buildSpecElement } from "../../dist/v14/min.js";
 
 const fileInput = document.getElementById("json-file-input");
 const buildButton = document.getElementById("build-dom-btn");
