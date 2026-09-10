@@ -7,6 +7,7 @@ import applyEvents, { getHookedEvents } from "./events/index.js";
 import validate from "./validate/index.js";
 import data from "./data/index.js";
 import blues from "./blues.js";
+import reverse, { domToSpec, getStartSpec } from "./reverse/index.js";
 
 /**
  * Core Declarative DOM Builder (v12)
@@ -53,15 +54,16 @@ const buildSpecElementWithEvents = ({ inSpec, inShowLog = false } = {}) => {
 export const tree = {
     meta,
     core: { buildSpecElement, buildSpecElementWithEvents, specToDom },
+    reverse,
     events: { applyEvents, getHookedEvents },
     validate,
     data
 };
 
-export { blues };
+export { blues, domToSpec, getStartSpec };
 
 // ── Step 3: Register API to global environment ─────────────────
 
-registerGlobal({ inApi: { ...tree, buildSpecElement, specToDom } });
+registerGlobal({ inApi: { ...tree, buildSpecElement, specToDom, domToSpec, getStartSpec } });
 
 export default buildSpecElement;

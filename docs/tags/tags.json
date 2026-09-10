@@ -42,6 +42,46 @@
         ],
         "childTags": []
     },
+    "form": {
+        "allowsTextContent": false,
+        "allowsChildren": true,
+        "allowedAttributes": [
+            "action",
+            "method",
+            "autocomplete",
+            "enctype",
+            "name",
+            "novalidate",
+            "target"
+        ],
+        "childTags": []
+    },
+    "select": {
+        "allowsTextContent": false,
+        "allowsChildren": true,
+        "allowedAttributes": [
+            "name",
+            "disabled",
+            "required",
+            "multiple",
+            "size"
+        ],
+        "childTags": [
+            "option"
+        ]
+    },
+    "p": {
+        "allowsTextContent": true,
+        "allowsChildren": true,
+        "allowedAttributes": [],
+        "childTags": []
+    },
+    "h2": {
+        "allowsTextContent": true,
+        "allowsChildren": true,
+        "allowedAttributes": [],
+        "childTags": []
+    },
     "button": {
         "allowsTextContent": true,
         "allowsChildren": true,
