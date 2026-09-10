@@ -25,7 +25,8 @@
                     </div>
 
                     <button id="build-dom-btn" type="button"
-                        class="rounded-lg border border-blue-600 bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 disabled:cursor-not-allowed disabled:border-slate-300 disabled:bg-slate-300"></button>
+                        class="rounded-lg border border-blue-600 bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 disabled:cursor-not-allowed disabled:border-slate-300 disabled:bg-slate-300"
+                        disabled>
                         Build DOM
                     </button>
                 </div>
@@ -150,6 +151,11 @@
                 : "text-sm text-slate-500";
         };
 
+        const setBuildEnabled = ({ inEnabled } = {}) => {
+            if (!buildButton) return;
+            buildButton.disabled = !inEnabled;
+        };
+
         const clearPreview = () => {
             if (domPreview) {
                 domPreview.innerHTML = "";
@@ -233,6 +239,7 @@
             const selectedFile = fileInput?.files?.[0];
 
             if (!selectedFile) {
+                setBuildEnabled({ inEnabled: Boolean(jsonEditor?.value?.trim()) });
                 setStatus({ inText: "No file selected." });
                 return;
             }
@@ -242,8 +249,10 @@
                 if (jsonEditor) {
                     jsonEditor.value = fileText;
                 }
+                setBuildEnabled({ inEnabled: true });
                 setStatus({ inText: `Loaded ${selectedFile.name}. Click Build DOM to render it.` });
             } catch (error) {
+                setBuildEnabled({ inEnabled: false });
                 setStatus({ inText: `Could not read file: ${error.message}`, inIsError: true });
             }
         };
@@ -252,6 +261,7 @@
             if (jsonEditor) {
                 jsonEditor.value = JSON.stringify(sampleSpec, null, 2);
             }
+            setBuildEnabled({ inEnabled: true });
             setStatus({ inText: "Sample JSON loaded. Click Build DOM to render it." });
         };
 
@@ -262,6 +272,7 @@
             if (fileInput) {
                 fileInput.value = "";
             }
+            setBuildEnabled({ inEnabled: false });
             setStatus({ inText: "JSON cleared." });
         };
 
@@ -273,6 +284,11 @@
             clearPreview();
             setStatus({ inText: "DOM preview cleared." });
         });
+        jsonEditor?.addEventListener("input", () => {
+            setBuildEnabled({ inEnabled: Boolean(jsonEditor.value.trim()) });
+        });
+
+        setBuildEnabled({ inEnabled: false });
     </script>
 </body>
 
