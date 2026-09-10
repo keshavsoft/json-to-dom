@@ -29,11 +29,12 @@ const buildSpecElement = (inArgs) => {
     return dispatchSpec({ inSpec: spec, inApplyEvents: localApplyEvents, inShowLog: showLog });
 };
 
-const buildSpecElementWithEvents = ({ inSpec, inShowLog = false } = {}) => {
-    return buildSpecElement({ inSpec, inApplyEvents: true, inShowLog });
-};
+const specToDom = ({
+    spec, domIdToPushTo,
+    showLog = false
+}) => {
+    const domSpecAsJson = dispatchSpec({ inSpec: spec, inShowLog: showLog });
 
-const appendToDom = ({ domSpecAsJson, domIdToPushTo }) => {
     const container = document.getElementById(domIdToPushTo);
     const domElement = buildSpecElement({ inSpec: domSpecAsJson });
 
@@ -44,11 +45,14 @@ const appendToDom = ({ domSpecAsJson, domIdToPushTo }) => {
     };
 };
 
+const buildSpecElementWithEvents = ({ inSpec, inShowLog = false } = {}) => {
+    return buildSpecElement({ inSpec, inApplyEvents: true, inShowLog });
+};
 // ── tree  (assembled from folders) ─────────────────────────────
 
 export const tree = {
     meta,
-    core: { buildSpecElement, buildSpecElementWithEvents, appendToDom },
+    core: { buildSpecElement, buildSpecElementWithEvents, specToDom },
     events: { applyEvents, getHookedEvents },
     validate,
     data
@@ -58,6 +62,6 @@ export { blues };
 
 // ── Step 3: Register API to global environment ─────────────────
 
-registerGlobal({ inApi: { ...tree, buildSpecElement, appendToDom } });
+registerGlobal({ inApi: { ...tree, buildSpecElement, specToDom } });
 
 export default buildSpecElement;

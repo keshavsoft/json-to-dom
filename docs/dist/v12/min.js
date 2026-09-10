@@ -518,19 +518,22 @@ var e = ({ inArgs: e } = {}) => {
 		inApplyEvents: r,
 		inShowLog: i
 	});
-}, H = ({ inSpec: e, inShowLog: t = !1 } = {}) => V({
-	inSpec: e,
-	inApplyEvents: !0,
-	inShowLog: t
-}), U = ({ domSpecAsJson: e, domIdToPushTo: t }) => {
-	let n = document.getElementById(t), r = V({ inSpec: e });
-	Array.isArray(r) ? n.append(...r) : r && n.appendChild(r);
-}, W = {
+}, H = ({ spec: e, domIdToPushTo: t, showLog: n = !1 }) => {
+	let r = M({
+		inSpec: e,
+		inShowLog: n
+	}), i = document.getElementById(t), a = V({ inSpec: r });
+	Array.isArray(a) ? i.append(...a) : a && i.appendChild(a);
+}, U = {
 	meta: P,
 	core: {
 		buildSpecElement: V,
-		buildSpecElementWithEvents: H,
-		appendToDom: U
+		buildSpecElementWithEvents: ({ inSpec: e, inShowLog: t = !1 } = {}) => V({
+			inSpec: e,
+			inApplyEvents: !0,
+			inShowLog: t
+		}),
+		specToDom: H
 	},
 	events: {
 		applyEvents: w,
@@ -540,9 +543,9 @@ var e = ({ inArgs: e } = {}) => {
 	data: z
 };
 N({ inApi: {
-	...W,
+	...U,
 	buildSpecElement: V,
-	appendToDom: U
+	specToDom: H
 } });
 //#endregion
-export { B as blues, V as default, W as tree };
+export { B as blues, V as default, U as tree };
