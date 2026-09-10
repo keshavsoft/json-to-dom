@@ -44,6 +44,13 @@ const sampleSpec = {
                 },
                 {
                     tagName: "div",
+                    textContent: "Bootstrap 5 classes in the JSON spec drive this preview.",
+                    attributes: {
+                        class: "alert alert-info py-2"
+                    }
+                },
+                {
+                    tagName: "div",
                     attributes: {
                         class: "mb-3"
                     },
@@ -101,8 +108,8 @@ const setStatus = ({ inText, inIsError = false } = {}) => {
 
     statusMessage.textContent = inText || "";
     statusMessage.className = inIsError
-        ? "small mb-0 mt-3 text-danger"
-        : "small mb-0 mt-3 text-body-secondary";
+        ? "alert alert-danger mb-0 mt-3"
+        : "alert alert-secondary mb-0 mt-3";
 };
 
 const setBuildEnabled = ({ inEnabled } = {}) => {
