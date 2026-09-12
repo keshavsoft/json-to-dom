@@ -20,7 +20,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "test": "node --test test/unit.test.js test/v9.unit.test.js test/v10.unit.test.js test/v11.unit.test.js",
+    "test": "node --test test/unit.test.js test/v9.unit.test.js test/v10.unit.test.js test/v11.unit.test.js test/v15.unit.test.js",
     "build": "vite build"
   },
   "repository": {
