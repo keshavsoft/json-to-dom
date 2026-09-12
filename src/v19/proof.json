@@ -1,0 +1,124 @@
+[
+    {
+        "tagName": "div",
+        "attributes": {
+            "class": "row align-items-center g-2"
+        },
+        "children": [
+            {
+                "tagName": "div",
+                "attributes": {
+                    "class": "row align-items-center g-2"
+                },
+                "children": [
+                    {
+                        "tagName": "label",
+                        "textContent": "Ledger Name",
+                        "attributes": {
+                            "class": "col-sm-4 col-form-label text-sm-end mb-0 fw-semibold text-secondary small"
+                        }
+                    },
+                    {
+                        "tagName": "div",
+                        "attributes": {
+                            "class": "col-sm-8"
+                        },
+                        "children": [
+                            {
+                                "tagName": "input",
+                                "attributes": {
+                                    "type": "string",
+                                    "name": "LedgerName",
+                                    "placeholder": "Enter Ledger Name...",
+                                    "class": "form-control",
+                                    "list": "LedgerName-datalist"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "tagName": "div",
+        "attributes": {
+            "class": "row align-items-center g-2"
+        },
+        "children": [
+            {
+                "tagName": "div",
+                "attributes": {
+                    "class": "row align-items-center g-2"
+                },
+                "children": [
+                    {
+                        "tagName": "label",
+                        "textContent": "Invoice Number",
+                        "attributes": {
+                            "class": "col-sm-4 col-form-label text-sm-end mb-0 fw-semibold text-secondary small"
+                        }
+                    },
+                    {
+                        "tagName": "div",
+                        "attributes": {
+                            "class": "col-sm-8"
+                        },
+                        "children": [
+                            {
+                                "tagName": "input",
+                                "attributes": {
+                                    "type": "number",
+                                    "name": "InvoiceNo",
+                                    "placeholder": "Enter Invoice Number...",
+                                    "class": "form-control"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "tagName": "div",
+        "attributes": {
+            "class": "row align-items-center g-2"
+        },
+        "children": [
+            {
+                "tagName": "div",
+                "attributes": {
+                    "class": "row align-items-center g-2"
+                },
+                "children": [
+                    {
+                        "tagName": "label",
+                        "textContent": "Invoice Date",
+                        "attributes": {
+                            "class": "col-sm-4 col-form-label text-sm-end mb-0 fw-semibold text-secondary small"
+                        }
+                    },
+                    {
+                        "tagName": "div",
+                        "attributes": {
+                            "class": "col-sm-8"
+                        },
+                        "children": [
+                            {
+                                "tagName": "input",
+                                "attributes": {
+                                    "type": "date",
+                                    "name": "InvoiceDate",
+                                    "placeholder": "Enter Invoice Date...",
+                                    "class": "form-control",
+                                    "list": "InvoiceDate-datalist"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
