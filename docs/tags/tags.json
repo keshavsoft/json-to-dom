@@ -76,11 +76,34 @@
         "allowedAttributes": [],
         "childTags": []
     },
+    "h1": {
+        "allowsTextContent": true,
+        "allowsChildren": true,
+        "allowedAttributes": [],
+        "childTags": []
+    },
     "h2": {
         "allowsTextContent": true,
         "allowsChildren": true,
         "allowedAttributes": [],
         "childTags": []
+    },
+    "span": {
+        "allowsTextContent": true,
+        "allowsChildren": true,
+        "allowedAttributes": [],
+        "childTags": []
+    },
+    "img": {
+        "allowsTextContent": false,
+        "allowsChildren": false,
+        "allowedAttributes": [
+            "src",
+            "alt",
+            "width",
+            "height",
+            "loading"
+        ]
     },
     "button": {
         "allowsTextContent": true,

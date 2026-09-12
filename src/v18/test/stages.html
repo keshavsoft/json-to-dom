@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON-to-DOM v17 | Pipeline Stages Explorer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        pre, code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            tab-size: 2;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen antialiased flex flex-col font-sans selection:bg-indigo-500 selection:text-white">
+
+    <!-- Header -->
+    <header class="border-b border-slate-800/80 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center font-bold text-white shadow-lg shadow-indigo-500/20 text-lg">
+                    17
+                </div>
+                <div>
+                    <h1 class="text-base font-semibold text-white tracking-tight flex items-center gap-2">
+                        JSON-to-DOM <span class="px-2 py-0.5 text-xs bg-indigo-500/20 text-indigo-300 rounded border border-indigo-500/30 font-mono">v17 Pipeline Stages</span>
+                    </h1>
+                    <p class="text-xs text-slate-400">Architecture Stages: Structure &rarr; Instructions &rarr; Template &rarr; Data &rarr; Spec &rarr; Live DOM (v14)</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <span id="status-badge" class="px-3 py-1 text-xs font-mono rounded-full bg-slate-800 text-slate-400 border border-slate-700">
+                    Loading stages...
+                </span>
+                <button id="btn-render-all" class="px-4 py-1.5 text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg shadow-md shadow-indigo-600/30 transition flex items-center gap-1.5">
+                    <span>⚡</span> Compile & Render Stages
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 space-y-8">
+
+        <!-- Pipeline Overview Navigation Bar -->
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-3 p-4 rounded-xl bg-slate-900/60 border border-slate-800 text-xs">
+            <div class="flex items-center gap-2 p-2 rounded-lg bg-blue-500/10 border border-blue-500/20">
+                <span class="w-5 h-5 rounded-full bg-blue-500 text-white flex items-center justify-center text-[10px] font-bold">1</span>
+                <div>
+                    <strong class="text-blue-300 block">Structure</strong>
+                    <span class="text-[10px] text-slate-400">structure.json</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 p-2 rounded-lg bg-purple-500/10 border border-purple-500/20">
+                <span class="w-5 h-5 rounded-full bg-purple-500 text-white flex items-center justify-center text-[10px] font-bold">2</span>
+                <div>
+                    <strong class="text-purple-300 block">Instructions</strong>
+                    <span class="text-[10px] text-slate-400">instructions.json</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
+                <span class="w-5 h-5 rounded-full bg-emerald-500 text-white flex items-center justify-center text-[10px] font-bold">3</span>
+                <div>
+                    <strong class="text-emerald-300 block">Data</strong>
+                    <span class="text-[10px] text-slate-400">data_yours.json</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 p-2 rounded-lg bg-cyan-500/10 border border-cyan-500/20">
+                <span class="w-5 h-5 rounded-full bg-cyan-500 text-white flex items-center justify-center text-[10px] font-bold">4</span>
+                <div>
+                    <strong class="text-cyan-300 block">Template</strong>
+                    <span class="text-[10px] text-slate-400">template.json</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 p-2 rounded-lg bg-amber-500/10 border border-amber-500/20 col-span-2 md:col-span-1">
+                <span class="w-5 h-5 rounded-full bg-amber-500 text-white flex items-center justify-center text-[10px] font-bold">5</span>
+                <div>
+                    <strong class="text-amber-300 block">Spec / Result</strong>
+                    <span class="text-[10px] text-slate-400">spec.json &rarr; DOM</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- STAGES GRID -->
+        <div class="space-y-6">
+
+            <!-- Section 1: Inputs Row (Structure, Instructions, Data) -->
+            <div>
+                <h2 class="text-sm font-semibold text-slate-300 mb-3 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-indigo-400"></span> Source Declarations & Business Data
+                </h2>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                    
+                    <!-- Block 1: structure.json -->
+                    <div class="flex flex-col bg-slate-900/70 rounded-xl border border-slate-800 overflow-hidden shadow-lg">
+                        <div class="px-4 py-2.5 bg-slate-900 border-b border-slate-800 flex items-center justify-between">
+                            <span class="text-xs font-semibold text-blue-300 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-blue-400"></span> 1. structure.json
+                            </span>
+                            <span class="text-[10px] text-slate-500 font-mono">Wireframe Layout</span>
+                        </div>
+                        <div class="p-3 bg-slate-950/70 overflow-auto max-h-[320px]">
+                            <pre id="code-structure" class="text-[11px] text-slate-300 font-mono leading-relaxed"></pre>
+                        </div>
+                    </div>
+
+                    <!-- Block 2: instructions.json -->
+                    <div class="flex flex-col bg-slate-900/70 rounded-xl border border-slate-800 overflow-hidden shadow-lg">
+                        <div class="px-4 py-2.5 bg-slate-900 border-b border-slate-800 flex items-center justify-between">
+                            <span class="text-xs font-semibold text-purple-300 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-purple-400"></span> 2. instructions.json
+                            </span>
+                            <span class="text-[10px] text-slate-500 font-mono">Rules & Bindings</span>
+                        </div>
+                        <div class="p-3 bg-slate-950/70 overflow-auto max-h-[320px]">
+                            <pre id="code-instructions" class="text-[11px] text-purple-300 font-mono leading-relaxed"></pre>
+                        </div>
+                    </div>
+
+                    <!-- Block 3: data_yours.json -->
+                    <div class="flex flex-col bg-slate-900/70 rounded-xl border border-slate-800 overflow-hidden shadow-lg">
+                        <div class="px-4 py-2.5 bg-slate-900 border-b border-slate-800 flex items-center justify-between">
+                            <span class="text-xs font-semibold text-emerald-300 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400"></span> 3. data_yours.json
+                            </span>
+                            <span class="text-[10px] text-slate-500 font-mono">Raw Business Payload</span>
+                        </div>
+                        <div class="p-3 bg-slate-950/70 overflow-auto max-h-[320px]">
+                            <pre id="code-data" class="text-[11px] text-emerald-300 font-mono leading-relaxed"></pre>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Section 2: Unified Template Row -->
+            <div>
+                <h2 class="text-sm font-semibold text-slate-300 mb-3 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400"></span> Unified Declarative Template
+                </h2>
+                <div class="flex flex-col bg-slate-900/70 rounded-xl border border-slate-800 overflow-hidden shadow-lg">
+                    <div class="px-4 py-2.5 bg-slate-900 border-b border-slate-800 flex items-center justify-between">
+                        <span class="text-xs font-semibold text-cyan-300 flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-cyan-400"></span> 4. template.json
+                        </span>
+                        <span class="text-[10px] text-slate-500 font-mono">Clean Spec-Mirror with ${...} and $for:"members"</span>
+                    </div>
+                    <div class="p-4 bg-slate-950/70 overflow-auto max-h-[280px]">
+                        <pre id="code-template" class="text-[11px] text-cyan-300 font-mono leading-relaxed"></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: Spec & Live Rendered DOM Row -->
+            <div>
+                <h2 class="text-sm font-semibold text-slate-300 mb-3 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-amber-400"></span> Resolved Specification & Live DOM Render
+                </h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+                    <!-- Block 5: spec.json -->
+                    <div class="flex flex-col bg-slate-900/80 rounded-xl border border-slate-800 overflow-hidden shadow-xl">
+                        <div class="px-4 py-2.5 bg-slate-900 border-b border-slate-800 flex items-center justify-between">
+                            <span class="text-xs font-semibold text-amber-300 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-amber-400"></span> 5. spec.json (That Last JSON)
+                            </span>
+                            <span class="text-[10px] text-slate-500 font-mono">Final Spec for DOM Builder</span>
+                        </div>
+                        <div class="p-4 bg-slate-950/80 overflow-auto max-h-[460px]">
+                            <pre id="code-spec" class="text-[11px] text-amber-200 font-mono leading-relaxed"></pre>
+                        </div>
+                    </div>
+
+                    <!-- Block 6: Live Rendered DOM -->
+                    <div class="flex flex-col bg-slate-900/80 rounded-xl border border-slate-800 overflow-hidden shadow-xl">
+                        <div class="px-4 py-2.5 bg-slate-900 border-b border-slate-800 flex items-center justify-between">
+                            <span class="text-xs font-semibold text-emerald-400 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> 6. Live Rendered DOM (via v14 Engine)
+                            </span>
+                            <span class="text-[10px] text-slate-500 font-mono">v14 tags.json Validated</span>
+                        </div>
+                        <div class="p-6 bg-slate-950/50 min-h-[460px] max-h-[460px] overflow-auto flex items-start justify-center">
+                            <div id="rendered-dom-target" class="w-full"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-900 bg-slate-950 py-4 text-center text-xs text-slate-600">
+        json-to-dom v17 &bull; Architecture Pipeline &bull; structure &bull; instructions &bull; template &bull; data &bull; spec &bull; DOM
+    </footer>
+
+    <script type="module" src="./stages.js?t=17001"></script>
+</body>
+</html>
