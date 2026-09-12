@@ -1,0 +1,26 @@
+{
+  "inlineInputRow": {
+    "tagName": "div",
+    "attributes": {
+      "class": "d-flex align-items-center gap-2 mb-3"
+    },
+    "children": [
+      {
+        "tagName": "label",
+        "textContent": "User Name",
+        "attributes": {
+          "class": "form-label mb-0 fw-semibold text-secondary"
+        }
+      },
+      {
+        "tagName": "input",
+        "attributes": {
+          "type": "text",
+          "name": "userName",
+          "placeholder": "Enter username...",
+          "class": "form-control"
+        }
+      }
+    ]
+  }
+}
