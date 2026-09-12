@@ -1,0 +1,111 @@
+[
+    {
+        "columnName": "Category",
+        "title": "Category",
+        "field": "Category",
+        "cellConfig": {
+            "width": "200px"
+        },
+        "dataListSource": "",
+        "tableFooterDataListShow": false,
+        "uiClasses": {
+            "form": {
+                "rowClass": "flex items-center space-x-4"
+            }
+        },
+        "isVisible": true,
+        "allowOnChange": false,
+        "onChangeType": "",
+        "isConsider": true,
+        "tableConfig": {
+            "footerConfig": {
+                "enterAsTab": true,
+                "isNotEmpty": true
+            }
+        }
+    },
+    {
+        "columnName": "ItemName",
+        "title": "Item Name",
+        "field": "ItemName",
+        "cellConfig": {
+            "width": "200px"
+        },
+        "dataListSource": "",
+        "tableFooterDataListShow": false,
+        "uiClasses": {
+            "form": {
+                "rowClass": "flex items-center space-x-4"
+            }
+        },
+        "isVisible": true,
+        "allowOnChange": false,
+        "onChangeType": "",
+        "isConsider": true,
+        "tableConfig": {
+            "footerConfig": {
+                "enterAsTab": true,
+                "isNotEmpty": true
+            }
+        }
+    },
+    {
+        "columnName": "Service",
+        "title": "Service",
+        "field": "Service",
+        "cellConfig": {
+            "width": "200px"
+        },
+        "dataListSource": "",
+        "tableFooterDataListShow": false,
+        "uiClasses": {
+            "form": {
+                "rowClass": "flex items-center space-x-4"
+            }
+        },
+        "isVisible": true,
+        "allowOnChange": false,
+        "onChangeType": "",
+        "isConsider": true,
+        "tableConfig": {
+            "footerConfig": {
+                "enterAsTab": true,
+                "isNotEmpty": true
+            }
+        }
+    },
+    {
+        "columnName": "Rate",
+        "title": "Rate",
+        "field": "Rate",
+        "cellConfig": {
+            "width": "200px"
+        },
+        "dataListSource": "",
+        "tableFooterDataListShow": false,
+        "uiClasses": {
+            "form": {
+                "rowClass": "flex items-center space-x-4"
+            }
+        },
+        "isVisible": true,
+        "allowOnChange": false,
+        "onChangeType": "",
+        "isConsider": true,
+        "tableConfig": {
+            "footerConfig": {
+                "enterAsTab": true,
+                "isNotEmpty": true
+            }
+        }
+    },
+    {
+        "field": "pk",
+        "title": "pk",
+        "primary": true,
+        "isVisible": false,
+        "cellConfig": {
+            "width": "50px"
+        }
+    }
+]
