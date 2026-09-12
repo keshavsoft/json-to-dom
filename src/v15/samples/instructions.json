@@ -1,0 +1,75 @@
+{
+  "bindHeader": {
+    "type": "bind",
+    "bindings": {
+      "children.0.textContent": "title",
+      "children.1.textContent": "Showing ${totalCount} team members (Updated ${lastUpdated})"
+    }
+  },
+  "renderMemberList": {
+    "type": "loop",
+    "dataPath": "members",
+    "itemTemplate": {
+      "tagName": "div",
+      "attributes": {
+        "class": "flex items-center justify-between p-4 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-md transition-shadow"
+      },
+      "children": [
+        {
+          "tagName": "div",
+          "attributes": {
+            "class": "flex items-center gap-3"
+          },
+          "children": [
+            {
+              "tagName": "img",
+              "attributes": {
+                "class": "w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-700"
+              },
+              "bindings": {
+                "attributes.src": "avatar",
+                "attributes.alt": "name"
+              }
+            },
+            {
+              "tagName": "div",
+              "attributes": {
+                "class": "flex flex-col"
+              },
+              "children": [
+                {
+                  "tagName": "span",
+                  "attributes": {
+                    "class": "font-semibold text-slate-800 dark:text-slate-100 text-sm"
+                  },
+                  "bindings": {
+                    "textContent": "name"
+                  }
+                },
+                {
+                  "tagName": "span",
+                  "attributes": {
+                    "class": "text-xs text-slate-500 dark:text-slate-400"
+                  },
+                  "bindings": {
+                    "textContent": "${role} • ${email}"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tagName": "span",
+          "attributes": {
+            "class": "px-2.5 py-1 text-xs font-medium rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300"
+          },
+          "bindings": {
+            "textContent": "status",
+            "attributes.data-status": "status"
+          }
+        }
+      ]
+    }
+  }
+}

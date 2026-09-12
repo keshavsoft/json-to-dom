@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON-to-DOM v15 | Declarative Instruction Engine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        textarea {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            tab-size: 2;
+        }
+        pre {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen antialiased flex flex-col font-sans selection:bg-indigo-500 selection:text-white">
+
+    <!-- Top Header -->
+    <header class="border-b border-slate-800/80 bg-slate-900/60 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center font-bold text-white shadow-lg shadow-indigo-500/20">
+                    15
+                </div>
+                <div>
+                    <h1 class="text-base font-semibold text-white tracking-tight flex items-center gap-2">
+                        JSON-to-DOM <span class="px-2 py-0.5 text-xs bg-indigo-500/20 text-indigo-300 rounded border border-indigo-500/30 font-mono">v15 Engine</span>
+                    </h1>
+                    <p class="text-xs text-slate-400">Declarative 3-Tier Architecture: Structure + Instructions + Data</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <span id="status-badge" class="px-3 py-1 text-xs font-mono rounded-full bg-slate-800 text-slate-400 border border-slate-700">
+                    Ready
+                </span>
+                <button id="btn-reset" class="px-3 py-1.5 text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg border border-slate-700 transition">
+                    Reset Sample
+                </button>
+                <button id="btn-render" class="px-4 py-1.5 text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg shadow-md shadow-indigo-600/30 transition flex items-center gap-1.5">
+                    <span>▶</span> Resolve & Render
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 space-y-6">
+
+        <!-- Architecture Flow Banner -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 rounded-xl bg-slate-900/40 border border-slate-800 text-xs text-slate-400">
+            <div class="flex items-start gap-3">
+                <span class="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 font-bold flex items-center justify-center shrink-0">1</span>
+                <div>
+                    <strong class="text-slate-200 block mb-0.5">structure.json</strong>
+                    Visual layout tree with references to instructions.
+                </div>
+            </div>
+            <div class="flex items-start gap-3">
+                <span class="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 font-bold flex items-center justify-center shrink-0">2</span>
+                <div>
+                    <strong class="text-slate-200 block mb-0.5">instructions.json</strong>
+                    Data binding, loops ($for), and conditional rules.
+                </div>
+            </div>
+            <div class="flex items-start gap-3">
+                <span class="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 font-bold flex items-center justify-center shrink-0">3</span>
+                <div>
+                    <strong class="text-slate-200 block mb-0.5">data.json</strong>
+                    Pure raw business data payload (zero UI code).
+                </div>
+            </div>
+        </div>
+
+        <!-- 3-Column Input Editors -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            
+            <!-- Structure Editor -->
+            <div class="flex flex-col bg-slate-900/70 rounded-xl border border-slate-800 overflow-hidden">
+                <div class="px-4 py-2.5 bg-slate-900 border-b border-slate-800 flex items-center justify-between">
+                    <span class="text-xs font-semibold text-slate-300 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-blue-400"></span> structure.json
+                    </span>
+                    <span class="text-[10px] text-slate-500 font-mono">Layout / Hierarchy</span>
+                </div>
+                <textarea id="structure-input" rows="14" class="w-full p-3 bg-slate-950/70 text-slate-200 text-xs focus:outline-none focus:ring-1 focus:ring-indigo-500 resize-y border-none" spellcheck="false"></textarea>
+            </div>
+
+            <!-- Instructions Editor -->
+            <div class="flex flex-col bg-slate-900/70 rounded-xl border border-slate-800 overflow-hidden">
+                <div class="px-4 py-2.5 bg-slate-900 border-b border-slate-800 flex items-center justify-between">
+                    <span class="text-xs font-semibold text-slate-300 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-purple-400"></span> instructions.json
+                    </span>
+                    <span class="text-[10px] text-slate-500 font-mono">Rules / Loops / Bindings</span>
+                </div>
+                <textarea id="instructions-input" rows="14" class="w-full p-3 bg-slate-950/70 text-slate-200 text-xs focus:outline-none focus:ring-1 focus:ring-indigo-500 resize-y border-none" spellcheck="false"></textarea>
+            </div>
+
+            <!-- Data Editor -->
+            <div class="flex flex-col bg-slate-900/70 rounded-xl border border-slate-800 overflow-hidden">
+                <div class="px-4 py-2.5 bg-slate-900 border-b border-slate-800 flex items-center justify-between">
+                    <span class="text-xs font-semibold text-slate-300 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400"></span> data.json
+                    </span>
+                    <span class="text-[10px] text-slate-500 font-mono">Raw Payload</span>
+                </div>
+                <textarea id="data-input" rows="14" class="w-full p-3 bg-slate-950/70 text-slate-200 text-xs focus:outline-none focus:ring-1 focus:ring-indigo-500 resize-y border-none" spellcheck="false"></textarea>
+            </div>
+        </div>
+
+        <!-- Two Column Output: Live DOM & Compiled Spec -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-2">
+            
+            <!-- Live Rendered DOM / v14 Output Block -->
+            <div class="flex flex-col bg-slate-900/70 rounded-xl border border-slate-800 overflow-hidden shadow-xl">
+                <div class="px-4 py-2.5 bg-slate-900 border-b border-slate-800 flex items-center justify-between gap-2">
+                    <span class="text-xs font-semibold text-emerald-400 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> v14 Engine Output
+                    </span>
+                    <div class="flex items-center gap-1 bg-slate-950/80 p-0.5 rounded-lg border border-slate-800 text-[11px]">
+                        <button id="tab-v14-json" class="px-2.5 py-1 font-medium rounded-md bg-indigo-600 text-white transition">
+                            📄 Output JSON (v14)
+                        </button>
+                        <button id="tab-v14-visual" class="px-2.5 py-1 font-medium rounded-md text-slate-400 hover:text-white transition">
+                            👁️ Visual Preview
+                        </button>
+                        <button id="tab-v14-html" class="px-2.5 py-1 font-medium rounded-md text-slate-400 hover:text-white transition">
+                            🌐 Outer HTML
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tab 1: v14 Output JSON -->
+                <div id="v14-json-panel" class="flex-1 flex flex-col p-2 bg-slate-950/70 overflow-auto max-h-[420px]">
+                    <pre id="v14-json-output" class="text-xs text-emerald-400 font-mono p-2 leading-relaxed"></pre>
+                </div>
+
+                <!-- Tab 2: Visual DOM Preview -->
+                <div id="v14-visual-panel" class="hidden p-6 bg-slate-950/50 min-h-[320px] max-h-[420px] overflow-auto flex items-center justify-center">
+                    <div id="rendered-dom-target" class="w-full"></div>
+                </div>
+
+                <!-- Tab 3: Outer HTML Markup -->
+                <div id="v14-html-panel" class="hidden flex-1 flex flex-col p-2 bg-slate-950/70 overflow-auto max-h-[420px]">
+                    <pre id="v14-html-output" class="text-xs text-sky-300 font-mono p-2 leading-relaxed whitespace-pre-wrap"></pre>
+                </div>
+            </div>
+
+            <!-- Intermediate Compiled Spec Output -->
+            <div class="flex flex-col bg-slate-900/70 rounded-xl border border-slate-800 overflow-hidden shadow-xl">
+                <div class="px-4 py-2.5 bg-slate-900 border-b border-slate-800 flex items-center justify-between gap-2">
+                    <span class="text-xs font-semibold text-indigo-400 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-indigo-400"></span> That Last JSON (Resolved Spec)
+                    </span>
+                    <button id="btn-render-spec-only" class="px-3 py-1 text-xs font-semibold bg-indigo-600/90 hover:bg-indigo-500 text-white rounded-md shadow transition flex items-center gap-1">
+                        <span>⚡</span> Render Spec JSON &rarr; DOM Only
+                    </button>
+                </div>
+                <div class="flex-1 flex flex-col p-2 bg-slate-950/70">
+                    <textarea id="spec-output" rows="18" class="w-full h-full p-2 bg-transparent text-slate-200 text-xs focus:outline-none font-mono resize-y border-none" spellcheck="false"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reverse Check Panel -->
+        <div class="flex flex-col bg-slate-900/50 rounded-xl border border-slate-800 overflow-hidden">
+            <div class="px-4 py-2.5 bg-slate-900 border-b border-slate-800 flex items-center justify-between">
+                <span class="text-xs font-semibold text-amber-400 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-amber-400"></span> Bidirectional Reverse Verification (DOM &rarr; Spec via v14 Reverse)
+                </span>
+                <span class="text-[10px] text-slate-500 font-mono">domToSpec() Check</span>
+            </div>
+            <div class="p-4 bg-slate-950/60 overflow-auto max-h-[260px]">
+                <pre id="reverse-output" class="text-xs text-slate-400"></pre>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-900 bg-slate-950 py-4 text-center text-xs text-slate-600">
+        json-to-dom v15 &bull; Declarative Instruction Engine &bull; Zero hardcoded JS glue code
+    </footer>
+
+    <script type="module" src="./test.js?t=12345"></script>
+</body>
+</html>
