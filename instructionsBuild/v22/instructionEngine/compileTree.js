@@ -102,9 +102,25 @@ export const compileNode = ({ inNode, inContext = {}, inRootData = {} } = {}) =>
             const itemContext = {
                 ...localContext,
                 item,
-                ...item,
-                $index: index
+                ...(typeof item === "object" && item !== null ? item : {}),
+                $index: index,
+                $number: index + 1
             };
+
+            // If iterating over rows/items collection, expose row context
+            if (sourceKey === "rows" || sourceKey.endsWith(".rows") || sourceKey === "items") {
+                itemContext.row = item;
+            }
+
+            // If a parent row exists and current item is a column, bind cell value
+            if (localContext.row && (item.field || item.columnName || item.name)) {
+                const fieldKey = item.field || item.columnName || item.name;
+                const cellVal = localContext.row[fieldKey];
+                if (cellVal !== undefined) {
+                    itemContext.cellValue = cellVal;
+                    itemContext.value = cellVal;
+                }
+            }
 
             const compiledItem = compileNode({
                 inNode: template,

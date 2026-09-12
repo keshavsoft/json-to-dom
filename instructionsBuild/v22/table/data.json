@@ -1,0 +1,68 @@
+{
+  "columns": [
+    {
+      "columnName": "Category",
+      "title": "Category",
+      "field": "Category",
+      "isVisible": true
+    },
+    {
+      "columnName": "ItemName",
+      "title": "Item Name",
+      "field": "ItemName",
+      "isVisible": true
+    },
+    {
+      "columnName": "Service",
+      "title": "Service",
+      "field": "Service",
+      "isVisible": true
+    },
+    {
+      "columnName": "Rate",
+      "title": "Rate (₹)",
+      "field": "Rate",
+      "isVisible": true
+    },
+    {
+      "columnName": "pk",
+      "title": "pk",
+      "field": "pk",
+      "isVisible": false
+    }
+  ],
+  "rows": [
+    {
+      "pk": "item-001",
+      "Category": "Beverages",
+      "ItemName": "Green Tea",
+      "Service": "Packaging",
+      "Rate": 150
+    },
+    {
+      "pk": "item-002",
+      "Category": "Beverages",
+      "ItemName": "Espresso Coffee",
+      "Service": "Grinding",
+      "Rate": 220
+    },
+    {
+      "pk": "item-003",
+      "Category": "Bakery",
+      "ItemName": "Almond Cookies",
+      "Service": "Baking",
+      "Rate": 95
+    },
+    {
+      "pk": "item-004",
+      "Category": "Beverages",
+      "ItemName": "Orange Juice",
+      "Service": "Bottling",
+      "Rate": 120
+    }
+  ],
+  "summary": {
+    "totalItems": 4,
+    "avgRate": 146.25
+  }
+}

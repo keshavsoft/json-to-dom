@@ -1,0 +1,235 @@
+{
+  "tagName": "div",
+  "attributes": {
+    "class": "card shadow-sm border border-slate-200 rounded-xl overflow-hidden max-w-4xl mx-auto"
+  },
+  "children": [
+    {
+      "tagName": "div",
+      "attributes": {
+        "class": "card-header bg-slate-100 px-6 py-4 border-b border-slate-200 d-flex justify-content-between align-items-center"
+      },
+      "children": [
+        {
+          "tagName": "div",
+          "children": [
+            {
+              "tagName": "h2",
+              "textContent": "Item Master Table",
+              "attributes": {
+                "class": "h5 mb-0 fw-bold text-slate-800"
+              }
+            },
+            {
+              "tagName": "p",
+              "textContent": "Rendered via 2-file compiler: thead & tbody iteration over data.columns & data.rows",
+              "attributes": {
+                "class": "small text-muted mb-0"
+              }
+            }
+          ]
+        },
+        {
+          "tagName": "span",
+          "textContent": "${summary.totalItems} Items",
+          "attributes": {
+            "class": "badge bg-indigo-600 text-white font-mono px-3 py-1.5"
+          }
+        }
+      ]
+    },
+    {
+      "tagName": "div",
+      "attributes": {
+        "class": "table-responsive"
+      },
+      "children": [
+        {
+          "tagName": "table",
+          "attributes": {
+            "class": "table table-hover table-striped align-middle mb-0"
+          },
+          "children": [
+            {
+              "tagName": "thead",
+              "attributes": {
+                "class": "table-light"
+              },
+              "children": [
+                {
+                  "tagName": "tr",
+                  "children": [
+                    {
+                      "tagName": "th",
+                      "textContent": "#",
+                      "attributes": {
+                        "class": "text-center py-3",
+                        "style": "width: 50px;"
+                      }
+                    },
+                    {
+                      "operation": "iterate",
+                      "source": "columns",
+                      "filter": {
+                        "isVisible": true
+                      },
+                      "template": {
+                        "tagName": "th",
+                        "textContent": "${title}",
+                        "attributes": {
+                          "class": "text-start py-3"
+                        }
+                      }
+                    },
+                    {
+                      "tagName": "th",
+                      "textContent": "Status",
+                      "attributes": {
+                        "class": "text-center py-3",
+                        "style": "width: 100px;"
+                      }
+                    },
+                    {
+                      "tagName": "th",
+                      "textContent": "Action",
+                      "attributes": {
+                        "class": "text-end py-3 px-4",
+                        "style": "width: 100px;"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "tagName": "tbody",
+              "children": [
+                {
+                  "operation": "iterate",
+                  "source": "rows",
+                  "template": {
+                    "tagName": "tr",
+                    "children": [
+                      {
+                        "tagName": "td",
+                        "textContent": "${$number}",
+                        "attributes": {
+                          "class": "text-center font-mono small text-muted py-2.5"
+                        }
+                      },
+                      {
+                        "operation": "iterate",
+                        "source": "columns",
+                        "filter": {
+                          "isVisible": true
+                        },
+                        "template": {
+                          "tagName": "td",
+                          "textContent": "${value}",
+                          "attributes": {
+                            "class": "text-start py-2.5"
+                          }
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "attributes": {
+                          "class": "text-center py-2.5"
+                        },
+                        "children": [
+                          {
+                            "tagName": "span",
+                            "textContent": "Active",
+                            "attributes": {
+                              "class": "badge bg-success-subtle text-success border border-success-subtle font-mono text-xs"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "tagName": "td",
+                        "attributes": {
+                          "class": "text-end py-2.5 px-4"
+                        },
+                        "children": [
+                          {
+                            "tagName": "button",
+                            "textContent": "View",
+                            "attributes": {
+                              "type": "button",
+                              "class": "btn btn-outline-primary btn-sm py-0 px-2 text-xs"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "tagName": "tfoot",
+              "attributes": {
+                "class": "table-light border-top"
+              },
+              "children": [
+                {
+                  "tagName": "tr",
+                  "children": [
+                    {
+                      "tagName": "td",
+                      "textContent": "Summary: Total Items: ${summary.totalItems} | Average Rate: ₹${summary.avgRate}",
+                      "attributes": {
+                        "colspan": "7",
+                        "class": "small text-muted py-2.5 px-4 fw-semibold"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tagName": "div",
+      "attributes": {
+        "class": "card-footer bg-slate-50 px-6 py-3 border-t border-slate-200 d-flex justify-content-between align-items-center"
+      },
+      "children": [
+        {
+          "tagName": "span",
+          "textContent": "Showing 4 of 4 records",
+          "attributes": {
+            "class": "text-xs text-muted font-mono"
+          }
+        },
+        {
+          "tagName": "div",
+          "attributes": {
+            "class": "d-flex gap-2"
+          },
+          "children": [
+            {
+              "tagName": "button",
+              "textContent": "Export CSV",
+              "attributes": {
+                "type": "button",
+                "class": "btn btn-outline-secondary btn-sm text-xs"
+              }
+            },
+            {
+              "tagName": "button",
+              "textContent": "Add New Row",
+              "attributes": {
+                "type": "button",
+                "class": "btn btn-primary btn-sm text-xs"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

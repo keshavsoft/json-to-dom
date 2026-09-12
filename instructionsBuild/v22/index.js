@@ -1,24 +1,21 @@
 /**
- * instructionsBuild v21
- * Story: 2-File Contract (structure.json + data.json)
- * Compiles UI structure tree with node-level iterations driven directly by data.json.
+ * instructionsBuild v22
+ * Story: The Minimalist 2-File JSON Spec Compiler
+ * Inputs: structure.json (UI blueprint & operations) + data.json (collections & values).
+ * Traverses structure.json recursively, resolving dynamic node operations directly against data.json.
  */
 
 import compileNode from "./instructionEngine/compileTree.js";
-import compileIteration from "./instructionEngine/compileIteration.js";
-import compileStructure from "./instructionEngine/compileStructure.js";
-import compileTemplate from "./instructionEngine/compileTemplate.js";
-import normalizeSpec from "./instructionEngine/normalizeSpec.js";
 import resolvePath from "./instructionEngine/resolvePath.js";
 
 export const meta = {
-    version: "21.0.0",
-    name: "instructionsBuild v21 - 2-File JSON Spec Compiler",
-    description: "Compiles structure.json (UI blueprint) with data.json (collections & values) into valid Spec JSON"
+    version: "22.0.0",
+    name: "instructionsBuild v22 - Minimalist 2-File Spec Compiler",
+    description: "Compiles structure.json with data.json into valid JSON specs ready for json-to-dom"
 };
 
 /**
- * Main entry point: compiles a structure tree with dynamic operations driven by data.json.
+ * Main entry point: compiles a structure tree with operations driven by data.json.
  * 
  * @param {Object} inArgs
  * @param {Object|Array} inArgs.inStructure - The JSON UI structure/blueprint (from structure.json)
@@ -44,10 +41,6 @@ export const compile = ({
 
 export {
     compileNode,
-    compileIteration,
-    compileStructure,
-    compileTemplate,
-    normalizeSpec,
     resolvePath
 };
 

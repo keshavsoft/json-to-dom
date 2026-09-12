@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>instructionsBuild v22 | Minimalist 2-File Contract (structure.json + data.json)</title>
+    <title>instructionsBuild v22 | Table Test (structure.json + data.json)</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -36,26 +36,26 @@
     <header class="border-b border-slate-800/80 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center font-bold text-white shadow-lg shadow-indigo-500/20 text-lg">
-                    22
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center font-bold text-white shadow-lg shadow-emerald-500/20 text-lg">
+                    📊
                 </div>
                 <div>
                     <h1 class="text-base font-semibold text-white tracking-tight flex items-center gap-2">
-                        instructionsBuild <span class="px-2 py-0.5 text-xs bg-indigo-500/20 text-indigo-300 rounded border border-indigo-500/30 font-mono">v22 Minimalist Compiler</span>
+                        instructionsBuild <span class="px-2 py-0.5 text-xs bg-emerald-500/20 text-emerald-300 rounded border border-emerald-500/30 font-mono">v22 Table Engine</span>
                     </h1>
-                    <p class="text-xs text-slate-400">Pure 2-File Contract: structure.json (UI Blueprint) + data.json (Collections & Values) &rarr; Compiled Spec JSON &rarr; src/v16 DOM Engine</p>
+                    <p class="text-xs text-slate-400">Pure 2-File Table Pipeline: thead (columns) + tbody (rows &times; columns) &rarr; Compiled Spec JSON &rarr; src/v16 DOM Engine</p>
                 </div>
             </div>
 
             <div class="flex items-center gap-3">
-                <a href="../table/stages.html" class="px-3 py-1.5 text-xs font-medium text-emerald-400 hover:text-white border border-emerald-500/30 rounded-lg hover:bg-emerald-500/20 transition flex items-center gap-1">
-                    <span>📊</span> Table Test &rarr;
+                <a href="../test/stages.html" class="px-3 py-1.5 text-xs font-medium text-slate-400 hover:text-white border border-slate-700 rounded-lg hover:bg-slate-800 transition">
+                    &larr; Switch to Form Test
                 </a>
                 <span id="status-badge" class="px-3 py-1 text-xs font-mono rounded-full bg-slate-800 text-slate-400 border border-slate-700">
-                    Loading 2 JSONs...
+                    Loading Table...
                 </span>
-                <button id="btn-render-all" class="px-4 py-1.5 text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg shadow-md shadow-indigo-600/30 transition flex items-center gap-1.5">
-                    <span>⚡</span> Re-Render Form
+                <button id="btn-render-all" class="px-4 py-1.5 text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg shadow-md shadow-emerald-600/30 transition flex items-center gap-1.5">
+                    <span>⚡</span> Re-Render Table
                 </button>
             </div>
         </div>
@@ -66,18 +66,18 @@
 
         <!-- 2-JSON Pipeline Banner -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 rounded-xl bg-slate-900/60 border border-slate-800 text-xs">
-            <div class="flex items-center gap-3 p-3 rounded-lg bg-purple-500/10 border border-purple-500/20">
-                <span class="w-6 h-6 rounded-full bg-purple-500 text-white flex items-center justify-center text-xs font-bold">1</span>
+            <div class="flex items-center gap-3 p-3 rounded-lg bg-teal-500/10 border border-teal-500/20">
+                <span class="w-6 h-6 rounded-full bg-teal-500 text-white flex items-center justify-center text-xs font-bold">1</span>
                 <div>
-                    <strong class="text-purple-300 block">structure.json</strong>
-                    <span class="text-[11px] text-slate-400">UI Blueprint: HTML Shell (Header/Footer) & Dynamic Rows declaring operation: iterate</span>
+                    <strong class="text-teal-300 block">table/structure.json</strong>
+                    <span class="text-[11px] text-slate-400">Table Shell: thead (iterate: columns) + tbody (iterate: rows &rarr; iterate: columns)</span>
                 </div>
             </div>
             <div class="flex items-center gap-3 p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
                 <span class="w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs font-bold">2</span>
                 <div>
-                    <strong class="text-emerald-300 block">data.json</strong>
-                    <span class="text-[11px] text-slate-400">Data Payload: contains collections (columns array) + business values (Category, ItemName, Rate...)</span>
+                    <strong class="text-emerald-300 block">table/data.json</strong>
+                    <span class="text-[11px] text-slate-400">Data Payload: columns array (metadata) + rows array (4 records) + summary</span>
                 </div>
             </div>
         </div>
@@ -88,13 +88,13 @@
             <!-- 1. structure.json -->
             <div class="flex flex-col bg-slate-900/80 rounded-xl border border-slate-800 overflow-hidden shadow-lg">
                 <div class="px-4 py-2.5 bg-slate-900 border-b border-slate-800 flex items-center justify-between">
-                    <span class="text-xs font-semibold text-purple-300 flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-purple-400"></span> 1. structure.json (UI Blueprint)
+                    <span class="text-xs font-semibold text-teal-300 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-teal-400"></span> 1. table/structure.json (UI Blueprint)
                     </span>
-                    <span class="text-[10px] text-slate-500 font-mono">Template & Operations</span>
+                    <span class="text-[10px] text-slate-500 font-mono">Nested Iterations</span>
                 </div>
                 <div class="p-3 bg-slate-950/80 overflow-auto max-h-[420px]">
-                    <pre id="code-structure" class="text-[11px] text-purple-200 font-mono leading-relaxed"></pre>
+                    <pre id="code-structure" class="text-[11px] text-teal-200 font-mono leading-relaxed"></pre>
                 </div>
             </div>
 
@@ -102,9 +102,9 @@
             <div class="flex flex-col bg-slate-900/80 rounded-xl border border-slate-800 overflow-hidden shadow-lg">
                 <div class="px-4 py-2.5 bg-slate-900 border-b border-slate-800 flex items-center justify-between">
                     <span class="text-xs font-semibold text-emerald-300 flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400"></span> 2. data.json (Collections & Values)
+                        <span class="w-2 h-2 rounded-full bg-emerald-400"></span> 2. table/data.json (Collections)
                     </span>
-                    <span class="text-[10px] text-slate-500 font-mono">Contains columns + data</span>
+                    <span class="text-[10px] text-slate-500 font-mono">columns + rows</span>
                 </div>
                 <div class="p-3 bg-slate-950/80 overflow-auto max-h-[420px]">
                     <pre id="code-data" class="text-[11px] text-emerald-200 font-mono leading-relaxed"></pre>
@@ -117,7 +117,7 @@
         <div class="flex flex-col bg-slate-900/80 rounded-xl border border-slate-800 overflow-hidden shadow-lg">
             <div class="px-4 py-2.5 bg-slate-900 border-b border-slate-800 flex items-center justify-between">
                 <span class="text-xs font-semibold text-amber-300 flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-amber-400"></span> 3. Compiled Spec JSON (v22 Output &rarr; Handed to src/v16)
+                    <span class="w-2 h-2 rounded-full bg-amber-400"></span> 3. Compiled Table Spec JSON (v22 Output &rarr; Handed to src/v16)
                 </span>
                 <span class="text-[10px] text-slate-500 font-mono">Pure Spec Output</span>
             </div>
@@ -126,16 +126,16 @@
             </div>
         </div>
 
-        <!-- Output: Live Rendered Form via v16 Engine -->
+        <!-- Output: Live Rendered Table via v16 Engine -->
         <div class="flex flex-col bg-slate-900/80 rounded-xl border border-slate-800 overflow-hidden shadow-xl">
             <div class="px-4 py-3 bg-slate-900 border-b border-slate-800 flex items-center justify-between">
                 <span class="text-xs font-semibold text-emerald-400 flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Live Rendered Form (via src/v16 Engine)
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Live Rendered Table (via src/v16 Engine)
                 </span>
-                <span class="text-[10px] text-slate-400 font-mono">Bootstrap 5 Form Elements</span>
+                <span class="text-[10px] text-slate-400 font-mono">Bootstrap 5 Table</span>
             </div>
-            <div class="p-6 bg-white text-slate-900 rounded-b-xl">
-                <form id="rendered-dom-target" class="max-w-2xl mx-auto p-4 border border-slate-200 rounded-xl shadow-sm bg-slate-50" onsubmit="event.preventDefault();"></form>
+            <div class="p-6 bg-white text-slate-900 rounded-b-xl overflow-auto">
+                <div id="rendered-dom-target" class="max-w-5xl mx-auto"></div>
             </div>
         </div>
 
@@ -143,9 +143,9 @@
 
     <!-- Footer -->
     <footer class="border-t border-slate-900 bg-slate-950 py-4 text-center text-xs text-slate-600">
-        instructionsBuild v22 &bull; Minimalist 2-File Contract (structure.json + data.json) &bull; Rendered by src/v16 DOM Engine
+        instructionsBuild v22 &bull; Table Test with 2-File Contract &bull; Rendered by src/v16 DOM Engine
     </footer>
 
-    <script type="module" src="./stages.js?t=22001"></script>
+    <script type="module" src="./stages.js?t=22010"></script>
 </body>
 </html>
