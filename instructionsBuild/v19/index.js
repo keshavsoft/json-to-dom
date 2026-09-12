@@ -11,7 +11,7 @@ import {
     blues,
     reverse,
     jsonToDom
-} from "../v14/index.js";
+} from "../../src/v14/index.js";
 
 import {
     compileTemplate,
