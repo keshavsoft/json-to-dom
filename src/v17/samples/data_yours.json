@@ -1,0 +1,31 @@
+{
+  "title": "Team Directory",
+  "totalCount": 3,
+  "lastUpdated": "2026-09-12",
+  "members": [
+    {
+      "id": "USR-001",
+      "name": "Keshav Nalam",
+      "role": "Lead Architect",
+      "email": "alex@example.com",
+      "status": "Active",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=Alex"
+    },
+    {
+      "id": "USR-002",
+      "name": "Sarah Connor",
+      "role": "Security Engineer",
+      "email": "sarah@example.com",
+      "status": "Active",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=Sarah"
+    },
+    {
+      "id": "USR-003",
+      "name": "David Bowman",
+      "role": "Data Specialist",
+      "email": "david@example.com",
+      "status": "On Leave",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=David"
+    }
+  ]
+}
