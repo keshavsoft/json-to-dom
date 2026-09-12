@@ -1,0 +1,41 @@
+{
+  "tagName": "div",
+  "attributes": {
+    "class": "row align-items-center g-2 mb-3"
+  },
+  "children": [
+    {
+      "tagName": "div",
+      "attributes": {
+        "class": "row align-items-center g-2"
+      },
+      "children": [
+        {
+          "tagName": "label",
+          "textContent": "${label}",
+          "attributes": {
+            "class": "col-sm-4 col-form-label text-sm-end mb-0 fw-semibold text-secondary small"
+          }
+        },
+        {
+          "tagName": "div",
+          "attributes": {
+            "class": "col-sm-8"
+          },
+          "children": [
+            {
+              "tagName": "input",
+              "attributes": {
+                "type": "${type}",
+                "name": "${name}",
+                "placeholder": "${placeholder}",
+                "class": "form-control",
+                "list": "${name}-datalist"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

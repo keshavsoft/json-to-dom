@@ -1,0 +1,26 @@
+[
+  {
+    "name": "LedgerName",
+    "label": "Ledger Name",
+    "type": "text",
+    "placeholder": "Enter Ledger Name..."
+  },
+  {
+    "name": "InvoiceNo",
+    "label": "Invoice Number",
+    "type": "number",
+    "placeholder": "Enter Invoice Number..."
+  },
+  {
+    "name": "InvoiceDate",
+    "label": "Invoice Date",
+    "type": "date",
+    "placeholder": "Enter Invoice Date..."
+  },
+  {
+    "name": "Notes",
+    "label": "Notes",
+    "type": "textarea",
+    "placeholder": "Enter Notes..."
+  }
+]
