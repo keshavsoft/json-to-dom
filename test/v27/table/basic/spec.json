@@ -1,0 +1,99 @@
+[
+    {
+        "tagName": "div",
+        "attributes": {
+            "class": "table-responsive border rounded-3 shadow-sm bg-white overflow-hidden"
+        },
+        "children": [
+            {
+                "tagName": "table",
+                "attributes": {
+                    "class": "table table-hover align-middle mb-0"
+                },
+                "children": [
+                    {
+                        "tagName": "thead",
+                        "attributes": {
+                            "class": "table-light border-bottom"
+                        },
+                        "children": [
+                            {
+                                "tagName": "tr",
+                                "children": [
+                                    {
+                                        "tagName": "th",
+                                        "textContent": "#",
+                                        "attributes": { "class": "py-3 px-3 text-secondary small fw-semibold" }
+                                    },
+                                    {
+                                        "tagName": "th",
+                                        "textContent": "Voucher No.",
+                                        "attributes": { "class": "py-3 px-3 text-secondary small fw-semibold" }
+                                    },
+                                    {
+                                        "tagName": "th",
+                                        "textContent": "Date",
+                                        "attributes": { "class": "py-3 px-3 text-secondary small fw-semibold" }
+                                    },
+                                    {
+                                        "tagName": "th",
+                                        "textContent": "Type",
+                                        "attributes": { "class": "py-3 px-3 text-secondary small fw-semibold" }
+                                    },
+                                    {
+                                        "tagName": "th",
+                                        "textContent": "Party Name",
+                                        "attributes": { "class": "py-3 px-3 text-secondary small fw-semibold" }
+                                    },
+                                    {
+                                        "tagName": "th",
+                                        "textContent": "Amount (USD)",
+                                        "attributes": { "class": "py-3 px-3 text-end text-secondary small fw-semibold" }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "tagName": "tbody",
+                        "children": [
+                            {
+                                "tagName": "tr",
+                                "children": [
+                                    { "tagName": "td", "textContent": "1", "attributes": { "class": "py-3 px-3 text-muted" } },
+                                    { "tagName": "td", "textContent": "VCH-2026-001", "attributes": { "class": "py-3 px-3 fw-medium text-dark" } },
+                                    { "tagName": "td", "textContent": "2026-09-01", "attributes": { "class": "py-3 px-3 text-secondary" } },
+                                    { "tagName": "td", "textContent": "Sales", "attributes": { "class": "py-3 px-3" } },
+                                    { "tagName": "td", "textContent": "Global Logistics Corp", "attributes": { "class": "py-3 px-3" } },
+                                    { "tagName": "td", "textContent": "$12,400.00", "attributes": { "class": "py-3 px-3 text-end fw-semibold" } }
+                                ]
+                            },
+                            {
+                                "tagName": "tr",
+                                "children": [
+                                    { "tagName": "td", "textContent": "2", "attributes": { "class": "py-3 px-3 text-muted" } },
+                                    { "tagName": "td", "textContent": "VCH-2026-002", "attributes": { "class": "py-3 px-3 fw-medium text-dark" } },
+                                    { "tagName": "td", "textContent": "2026-09-04", "attributes": { "class": "py-3 px-3 text-secondary" } },
+                                    { "tagName": "td", "textContent": "Purchase", "attributes": { "class": "py-3 px-3" } },
+                                    { "tagName": "td", "textContent": "Apex Industrial Tools", "attributes": { "class": "py-3 px-3" } },
+                                    { "tagName": "td", "textContent": "$8,150.00", "attributes": { "class": "py-3 px-3 text-end fw-semibold" } }
+                                ]
+                            },
+                            {
+                                "tagName": "tr",
+                                "children": [
+                                    { "tagName": "td", "textContent": "3", "attributes": { "class": "py-3 px-3 text-muted" } },
+                                    { "tagName": "td", "textContent": "VCH-2026-003", "attributes": { "class": "py-3 px-3 fw-medium text-dark" } },
+                                    { "tagName": "td", "textContent": "2026-09-09", "attributes": { "class": "py-3 px-3 text-secondary" } },
+                                    { "tagName": "td", "textContent": "Payment", "attributes": { "class": "py-3 px-3" } },
+                                    { "tagName": "td", "textContent": "Summit Consulting Services", "attributes": { "class": "py-3 px-3" } },
+                                    { "tagName": "td", "textContent": "$24,000.00", "attributes": { "class": "py-3 px-3 text-end fw-semibold" } }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

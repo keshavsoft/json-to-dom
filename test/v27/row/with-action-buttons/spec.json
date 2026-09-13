@@ -1,0 +1,76 @@
+[
+    {
+        "tagName": "div",
+        "attributes": {
+            "class": "d-flex align-items-center gap-3 p-3 ksrow border-bottom"
+        },
+        "children": [
+            {
+                "tagName": "label",
+                "textContent": "Voucher Type 1",
+                "attributes": {
+                    "class": "col-auto col-form-label fw-semibold text-secondary text-nowrap"
+                }
+            },
+            {
+                "tagName": "input",
+                "attributes": {
+                    "name": "voucher1",
+                    "type": "text",
+                    "value": "Sales/CA",
+                    "placeholder": "e.g. Sales/CA",
+                    "class": "form-control"
+                }
+            },
+            {
+                "tagName": "button",
+                "textContent": "Save",
+                "attributes": {
+                    "type": "button",
+                    "data-action": "saveVoucher",
+                    "data-closest-target": "ksrow",
+                    "data-highlight": "true",
+                    "data-highlight-class": "bg-primary-subtle border border-primary rounded",
+                    "class": "btn btn-primary px-4"
+                }
+            }
+        ]
+    },
+    {
+        "tagName": "div",
+        "attributes": {
+            "class": "d-flex align-items-center gap-3 p-3 ksrow"
+        },
+        "children": [
+            {
+                "tagName": "label",
+                "textContent": "Voucher Type 2",
+                "attributes": {
+                    "class": "col-auto col-form-label fw-semibold text-secondary text-nowrap"
+                }
+            },
+            {
+                "tagName": "input",
+                "attributes": {
+                    "name": "voucher2",
+                    "type": "text",
+                    "value": "Purchase/TX",
+                    "placeholder": "e.g. Purchase/TX",
+                    "class": "form-control"
+                }
+            },
+            {
+                "tagName": "button",
+                "textContent": "Save",
+                "attributes": {
+                    "type": "button",
+                    "data-action": "saveVoucher",
+                    "data-closest-target": "ksrow",
+                    "data-highlight": "true",
+                    "data-highlight-class": "bg-success-subtle border border-success rounded",
+                    "class": "btn btn-success px-4"
+                }
+            }
+        ]
+    }
+]

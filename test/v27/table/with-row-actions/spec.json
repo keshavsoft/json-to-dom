@@ -1,0 +1,155 @@
+[
+    {
+        "tagName": "div",
+        "attributes": {
+            "class": "table-responsive border rounded-3 shadow-sm bg-white overflow-hidden"
+        },
+        "children": [
+            {
+                "tagName": "table",
+                "attributes": {
+                    "class": "table table-hover align-middle mb-0"
+                },
+                "children": [
+                    {
+                        "tagName": "thead",
+                        "attributes": {
+                            "class": "table-light border-bottom"
+                        },
+                        "children": [
+                            {
+                                "tagName": "tr",
+                                "children": [
+                                    { "tagName": "th", "textContent": "Voucher No.", "attributes": { "class": "py-3 px-3 text-secondary small fw-semibold" } },
+                                    { "tagName": "th", "textContent": "Type", "attributes": { "class": "py-3 px-3 text-secondary small fw-semibold" } },
+                                    { "tagName": "th", "textContent": "Party Name", "attributes": { "class": "py-3 px-3 text-secondary small fw-semibold" } },
+                                    { "tagName": "th", "textContent": "Amount", "attributes": { "class": "py-3 px-3 text-secondary small fw-semibold" } },
+                                    { "tagName": "th", "textContent": "Actions", "attributes": { "class": "py-3 px-3 text-end text-secondary small fw-semibold" } }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "tagName": "tbody",
+                        "children": [
+                            {
+                                "tagName": "tr",
+                                "attributes": {
+                                    "class": "ksrow"
+                                },
+                                "children": [
+                                    {
+                                        "tagName": "td",
+                                        "attributes": { "class": "py-3 px-3 fw-medium text-dark" },
+                                        "children": [
+                                            {
+                                                "tagName": "span",
+                                                "textContent": "VCH-2026-001"
+                                            },
+                                            {
+                                                "tagName": "input",
+                                                "attributes": {
+                                                    "name": "voucherNo",
+                                                    "type": "text",
+                                                    "value": "VCH-2026-001",
+                                                    "class": "d-none"
+                                                }
+                                            },
+                                            {
+                                                "tagName": "input",
+                                                "attributes": {
+                                                    "name": "partyName",
+                                                    "type": "text",
+                                                    "value": "Global Logistics Corp",
+                                                    "class": "d-none"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    { "tagName": "td", "textContent": "Sales", "attributes": { "class": "py-3 px-3" } },
+                                    { "tagName": "td", "textContent": "Global Logistics Corp", "attributes": { "class": "py-3 px-3" } },
+                                    { "tagName": "td", "textContent": "$12,400.00", "attributes": { "class": "py-3 px-3 fw-semibold text-success" } },
+                                    {
+                                        "tagName": "td",
+                                        "attributes": { "class": "py-3 px-3 text-end" },
+                                        "children": [
+                                            {
+                                                "tagName": "button",
+                                                "textContent": "Select Row",
+                                                "attributes": {
+                                                    "type": "button",
+                                                    "data-action": "selectRow",
+                                                    "data-closest-target": "ksrow",
+                                                    "data-highlight": "true",
+                                                    "data-highlight-class": "table-primary",
+                                                    "class": "btn btn-sm btn-outline-primary px-3"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "tr",
+                                "attributes": {
+                                    "class": "ksrow"
+                                },
+                                "children": [
+                                    {
+                                        "tagName": "td",
+                                        "attributes": { "class": "py-3 px-3 fw-medium text-dark" },
+                                        "children": [
+                                            {
+                                                "tagName": "span",
+                                                "textContent": "VCH-2026-002"
+                                            },
+                                            {
+                                                "tagName": "input",
+                                                "attributes": {
+                                                    "name": "voucherNo",
+                                                    "type": "text",
+                                                    "value": "VCH-2026-002",
+                                                    "class": "d-none"
+                                                }
+                                            },
+                                            {
+                                                "tagName": "input",
+                                                "attributes": {
+                                                    "name": "partyName",
+                                                    "type": "text",
+                                                    "value": "Apex Industrial Tools",
+                                                    "class": "d-none"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    { "tagName": "td", "textContent": "Purchase", "attributes": { "class": "py-3 px-3" } },
+                                    { "tagName": "td", "textContent": "Apex Industrial Tools", "attributes": { "class": "py-3 px-3" } },
+                                    { "tagName": "td", "textContent": "$8,150.00", "attributes": { "class": "py-3 px-3 fw-semibold text-primary" } },
+                                    {
+                                        "tagName": "td",
+                                        "attributes": { "class": "py-3 px-3 text-end" },
+                                        "children": [
+                                            {
+                                                "tagName": "button",
+                                                "textContent": "Select Row",
+                                                "attributes": {
+                                                    "type": "button",
+                                                    "data-action": "selectRow",
+                                                    "data-closest-target": "ksrow",
+                                                    "data-highlight": "true",
+                                                    "data-highlight-class": "table-primary",
+                                                    "class": "btn btn-sm btn-outline-primary px-3"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
