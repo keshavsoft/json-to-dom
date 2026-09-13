@@ -8,7 +8,9 @@ import data from "./data/index.js";
 
 const buildSpecElement = (inArgs) => {
     const localArgs = inArgs;
+
     const { spec, applyEvents: localApplyEvents, showLog } = normalizeInput({ inArgs: localArgs });
+
     return dispatchSpec({ inSpec: spec, inApplyEvents: localApplyEvents, inShowLog: showLog });
 };
 

@@ -26,7 +26,7 @@ export const attachInternalEvents = ({ inElement, inTagName, inShowLog = false }
 
         if (localShowLog) {
             console.log(`[json-to-dom v11] Hooked internal interaction on <${localTagName}>`, localElement);
-        }
+        };
     }
 
     return localElement;

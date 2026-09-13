@@ -34,6 +34,7 @@ export const applyEvents = ({
     const localShowLog = inShowLog;
 
     if (!localElement || !localTagName) return localElement;
+    // console.log("hhhhhhhh : ", localAttachInternal);
 
     // Stage 1: Attach internal component interaction hooks (optional / toggleable)
     if (localAttachInternal) {

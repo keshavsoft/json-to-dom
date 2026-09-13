@@ -2,7 +2,7 @@
  * meta — version & identity info
  */
 export const meta = {
-    version: "v16.0"
+    version: "v17.0"
 };
 
 export default meta;

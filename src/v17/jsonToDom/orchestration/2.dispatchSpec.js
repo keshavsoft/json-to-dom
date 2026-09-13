@@ -20,10 +20,13 @@ export const dispatchSpec = ({ inSpec, inApplyEvents = true, inShowLog = false }
 
     if (isNullOrUndefined({ inSpec: localSpec })) return null;
     if (isDomNode({ inSpec: localSpec })) return localSpec;
+
     if (isSpecArray({ inSpec: localSpec })) {
         return buildSpecArray({ inSpec: localSpec, inApplyEvents: localApplyEvents, inShowLog: localShowLog });
-    }
+    };
+
     if (!isSpecObject({ inSpec: localSpec })) return null;
+    // console.log("localApplyEvents : ", localApplyEvents);
 
     return buildSingleElement({ inSpec: localSpec, inApplyEvents: localApplyEvents, inShowLog: localShowLog });
 };
