@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Row Decoupled Listeners | JSON to DOM v19</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body class="bg-slate-50 p-6">
+    <div class="max-w-4xl mx-auto">
+        <h4 class="mb-3 text-secondary">JSON-to-DOM v19 — Pure Renderer & Clean Decoupled Listeners</h4>
+        <div id="table-container"
+            class="overflow-x-auto rounded-lg border border-slate-200 shadow-sm bg-white mb-4"></div>
+        <div id="output-box" class="p-3 bg-dark text-light rounded font-monospace small">
+            Click any row Save button to see extracted output here.
+        </div>
+    </div>
+
+    <!-- Import v19 module -->
+    <script type="module" src="../../../src/v19/index.js"></script>
+    <script type="module" src="./index.js"></script>
+</body>
+
+</html>
