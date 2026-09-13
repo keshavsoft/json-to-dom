@@ -2,7 +2,8 @@
 
 **Back to [README.md](README.md)**
 
-This document explains the internal architecture and the flow from a declarative JSON specification to the final DOM.
+> [!NOTE]
+> For the current runtime implementation of the **3-Chapter Story Architecture** (Inspection &rarr; Construction Steps 0–5 &rarr; Activation), see [`src/v28/`](src/v28/) and [README.md](README.md).
 
 ---
 

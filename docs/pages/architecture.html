@@ -38,46 +38,40 @@
       <div class="hero-body">
         <div class="grid">
           <article class="card col-12">
-            <h2>The v11 Orchestration Pipeline</h2>
+            <h2>The v28 3-Chapter Story Architecture</h2>
             <div class="codebox">
-<pre><code>buildSpecElement(inArgs)
+<pre><code>buildSpecElement({ spec, outputType = "dom", validate = false })
   │
-  ├─► orchestration/1.normalizeInput.js   ──► Extracts { spec, applyEvents, showLog }
+  ├─► Chapter 1: Inspection & Standards (chapter1_inspection/)
+  │     ├─► standards/                  ──► W3C tags & allowed attributes reference data
+  │     └─► validate/                   ──► Pre-flight HTML grammar & void tag inspector
   │
-  └─► orchestration/2.dispatchSpec.js     ──► Routes spec by shape:
-        │
-        ├─► null / undefined              ──► returns null
-        ├─► Node instance                 ──► passthrough
-        ├─► Array of specs                ──► buildSpecArray() -> DocumentFragment
-        │
-        └─► Single spec object            ──► buildSingleElement()
-                                                │
-                                                ├─► buildChildrenNodes() (recursive)
-                                                │
-                                                └─► elementBuilder/ (steps 0 to 6):
-                                                      0. createElement.js
-                                                      1. applyTextContent.js
-                                                      2. applyProperties.js
-                                                      3. applyAttributes.js
-                                                      4. applyClassList.js
-                                                      5. appendChildren.js
-                                                      6. applyEvents.js
-                                                            │
-                                                            ▼
-                                                      events/ (chapters 1 to 3):
-                                                        1.validate/isEventAllowed.js
-                                                        2.internal/attachInternalEvents.js
-                                                        3.declared/attachDeclaredEvents.js</code></pre>
+  ├─► Chapter 2: Construction Line (chapter2_construction/)
+  │     ├─► normalizeInput.js           ──► Options & flag normalization
+  │     ├─► dispatchSpec.js             ──► Routes single element vs spec array
+  │     └─► elementBuilder/             ──► ⭐ 100% Preserved Assembly Steps (0 to 5):
+  │           0. createElement.js       ──► Native document.createElement
+  │           1. applyTextContent.js    ──► textContent & innerHTML injection
+  │           2. applyProperties.js     ──► Native DOM properties
+  │           3. applyAttributes.js     ──► HTML attributes & datasets
+  │           4. applyClassList.js      ──► CSS class tokens
+  │           5. appendChildren.js      ──► Recursive child node attachment
+  │
+  └─► Chapter 3: Activation & Interactivity (chapter3_activation/)
+        ├─► listeners/                  ──► Versioned event delegation suites (v1 & v2)
+        ├─► bindActions.js              ──► Action binder for forms & interactive cards
+        ├─► formOperations.js           ──► extractFormValues & resetForm helpers
+        └─► mountToContainer.js         ──► Direct container mounting by HTML ID (specToDom)</code></pre>
             </div>
           </article>
 
           <article class="card col-6">
             <h2>Key Subsystems</h2>
             <ul class="checks">
-              <li><strong>Sleek v11 Orchestrator</strong>: <code>src/v11/index.js</code> reads as pure, sequential orchestration.</li>
-              <li><strong>Element Builder</strong>: 7 dedicated steps (0 to 6) constructing pure native DOM elements.</li>
-              <li><strong>Event Story</strong>: 3 modular chapters separating permission validation from internal hooks and declared listeners.</li>
-              <li><strong>Runtime Inspection</strong>: <code>getHookedEvents({ inElement })</code> and <code>element.__ksEvents</code>.</li>
+              <li><strong>Story-Driven Chapters</strong>: Clear 3-chapter narrative from inspection to construction to activation.</li>
+              <li><strong>Preserved Assembly Line</strong>: 6 fine-grained steps (0 to 5) in <code>elementBuilder/</code> intact.</li>
+              <li><strong>Versioned Listeners</strong>: Advanced action delegation (v1 row actions, v2 form footer actions).</li>
+              <li><strong>Clean Outside API</strong>: <code>{ spec, targetHtmlId, outputType, validate }</code> without <code>in-</code> prefixes for callers.</li>
             </ul>
           </article>
 
@@ -85,11 +79,10 @@
             <h2>Evolutionary Progression</h2>
             <p>Version folders document the architectural journey:</p>
             <ul class="checks">
-              <li><code>v1-v7</code>: Early prototypes and grammar research.</li>
-              <li><code>v8</code>: Two-tier attribute resolution.</li>
-              <li><code>v9</code>: Strict event guarding.</li>
-              <li><code>v10</code>: Modular event story folders.</li>
-              <li><code>v11</code>: Sleek orchestration-only index & granular event stopping.</li>
+              <li><code>v1-v11</code>: Early grammar research, attribute resolution, and sleek orchestration.</li>
+              <li><code>v26</code>: Row-scoped action delegation (v1 listeners).</li>
+              <li><code>v27</code>: Form footer actions & versioned event delegation.</li>
+              <li><code>v28</code>: 3-Chapter Story-Driven Architecture with preserved 0–5 elementBuilder.</li>
             </ul>
           </article>
 

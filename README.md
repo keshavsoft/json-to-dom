@@ -2,16 +2,44 @@
 
 A declarative, zero-dependency JSON-to-DOM compiler for turning serializable specifications into live browser DOM element trees.
 
-## Start here
+---
 
-- Overview: [docs/pages/overview.html](docs/pages/overview.html)
-- Why this repo exists: [docs/pages/why.html](docs/pages/why.html)
-- How it works: [docs/pages/how-it-works.html](docs/pages/how-it-works.html)
-- Architecture: [docs/pages/architecture.html](docs/pages/architecture.html)
-- Version strategy: [docs/pages/versions.html](docs/pages/versions.html)
-- Tasks / todo: [docs/pages/tasks.html](docs/pages/tasks.html)
+## 📖 The 3-Chapter Story Architecture (`v28`)
 
-## Quick start
+Starting in **`v28`**, `json-to-dom` is structured into **3 narrative chapters** that tell the complete story of a specification becoming living DOM:
+
+```
+src/v28/
+├── index.js                           # Master Builder Entry Point (Story Orchestrator)
+│
+├── chapters/
+│   ├── chapter1_inspection/           # Chapter 1: The Inspector & Standards
+│   │   ├── standards/                 # W3C HTML tags & allowed attributes reference data
+│   │   ├── validate/                  # Spec grammar & void tag validator (v1 & v2)
+│   │   └── index.js
+│   │
+│   ├── chapter2_construction/         # Chapter 2: The Construction Line
+│   │   ├── orchestration/             # Input normalization & global registration
+│   │   ├── buildSpec/                 # Single element vs Spec array dispatcher
+│   │   ├── elementBuilder/            # ⭐ 100% Preserved 0 to 5 Assembly Steps:
+│   │   │   ├── 0.createElement.js     # Native element instantiation
+│   │   │   ├── 1.applyTextContent.js   # textContent & innerHTML injection
+│   │   │   ├── 2.applyProperties.js    # Direct DOM properties
+│   │   │   ├── 3.applyAttributes.js    # HTML attributes & datasets
+│   │   │   ├── 4.applyClassList.js     # CSS classList tokens
+│   │   │   ├── 5.appendChildren.js     # Recursive child node attachment
+│   │   │   └── index.js
+│   │   └── index.js
+│   │
+│   └── chapter3_activation/           # Chapter 3: Activation & Interactivity
+│       ├── listeners/                 # Versioned event delegation suites (v1 & v2)
+│       ├── mountToContainer.js        # Direct container mounting by HTML ID
+│       └── index.js                   # formOperations (extractFormValues, resetForm)
+```
+
+---
+
+## Quick Start
 
 ```bash
 # Instant scaffolding via zero-dependency CLI (always copies src's highest version)
@@ -22,60 +50,77 @@ npm install
 npm test
 ```
 
-Then open the local demo or visit:
+- **Demo**: https://keshavsoft.github.io/json-to-dom/
+- **Playground**: https://keshavsoft.github.io/json-to-dom/docs/demo.html
+- **Repo**: https://github.com/keshavsoft/json-to-dom
 
-- Demo: https://keshavsoft.github.io/json-to-dom/
-- Playground: https://keshavsoft.github.io/json-to-dom/docs/demo.html
-- Repo: https://github.com/keshavsoft/json-to-dom
+---
 
-## Minimal usage
+## Clean Usage (`v28`)
 
+### 1. Build Native DOM Elements
 ```javascript
-// Import from package root proxy (automatically loads src's highest version)
-import { buildSpecElement } from "json-to-dom";
-// Or when scaffolded locally via npx json-to-dom:
-// import { buildSpecElement } from "./json-to-dom/index.js";
+import { buildSpecElement } from "./src/v28/index.js";
 
-// 1. Define a declarative UI specification
 const cardSpec = {
   tagName: "div",
   classList: "card shadow-sm p-4",
   children: [
-    { tagName: "label", textContent: "User Account" },
-    { tagName: "input", attributes: { type: "text", placeholder: "Enter username" } },
-    {
-      tagName: "button",
-      textContent: "Save",
-      classList: "btn btn-primary mt-3",
-      events: {
-        click: (event) => console.log("Saved!", event.output)
-      }
-    }
+    { tagName: "h5", textContent: "User Account" },
+    { tagName: "input", attributes: { type: "text", placeholder: "Enter username", name: "username" } },
+    { tagName: "button", textContent: "Save", classList: "btn btn-primary mt-3", attributes: { "data-action": "save" } }
   ]
 };
 
-// 2. Compile directly into a native browser DOM element
-const domElement = buildSpecElement({ inSpec: cardSpec });
-document.getElementById("app").appendChild(domElement);
+// Returns native HTMLDivElement
+const element = buildSpecElement({ spec: cardSpec });
+document.getElementById("app").appendChild(element);
 ```
 
-### Event Hooking Control
-
-Event hooking is completely decoupled and optional:
-
+### 2. Render & Mount Directly to a Container (`specToDom`)
 ```javascript
-// Pure DOM with zero event listeners
-const staticDom = buildSpecElement({ inSpec: cardSpec, inApplyEvents: false });
+import { specToDom } from "./src/v28/index.js";
 
-// Keep declared spec events, but stop internal component hooks
-const customDom = buildSpecElement({ inSpec: cardSpec, inAttachInternal: false });
-
-// Inspect hooked events at runtime
-console.log(domElement.__ksEvents);
+// Directly mounts into document.getElementById("app")
+specToDom({
+  spec: cardSpec,
+  targetHtmlId: "app"
+});
 ```
 
-## Scope
+### 3. Dual Output: Convert to HTML String (`specToHtml`)
+```javascript
+import { specToHtml } from "./src/v28/index.js";
 
-This repo is intentionally narrow. It compiles declarative JSON specifications into live browser DOM trees with W3C grammar validation and optional, decoupled event orchestration, but it is not a full application framework or a general-purpose Virtual DOM diffing system.
+const htmlString = specToHtml(cardSpec);
+console.log(htmlString);
+// <div class="card shadow-sm p-4"><h5>User Account</h5>...</div>
+```
 
-For a deeper explanation, read the linked docs in the `docs/` folder.
+### 4. Interactive Action Delegation (`bindActions`)
+```javascript
+import { bindActions } from "./src/v28/index.js";
+
+bindActions({
+  container: document.getElementById("app"),
+  actions: {
+    save: ({ values, form }) => {
+      console.log("Form saved with values:", values);
+    },
+    cancel: ({ reset }) => {
+      reset();
+    }
+  }
+});
+```
+
+---
+
+## Documentation
+
+- Overview: [docs/pages/overview.html](docs/pages/overview.html)
+- Why this repo exists: [docs/pages/why.html](docs/pages/why.html)
+- How it works: [docs/pages/how-it-works.html](docs/pages/how-it-works.html)
+- Architecture: [docs/pages/architecture.html](docs/pages/architecture.html)
+- Version strategy: [docs/pages/versions.html](docs/pages/versions.html)
+- Detailed Technical Notes: [DETAILS.md](DETAILS.md)
