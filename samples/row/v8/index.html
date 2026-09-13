@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON to DOM & HTML String | JSON to DOM v22</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body class="bg-slate-50 p-6">
+    <div class="max-w-5xl mx-auto">
+        <h4 class="mb-1 text-secondary">JSON-to-DOM v22 — Dual Output (DOM & HTML String)</h4>
+        <p class="text-muted small mb-4">Clean Public API (no <code>in</code> prefix). Renders live DOM and generates pure HTML string from the exact same engine.</p>
+
+        <!-- Live DOM Container -->
+        <h6 class="text-primary fw-semibold">1. Live DOM Element (specToDom):</h6>
+        <div id="table-container"
+            class="overflow-x-auto rounded-lg border border-slate-200 shadow-sm bg-white mb-4"></div>
+
+        <!-- Static HTML String Box -->
+        <h6 class="text-success fw-semibold">2. Static HTML String (specToHtml):</h6>
+        <pre id="html-output-box" class="p-3 bg-dark text-light rounded font-monospace small overflow-x-auto" style="max-height: 250px;"></pre>
+    </div>
+
+    <!-- Import v22 module -->
+    <script type="module" src="/src/v22/index.js"></script>
+    <script type="module" src="/samples/row/v8/index.js"></script>
+</body>
+
+</html>
