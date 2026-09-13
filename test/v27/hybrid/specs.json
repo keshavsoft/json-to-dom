@@ -1,0 +1,1583 @@
+{
+  "row": {
+    "withActionButtons": [
+      {
+        "tagName": "div",
+        "attributes": {
+          "class": "d-flex align-items-center gap-3 p-3 ksrow border-bottom"
+        },
+        "children": [
+          {
+            "tagName": "label",
+            "textContent": "Voucher Type 1",
+            "attributes": {
+              "class": "col-auto col-form-label fw-semibold text-secondary text-nowrap"
+            }
+          },
+          {
+            "tagName": "input",
+            "attributes": {
+              "name": "voucher1",
+              "type": "text",
+              "value": "Sales/CA",
+              "placeholder": "e.g. Sales/CA",
+              "class": "form-control"
+            }
+          },
+          {
+            "tagName": "button",
+            "textContent": "Save",
+            "attributes": {
+              "type": "button",
+              "data-action": "saveVoucher",
+              "data-closest-target": "ksrow",
+              "data-highlight": "true",
+              "data-highlight-class": "bg-primary-subtle border border-primary rounded",
+              "class": "btn btn-primary px-4"
+            }
+          }
+        ]
+      },
+      {
+        "tagName": "div",
+        "attributes": {
+          "class": "d-flex align-items-center gap-3 p-3 ksrow"
+        },
+        "children": [
+          {
+            "tagName": "label",
+            "textContent": "Voucher Type 2",
+            "attributes": {
+              "class": "col-auto col-form-label fw-semibold text-secondary text-nowrap"
+            }
+          },
+          {
+            "tagName": "input",
+            "attributes": {
+              "name": "voucher2",
+              "type": "text",
+              "value": "Purchase/TX",
+              "placeholder": "e.g. Purchase/TX",
+              "class": "form-control"
+            }
+          },
+          {
+            "tagName": "button",
+            "textContent": "Save",
+            "attributes": {
+              "type": "button",
+              "data-action": "saveVoucher",
+              "data-closest-target": "ksrow",
+              "data-highlight": "true",
+              "data-highlight-class": "bg-success-subtle border border-success rounded",
+              "class": "btn btn-success px-4"
+            }
+          }
+        ]
+      }
+    ],
+    "simpleInputs": [
+      {
+        "tagName": "div",
+        "attributes": {
+          "class": "d-flex align-items-center gap-3 p-3 ksrow border-bottom bg-white"
+        },
+        "children": [
+          {
+            "tagName": "label",
+            "textContent": "Voucher Type 1",
+            "attributes": {
+              "class": "col-auto col-form-label fw-semibold text-secondary text-nowrap"
+            }
+          },
+          {
+            "tagName": "input",
+            "attributes": {
+              "name": "voucher1",
+              "type": "text",
+              "value": "Sales/CA",
+              "placeholder": "e.g. Sales/CA",
+              "class": "form-control"
+            }
+          }
+        ]
+      },
+      {
+        "tagName": "div",
+        "attributes": {
+          "class": "d-flex align-items-center gap-3 p-3 ksrow bg-white"
+        },
+        "children": [
+          {
+            "tagName": "label",
+            "textContent": "Voucher Type 2",
+            "attributes": {
+              "class": "col-auto col-form-label fw-semibold text-secondary text-nowrap"
+            }
+          },
+          {
+            "tagName": "input",
+            "attributes": {
+              "name": "voucher2",
+              "type": "text",
+              "value": "Purchase/TX",
+              "placeholder": "e.g. Purchase/TX",
+              "class": "form-control"
+            }
+          }
+        ]
+      }
+    ],
+    "horizontalInline": [
+      {
+        "tagName": "div",
+        "attributes": {
+          "class": "card shadow-sm border-0 p-3 bg-white"
+        },
+        "children": [
+          {
+            "tagName": "div",
+            "attributes": {
+              "class": "row g-2 align-items-center ksrow"
+            },
+            "children": [
+              {
+                "tagName": "div",
+                "attributes": {
+                  "class": "col-md-5"
+                },
+                "children": [
+                  {
+                    "tagName": "input",
+                    "attributes": {
+                      "name": "searchQuery",
+                      "type": "text",
+                      "value": "Acme",
+                      "placeholder": "Search voucher number, party...",
+                      "class": "form-control"
+                    }
+                  }
+                ]
+              },
+              {
+                "tagName": "div",
+                "attributes": {
+                  "class": "col-md-4"
+                },
+                "children": [
+                  {
+                    "tagName": "select",
+                    "attributes": {
+                      "name": "filterType",
+                      "class": "form-select"
+                    },
+                    "children": [
+                      {
+                        "tagName": "option",
+                        "textContent": "All Voucher Types",
+                        "attributes": {
+                          "value": "ALL"
+                        }
+                      },
+                      {
+                        "tagName": "option",
+                        "textContent": "Sales Only",
+                        "attributes": {
+                          "value": "Sales"
+                        }
+                      },
+                      {
+                        "tagName": "option",
+                        "textContent": "Purchase Only",
+                        "attributes": {
+                          "value": "Purchase"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tagName": "div",
+                "attributes": {
+                  "class": "col-md-3 d-flex gap-2"
+                },
+                "children": [
+                  {
+                    "tagName": "button",
+                    "textContent": "Filter",
+                    "attributes": {
+                      "type": "button",
+                      "data-action": "applyFilter",
+                      "data-closest-target": "ksrow",
+                      "class": "btn btn-primary w-100 fw-semibold"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "form": {
+    "footerActions": [
+      {
+        "tagName": "div",
+        "attributes": {
+          "class": "ksform border rounded-3 shadow-sm bg-white overflow-hidden"
+        },
+        "children": [
+          {
+            "tagName": "div",
+            "attributes": {
+              "class": "bg-body-secondary p-3 border-bottom d-flex justify-content-between align-items-center"
+            },
+            "children": [
+              {
+                "tagName": "span",
+                "textContent": "Voucher Entry Form",
+                "attributes": {
+                  "class": "fw-bold fs-6 text-dark"
+                }
+              },
+              {
+                "tagName": "span",
+                "textContent": "Form v27 • Footer Actions",
+                "attributes": {
+                  "class": "badge bg-primary-subtle text-primary border border-primary-subtle"
+                }
+              }
+            ]
+          },
+          {
+            "tagName": "div",
+            "attributes": {
+              "class": "p-4 d-flex flex-column gap-3"
+            },
+            "children": [
+              {
+                "tagName": "div",
+                "attributes": {
+                  "class": "row g-3"
+                },
+                "children": [
+                  {
+                    "tagName": "div",
+                    "attributes": {
+                      "class": "col-md-6"
+                    },
+                    "children": [
+                      {
+                        "tagName": "label",
+                        "textContent": "Voucher Number",
+                        "attributes": {
+                          "class": "form-label fw-semibold text-secondary small"
+                        }
+                      },
+                      {
+                        "tagName": "input",
+                        "attributes": {
+                          "name": "voucherNumber",
+                          "type": "text",
+                          "value": "VCH-2026-008",
+                          "placeholder": "e.g. VCH-2026-001",
+                          "class": "form-control"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "tagName": "div",
+                    "attributes": {
+                      "class": "col-md-6"
+                    },
+                    "children": [
+                      {
+                        "tagName": "label",
+                        "textContent": "Voucher Date",
+                        "attributes": {
+                          "class": "form-label fw-semibold text-secondary small"
+                        }
+                      },
+                      {
+                        "tagName": "input",
+                        "attributes": {
+                          "name": "voucherDate",
+                          "type": "date",
+                          "value": "2026-09-13",
+                          "class": "form-control"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tagName": "div",
+                "attributes": {
+                  "class": "row g-3"
+                },
+                "children": [
+                  {
+                    "tagName": "div",
+                    "attributes": {
+                      "class": "col-md-6"
+                    },
+                    "children": [
+                      {
+                        "tagName": "label",
+                        "textContent": "Voucher Type",
+                        "attributes": {
+                          "class": "form-label fw-semibold text-secondary small"
+                        }
+                      },
+                      {
+                        "tagName": "select",
+                        "attributes": {
+                          "name": "voucherType",
+                          "class": "form-select"
+                        },
+                        "children": [
+                          {
+                            "tagName": "option",
+                            "textContent": "Sales / California",
+                            "attributes": {
+                              "value": "Sales/CA"
+                            }
+                          },
+                          {
+                            "tagName": "option",
+                            "textContent": "Purchase / Texas",
+                            "attributes": {
+                              "value": "Purchase/TX"
+                            }
+                          },
+                          {
+                            "tagName": "option",
+                            "textContent": "Journal / New York",
+                            "attributes": {
+                              "value": "Journal/NY"
+                            }
+                          },
+                          {
+                            "tagName": "option",
+                            "textContent": "Payment / Florida",
+                            "attributes": {
+                              "value": "Payment/FL"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tagName": "div",
+                    "attributes": {
+                      "class": "col-md-6"
+                    },
+                    "children": [
+                      {
+                        "tagName": "label",
+                        "textContent": "Party / Account Name",
+                        "attributes": {
+                          "class": "form-label fw-semibold text-secondary small"
+                        }
+                      },
+                      {
+                        "tagName": "input",
+                        "attributes": {
+                          "name": "partyName",
+                          "type": "text",
+                          "value": "Acme Enterprise Ltd.",
+                          "placeholder": "e.g. Acme Corp",
+                          "class": "form-control"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tagName": "div",
+                "attributes": {
+                  "class": "row g-3"
+                },
+                "children": [
+                  {
+                    "tagName": "div",
+                    "attributes": {
+                      "class": "col-md-6"
+                    },
+                    "children": [
+                      {
+                        "tagName": "label",
+                        "textContent": "Amount (USD)",
+                        "attributes": {
+                          "class": "form-label fw-semibold text-secondary small"
+                        }
+                      },
+                      {
+                        "tagName": "input",
+                        "attributes": {
+                          "name": "amount",
+                          "type": "number",
+                          "value": "18500",
+                          "placeholder": "0.00",
+                          "class": "form-control"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "tagName": "div",
+                    "attributes": {
+                      "class": "col-md-6"
+                    },
+                    "children": [
+                      {
+                        "tagName": "label",
+                        "textContent": "Reference Code",
+                        "attributes": {
+                          "class": "form-label fw-semibold text-secondary small"
+                        }
+                      },
+                      {
+                        "tagName": "input",
+                        "attributes": {
+                          "name": "referenceCode",
+                          "type": "text",
+                          "value": "REF-9921",
+                          "placeholder": "Optional reference code",
+                          "class": "form-control"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tagName": "div",
+                "attributes": {
+                  "class": "col-12"
+                },
+                "children": [
+                  {
+                    "tagName": "label",
+                    "textContent": "Narration / Remarks",
+                    "attributes": {
+                      "class": "form-label fw-semibold text-secondary small"
+                    }
+                  },
+                  {
+                    "tagName": "input",
+                    "attributes": {
+                      "name": "narration",
+                      "type": "text",
+                      "value": "Quarterly service milestone payment clearance.",
+                      "placeholder": "Enter remarks or notes...",
+                      "class": "form-control"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tagName": "div",
+            "attributes": {
+              "class": "bg-body-tertiary p-3 border-top d-flex justify-content-end align-items-center gap-2"
+            },
+            "children": [
+              {
+                "tagName": "button",
+                "textContent": "Cancel",
+                "attributes": {
+                  "type": "button",
+                  "data-action": "cancel",
+                  "class": "btn btn-outline-secondary px-4 fw-medium"
+                }
+              },
+              {
+                "tagName": "button",
+                "textContent": "Save",
+                "attributes": {
+                  "type": "button",
+                  "data-action": "save",
+                  "class": "btn btn-primary px-4 fw-semibold"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "twoColumnGrid": [
+      {
+        "tagName": "div",
+        "attributes": {
+          "class": "ksform border rounded-3 shadow-sm bg-white overflow-hidden"
+        },
+        "children": [
+          {
+            "tagName": "div",
+            "attributes": {
+              "class": "bg-body-secondary p-3 border-bottom d-flex justify-content-between align-items-center"
+            },
+            "children": [
+              {
+                "tagName": "span",
+                "textContent": "Customer Account Profile",
+                "attributes": {
+                  "class": "fw-bold fs-6 text-dark"
+                }
+              },
+              {
+                "tagName": "span",
+                "textContent": "Form Variation • Two-Column Grid",
+                "attributes": {
+                  "class": "badge bg-info-subtle text-info-emphasis border border-info-subtle"
+                }
+              }
+            ]
+          },
+          {
+            "tagName": "div",
+            "attributes": {
+              "class": "p-4"
+            },
+            "children": [
+              {
+                "tagName": "div",
+                "attributes": {
+                  "class": "row g-3"
+                },
+                "children": [
+                  {
+                    "tagName": "div",
+                    "attributes": {
+                      "class": "col-md-6"
+                    },
+                    "children": [
+                      {
+                        "tagName": "label",
+                        "textContent": "First Name",
+                        "attributes": {
+                          "class": "form-label fw-semibold text-secondary small"
+                        }
+                      },
+                      {
+                        "tagName": "input",
+                        "attributes": {
+                          "name": "firstName",
+                          "type": "text",
+                          "value": "Sarah",
+                          "placeholder": "Enter first name",
+                          "class": "form-control"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "tagName": "div",
+                    "attributes": {
+                      "class": "col-md-6"
+                    },
+                    "children": [
+                      {
+                        "tagName": "label",
+                        "textContent": "Last Name",
+                        "attributes": {
+                          "class": "form-label fw-semibold text-secondary small"
+                        }
+                      },
+                      {
+                        "tagName": "input",
+                        "attributes": {
+                          "name": "lastName",
+                          "type": "text",
+                          "value": "Connor",
+                          "placeholder": "Enter last name",
+                          "class": "form-control"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "tagName": "div",
+                    "attributes": {
+                      "class": "col-md-6"
+                    },
+                    "children": [
+                      {
+                        "tagName": "label",
+                        "textContent": "Email Address",
+                        "attributes": {
+                          "class": "form-label fw-semibold text-secondary small"
+                        }
+                      },
+                      {
+                        "tagName": "input",
+                        "attributes": {
+                          "name": "email",
+                          "type": "text",
+                          "value": "s.connor@example.com",
+                          "placeholder": "name@example.com",
+                          "class": "form-control"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "tagName": "div",
+                    "attributes": {
+                      "class": "col-md-6"
+                    },
+                    "children": [
+                      {
+                        "tagName": "label",
+                        "textContent": "Phone Number",
+                        "attributes": {
+                          "class": "form-label fw-semibold text-secondary small"
+                        }
+                      },
+                      {
+                        "tagName": "input",
+                        "attributes": {
+                          "name": "phone",
+                          "type": "text",
+                          "value": "+1 (555) 019-2834",
+                          "placeholder": "+1 (555) 000-0000",
+                          "class": "form-control"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "tagName": "div",
+                    "attributes": {
+                      "class": "col-md-6"
+                    },
+                    "children": [
+                      {
+                        "tagName": "label",
+                        "textContent": "Country / Region",
+                        "attributes": {
+                          "class": "form-label fw-semibold text-secondary small"
+                        }
+                      },
+                      {
+                        "tagName": "select",
+                        "attributes": {
+                          "name": "country",
+                          "class": "form-select"
+                        },
+                        "children": [
+                          {
+                            "tagName": "option",
+                            "textContent": "United States",
+                            "attributes": {
+                              "value": "US"
+                            }
+                          },
+                          {
+                            "tagName": "option",
+                            "textContent": "United Kingdom",
+                            "attributes": {
+                              "value": "UK"
+                            }
+                          },
+                          {
+                            "tagName": "option",
+                            "textContent": "India",
+                            "attributes": {
+                              "value": "IN"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tagName": "div",
+                    "attributes": {
+                      "class": "col-md-6"
+                    },
+                    "children": [
+                      {
+                        "tagName": "label",
+                        "textContent": "Account Tier",
+                        "attributes": {
+                          "class": "form-label fw-semibold text-secondary small"
+                        }
+                      },
+                      {
+                        "tagName": "select",
+                        "attributes": {
+                          "name": "tier",
+                          "class": "form-select"
+                        },
+                        "children": [
+                          {
+                            "tagName": "option",
+                            "textContent": "Enterprise Plan",
+                            "attributes": {
+                              "value": "ENTERPRISE"
+                            }
+                          },
+                          {
+                            "tagName": "option",
+                            "textContent": "Professional Plan",
+                            "attributes": {
+                              "value": "PRO"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tagName": "div",
+            "attributes": {
+              "class": "bg-body-tertiary p-3 border-top d-flex justify-content-end align-items-center gap-2"
+            },
+            "children": [
+              {
+                "tagName": "button",
+                "textContent": "Reset",
+                "attributes": {
+                  "type": "button",
+                  "data-action": "cancel",
+                  "class": "btn btn-outline-secondary px-4 fw-medium"
+                }
+              },
+              {
+                "tagName": "button",
+                "textContent": "Save Profile",
+                "attributes": {
+                  "type": "button",
+                  "data-action": "save",
+                  "class": "btn btn-primary px-4 fw-semibold"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "stackedVertical": [
+      {
+        "tagName": "div",
+        "attributes": {
+          "class": "ksform border rounded-3 shadow-sm bg-white p-4"
+        },
+        "children": [
+          {
+            "tagName": "div",
+            "attributes": {
+              "class": "mb-3 border-bottom pb-2"
+            },
+            "children": [
+              {
+                "tagName": "span",
+                "textContent": "Quick Payment Clearance",
+                "attributes": {
+                  "class": "fw-bold fs-6 text-dark d-block mb-1"
+                }
+              },
+              {
+                "tagName": "span",
+                "textContent": "Single-column vertical layout with bottom submit",
+                "attributes": {
+                  "class": "text-muted small"
+                }
+              }
+            ]
+          },
+          {
+            "tagName": "div",
+            "attributes": {
+              "class": "mb-3"
+            },
+            "children": [
+              {
+                "tagName": "label",
+                "textContent": "Invoice Reference",
+                "attributes": {
+                  "class": "form-label fw-semibold text-secondary small"
+                }
+              },
+              {
+                "tagName": "input",
+                "attributes": {
+                  "name": "invoiceRef",
+                  "type": "text",
+                  "value": "INV-88301",
+                  "placeholder": "Enter invoice reference",
+                  "class": "form-control"
+                }
+              }
+            ]
+          },
+          {
+            "tagName": "div",
+            "attributes": {
+              "class": "mb-3"
+            },
+            "children": [
+              {
+                "tagName": "label",
+                "textContent": "Beneficiary Account",
+                "attributes": {
+                  "class": "form-label fw-semibold text-secondary small"
+                }
+              },
+              {
+                "tagName": "input",
+                "attributes": {
+                  "name": "accountNumber",
+                  "type": "text",
+                  "value": "ACC-992-1002",
+                  "placeholder": "Enter account number",
+                  "class": "form-control"
+                }
+              }
+            ]
+          },
+          {
+            "tagName": "div",
+            "attributes": {
+              "class": "mb-4"
+            },
+            "children": [
+              {
+                "tagName": "label",
+                "textContent": "Clearance Amount ($)",
+                "attributes": {
+                  "class": "form-label fw-semibold text-secondary small"
+                }
+              },
+              {
+                "tagName": "input",
+                "attributes": {
+                  "name": "amount",
+                  "type": "number",
+                  "value": "4500",
+                  "placeholder": "0.00",
+                  "class": "form-control"
+                }
+              }
+            ]
+          },
+          {
+            "tagName": "div",
+            "attributes": {
+              "class": "d-flex gap-2"
+            },
+            "children": [
+              {
+                "tagName": "button",
+                "textContent": "Reset Form",
+                "attributes": {
+                  "type": "button",
+                  "data-action": "cancel",
+                  "class": "btn btn-outline-secondary w-50 py-2"
+                }
+              },
+              {
+                "tagName": "button",
+                "textContent": "Authorize Payment",
+                "attributes": {
+                  "type": "button",
+                  "data-action": "save",
+                  "class": "btn btn-primary w-50 py-2 fw-semibold"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "table": {
+    "basic": [
+      {
+        "tagName": "div",
+        "attributes": {
+          "class": "table-responsive border rounded-3 shadow-sm bg-white overflow-hidden"
+        },
+        "children": [
+          {
+            "tagName": "table",
+            "attributes": {
+              "class": "table table-hover align-middle mb-0"
+            },
+            "children": [
+              {
+                "tagName": "thead",
+                "attributes": {
+                  "class": "table-light border-bottom"
+                },
+                "children": [
+                  {
+                    "tagName": "tr",
+                    "children": [
+                      {
+                        "tagName": "th",
+                        "textContent": "#",
+                        "attributes": {
+                          "class": "py-3 px-3 text-secondary small fw-semibold"
+                        }
+                      },
+                      {
+                        "tagName": "th",
+                        "textContent": "Voucher No.",
+                        "attributes": {
+                          "class": "py-3 px-3 text-secondary small fw-semibold"
+                        }
+                      },
+                      {
+                        "tagName": "th",
+                        "textContent": "Date",
+                        "attributes": {
+                          "class": "py-3 px-3 text-secondary small fw-semibold"
+                        }
+                      },
+                      {
+                        "tagName": "th",
+                        "textContent": "Type",
+                        "attributes": {
+                          "class": "py-3 px-3 text-secondary small fw-semibold"
+                        }
+                      },
+                      {
+                        "tagName": "th",
+                        "textContent": "Party Name",
+                        "attributes": {
+                          "class": "py-3 px-3 text-secondary small fw-semibold"
+                        }
+                      },
+                      {
+                        "tagName": "th",
+                        "textContent": "Amount (USD)",
+                        "attributes": {
+                          "class": "py-3 px-3 text-end text-secondary small fw-semibold"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tagName": "tbody",
+                "children": [
+                  {
+                    "tagName": "tr",
+                    "children": [
+                      {
+                        "tagName": "td",
+                        "textContent": "1",
+                        "attributes": {
+                          "class": "py-3 px-3 text-muted"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "VCH-2026-001",
+                        "attributes": {
+                          "class": "py-3 px-3 fw-medium text-dark"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "2026-09-01",
+                        "attributes": {
+                          "class": "py-3 px-3 text-secondary"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "Sales",
+                        "attributes": {
+                          "class": "py-3 px-3"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "Global Logistics Corp",
+                        "attributes": {
+                          "class": "py-3 px-3"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "$12,400.00",
+                        "attributes": {
+                          "class": "py-3 px-3 text-end fw-semibold"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "tagName": "tr",
+                    "children": [
+                      {
+                        "tagName": "td",
+                        "textContent": "2",
+                        "attributes": {
+                          "class": "py-3 px-3 text-muted"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "VCH-2026-002",
+                        "attributes": {
+                          "class": "py-3 px-3 fw-medium text-dark"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "2026-09-04",
+                        "attributes": {
+                          "class": "py-3 px-3 text-secondary"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "Purchase",
+                        "attributes": {
+                          "class": "py-3 px-3"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "Apex Industrial Tools",
+                        "attributes": {
+                          "class": "py-3 px-3"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "$8,150.00",
+                        "attributes": {
+                          "class": "py-3 px-3 text-end fw-semibold"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "tagName": "tr",
+                    "children": [
+                      {
+                        "tagName": "td",
+                        "textContent": "3",
+                        "attributes": {
+                          "class": "py-3 px-3 text-muted"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "VCH-2026-003",
+                        "attributes": {
+                          "class": "py-3 px-3 fw-medium text-dark"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "2026-09-09",
+                        "attributes": {
+                          "class": "py-3 px-3 text-secondary"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "Payment",
+                        "attributes": {
+                          "class": "py-3 px-3"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "Summit Consulting Services",
+                        "attributes": {
+                          "class": "py-3 px-3"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "$24,000.00",
+                        "attributes": {
+                          "class": "py-3 px-3 text-end fw-semibold"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "withRowActions": [
+      {
+        "tagName": "div",
+        "attributes": {
+          "class": "table-responsive border rounded-3 shadow-sm bg-white overflow-hidden"
+        },
+        "children": [
+          {
+            "tagName": "table",
+            "attributes": {
+              "class": "table table-hover align-middle mb-0"
+            },
+            "children": [
+              {
+                "tagName": "thead",
+                "attributes": {
+                  "class": "table-light border-bottom"
+                },
+                "children": [
+                  {
+                    "tagName": "tr",
+                    "children": [
+                      {
+                        "tagName": "th",
+                        "textContent": "Voucher No.",
+                        "attributes": {
+                          "class": "py-3 px-3 text-secondary small fw-semibold"
+                        }
+                      },
+                      {
+                        "tagName": "th",
+                        "textContent": "Type",
+                        "attributes": {
+                          "class": "py-3 px-3 text-secondary small fw-semibold"
+                        }
+                      },
+                      {
+                        "tagName": "th",
+                        "textContent": "Party Name",
+                        "attributes": {
+                          "class": "py-3 px-3 text-secondary small fw-semibold"
+                        }
+                      },
+                      {
+                        "tagName": "th",
+                        "textContent": "Amount",
+                        "attributes": {
+                          "class": "py-3 px-3 text-secondary small fw-semibold"
+                        }
+                      },
+                      {
+                        "tagName": "th",
+                        "textContent": "Actions",
+                        "attributes": {
+                          "class": "py-3 px-3 text-end text-secondary small fw-semibold"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tagName": "tbody",
+                "children": [
+                  {
+                    "tagName": "tr",
+                    "attributes": {
+                      "class": "ksrow"
+                    },
+                    "children": [
+                      {
+                        "tagName": "td",
+                        "attributes": {
+                          "class": "py-3 px-3 fw-medium text-dark"
+                        },
+                        "children": [
+                          {
+                            "tagName": "span",
+                            "textContent": "VCH-2026-001"
+                          },
+                          {
+                            "tagName": "input",
+                            "attributes": {
+                              "name": "voucherNo",
+                              "type": "text",
+                              "value": "VCH-2026-001",
+                              "class": "d-none"
+                            }
+                          },
+                          {
+                            "tagName": "input",
+                            "attributes": {
+                              "name": "partyName",
+                              "type": "text",
+                              "value": "Global Logistics Corp",
+                              "class": "d-none"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "Sales",
+                        "attributes": {
+                          "class": "py-3 px-3"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "Global Logistics Corp",
+                        "attributes": {
+                          "class": "py-3 px-3"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "$12,400.00",
+                        "attributes": {
+                          "class": "py-3 px-3 fw-semibold text-success"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "attributes": {
+                          "class": "py-3 px-3 text-end"
+                        },
+                        "children": [
+                          {
+                            "tagName": "button",
+                            "textContent": "Select Row",
+                            "attributes": {
+                              "type": "button",
+                              "data-action": "selectRow",
+                              "data-closest-target": "ksrow",
+                              "data-highlight": "true",
+                              "data-highlight-class": "table-primary",
+                              "class": "btn btn-sm btn-outline-primary px-3"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tagName": "tr",
+                    "attributes": {
+                      "class": "ksrow"
+                    },
+                    "children": [
+                      {
+                        "tagName": "td",
+                        "attributes": {
+                          "class": "py-3 px-3 fw-medium text-dark"
+                        },
+                        "children": [
+                          {
+                            "tagName": "span",
+                            "textContent": "VCH-2026-002"
+                          },
+                          {
+                            "tagName": "input",
+                            "attributes": {
+                              "name": "voucherNo",
+                              "type": "text",
+                              "value": "VCH-2026-002",
+                              "class": "d-none"
+                            }
+                          },
+                          {
+                            "tagName": "input",
+                            "attributes": {
+                              "name": "partyName",
+                              "type": "text",
+                              "value": "Apex Industrial Tools",
+                              "class": "d-none"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "Purchase",
+                        "attributes": {
+                          "class": "py-3 px-3"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "Apex Industrial Tools",
+                        "attributes": {
+                          "class": "py-3 px-3"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "$8,150.00",
+                        "attributes": {
+                          "class": "py-3 px-3 fw-semibold text-primary"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "attributes": {
+                          "class": "py-3 px-3 text-end"
+                        },
+                        "children": [
+                          {
+                            "tagName": "button",
+                            "textContent": "Select Row",
+                            "attributes": {
+                              "type": "button",
+                              "data-action": "selectRow",
+                              "data-closest-target": "ksrow",
+                              "data-highlight": "true",
+                              "data-highlight-class": "table-primary",
+                              "class": "btn btn-sm btn-outline-primary px-3"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "stripedBordered": [
+      {
+        "tagName": "div",
+        "attributes": {
+          "class": "table-responsive border rounded-3 shadow-sm bg-white overflow-hidden"
+        },
+        "children": [
+          {
+            "tagName": "table",
+            "attributes": {
+              "class": "table table-striped table-bordered align-middle mb-0"
+            },
+            "children": [
+              {
+                "tagName": "thead",
+                "attributes": {
+                  "class": "table-dark"
+                },
+                "children": [
+                  {
+                    "tagName": "tr",
+                    "children": [
+                      {
+                        "tagName": "th",
+                        "textContent": "ID",
+                        "attributes": {
+                          "class": "py-3 px-3"
+                        }
+                      },
+                      {
+                        "tagName": "th",
+                        "textContent": "Item Description",
+                        "attributes": {
+                          "class": "py-3 px-3"
+                        }
+                      },
+                      {
+                        "tagName": "th",
+                        "textContent": "Category",
+                        "attributes": {
+                          "class": "py-3 px-3"
+                        }
+                      },
+                      {
+                        "tagName": "th",
+                        "textContent": "Unit Price",
+                        "attributes": {
+                          "class": "py-3 px-3 text-end"
+                        }
+                      },
+                      {
+                        "tagName": "th",
+                        "textContent": "Stock Qty",
+                        "attributes": {
+                          "class": "py-3 px-3 text-end"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tagName": "tbody",
+                "children": [
+                  {
+                    "tagName": "tr",
+                    "children": [
+                      {
+                        "tagName": "td",
+                        "textContent": "SKU-101",
+                        "attributes": {
+                          "class": "py-3 px-3 font-monospace small"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "High-Torque Electric Motor",
+                        "attributes": {
+                          "class": "py-3 px-3 fw-medium"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "Hardware",
+                        "attributes": {
+                          "class": "py-3 px-3"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "$340.00",
+                        "attributes": {
+                          "class": "py-3 px-3 text-end font-monospace"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "48",
+                        "attributes": {
+                          "class": "py-3 px-3 text-end"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "tagName": "tr",
+                    "children": [
+                      {
+                        "tagName": "td",
+                        "textContent": "SKU-102",
+                        "attributes": {
+                          "class": "py-3 px-3 font-monospace small"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "Precision Bearings Set (x10)",
+                        "attributes": {
+                          "class": "py-3 px-3 fw-medium"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "Components",
+                        "attributes": {
+                          "class": "py-3 px-3"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "$85.00",
+                        "attributes": {
+                          "class": "py-3 px-3 text-end font-monospace"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "120",
+                        "attributes": {
+                          "class": "py-3 px-3 text-end"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "tagName": "tr",
+                    "children": [
+                      {
+                        "tagName": "td",
+                        "textContent": "SKU-103",
+                        "attributes": {
+                          "class": "py-3 px-3 font-monospace small"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "Digital Multimeter Pro",
+                        "attributes": {
+                          "class": "py-3 px-3 fw-medium"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "Instruments",
+                        "attributes": {
+                          "class": "py-3 px-3"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "$145.00",
+                        "attributes": {
+                          "class": "py-3 px-3 text-end font-monospace"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "32",
+                        "attributes": {
+                          "class": "py-3 px-3 text-end"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tagName": "tfoot",
+                "attributes": {
+                  "class": "table-light fw-bold"
+                },
+                "children": [
+                  {
+                    "tagName": "tr",
+                    "children": [
+                      {
+                        "tagName": "td",
+                        "textContent": "Total",
+                        "attributes": {
+                          "class": "py-3 px-3",
+                          "colspan": "3"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "$570.00",
+                        "attributes": {
+                          "class": "py-3 px-3 text-end font-monospace"
+                        }
+                      },
+                      {
+                        "tagName": "td",
+                        "textContent": "200 Units",
+                        "attributes": {
+                          "class": "py-3 px-3 text-end"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
