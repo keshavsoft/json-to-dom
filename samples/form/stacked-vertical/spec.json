@@ -1,0 +1,133 @@
+[
+    {
+        "tagName": "div",
+        "attributes": {
+            "class": "ksform border rounded-3 shadow-sm bg-white p-4"
+        },
+        "children": [
+            {
+                "tagName": "div",
+                "attributes": {
+                    "class": "mb-3 border-bottom pb-2"
+                },
+                "children": [
+                    {
+                        "tagName": "span",
+                        "textContent": "Quick Payment Clearance",
+                        "attributes": {
+                            "class": "fw-bold fs-6 text-dark d-block mb-1"
+                        }
+                    },
+                    {
+                        "tagName": "span",
+                        "textContent": "Single-column vertical layout with bottom submit",
+                        "attributes": {
+                            "class": "text-muted small"
+                        }
+                    }
+                ]
+            },
+            {
+                "tagName": "div",
+                "attributes": {
+                    "class": "mb-3"
+                },
+                "children": [
+                    {
+                        "tagName": "label",
+                        "textContent": "Invoice Reference",
+                        "attributes": {
+                            "class": "form-label fw-semibold text-secondary small"
+                        }
+                    },
+                    {
+                        "tagName": "input",
+                        "attributes": {
+                            "name": "invoiceRef",
+                            "type": "text",
+                            "value": "INV-88301",
+                            "placeholder": "Enter invoice reference",
+                            "class": "form-control"
+                        }
+                    }
+                ]
+            },
+            {
+                "tagName": "div",
+                "attributes": {
+                    "class": "mb-3"
+                },
+                "children": [
+                    {
+                        "tagName": "label",
+                        "textContent": "Beneficiary Account",
+                        "attributes": {
+                            "class": "form-label fw-semibold text-secondary small"
+                        }
+                    },
+                    {
+                        "tagName": "input",
+                        "attributes": {
+                            "name": "accountNumber",
+                            "type": "text",
+                            "value": "ACC-992-1002",
+                            "placeholder": "Enter account number",
+                            "class": "form-control"
+                        }
+                    }
+                ]
+            },
+            {
+                "tagName": "div",
+                "attributes": {
+                    "class": "mb-4"
+                },
+                "children": [
+                    {
+                        "tagName": "label",
+                        "textContent": "Clearance Amount ($)",
+                        "attributes": {
+                            "class": "form-label fw-semibold text-secondary small"
+                        }
+                    },
+                    {
+                        "tagName": "input",
+                        "attributes": {
+                            "name": "amount",
+                            "type": "number",
+                            "value": "4500",
+                            "placeholder": "0.00",
+                            "class": "form-control"
+                        }
+                    }
+                ]
+            },
+            {
+                "tagName": "div",
+                "attributes": {
+                    "class": "d-flex gap-2"
+                },
+                "children": [
+                    {
+                        "tagName": "button",
+                        "textContent": "Reset Form",
+                        "attributes": {
+                            "type": "button",
+                            "data-action": "cancel",
+                            "class": "btn btn-outline-secondary w-50 py-2"
+                        }
+                    },
+                    {
+                        "tagName": "button",
+                        "textContent": "Authorize Payment",
+                        "attributes": {
+                            "type": "button",
+                            "data-action": "save",
+                            "class": "btn btn-primary w-50 py-2 fw-semibold"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+]

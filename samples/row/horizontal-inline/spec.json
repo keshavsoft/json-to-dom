@@ -1,0 +1,92 @@
+[
+    {
+        "tagName": "div",
+        "attributes": {
+            "class": "card shadow-sm border-0 p-3 bg-white"
+        },
+        "children": [
+            {
+                "tagName": "div",
+                "attributes": {
+                    "class": "row g-2 align-items-center ksrow"
+                },
+                "children": [
+                    {
+                        "tagName": "div",
+                        "attributes": {
+                            "class": "col-md-5"
+                        },
+                        "children": [
+                            {
+                                "tagName": "input",
+                                "attributes": {
+                                    "name": "searchQuery",
+                                    "type": "text",
+                                    "value": "Acme",
+                                    "placeholder": "Search voucher number, party...",
+                                    "class": "form-control"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "tagName": "div",
+                        "attributes": {
+                            "class": "col-md-4"
+                        },
+                        "children": [
+                            {
+                                "tagName": "select",
+                                "attributes": {
+                                    "name": "filterType",
+                                    "class": "form-select"
+                                },
+                                "children": [
+                                    {
+                                        "tagName": "option",
+                                        "textContent": "All Voucher Types",
+                                        "attributes": {
+                                            "value": "ALL"
+                                        }
+                                    },
+                                    {
+                                        "tagName": "option",
+                                        "textContent": "Sales Only",
+                                        "attributes": {
+                                            "value": "Sales"
+                                        }
+                                    },
+                                    {
+                                        "tagName": "option",
+                                        "textContent": "Purchase Only",
+                                        "attributes": {
+                                            "value": "Purchase"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "tagName": "div",
+                        "attributes": {
+                            "class": "col-md-3 d-flex gap-2"
+                        },
+                        "children": [
+                            {
+                                "tagName": "button",
+                                "textContent": "Filter",
+                                "attributes": {
+                                    "type": "button",
+                                    "data-action": "applyFilter",
+                                    "data-closest-target": "ksrow",
+                                    "class": "btn btn-primary w-100 fw-semibold"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

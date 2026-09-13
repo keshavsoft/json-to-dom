@@ -1,0 +1,87 @@
+[
+    {
+        "tagName": "div",
+        "attributes": {
+            "class": "table-responsive border rounded-3 shadow-sm bg-white overflow-hidden"
+        },
+        "children": [
+            {
+                "tagName": "table",
+                "attributes": {
+                    "class": "table table-striped table-bordered align-middle mb-0"
+                },
+                "children": [
+                    {
+                        "tagName": "thead",
+                        "attributes": {
+                            "class": "table-dark"
+                        },
+                        "children": [
+                            {
+                                "tagName": "tr",
+                                "children": [
+                                    { "tagName": "th", "textContent": "ID", "attributes": { "class": "py-3 px-3" } },
+                                    { "tagName": "th", "textContent": "Item Description", "attributes": { "class": "py-3 px-3" } },
+                                    { "tagName": "th", "textContent": "Category", "attributes": { "class": "py-3 px-3" } },
+                                    { "tagName": "th", "textContent": "Unit Price", "attributes": { "class": "py-3 px-3 text-end" } },
+                                    { "tagName": "th", "textContent": "Stock Qty", "attributes": { "class": "py-3 px-3 text-end" } }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "tagName": "tbody",
+                        "children": [
+                            {
+                                "tagName": "tr",
+                                "children": [
+                                    { "tagName": "td", "textContent": "SKU-101", "attributes": { "class": "py-3 px-3 font-monospace small" } },
+                                    { "tagName": "td", "textContent": "High-Torque Electric Motor", "attributes": { "class": "py-3 px-3 fw-medium" } },
+                                    { "tagName": "td", "textContent": "Hardware", "attributes": { "class": "py-3 px-3" } },
+                                    { "tagName": "td", "textContent": "$340.00", "attributes": { "class": "py-3 px-3 text-end font-monospace" } },
+                                    { "tagName": "td", "textContent": "48", "attributes": { "class": "py-3 px-3 text-end" } }
+                                ]
+                            },
+                            {
+                                "tagName": "tr",
+                                "children": [
+                                    { "tagName": "td", "textContent": "SKU-102", "attributes": { "class": "py-3 px-3 font-monospace small" } },
+                                    { "tagName": "td", "textContent": "Precision Bearings Set (x10)", "attributes": { "class": "py-3 px-3 fw-medium" } },
+                                    { "tagName": "td", "textContent": "Components", "attributes": { "class": "py-3 px-3" } },
+                                    { "tagName": "td", "textContent": "$85.00", "attributes": { "class": "py-3 px-3 text-end font-monospace" } },
+                                    { "tagName": "td", "textContent": "120", "attributes": { "class": "py-3 px-3 text-end" } }
+                                ]
+                            },
+                            {
+                                "tagName": "tr",
+                                "children": [
+                                    { "tagName": "td", "textContent": "SKU-103", "attributes": { "class": "py-3 px-3 font-monospace small" } },
+                                    { "tagName": "td", "textContent": "Digital Multimeter Pro", "attributes": { "class": "py-3 px-3 fw-medium" } },
+                                    { "tagName": "td", "textContent": "Instruments", "attributes": { "class": "py-3 px-3" } },
+                                    { "tagName": "td", "textContent": "$145.00", "attributes": { "class": "py-3 px-3 text-end font-monospace" } },
+                                    { "tagName": "td", "textContent": "32", "attributes": { "class": "py-3 px-3 text-end" } }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "tagName": "tfoot",
+                        "attributes": {
+                            "class": "table-light fw-bold"
+                        },
+                        "children": [
+                            {
+                                "tagName": "tr",
+                                "children": [
+                                    { "tagName": "td", "textContent": "Total", "attributes": { "class": "py-3 px-3", "colspan": "3" } },
+                                    { "tagName": "td", "textContent": "$570.00", "attributes": { "class": "py-3 px-3 text-end font-monospace" } },
+                                    { "tagName": "td", "textContent": "200 Units", "attributes": { "class": "py-3 px-3 text-end" } }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

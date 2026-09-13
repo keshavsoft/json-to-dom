@@ -1,0 +1,257 @@
+[
+    {
+        "tagName": "div",
+        "attributes": {
+            "class": "ksform border rounded-3 shadow-sm bg-white overflow-hidden"
+        },
+        "children": [
+            {
+                "tagName": "div",
+                "attributes": {
+                    "class": "bg-body-secondary p-3 border-bottom d-flex justify-content-between align-items-center"
+                },
+                "children": [
+                    {
+                        "tagName": "span",
+                        "textContent": "Customer Account Profile",
+                        "attributes": {
+                            "class": "fw-bold fs-6 text-dark"
+                        }
+                    },
+                    {
+                        "tagName": "span",
+                        "textContent": "Form Variation • Two-Column Grid",
+                        "attributes": {
+                            "class": "badge bg-info-subtle text-info-emphasis border border-info-subtle"
+                        }
+                    }
+                ]
+            },
+            {
+                "tagName": "div",
+                "attributes": {
+                    "class": "p-4"
+                },
+                "children": [
+                    {
+                        "tagName": "div",
+                        "attributes": {
+                            "class": "row g-3"
+                        },
+                        "children": [
+                            {
+                                "tagName": "div",
+                                "attributes": {
+                                    "class": "col-md-6"
+                                },
+                                "children": [
+                                    {
+                                        "tagName": "label",
+                                        "textContent": "First Name",
+                                        "attributes": {
+                                            "class": "form-label fw-semibold text-secondary small"
+                                        }
+                                    },
+                                    {
+                                        "tagName": "input",
+                                        "attributes": {
+                                            "name": "firstName",
+                                            "type": "text",
+                                            "value": "Sarah",
+                                            "placeholder": "Enter first name",
+                                            "class": "form-control"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "div",
+                                "attributes": {
+                                    "class": "col-md-6"
+                                },
+                                "children": [
+                                    {
+                                        "tagName": "label",
+                                        "textContent": "Last Name",
+                                        "attributes": {
+                                            "class": "form-label fw-semibold text-secondary small"
+                                        }
+                                    },
+                                    {
+                                        "tagName": "input",
+                                        "attributes": {
+                                            "name": "lastName",
+                                            "type": "text",
+                                            "value": "Connor",
+                                            "placeholder": "Enter last name",
+                                            "class": "form-control"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "div",
+                                "attributes": {
+                                    "class": "col-md-6"
+                                },
+                                "children": [
+                                    {
+                                        "tagName": "label",
+                                        "textContent": "Email Address",
+                                        "attributes": {
+                                            "class": "form-label fw-semibold text-secondary small"
+                                        }
+                                    },
+                                    {
+                                        "tagName": "input",
+                                        "attributes": {
+                                            "name": "email",
+                                            "type": "text",
+                                            "value": "s.connor@example.com",
+                                            "placeholder": "name@example.com",
+                                            "class": "form-control"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "div",
+                                "attributes": {
+                                    "class": "col-md-6"
+                                },
+                                "children": [
+                                    {
+                                        "tagName": "label",
+                                        "textContent": "Phone Number",
+                                        "attributes": {
+                                            "class": "form-label fw-semibold text-secondary small"
+                                        }
+                                    },
+                                    {
+                                        "tagName": "input",
+                                        "attributes": {
+                                            "name": "phone",
+                                            "type": "text",
+                                            "value": "+1 (555) 019-2834",
+                                            "placeholder": "+1 (555) 000-0000",
+                                            "class": "form-control"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "div",
+                                "attributes": {
+                                    "class": "col-md-6"
+                                },
+                                "children": [
+                                    {
+                                        "tagName": "label",
+                                        "textContent": "Country / Region",
+                                        "attributes": {
+                                            "class": "form-label fw-semibold text-secondary small"
+                                        }
+                                    },
+                                    {
+                                        "tagName": "select",
+                                        "attributes": {
+                                            "name": "country",
+                                            "class": "form-select"
+                                        },
+                                        "children": [
+                                            {
+                                                "tagName": "option",
+                                                "textContent": "United States",
+                                                "attributes": {
+                                                    "value": "US"
+                                                }
+                                            },
+                                            {
+                                                "tagName": "option",
+                                                "textContent": "United Kingdom",
+                                                "attributes": {
+                                                    "value": "UK"
+                                                }
+                                            },
+                                            {
+                                                "tagName": "option",
+                                                "textContent": "India",
+                                                "attributes": {
+                                                    "value": "IN"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "div",
+                                "attributes": {
+                                    "class": "col-md-6"
+                                },
+                                "children": [
+                                    {
+                                        "tagName": "label",
+                                        "textContent": "Account Tier",
+                                        "attributes": {
+                                            "class": "form-label fw-semibold text-secondary small"
+                                        }
+                                    },
+                                    {
+                                        "tagName": "select",
+                                        "attributes": {
+                                            "name": "tier",
+                                            "class": "form-select"
+                                        },
+                                        "children": [
+                                            {
+                                                "tagName": "option",
+                                                "textContent": "Enterprise Plan",
+                                                "attributes": {
+                                                    "value": "ENTERPRISE"
+                                                }
+                                            },
+                                            {
+                                                "tagName": "option",
+                                                "textContent": "Professional Plan",
+                                                "attributes": {
+                                                    "value": "PRO"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "tagName": "div",
+                "attributes": {
+                    "class": "bg-body-tertiary p-3 border-top d-flex justify-content-end align-items-center gap-2"
+                },
+                "children": [
+                    {
+                        "tagName": "button",
+                        "textContent": "Reset",
+                        "attributes": {
+                            "type": "button",
+                            "data-action": "cancel",
+                            "class": "btn btn-outline-secondary px-4 fw-medium"
+                        }
+                    },
+                    {
+                        "tagName": "button",
+                        "textContent": "Save Profile",
+                        "attributes": {
+                            "type": "button",
+                            "data-action": "save",
+                            "class": "btn btn-primary px-4 fw-semibold"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+]
