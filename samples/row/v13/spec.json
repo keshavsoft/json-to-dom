@@ -1,0 +1,291 @@
+[
+    {
+        "tagName": "div",
+        "attributes": {
+            "class": "ksform border rounded-3 shadow-sm bg-white overflow-hidden"
+        },
+        "children": [
+            {
+                "tagName": "div",
+                "attributes": {
+                    "class": "bg-body-secondary p-3 border-bottom d-flex justify-content-between align-items-center"
+                },
+                "children": [
+                    {
+                        "tagName": "span",
+                        "textContent": "Voucher Entry Form",
+                        "attributes": {
+                            "class": "fw-bold fs-6 text-dark"
+                        }
+                    },
+                    {
+                        "tagName": "span",
+                        "textContent": "Form v27 • Footer Actions",
+                        "attributes": {
+                            "class": "badge bg-primary-subtle text-primary border border-primary-subtle"
+                        }
+                    }
+                ]
+            },
+            {
+                "tagName": "div",
+                "attributes": {
+                    "class": "p-4 d-flex flex-column gap-3"
+                },
+                "children": [
+                    {
+                        "tagName": "div",
+                        "attributes": {
+                            "class": "row g-3"
+                        },
+                        "children": [
+                            {
+                                "tagName": "div",
+                                "attributes": {
+                                    "class": "col-md-6"
+                                },
+                                "children": [
+                                    {
+                                        "tagName": "label",
+                                        "textContent": "Voucher Number",
+                                        "attributes": {
+                                            "class": "form-label fw-semibold text-secondary small"
+                                        }
+                                    },
+                                    {
+                                        "tagName": "input",
+                                        "attributes": {
+                                            "name": "voucherNumber",
+                                            "type": "text",
+                                            "value": "VCH-2026-008",
+                                            "placeholder": "e.g. VCH-2026-001",
+                                            "class": "form-control"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "div",
+                                "attributes": {
+                                    "class": "col-md-6"
+                                },
+                                "children": [
+                                    {
+                                        "tagName": "label",
+                                        "textContent": "Voucher Date",
+                                        "attributes": {
+                                            "class": "form-label fw-semibold text-secondary small"
+                                        }
+                                    },
+                                    {
+                                        "tagName": "input",
+                                        "attributes": {
+                                            "name": "voucherDate",
+                                            "type": "date",
+                                            "value": "2026-09-13",
+                                            "class": "form-control"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "tagName": "div",
+                        "attributes": {
+                            "class": "row g-3"
+                        },
+                        "children": [
+                            {
+                                "tagName": "div",
+                                "attributes": {
+                                    "class": "col-md-6"
+                                },
+                                "children": [
+                                    {
+                                        "tagName": "label",
+                                        "textContent": "Voucher Type",
+                                        "attributes": {
+                                            "class": "form-label fw-semibold text-secondary small"
+                                        }
+                                    },
+                                    {
+                                        "tagName": "select",
+                                        "attributes": {
+                                            "name": "voucherType",
+                                            "class": "form-select"
+                                        },
+                                        "children": [
+                                            {
+                                                "tagName": "option",
+                                                "textContent": "Sales / California",
+                                                "attributes": {
+                                                    "value": "Sales/CA"
+                                                }
+                                            },
+                                            {
+                                                "tagName": "option",
+                                                "textContent": "Purchase / Texas",
+                                                "attributes": {
+                                                    "value": "Purchase/TX"
+                                                }
+                                            },
+                                            {
+                                                "tagName": "option",
+                                                "textContent": "Journal / New York",
+                                                "attributes": {
+                                                    "value": "Journal/NY"
+                                                }
+                                            },
+                                            {
+                                                "tagName": "option",
+                                                "textContent": "Payment / Florida",
+                                                "attributes": {
+                                                    "value": "Payment/FL"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "div",
+                                "attributes": {
+                                    "class": "col-md-6"
+                                },
+                                "children": [
+                                    {
+                                        "tagName": "label",
+                                        "textContent": "Party / Account Name",
+                                        "attributes": {
+                                            "class": "form-label fw-semibold text-secondary small"
+                                        }
+                                    },
+                                    {
+                                        "tagName": "input",
+                                        "attributes": {
+                                            "name": "partyName",
+                                            "type": "text",
+                                            "value": "Acme Enterprise Ltd.",
+                                            "placeholder": "e.g. Acme Corp",
+                                            "class": "form-control"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "tagName": "div",
+                        "attributes": {
+                            "class": "row g-3"
+                        },
+                        "children": [
+                            {
+                                "tagName": "div",
+                                "attributes": {
+                                    "class": "col-md-6"
+                                },
+                                "children": [
+                                    {
+                                        "tagName": "label",
+                                        "textContent": "Amount (USD)",
+                                        "attributes": {
+                                            "class": "form-label fw-semibold text-secondary small"
+                                        }
+                                    },
+                                    {
+                                        "tagName": "input",
+                                        "attributes": {
+                                            "name": "amount",
+                                            "type": "number",
+                                            "value": "18500",
+                                            "placeholder": "0.00",
+                                            "class": "form-control"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "tagName": "div",
+                                "attributes": {
+                                    "class": "col-md-6"
+                                },
+                                "children": [
+                                    {
+                                        "tagName": "label",
+                                        "textContent": "Reference Code",
+                                        "attributes": {
+                                            "class": "form-label fw-semibold text-secondary small"
+                                        }
+                                    },
+                                    {
+                                        "tagName": "input",
+                                        "attributes": {
+                                            "name": "referenceCode",
+                                            "type": "text",
+                                            "value": "REF-9921",
+                                            "placeholder": "Optional reference code",
+                                            "class": "form-control"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "tagName": "div",
+                        "attributes": {
+                            "class": "col-12"
+                        },
+                        "children": [
+                            {
+                                "tagName": "label",
+                                "textContent": "Narration / Remarks",
+                                "attributes": {
+                                    "class": "form-label fw-semibold text-secondary small"
+                                }
+                            },
+                            {
+                                "tagName": "input",
+                                "attributes": {
+                                    "name": "narration",
+                                    "type": "text",
+                                    "value": "Quarterly service milestone payment clearance.",
+                                    "placeholder": "Enter remarks or notes...",
+                                    "class": "form-control"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "tagName": "div",
+                "attributes": {
+                    "class": "bg-body-tertiary p-3 border-top d-flex justify-content-end align-items-center gap-2"
+                },
+                "children": [
+                    {
+                        "tagName": "button",
+                        "textContent": "Cancel",
+                        "attributes": {
+                            "type": "button",
+                            "data-action": "cancel",
+                            "class": "btn btn-outline-secondary px-4 fw-medium"
+                        }
+                    },
+                    {
+                        "tagName": "button",
+                        "textContent": "Save",
+                        "attributes": {
+                            "type": "button",
+                            "data-action": "save",
+                            "class": "btn btn-primary px-4 fw-semibold"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+]
