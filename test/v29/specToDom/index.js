@@ -1,4 +1,4 @@
-import { specToDom } from "../../../src/v28/index.js";
+import { specToDom } from "../../../src/v29/index.js";
 
 const sampleAlertSpec = {
     tagName: "div",

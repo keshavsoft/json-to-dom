@@ -1,4 +1,4 @@
-import buildSpecElement from "../../../src/v28/index.js";
+import buildSpecElement from "../../../src/v29/index.js";
 
 const sampleSpec = {
     tagName: "div",

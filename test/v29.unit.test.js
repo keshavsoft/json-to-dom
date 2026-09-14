@@ -2,16 +2,12 @@ import { describe, test } from "node:test";
 import assert from "node:assert/strict";
 
 import buildSpecElement, {
-    jsonToDom,
     specToDom,
-    specToHtml,
-    validate,
-    listeners,
     bindActions,
-    data,
-    meta,
-    tree
+    meta
 } from "../src/v29/index.js";
+import listeners from "../src/v29/chapters/chapter3_activation/listeners/index.js";
+import data from "../src/v29/chapters/chapter1_inspection/standards/index.js";
 
 import extractFormValues from "../src/v29/chapters/chapter3_activation/listeners/v2/extractFormValues.js";
 import resetForm from "../src/v29/chapters/chapter3_activation/listeners/v2/resetForm.js";
@@ -384,7 +380,7 @@ describe("json-to-dom v29 3-Chapter Story Architecture", () => {
         assert.equal(amountInput.value, "", "totalAmount was reset");
     });
 
-    test("7. Core DOM Builder & Dual Output remain intact in v28", () => {
+    test("7. Core DOM Builder & Container Mounting in v29", () => {
         const uninstall = installMockDocument();
         try {
             const spec = {
@@ -402,9 +398,9 @@ describe("json-to-dom v29 3-Chapter Story Architecture", () => {
                 ]
             };
 
-            const html = specToHtml({ spec });
-            assert.ok(html.includes('data-action="save"'));
-            assert.ok(html.includes('name="testField"'));
+            const element = buildSpecElement({ spec });
+            assert.equal(element.tagName, "FORM");
+            assert.equal(element.children.length, 2);
 
             const dom = specToDom({ spec, domIdToPushTo: "target-container" });
             assert.equal(dom.tagName, "FORM");

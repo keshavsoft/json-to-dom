@@ -27,28 +27,28 @@
             <div class="d-inline-flex align-items-center gap-2 px-3 py-1 bg-primary-subtle text-primary border border-primary-subtle rounded-pill mb-3">
                 <span class="fw-bold small">🧪 test/v29</span>
                 <span>•</span>
-                <span class="small">Live Browser Test Suite</span>
+                <span class="small">Pure DOM Engine Test Suite</span>
             </div>
             <h1 class="fw-bold text-dark display-6 mb-2">
-                4-Method Interactive Test Workbench
+                Pure JSON &rarr; Living DOM Test Workbench
             </h1>
             <p class="text-secondary mx-auto mb-0" style="max-width: 650px;">
-                Direct visual verification running on the real browser DOM. Testing the 4 core ways to use <code>json-to-dom</code> against engine baseline <strong>src/v28</strong>.
+                Direct visual verification running on the real browser DOM. Testing the pure DOM core of <code>json-to-dom</code> against engine <strong>src/v29</strong>.
             </p>
         </div>
 
-        <!-- 4 Cards Grid -->
+        <!-- 3 Cards Grid -->
         <div class="row g-4">
             <!-- 1. buildSpecElement -->
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="card h-100 p-4 rounded-3 test-card bg-white shadow-sm">
                     <div class="d-flex align-items-center justify-content-between mb-3">
-                        <span class="badge bg-primary px-2.5 py-1">Mode 1 • Default Export</span>
-                        <span class="badge bg-success-subtle text-success border border-success-subtle">Real DOM</span>
+                        <span class="badge bg-primary px-2.5 py-1">Mode 1 • Default</span>
+                        <span class="badge bg-success-subtle text-success border border-success-subtle">DOM Node</span>
                     </div>
                     <h5 class="fw-bold text-dark mb-2">1. buildSpecElement</h5>
                     <p class="text-secondary small mb-4">
-                        Pure DOM Element Builder converting JSON specifications into live, materialized <code>HTMLElement</code> nodes.
+                        Pure DOM Element Builder converting JSON specifications into live, materialized <code>HTMLElement</code> nodes in memory.
                     </p>
                     <div class="mt-auto">
                         <a href="./buildSpecElement/" class="btn btn-outline-primary btn-sm w-100 fw-semibold">
@@ -59,11 +59,11 @@
             </div>
 
             <!-- 2. specToDom -->
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="card h-100 p-4 rounded-3 test-card bg-white shadow-sm">
                     <div class="d-flex align-items-center justify-content-between mb-3">
-                        <span class="badge bg-primary px-2.5 py-1">Mode 2 • Named Export</span>
-                        <span class="badge bg-success-subtle text-success border border-success-subtle">Mounting</span>
+                        <span class="badge bg-primary px-2.5 py-1">Mode 2 • Mounting</span>
+                        <span class="badge bg-success-subtle text-success border border-success-subtle">Container</span>
                     </div>
                     <h5 class="fw-bold text-dark mb-2">2. specToDom</h5>
                     <p class="text-secondary small mb-4">
@@ -77,33 +77,14 @@
                 </div>
             </div>
 
-            <!-- 3. specToHtml -->
-            <div class="col-md-6">
+            <!-- 3. actions -->
+            <div class="col-md-4">
                 <div class="card h-100 p-4 rounded-3 test-card bg-white shadow-sm">
                     <div class="d-flex align-items-center justify-content-between mb-3">
-                        <span class="badge bg-primary px-2.5 py-1">Mode 3 • Named Export</span>
-                        <span class="badge bg-info-subtle text-info border border-info-subtle">HTML String</span>
-                    </div>
-                    <h5 class="fw-bold text-dark mb-2">3. specToHtml</h5>
-                    <p class="text-secondary small mb-4">
-                        Serialized HTML String Generator returning raw outerHTML directly for server/static pipelines.
-                    </p>
-                    <div class="mt-auto">
-                        <a href="./specToHtml/" class="btn btn-outline-primary btn-sm w-100 fw-semibold">
-                            Open Live Test Page →
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 4. actions -->
-            <div class="col-md-6">
-                <div class="card h-100 p-4 rounded-3 test-card bg-white shadow-sm">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                        <span class="badge bg-primary px-2.5 py-1">Mode 4 • Activation</span>
+                        <span class="badge bg-primary px-2.5 py-1">Mode 3 • Activation</span>
                         <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle">Interactive</span>
                     </div>
-                    <h5 class="fw-bold text-dark mb-2">4. actions (bindActions)</h5>
+                    <h5 class="fw-bold text-dark mb-2">3. actions (bindActions)</h5>
                     <p class="text-secondary small mb-4">
                         Event Delegation & Form Lifecycle handling <code>data-action="save"</code> data extraction and <code>cancel</code> resets.
                     </p>

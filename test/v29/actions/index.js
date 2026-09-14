@@ -1,4 +1,4 @@
-import buildSpecElement, { bindActions } from "../../../src/v28/index.js";
+import buildSpecElement, { bindActions } from "../../../src/v29/index.js";
 
 const formSpec = {
     tagName: "div",
