@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "HTML Tags Standards Dictionary",
+  "description": "Validation schema for tags.json defining W3C HTML element capabilities and constraints",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "patternProperties": {
+    "^[a-z0-9-]+$": {
+      "type": "object",
+      "required": ["allowsTextContent", "allowsChildren"],
+      "properties": {
+        "allowsTextContent": {
+          "type": "boolean",
+          "description": "Whether this HTML tag allows direct textContent"
+        },
+        "allowsChildren": {
+          "type": "boolean",
+          "description": "Whether this HTML tag allows child elements (false for void tags like input, img, hr)"
+        },
+        "allowedAttributes": {
+          "type": "array",
+          "description": "List of tag-specific HTML attributes allowed on this element",
+          "items": {
+            "type": "string"
+          }
+        },
+        "childTags": {
+          "type": "array",
+          "description": "Restricted list of child tags allowed inside this element, or empty if unrestricted",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

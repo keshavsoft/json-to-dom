@@ -1,4 +1,5 @@
 {
+    "$schema": "./tags.schema.json",
     "div": {
         "allowsTextContent": false,
         "allowsChildren": true,
