@@ -1,14 +1,15 @@
-import validate from "./validate/index.js";
+import validateTag from "./validateTag.js";
+import { guardTags } from "./standards/index.js";
 
 export const inspect = (inArgs) => {
     const localArgs = inArgs;
     const isConfig = localArgs && typeof localArgs === "object" && !Array.isArray(localArgs) && ("spec" in localArgs || "inSpec" in localArgs);
-    const localSpec = isConfig ? (localArgs.spec ?? localArgs.inSpec) : localArgs;
-    const localValidate = isConfig ? Boolean(localArgs.validate ?? localArgs.inValidate ?? localArgs.debug) : false;
-    const localShowLog = isConfig ? Boolean(localArgs.showLog ?? localArgs.inShowLog) : false;
+    const localSpec = isConfig ? (localArgs.inSpec ?? localArgs.spec) : localArgs;
+    const localValidate = isConfig ? Boolean(localArgs.inValidate ?? localArgs.validate ?? localArgs.debug) : false;
+    const localShowLog = isConfig ? Boolean(localArgs.inShowLog ?? localArgs.showLog) : false;
 
     if (localValidate && localSpec) {
-        const localReport = validate({ inSpec: localSpec });
+        const localReport = validateTag({ inSpec: localSpec });
         if (!localReport.isValid) {
             console.warn("[json-to-dom: validation error]", localReport.errors, localReport);
         } else if (localReport.warnings?.length > 0 && localShowLog) {
@@ -17,6 +18,11 @@ export const inspect = (inArgs) => {
         return localReport;
     }
     return { isValid: true };
+};
+
+export {
+    validateTag,
+    guardTags
 };
 
 export default inspect;
