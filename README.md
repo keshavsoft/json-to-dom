@@ -4,12 +4,12 @@ A declarative, zero-dependency JSON-to-DOM compiler for turning serializable spe
 
 ---
 
-## 📖 The 3-Chapter Story Architecture (`v28`)
+## 📖 The 3-Chapter Story Architecture (`v31`)
 
-Starting in **`v28`**, `json-to-dom` is structured into **3 narrative chapters** that tell the complete story of a specification becoming living DOM:
+Starting in **`v31`**, `json-to-dom` is structured into **3 narrative chapters** that tell the complete story of a specification becoming living DOM:
 
 ```
-src/v28/
+src/v31/
 ├── index.js                           # Master Builder Entry Point (Story Orchestrator)
 │
 ├── chapters/
@@ -56,11 +56,11 @@ npm test
 
 ---
 
-## Clean Usage (`v28`)
+## Clean Usage (`v31`)
 
 ### 1. Build Native DOM Elements
 ```javascript
-import { buildSpecElement } from "./src/v28/index.js";
+import { buildSpecElement } from "./src/v31/index.js";
 
 const cardSpec = {
   tagName: "div",
@@ -79,7 +79,7 @@ document.getElementById("app").appendChild(element);
 
 ### 2. Render & Mount Directly to a Container (`specToDom`)
 ```javascript
-import { specToDom } from "./src/v28/index.js";
+import { specToDom } from "./src/v31/index.js";
 
 // Directly mounts into document.getElementById("app")
 specToDom({
@@ -90,7 +90,7 @@ specToDom({
 
 ### 3. Dual Output: Convert to HTML String (`specToHtml`)
 ```javascript
-import { specToHtml } from "./src/v28/index.js";
+import { specToHtml } from "./src/v31/index.js";
 
 const htmlString = specToHtml(cardSpec);
 console.log(htmlString);
@@ -99,7 +99,7 @@ console.log(htmlString);
 
 ### 4. Interactive Action Delegation (`bindActions`)
 ```javascript
-import { bindActions } from "./src/v28/index.js";
+import { bindActions } from "./src/v31/index.js";
 
 bindActions({
   container: document.getElementById("app"),
