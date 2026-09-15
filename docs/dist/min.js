@@ -2,7 +2,12 @@
 var e = {
 	version: "v31.0",
 	description: "Pure DOM engine (v31)"
-}, t = {
+}, t = (t) => {
+	typeof globalThis > "u" || !t || (globalThis.ks ??= {}, globalThis.ks["json-to-dom"] = {
+		meta: e,
+		buildSpecElement: t
+	});
+}, n = {
 	$schema: "./tags.schema.json",
 	div: {
 		allowsTextContent: !1,
@@ -187,20 +192,20 @@ var e = {
 			"disabled"
 		]
 	}
-}, n = {
+}, r = {
 	title: "HTML Global Allowed Attributes",
 	description: "Standard W3C/WHATWG Global Attributes permitted on all HTML elements.",
 	attributes: /* @__PURE__ */ "accesskey.autocapitalize.autofocus.class.contenteditable.dir.draggable.enterkeyhint.hidden.id.inert.inputmode.is.itemid.itemprop.itemref.itemscope.itemtype.lang.nonce.part.popover.role.slot.spellcheck.style.tabindex.title.translate".split("."),
 	wildcardPrefixes: ["data-", "aria-"]
-}, r = ({ inSpec: e, spec: i } = {}) => {
-	let a = e ?? i, o = [], s = [];
+}, i = ({ inSpec: e, spec: t } = {}) => {
+	let a = e ?? t, o = [], s = [];
 	if (!a || typeof a != "object") return o.push("Spec must be a non-null object"), {
 		isValid: !1,
 		errors: o,
 		warnings: s
 	};
 	if (Array.isArray(a)) return a.forEach((e, t) => {
-		let n = r({ inSpec: e });
+		let n = i({ inSpec: e });
 		n.isValid || o.push(...n.errors.map((e) => `[${t}] ${e}`)), s.push(...n.warnings.map((e) => `[${t}] ${e}`));
 	}), {
 		isValid: o.length === 0,
@@ -213,43 +218,43 @@ var e = {
 		errors: o,
 		warnings: s
 	};
-	let l = t[c];
+	let l = n[c];
 	if (!l) s.push(`Tag '<${c}>' is not recognized in tags.json`);
 	else if (l.allowsChildren === !1 && Array.isArray(a.children) && a.children.length > 0 && o.push(`Void tag '<${c}>' cannot have children`), l.allowsTextContent === !1 && a.textContent && s.push(`Tag '<${c}>' does not normally allow direct textContent`), a.attributes && typeof a.attributes == "object") {
-		let e = /* @__PURE__ */ new Set([...n.attributes || [], ...l.allowedAttributes || []]), t = n.wildcardPrefixes || [];
+		let e = /* @__PURE__ */ new Set([...r.attributes || [], ...l.allowedAttributes || []]), t = r.wildcardPrefixes || [];
 		for (let n of Object.keys(a.attributes)) {
 			let r = t.some((e) => n.startsWith(e));
 			!e.has(n) && !r && s.push(`Attribute '${n}' is not recognized on '<${c}>'`);
 		}
 	}
 	return Array.isArray(a.children) && a.children.forEach((e, t) => {
-		let n = r({ inSpec: e });
+		let n = i({ inSpec: e });
 		n.isValid || o.push(...n.errors.map((e) => `<${c}>.children[${t}]: ${e}`)), s.push(...n.warnings.map((e) => `<${c}>.children[${t}]: ${e}`));
 	}), {
 		isValid: o.length === 0,
 		errors: o,
 		warnings: s
 	};
-}, i = (e) => {
-	let t = e, n = t && typeof t == "object" && !Array.isArray(t) && ("spec" in t || "inSpec" in t), i = n ? t.inSpec ?? t.spec : t, a = n ? !!(t.inValidate ?? t.validate ?? t.debug) : !1, o = n ? !!(t.inShowLog ?? t.showLog) : !1;
-	if (a && i) {
-		let e = r({ inSpec: i });
+}, a = (e) => {
+	let t = e, n = t && typeof t == "object" && !Array.isArray(t) && ("spec" in t || "inSpec" in t), r = n ? t.inSpec ?? t.spec : t, a = n ? !!(t.inValidate ?? t.validate ?? t.debug) : !1, o = n ? !!(t.inShowLog ?? t.showLog) : !1;
+	if (a && r) {
+		let e = i({ inSpec: r });
 		return e.isValid ? e.warnings?.length > 0 && o && console.warn("[json-to-dom: validation warning]", e.warnings) : console.warn("[json-to-dom: validation error]", e.errors, e), e;
 	}
 	return { isValid: !0 };
-}, a = ({ inSpec: e }) => e == null, o = ({ inSpec: e }) => typeof Node < "u" && e instanceof Node, s = ({ inSpec: e }) => {
+}, o = ({ inSpec: e }) => e == null, s = ({ inSpec: e }) => typeof Node < "u" && e instanceof Node, c = ({ inSpec: e }) => {
 	let t = e;
 	return Array.isArray(t);
-}, c = ({ inSpec: e }) => {
+}, l = ({ inSpec: e }) => {
 	let t = e;
 	return typeof t == "object" && !!t && !Array.isArray(t);
-}, l = ({ inSpec: e, inShowLog: t = !1 }) => {
+}, u = ({ inSpec: e, inShowLog: t = !1 }) => {
 	let n = e, r = t;
-	return Array.isArray(n) ? n.map((e) => y({
+	return Array.isArray(n) ? n.map((e) => b({
 		inSpec: e,
 		inShowLog: r
 	})).flat().filter(Boolean) : [];
-}, u = ({ inTagName: e }) => {
+}, d = ({ inTagName: e }) => {
 	let t = e?.toLowerCase();
 	if (!t) return null;
 	if (t === "checkbox") {
@@ -257,91 +262,91 @@ var e = {
 		return e.type = "checkbox", e;
 	}
 	return document.createElement(t);
-}, d = ({ inElement: e, inTextContent: t, inAllowsTextContent: n = !0, inTagName: r, inShowLog: i = !1 }) => {
+}, f = ({ inElement: e, inTextContent: t, inAllowsTextContent: n = !0, inTagName: r, inShowLog: i = !1 }) => {
 	let a = e, o = t;
 	return !a || o == null ? a : n ? (a.textContent = o, a) : (i && console.warn(`[json-to-dom v11] textContent is not allowed on <${r}>; discarded "${o}"`), a);
-}, f = ({ inElement: e, inProperties: t }) => {
+}, p = ({ inElement: e, inProperties: t }) => {
 	let n = e, r = t;
 	return n && r && typeof r == "object" && Object.assign(n, r), n;
-}, p = ({ inElement: e, inAttributes: t }) => {
+}, m = ({ inElement: e, inAttributes: t }) => {
 	let n = e, r = t;
 	return !n || !r || typeof r != "object" || Object.entries(r).forEach(([e, t]) => {
 		e === "class" ? n.className = t : typeof t == "boolean" ? t ? n.setAttribute(e, "") : n.removeAttribute(e) : t != null && n.setAttribute(e, String(t));
 	}), n;
-}, m = ({ inElement: e, inClassList: t }) => {
+}, h = ({ inElement: e, inClassList: t }) => {
 	let n = e, r = t;
 	if (!n || !r) return n;
 	let i = [];
 	return typeof r == "string" ? i = r.split(/\s+/).filter(Boolean) : Array.isArray(r) && (i = r.filter((e) => typeof e == "string" && e.trim().length > 0)), i.length > 0 && n.classList.add(...i), n;
-}, h = ({ inElement: e, inChildren: t, inAllowsChildren: n = !0, inTagName: r, inShowLog: i = !1 }) => {
+}, g = ({ inElement: e, inChildren: t, inAllowsChildren: n = !0, inTagName: r, inShowLog: i = !1 }) => {
 	let a = e, o = t, s = n, c = r, l = i;
 	return !a || !Array.isArray(o) || o.length === 0 ? a : s ? (o.forEach((e) => {
 		typeof Node < "u" && e instanceof Node ? a.appendChild(e) : (typeof e == "string" || typeof e == "number") && a.appendChild(document.createTextNode(String(e)));
 	}), a) : (l && console.warn(`[json-to-dom v11] Children are not allowed on void tag <${c}>; discarded ${o.length} child nodes.`), a);
-}, g = ({ inSpec: e, inClassList: t }) => {
+}, _ = ({ inSpec: e, inClassList: t }) => {
 	let n = e, r = t || n?.classList;
 	if (!n || !n.tagName) return null;
-	let i = u({ inTagName: n.tagName });
-	return i ? (d({
+	let i = d({ inTagName: n.tagName });
+	return i ? (f({
 		inElement: i,
 		inTextContent: n.textContent,
 		inTagName: n.tagName
-	}), f({
-		inElement: i,
-		inProperties: n.properties
 	}), p({
 		inElement: i,
-		inAttributes: n.attributes
+		inProperties: n.properties
 	}), m({
 		inElement: i,
-		inClassList: r
+		inAttributes: n.attributes
 	}), h({
+		inElement: i,
+		inClassList: r
+	}), g({
 		inElement: i,
 		inChildren: n.children,
 		inTagName: n.tagName
 	}), i) : null;
-}, _ = ({ inChildren: e, inShowLog: t = !1 }) => {
+}, v = ({ inChildren: e, inShowLog: t = !1 }) => {
 	let n = e, r = t;
-	return Array.isArray(n) ? n.map((e) => typeof e == "string" || typeof e == "number" ? typeof document < "u" ? document.createTextNode(String(e)) : String(e) : y({
+	return Array.isArray(n) ? n.map((e) => typeof e == "string" || typeof e == "number" ? typeof document < "u" ? document.createTextNode(String(e)) : String(e) : b({
 		inSpec: e,
 		inShowLog: r
 	})).flat().filter(Boolean) : [];
-}, v = ({ inSpec: e, inShowLog: t = !1 }) => {
+}, y = ({ inSpec: e, inShowLog: t = !1 }) => {
 	let n = e, r = t;
 	if (!n?.tagName) return r && console.warn("[json-to-dom v23] Missing tagName on spec:", n), null;
-	let i = Array.isArray(n.children) && n.children.length > 0 ? _({
+	let i = Array.isArray(n.children) && n.children.length > 0 ? v({
 		inChildren: n.children,
 		inShowLog: r
 	}) : [];
-	return g({ inSpec: {
+	return _({ inSpec: {
 		...n,
 		children: i
 	} });
-}, y = ({ inSpec: e, inShowLog: t = !1 } = {}) => {
+}, b = ({ inSpec: e, inShowLog: t = !1 } = {}) => {
 	let n = e, r = t;
-	return a({ inSpec: n }) ? null : o({ inSpec: n }) ? n : s({ inSpec: n }) ? l({
+	return o({ inSpec: n }) ? null : s({ inSpec: n }) ? n : c({ inSpec: n }) ? u({
 		inSpec: n,
 		inShowLog: r
-	}) : c({ inSpec: n }) ? v({
+	}) : l({ inSpec: n }) ? y({
 		inSpec: n,
 		inShowLog: r
 	}) : null;
-}, b = ({ inArgs: e, inSpec: t, inShowLog: n } = {}) => {
+}, x = ({ inArgs: e, inSpec: t, inShowLog: n } = {}) => {
 	let r = e, i = t, a = n, o = i === void 0 ? r : i, s = !!a;
 	return r && typeof r == "object" && !Array.isArray(r) && !(typeof Node < "u" && r instanceof Node) && ("inSpec" in r ? (o = r.inSpec, s = !!r.inShowLog) : "spec" in r && (o = r.spec, s = !!r.showLog)), typeof globalThis < "u" && globalThis?.ks?.showLog && (s = !0), {
 		spec: o,
 		showLog: s
 	};
-}, x = (e) => {
-	let t = e, n = t && typeof t == "object" && !Array.isArray(t) && !(typeof Node < "u" && t instanceof Node) && ("spec" in t || "inSpec" in t), r = n ? t.spec ?? t.inSpec : t, i = n ? !!(t.showLog ?? t.inShowLog) : !1, { spec: a } = b({
+}, S = (e) => {
+	let t = e, n = t && typeof t == "object" && !Array.isArray(t) && !(typeof Node < "u" && t instanceof Node) && ("spec" in t || "inSpec" in t), r = n ? t.spec ?? t.inSpec : t, i = n ? !!(t.showLog ?? t.inShowLog) : !1, { spec: a } = x({
 		inSpec: r,
 		inShowLog: i
 	});
-	return y({
+	return b({
 		inSpec: a,
 		inShowLog: i
 	});
-}, S = ({ inElement: e }) => {
+}, C = ({ inElement: e }) => {
 	let t = e;
 	if (!t || typeof t.querySelectorAll != "function") return {};
 	let n = t.querySelectorAll("input, select, textarea"), r = {};
@@ -349,7 +354,7 @@ var e = {
 		let t = e.name || e.id;
 		t && (e.type === "checkbox" ? r[t] = e.checked : e.type === "radio" ? e.checked && (r[t] = e.value) : r[t] = e.value);
 	}), r;
-}, C = ({ inTargetElement: e, inClosestElement: t, inContainerElement: n }) => {
+}, w = ({ inTargetElement: e, inClosestElement: t, inContainerElement: n }) => {
 	let r = e, i = t, a = n;
 	if (!r || !i || r.dataset?.highlight !== "true") return;
 	let o = r.dataset?.highlightClass ? r.dataset.highlightClass.split(/\s+/).filter(Boolean) : [
@@ -366,19 +371,19 @@ var e = {
 		});
 	}
 	i.classList.add(...o);
-}, w = (e = {}) => {
+}, T = (e = {}) => {
 	let t = e, n = t.container || t.inContainer || (typeof document < "u" && (t.containerId || t.inContainerId) ? document.getElementById(t.containerId || t.inContainerId) : null), r = t.actions || t.inActions || {}, i = !!(t.showLog ?? t.inShowLog);
 	if (!n) return i && console.warn("[json-to-dom listeners] bindActions: Container not found."), { remove: () => {} };
 	let a = (e) => {
 		let t = e.target?.closest?.("[data-action]");
 		if (!t) return;
 		let a = t.dataset.action, o = r[a], s = t.dataset.closestTarget || "ksrow", c = t.closest(`.${s}`) || t.parentElement;
-		c && C({
+		c && w({
 			inTargetElement: t,
 			inClosestElement: c,
 			inContainerElement: n
 		});
-		let l = c ? S({ inElement: c }) : {};
+		let l = c ? C({ inElement: c }) : {};
 		i && console.log(`[json-to-dom listeners] Action triggered: "${a}"`, {
 			target: t,
 			row: c,
@@ -394,12 +399,12 @@ var e = {
 	return n.addEventListener("click", a), { remove: () => {
 		n.removeEventListener("click", a);
 	} };
-}, T = {
-	bindActions: w,
-	bind: w,
-	extractInputs: S,
-	applyHighlight: C
-}, E = (e = {}) => {
+}, E = {
+	bindActions: T,
+	bind: T,
+	extractInputs: C,
+	applyHighlight: w
+}, D = (e = {}) => {
 	let t = e, n = t.element || t.form || t.container || t.inElement || t.inForm || t.inContainer;
 	if (!n || typeof n.querySelectorAll != "function") return {};
 	let r = n.querySelectorAll("input, select, textarea"), i = {}, a = {};
@@ -421,7 +426,7 @@ var e = {
 			} else i[t] = e.value;
 		}
 	}), i;
-}, D = (e = {}) => {
+}, O = (e = {}) => {
 	let t = e, n = t.element || t.form || t.container || t.inElement || t.inForm || t.inContainer, r = t.defaultValues || t.inDefaultValues || {};
 	return !n || typeof n.querySelectorAll != "function" ? { success: !1 } : n.tagName === "FORM" && typeof n.reset == "function" && Object.keys(r).length === 0 ? (n.reset(), { success: !0 }) : (n.querySelectorAll("input, select, textarea").forEach((e) => {
 		let t = e.name || e.id, n = (e.type || "").toLowerCase();
@@ -429,7 +434,7 @@ var e = {
 		let i = t && t in r ? r[t] : null;
 		n === "checkbox" ? e.checked = i !== null && !!i : n === "radio" ? e.checked = i !== null && e.value === i : e.tagName === "SELECT" ? i === null ? e.options && e.options.length > 0 ? e.selectedIndex = 0 : e.value = "" : e.value = i : e.value = i === null ? "" : String(i);
 	}), { success: !0 });
-}, O = ({ inTargetElement: e, inClosestElement: t, inContainerElement: n }) => {
+}, k = ({ inTargetElement: e, inClosestElement: t, inContainerElement: n }) => {
 	let r = e, i = t, a = n;
 	if (!r || !i || r.dataset?.highlight !== "true") return;
 	let o = r.dataset?.highlightClass ? r.dataset.highlightClass.split(/\s+/).filter(Boolean) : [
@@ -446,7 +451,7 @@ var e = {
 		});
 	}
 	i.classList.add(...o);
-}, k = (e = {}) => {
+}, A = (e = {}) => {
 	let t = e, n = t.container || t.form || t.inContainer || t.inForm || (typeof document < "u" && (t.containerId || t.formId || t.inContainerId || t.inFormId) ? document.getElementById(t.containerId || t.formId || t.inContainerId || t.inFormId) : null), r = t.actions || t.inActions || {}, i = t.defaultValues || t.inDefaultValues || {}, a = !!(t.showLog ?? t.inShowLog);
 	if (!n) return a && console.warn("[json-to-dom listeners.v2] bindActions: Container/Form not found."), { remove: () => {} };
 	let o = (e) => {
@@ -455,13 +460,13 @@ var e = {
 		let o = t.dataset.action, s = r[o], c = t.dataset.closestTarget === "ksrow" || t.dataset.scope === "row", l = null, u = null, d = {};
 		if (c) {
 			let e = t.dataset.closestTarget || "ksrow";
-			l = t.closest(`.${e}`) || t.parentElement, l && (O({
+			l = t.closest(`.${e}`) || t.parentElement, l && (k({
 				inTargetElement: t,
 				inClosestElement: l,
 				inContainerElement: n
-			}), d = E({ inElement: l }));
-		} else u = t.closest("form") || t.closest(".ksform") || n, d = E({ inElement: u });
-		let f = () => D({
+			}), d = D({ inElement: l }));
+		} else u = t.closest("form") || t.closest(".ksform") || n, d = D({ inElement: u });
+		let f = () => O({
 			inElement: u || n,
 			inDefaultValues: i
 		});
@@ -488,14 +493,14 @@ var e = {
 	return n.addEventListener("click", o), { remove: () => {
 		n.removeEventListener("click", o);
 	} };
-}, A = {
-	bindActions: k,
-	bind: k,
-	extractFormValues: E,
-	resetForm: D,
-	applyHighlight: O
-}, j = (e) => A.bindActions(e);
-A.extractFormValues, T.extractInputs, A.resetForm, A.applyHighlight, j.v1 = T.bindActions, j.v2 = A.bindActions;
+}, j = {
+	bindActions: A,
+	bind: A,
+	extractFormValues: D,
+	resetForm: O,
+	applyHighlight: k
+};
+j.extractFormValues, E.extractInputs, j.resetForm, j.applyHighlight, E.bindActions, j.bindActions;
 //#endregion
 //#region src/v31/chapters/chapter3_activation/mountToContainer.js
 var M = ({ element: e, targetHtmlId: t } = {}) => {
@@ -511,9 +516,10 @@ var M = ({ element: e, targetHtmlId: t } = {}) => {
 		element: n,
 		targetHtmlId: r
 	}), n;
-}, P = (e) => (i(e), N({
-	element: x(e),
+}, P = (e) => (a(e), N({
+	element: S(e),
 	targetHtmlId: e?.targetHtmlId ?? e?.domIdToPushTo ?? e?.inDomIdToPushTo
 })), F = P;
+t(P);
 //#endregion
-export { j as bindActions, P as buildSpecElement, P as default, e as meta, F as specToDom };
+export { P as buildSpecElement, P as default, F as specToDom };

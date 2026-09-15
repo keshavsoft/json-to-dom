@@ -1,4 +1,4 @@
-import meta from "./meta.js";
+import registerGlobal from "./registerGlobal.js";
 import inspect from "./chapters/chapter1_inspection/index.js";
 import construct from "./chapters/chapter2_construction/index.js";
 import activate, { bindActions } from "./chapters/chapter3_activation/index.js";
@@ -12,9 +12,6 @@ export const buildSpecElement = (inArgs) => {
 
 export const specToDom = buildSpecElement;
 
-export {
-    meta,
-    bindActions
-};
+registerGlobal(buildSpecElement);
 
 export default buildSpecElement;

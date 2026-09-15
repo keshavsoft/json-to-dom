@@ -1,4 +1,5 @@
-import { specToDom } from "../../../src/v31/index.js";
+// import { specToDom } from "../../../src/v31/index.js";
+import { specToDom } from "https://keshavsoft.github.io/json-to-dom/dist/v31/min.js";
 
 const sampleAlertSpec = {
     tagName: "div",
