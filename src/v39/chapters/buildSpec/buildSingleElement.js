@@ -14,14 +14,8 @@ export const buildSingleElement = ({ inSpec, inShowLog = false }) => {
                 inShowLog
             })
             : [];
-        console.log("localChildrenNodes L ", elementBuilt, localChildrenNodes);
 
         elementBuilt.append(...localChildrenNodes);
-
-        // return {
-        //     ...elementBuilt,
-        //     children: localChildrenNodes
-        // };
     };
 
     return elementBuilt;

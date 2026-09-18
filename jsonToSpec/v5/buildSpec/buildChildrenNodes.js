@@ -6,17 +6,19 @@ export const buildChildrenNodes = ({ inChildren, inShowLog = false, inOutput }) 
     const localOutput = inOutput;
 
     if (!Array.isArray(localChildren)) return [];
-    let toReturnArray = localChildren.map(child => {
-        const loopInside = dispatchSpec({
+
+    return localChildren.map(child => {
+        if (typeof child === "string" || typeof child === "number") {
+            return typeof document !== "undefined"
+                ? document.createTextNode(String(child))
+                : String(child);
+        };
+        return dispatchSpec({
             inSpec: child,
             inShowLog: localShowLog,
             inOutput: localOutput
         });
-
-        return loopInside;
     }).flat().filter(Boolean);
-
-    return toReturnArray;
 };
 
 export default buildChildrenNodes;

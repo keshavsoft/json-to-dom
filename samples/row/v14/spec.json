@@ -7,11 +7,28 @@
         "operation": "iterate",
         "source": "columns",
         "template": {
-            "tagName": "label",
+            "tagName": "div",
             "attributes": {
-                "class": "form-label"
+                "class": "mb-3"
             },
-            "textContent": "${label}"
+            "children": [
+                {
+                    "tagName": "label",
+                    "attributes": {
+                        "class": "form-label"
+                    },
+                    "textContent": "${label}"
+                },
+                {
+                    "tagName": "input",
+                    "attributes": {
+                        "type": "text",
+                        "class": "form-control",
+                        "value": "${value}",
+                        "readonly": "true"
+                    }
+                }
+            ]
         }
     },
     "children": []
