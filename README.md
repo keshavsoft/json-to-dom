@@ -1,4 +1,4 @@
-# json-to-dom
+# @keshavsoft/json-to-dom
 
 A declarative, zero-dependency JSON-to-DOM compiler for turning serializable specifications into live browser DOM element trees.
 
@@ -7,13 +7,13 @@ A declarative, zero-dependency JSON-to-DOM compiler for turning serializable spe
 ## Installation
 
 ```bash
-npm install json-to-dom
+npm install @keshavsoft/json-to-dom
 ```
 
 Or scaffold the engine directly into your project via CLI:
 
 ```bash
-npx json-to-dom [destination-directory]
+npx @keshavsoft/json-to-dom [destination-directory]
 ```
 
 ---
