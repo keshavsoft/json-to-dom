@@ -5,7 +5,8 @@ const startFunc = async () => {
         // 1. Output 1: Live DOM Node
         window.ks['json-to-dom'].buildSpecElement({
             spec,
-            domIdToPushTo: "form-container"
+            domIdToPushTo: "form-container",
+            outputType: "spec"
         });
     } catch (err) {
         console.error("Failed to render v27 sample:", err);
