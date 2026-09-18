@@ -1,4 +1,18 @@
-{
-    "tagName": "label",
-    "textContent": "${name}"
-}
+[
+    {
+        "tagName": "label",
+        "attributes": {
+            "class": "form-label"
+        },
+        "textContent": "${name}"
+    },
+    {
+        "tagName": "input",
+        "attributes": {
+            "type": "text",
+            "class": "form-control",
+            "value": "${value}",
+            "readonly": "true"
+        }
+    }
+]

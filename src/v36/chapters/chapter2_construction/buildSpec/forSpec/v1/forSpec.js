@@ -1,30 +1,35 @@
 import domElementBuilder from "./elementBuilder/index.js";
 import buildChildrenNodes from "./buildChildrenNodes.js";
-import forSpecFunc from "./forSpec/v2/index.js";
 
-const resolveTemplate = (template, data) => {
-    return template.replace(/\$\{([^}]+)\}/g, (_, path) => {
-        const keys = path.trim().split(".");
-        let value = data;
+const resolvePath = (path, data) => {
+    const parts = path.split(".");
 
-        for (const key of keys) {
-            if (value === null || value === undefined) return "";
-            value = value[key];
+    let value = data;
+
+    for (const part of parts) {
+        if (value === null || value === undefined) {
+            return undefined;
         }
 
-        // Primitive → insert as text
-        if (
-            value === null ||
-            typeof value === "string" ||
-            typeof value === "number" ||
-            typeof value === "boolean"
-        ) {
-            return String(value ?? "");
-        }
+        value = value[part];
+    }
 
-        // Object / Array → keep the complete tree
+    return value;
+};
+
+const replaceValue = (value, data) => {
+
+    if (typeof value !== "string") {
         return value;
-    });
+    }
+
+    const match = value.match(/^\$\{(.+?)\}$/);
+
+    if (!match) {
+        return value;
+    }
+
+    return resolvePath(match[1], data);
 };
 
 export const buildSingleElement = ({ raka, inShowLog = false, poka }) => {
@@ -53,7 +58,18 @@ export const buildSingleElement = ({ raka, inShowLog = false, poka }) => {
     };
 
     if (poka.type === "spec") {
-        return forSpecFunc({ raka, inData: poka.data });
+        // raka.textContent = poka.data;
+        console.log("raka :", raka, poka);
+        debugger;
+        raka.textContent = replaceValue(raka.textContent, poka.data);
+
+        return raka;
+        // return domElementBuilder({
+        //     inSpec: {
+        //         ...localSpec,
+        //         children: localChildrenNodes
+        //     }
+        // });
     };
 };
 
