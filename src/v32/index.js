@@ -1,7 +1,7 @@
 import registerGlobal from "./registerGlobal.js";
 import inspect from "./chapters/chapter1_inspection/index.js";
 import construct from "./chapters/chapter2_construction/index.js";
-import activate, { bindActions } from "./chapters/chapter3_activation/index.js";
+import activate from "./chapters/chapter3_activation/index.js";
 
 export const buildSpecElement = (inArgs) => {
     inspect(inArgs);

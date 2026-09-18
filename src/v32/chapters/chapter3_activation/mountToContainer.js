@@ -6,7 +6,7 @@
  * @param {HTMLElement|Array<HTMLElement>|Node} options.element - Element(s) to mount
  * @param {string} options.targetHtmlId - HTML ID of container
  */
-export const mountToContainer = ({ element, targetHtmlId } = {}) => {
+const mountToContainer = ({ element, targetHtmlId } = {}) => {
     const localElement = element;
     const localTargetHtmlId = targetHtmlId;
 
