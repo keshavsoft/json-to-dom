@@ -4,71 +4,73 @@ A declarative, zero-dependency JSON-to-DOM compiler for turning serializable spe
 
 ---
 
-## 📖 The 3-Chapter Story Architecture (`v31`)
-
-Starting in **`v31`**, `json-to-dom` is structured into **3 narrative chapters** that tell the complete story of a specification becoming living DOM:
-
-```
-src/v31/
-├── index.js                           # Master Builder Entry Point (Story Orchestrator)
-│
-├── chapters/
-│   ├── chapter1_inspection/           # Chapter 1: The Inspector & Standards
-│   │   ├── standards/                 # W3C HTML tags & allowed attributes reference data
-│   │   ├── validate/                  # Spec grammar & void tag validator (v1 & v2)
-│   │   └── index.js
-│   │
-│   ├── chapter2_construction/         # Chapter 2: The Construction Line
-│   │   ├── orchestration/             # Input normalization & global registration
-│   │   ├── buildSpec/                 # Single element vs Spec array dispatcher
-│   │   ├── elementBuilder/            # ⭐ 100% Preserved 0 to 5 Assembly Steps:
-│   │   │   ├── 0.createElement.js     # Native element instantiation
-│   │   │   ├── 1.applyTextContent.js   # textContent & innerHTML injection
-│   │   │   ├── 2.applyProperties.js    # Direct DOM properties
-│   │   │   ├── 3.applyAttributes.js    # HTML attributes & datasets
-│   │   │   ├── 4.applyClassList.js     # CSS classList tokens
-│   │   │   ├── 5.appendChildren.js     # Recursive child node attachment
-│   │   │   └── index.js
-│   │   └── index.js
-│   │
-│   └── chapter3_activation/           # Chapter 3: Activation & Interactivity
-│       ├── listeners/                 # Versioned event delegation suites (v1 & v2)
-│       ├── mountToContainer.js        # Direct container mounting by HTML ID
-│       └── index.js                   # formOperations (extractFormValues, resetForm)
-```
-
----
-
-## Quick Start
+## Installation
 
 ```bash
-# Instant scaffolding via zero-dependency CLI (always copies src's highest version)
-npx json-to-dom
-
-# Or run tests and explore locally
-npm install
-npm test
+npm install json-to-dom
 ```
 
-- **Demo**: https://keshavsoft.github.io/json-to-dom/
-- **Playground**: https://keshavsoft.github.io/json-to-dom/docs/demo.html
-- **Repo**: https://github.com/keshavsoft/json-to-dom
+Or scaffold the engine directly into your project via CLI:
+
+```bash
+npx json-to-dom [destination-directory]
+```
 
 ---
 
-## Clean Usage (`v31`)
+## 📖 Engine Architecture (`v39`)
+
+The `v39` engine provides a high-performance, modular pipeline that transforms JSON element specifications into real DOM nodes:
+
+```
+src/v39/
+├── index.js                           # Master entry point (specToDom, buildSpecElement)
+├── meta.js                            # Engine metadata (v39.0)
+├── registerGlobal.js                  # Global browser registration (window.ks['json-to-dom'])
+└── chapters/
+    ├── buildSpec/                     # Single element vs array dispatcher & children builder
+    │   ├── buildChildrenNodes.js
+    │   ├── buildElementWithChildren.js
+    │   ├── buildSingleElement.js
+    │   ├── buildSpecArray.js
+    │   ├── elementBuilder/            # 0 to 5 Assembly Line Steps:
+    │   │   ├── 0.createElement.js     # Native DOM instantiation
+    │   │   ├── 1.applyTextContent.js   # textContent injection
+    │   │   ├── 2.applyProperties.js    # Direct DOM properties
+    │   │   ├── 3.applyAttributes.js    # Attributes & dataset
+    │   │   ├── 4.applyClassList.js     # CSS class tokens
+    │   │   ├── 5.appendChildren.js     # Recursive child attachment
+    │   │   └── index.js
+    │   ├── guards.js                  # Type guards & validation
+    │   └── index.js
+    └── chapter3_activation/
+        ├── mountToContainer.js        # Direct container mounting by HTML ID
+        └── index.js
+```
+
+---
+
+## Usage
 
 ### 1. Build Native DOM Elements
 ```javascript
-import { buildSpecElement } from "./src/v31/index.js";
+import { buildSpecElement } from "json-to-dom";
 
 const cardSpec = {
   tagName: "div",
   classList: "card shadow-sm p-4",
   children: [
     { tagName: "h5", textContent: "User Account" },
-    { tagName: "input", attributes: { type: "text", placeholder: "Enter username", name: "username" } },
-    { tagName: "button", textContent: "Save", classList: "btn btn-primary mt-3", attributes: { "data-action": "save" } }
+    { 
+      tagName: "input", 
+      attributes: { type: "text", placeholder: "Enter username", name: "username" } 
+    },
+    { 
+      tagName: "button", 
+      textContent: "Save", 
+      classList: "btn btn-primary mt-3", 
+      attributes: { "data-action": "save", type: "button" } 
+    }
   ]
 };
 
@@ -79,48 +81,56 @@ document.getElementById("app").appendChild(element);
 
 ### 2. Render & Mount Directly to a Container (`specToDom`)
 ```javascript
-import { specToDom } from "./src/v31/index.js";
+import { specToDom } from "json-to-dom";
 
-// Directly mounts into document.getElementById("app")
+// Mounts directly into document.getElementById("app")
 specToDom({
   spec: cardSpec,
-  targetHtmlId: "app"
+  domIdToPushTo: "app"
 });
 ```
 
-### 3. Dual Output: Convert to HTML String (`specToHtml`)
+### 3. Build Arrays of Specs (Tables, Lists)
 ```javascript
-import { specToHtml } from "./src/v31/index.js";
+import { buildSpecElement } from "json-to-dom";
 
-const htmlString = specToHtml(cardSpec);
-console.log(htmlString);
-// <div class="card shadow-sm p-4"><h5>User Account</h5>...</div>
+const rowsSpec = [
+  { tagName: "tr", children: [{ tagName: "td", textContent: "Row 1" }] },
+  { tagName: "tr", children: [{ tagName: "td", textContent: "Row 2" }] }
+];
+
+// Mounts all rows directly into tbody
+buildSpecElement({
+  spec: rowsSpec,
+  domIdToPushTo: "tbody"
+});
 ```
 
-### 4. Interactive Action Delegation (`bindActions`)
+### 4. Parameter Naming Convention Support
+Functions support both standard properties and our `in`-prefixed convention:
 ```javascript
-import { bindActions } from "./src/v31/index.js";
+import { buildSpecElement } from "json-to-dom";
 
-bindActions({
-  container: document.getElementById("app"),
-  actions: {
-    save: ({ values, form }) => {
-      console.log("Form saved with values:", values);
-    },
-    cancel: ({ reset }) => {
-      reset();
-    }
-  }
+const element = buildSpecElement({
+  inSpec: { tagName: "div", textContent: "Hello World" },
+  inDomIdToPushTo: "container"
 });
 ```
 
 ---
 
-## Documentation
+## Development & Testing
 
-- Overview: [docs/pages/overview.html](docs/pages/overview.html)
-- Why this repo exists: [docs/pages/why.html](docs/pages/why.html)
-- How it works: [docs/pages/how-it-works.html](docs/pages/how-it-works.html)
-- Architecture: [docs/pages/architecture.html](docs/pages/architecture.html)
-- Version strategy: [docs/pages/versions.html](docs/pages/versions.html)
-- Detailed Technical Notes: [DETAILS.md](DETAILS.md)
+```bash
+# Run test suite
+npm test
+
+# Build production bundle
+npm run build
+```
+
+---
+
+## License
+
+[ISC](LICENSE) © [KeshavSoft](https://github.com/keshavsoft)

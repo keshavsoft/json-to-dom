@@ -10,10 +10,10 @@ var e = {
 }, n = ({ inSpec: e }) => e == null, r = ({ inSpec: e }) => typeof Node < "u" && e instanceof Node, i = ({ inSpec: e }) => {
 	let t = e;
 	return Array.isArray(t);
-}, a = ({ raka: e, inShowLog: t = !1 }) => {
+}, a = ({ inSpec: e, inShowLog: t = !1 }) => {
 	let n = e, r = t;
 	return Array.isArray(n) ? n.map((e) => h({
-		raka: e,
+		inSpec: e,
 		inShowLog: r
 	})).flat().filter(Boolean) : [];
 }, o = ({ inTagName: e }) => {
@@ -80,13 +80,16 @@ var e = {
 		inChildren: n.children,
 		inShowLog: t
 	}) : [], r.append(...i)), r;
-}, h = ({ inSpec: e, inShowLog: t = !1 } = {}) => n({ inSpec: e }) ? null : r({ inSpec: e }) ? raka : i({ inSpec: e }) ? a({
-	raka,
-	inShowLog: t
-}) : m({
-	inSpec: e,
-	inShowLog: t
-}), g = ({ element: e, targetHtmlId: t } = {}) => {
+}, h = ({ inSpec: e, inShowLog: t = !1 } = {}) => {
+	let o = e, s = t;
+	return n({ inSpec: o }) ? null : r({ inSpec: o }) ? o : i({ inSpec: o }) ? a({
+		inSpec: o,
+		inShowLog: s
+	}) : m({
+		inSpec: o,
+		inShowLog: s
+	});
+}, g = ({ element: e, targetHtmlId: t } = {}) => {
 	let n = e, r = t;
 	if (!r || typeof document > "u") return;
 	let i = document.getElementById(r);
@@ -99,19 +102,20 @@ var e = {
 		element: n,
 		targetHtmlId: r
 	}), n;
-}, v = ({ spec: e, domIdToPushTo: t, showLog: n }) => {
+}, v = (e = {}) => {
 	try {
+		let t = e, n = t.spec ?? t.inSpec, r = t.domIdToPushTo ?? t.targetHtmlId ?? t.inDomIdToPushTo ?? t.inTargetHtmlId;
 		return _({
 			element: h({
-				inSpec: e,
-				inShowLog: n
+				inSpec: n,
+				inShowLog: t.showLog ?? t.inShowLog ?? !1
 			}),
-			targetHtmlId: t
+			targetHtmlId: r
 		});
 	} catch (e) {
-		console.log("error : ", e);
+		throw console.error("error : ", e), e;
 	}
 }, y = v;
 t(v);
 //#endregion
-export { v as buildSpecElement, v as default, y as specToDom };
+export { v as buildSpecElement, v as default, e as meta, y as specToDom };

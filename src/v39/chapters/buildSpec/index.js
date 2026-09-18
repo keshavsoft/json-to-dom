@@ -3,18 +3,24 @@ import buildSpecArray from "./buildSpecArray.js";
 import buildSingleElement from "./buildSingleElement.js";
 
 const dispatchSpec = ({ inSpec, inShowLog = false } = {}) => {
-    if (isNullOrUndefined({ inSpec })) return null;
-    if (isDomNode({ inSpec })) return raka;
+    const localSpec = inSpec;
+    const localShowLog = inShowLog;
 
-    if (isSpecArray({ inSpec })) {
+    if (isNullOrUndefined({ inSpec: localSpec })) return null;
+    if (isDomNode({ inSpec: localSpec })) return localSpec;
+
+    if (isSpecArray({ inSpec: localSpec })) {
         return buildSpecArray({
-            raka, inShowLog
+            inSpec: localSpec,
+            inShowLog: localShowLog
         });
-    };
-    // debugger
+    }
+
     return buildSingleElement({
-        inSpec, inShowLog
+        inSpec: localSpec,
+        inShowLog: localShowLog
     });
 };
 
 export default dispatchSpec;
+

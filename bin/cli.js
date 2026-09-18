@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 
-import { readdirSync, existsSync, cpSync, mkdirSync } from "node:fs";
+import { readdirSync, existsSync, cpSync, mkdirSync, readFileSync } from "node:fs";
 import { dirname, resolve, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const packageRoot = resolve(__dirname, "..");
 const srcDir = resolve(packageRoot, "src");
+
+const packageJson = JSON.parse(readFileSync(resolve(packageRoot, "package.json"), "utf8"));
 
 // 1. Parse CLI Arguments
 const args = process.argv.slice(2);
@@ -35,7 +37,7 @@ Examples:
 }
 
 if (args.includes("--version") || args.includes("-v")) {
-    console.log("json-to-dom CLI v1.2.1");
+    console.log(`json-to-dom CLI v${packageJson.version}`);
     process.exit(0);
 }
 
