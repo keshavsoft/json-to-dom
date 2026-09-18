@@ -1,5 +1,5 @@
 export const meta = {
-    version: "v38.0",
+    version: "v39.0",
     description: "Pure DOM engine only from json"
 };
 

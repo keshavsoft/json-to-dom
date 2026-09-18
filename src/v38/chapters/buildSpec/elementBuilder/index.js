@@ -9,8 +9,8 @@ import appendChildren from "./5.appendChildren.js";
  * domElementBuilder - Pure Runtime Element Builder (v23)
  * High-speed native DOM element factory (stages 0 to 5)
  */
-const domElementBuilder = ({ raka, inClassList }) => {
-    const localSpec = raka;
+const domElementBuilder = ({ inSpec, inClassList }) => {
+    const localSpec = inSpec;
     const localClassList = inClassList || localSpec?.classList;
 
     if (!localSpec || !localSpec.tagName) return null;
