@@ -1,0 +1,12 @@
+{
+    "tagName": "div",
+    "jsonToSpec": {
+        "operation": "loopArray",
+        "source": "columns",
+        "template": {
+            "tagName": "label",
+            "textContent": "${title}"
+        }
+    },
+    "children": []
+}

@@ -37,6 +37,7 @@ const startFunc = ({ inSpecJson, inData, inShowLog }) => {
         inSpecJson.textContent,
         inData
     );
+    console.log("inSpecJson, inData : ", inSpecJson, inData);
 
     if ("attributes" in inSpecJson) {
         inSpecJson.attributes = Object.fromEntries(
@@ -57,7 +58,27 @@ const startFunc = ({ inSpecJson, inData, inShowLog }) => {
                 inDataJson: inData
             })
         });
-    }
+    };
+
+    if ("key" in inData && "value" in inData) {
+        if ("textContent" in inSpecJson) {
+            inSpecJson.textContent = resolveTemplate(
+                inSpecJson.textContent,
+                inData
+            );
+        };
+
+        if ("attributes" in inSpecJson) {
+            inSpecJson.attributes = Object.fromEntries(
+                Object.entries(inSpecJson.attributes).map(
+                    ([attributeName, attributeValue]) => [
+                        attributeName,
+                        resolveTemplate(attributeValue, inData)
+                    ]
+                )
+            );
+        };
+    };
 
     return inSpecJson;
 };

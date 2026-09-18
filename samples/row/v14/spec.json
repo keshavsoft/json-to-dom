@@ -1,35 +1,19 @@
-{
-    "tagName": "div",
-    "attributes": {
-        "class": "mb-3"
-    },
-    "jsonToSpec": {
-        "operation": "iterate",
-        "source": "columns",
-        "template": {
-            "tagName": "div",
-            "attributes": {
-                "class": "mb-3"
-            },
-            "children": [
-                {
-                    "tagName": "label",
-                    "attributes": {
-                        "class": "form-label"
+        {
+            "tagName": "tbody",
+            "jsonToSpec": {
+                "operation": "loopArray",
+                "source": "data",
+                "template": {
+                    "tagName": "tr",
+                    "jsonToSpec": {
+                        "operation": "loopObject",
+                        "template": {
+                            "tagName": "td",
+                            "textContent": "${value}"
+                        }
                     },
-                    "textContent": "${label}"
-                },
-                {
-                    "tagName": "input",
-                    "attributes": {
-                        "type": "text",
-                        "class": "form-control",
-                        "value": "${value}",
-                        "readonly": "true"
-                    }
+                    "children": []
                 }
-            ]
+            },
+            "children": []
         }
-    },
-    "children": []
-}

@@ -12,7 +12,7 @@ const startFunc = async () => {
 
         const k2 = window.ks['json-to-dom'].buildSpecElement({
             spec: jsonSpec,
-            domIdToPushTo: "form-container",
+            domIdToPushTo: "tbody",
             output: { type: "dom" }
         });
 

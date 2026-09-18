@@ -1,16 +1,36 @@
 {
-    "name": "Keshav",
-    "mobile": 98481,
-    "columns": [
+    "id": "dl2",
+    "columns1": [
         {
-            "label": "Name",
-            "key": "name",
-            "type": "text"
+            "columnName": "LedgerName",
+            "title": "LedgerName",
+            "field": "LedgerName",
+            "isVisible": true
         },
         {
-            "label": "Mobile",
-            "key": "mobile",
-            "type": "number"
+            "columnName": "LedgerParentName",
+            "title": "LedgerParentName",
+            "field": "LedgerParentName",
+            "isVisible": true
+        }
+    ],
+    "data1": [
+        {
+            "LedgerName": "360 one Quant Fund on 20.08.24",
+            "LedgerParentName": "Investments"
+        },
+        {
+            "LedgerName": "222222222",
+            "LedgerParentName": "Investments"
+        },
+        {
+            "LedgerName": "333333333",
+            "LedgerParentName": "Investments"
+        }
+    ],
+    "data": [
+        {
+            "LedgerName": "360 one Quant Fund on 20.08.24"
         }
     ]
 }
