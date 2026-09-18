@@ -33,34 +33,28 @@ const resolveTemplate = (template, data) => {
 };
 
 const startFunc = ({ inSpecJson, inData, inShowLog }) => {
-    inSpecJson.textContent = resolveTemplate(
-        inSpecJson.textContent,
-        inData
-    );
-    console.log("inSpecJson, inData : ", inSpecJson, inData);
-
-    if ("attributes" in inSpecJson) {
-        inSpecJson.attributes = Object.fromEntries(
-            Object.entries(inSpecJson.attributes).map(
-                ([attributeName, attributeValue]) => [
-                    attributeName,
-                    resolveTemplate(attributeValue, inData)
-                ]
-            )
-        );
-    };
-
-    if ("children" in inSpecJson) {
-        inSpecJson.children = inSpecJson.children.map((child) => {
-            return buildSpec({
-                inSpecJson: child,
-                inShowLog: inShowLog,
-                inDataJson: inData
-            })
-        });
-    };
+    // console.log("inSpecJson, inData : ", inSpecJson, inData);
 
     if ("key" in inData && "value" in inData) {
+        if ("textContent" in inSpecJson) {
+            inSpecJson.textContent = resolveTemplate(
+                inSpecJson.textContent,
+                inData
+            );
+        };
+
+        // if ("attributes" in inSpecJson) {
+        //     inSpecJson.attributes = Object.fromEntries(
+        //         Object.entries(inSpecJson.attributes).map(
+        //             ([attributeName, attributeValue]) => [
+        //                 attributeName,
+        //                 resolveTemplate(attributeValue, inData)
+        //             ]
+        //         )
+        //     );
+        // };
+    } else {
+
         if ("textContent" in inSpecJson) {
             inSpecJson.textContent = resolveTemplate(
                 inSpecJson.textContent,
@@ -78,6 +72,17 @@ const startFunc = ({ inSpecJson, inData, inShowLog }) => {
                 )
             );
         };
+
+        if ("children" in inSpecJson) {
+            inSpecJson.children = inSpecJson.children.map((child) => {
+                return buildSpec({
+                    inSpecJson: child,
+                    inShowLog: inShowLog,
+                    inDataJson: inData
+                })
+            });
+        };
+
     };
 
     return inSpecJson;

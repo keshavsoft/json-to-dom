@@ -6,8 +6,9 @@ import forArray from "./forArray/v1/index.js";
 import forObject from "./forObject/v1/index.js";
 
 const dispatchSpec = ({ inSpecJson, inShowLog = false, inDataJson } = {}) => {
+    const localDataJson = inDataJson;
     // debugger
-    console.log("2222222--------loopObject : ", inDataJson);
+    // console.log("start--------dispatchSpec : ", inSpecJson, localDataJson);
 
     if (isNullOrUndefined({ inSpec: inSpecJson })) return null;
     if (isDomNode({ inSpec: inSpecJson })) return inSpecJson;
@@ -19,6 +20,10 @@ const dispatchSpec = ({ inSpecJson, inShowLog = false, inDataJson } = {}) => {
     };
 
     if ("jsonToSpec" in inSpecJson) {
+        if ("isSpecBuilt" in inSpecJson) {
+            return inSpecJson;
+        };
+
         if (inSpecJson.jsonToSpec.operation === "loopArray") {
             const fromArray = forArray({
                 inTemplate: inSpecJson.jsonToSpec.template,
@@ -29,8 +34,6 @@ const dispatchSpec = ({ inSpecJson, inShowLog = false, inDataJson } = {}) => {
         };
 
         if (inSpecJson.jsonToSpec.operation === "loopObject") {
-            console.log("---------loopObject : ", inDataJson);
-
             const fromObject = forObject({
                 inTemplate: inSpecJson.jsonToSpec.template,
                 inDataAsObject: inDataJson
@@ -38,6 +41,8 @@ const dispatchSpec = ({ inSpecJson, inShowLog = false, inDataJson } = {}) => {
 
             inSpecJson.children = fromObject;
         };
+
+        inSpecJson.isSpecBuilt = true;
     };
 
     return buildSingleElement({
