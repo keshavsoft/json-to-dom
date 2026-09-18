@@ -17,7 +17,7 @@ const startFunc = async () => {
         });
 
 
-        console.log("kkkkkkkkkk : ", jsonSpec, k2);
+        console.log("kkkkkkkkkk : ", jsonSpec);
 
         // window.ks['json-to-dom'].buildSpecElement({
         //     spec,

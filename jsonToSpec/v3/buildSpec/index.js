@@ -6,7 +6,7 @@ export const dispatchSpec = ({ inSpecJson, inShowLog = false, inDataJson } = {})
     // debugger
     if (isNullOrUndefined({ inSpec: inSpecJson })) return null;
     if (isDomNode({ inSpec: inSpecJson })) return inSpecJson;
-    debugger
+    // debugger
     if (isSpecArray({ inSpecJson })) {
         return buildSpecArray({
             inArray: inSpecJson, inShowLog, inDataJson

@@ -28,12 +28,29 @@ const resolveTemplate = (template, data) => {
 };
 
 export const buildSingleElement = ({ raka, inShowLog = false, poka }) => {
+    if (!raka?.tagName) {
+        if (localShowLog) {
+            console.warn("[json-to-dom v23] Missing tagName on spec:", raka);
+        }
+        return null;
+    };
+
     const localChildrenNodes = Array.isArray(raka.children) && raka.children.length > 0
         ? buildChildrenNodes({
             inChildren: raka.children,
             inShowLog: localShowLog, inOutput: localOutput
         })
         : [];
+
+
+    if (poka.type === "dom") {
+        return domElementBuilder({
+            raka: {
+                ...raka,
+                children: localChildrenNodes
+            }
+        });
+    };
 
     if (poka.type === "spec") {
         return forSpecFunc({ raka, inData: poka.data });
