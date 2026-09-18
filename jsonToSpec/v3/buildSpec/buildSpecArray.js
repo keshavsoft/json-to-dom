@@ -1,15 +1,15 @@
 import dispatchSpec from "./index.js";
 
-export const buildSpecArray = ({ raka, inShowLog = false, poka }) => {
-    const localRaka = raka;
+export const buildSpecArray = ({ inArray = [], inShowLog = false, inDataJson }) => {
+    const localArray = inArray;
     const localShowLog = inShowLog;
-    const localPoka = poka;
+    const localDataJson = inDataJson;
 
-    if (!Array.isArray(localRaka)) return [];
+    if (!Array.isArray(localArray)) return [];
 
-    return localRaka.map(item => dispatchSpec({
-        raka: item,
-        inShowLog: localShowLog, poka: localPoka
+    return localArray.map(item => dispatchSpec({
+        inSpecJson: item,
+        inShowLog: localShowLog, inDataJson: localDataJson
     })).flat().filter(Boolean);
 };
 

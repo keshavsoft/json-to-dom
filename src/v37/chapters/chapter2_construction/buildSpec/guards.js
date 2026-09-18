@@ -8,8 +8,8 @@ export const isDomNode = ({ inSpec }) => {
     return typeof Node !== "undefined" && localSpec instanceof Node;
 };
 
-export const isSpecArray = ({ inSpecJson }) => {
-    const localSpec = inSpecJson;
+export const isSpecArray = ({ inSpec }) => {
+    const localSpec = inSpec;
     return Array.isArray(localSpec);
 };
 
