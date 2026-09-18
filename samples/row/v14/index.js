@@ -6,20 +6,20 @@ const startFunc = async () => {
         // const spec = await fetch("./spec.json").then(res => res.json());
 
         // 1. Output 1: Live DOM Node
-        const k1 = window.ks['json-to-dom'].buildSpecElement({
+        const jsonSpec = window.ks['json-to-spec'].buildSpecElement({
             spec,
             domIdToPushTo: "form-container",
             output: { type: "spec", data }
         });
 
         const k2 = window.ks['json-to-dom'].buildSpecElement({
-            spec: k1,
+            spec: jsonSpec,
             domIdToPushTo: "form-container",
             output: { type: "dom" }
         });
 
 
-        console.log("kkkkkkkkkk : ", k1);
+        console.log("kkkkkkkkkk : ", k2);
 
         // window.ks['json-to-dom'].buildSpecElement({
         //     spec,

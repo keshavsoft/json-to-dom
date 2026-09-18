@@ -1,10 +1,18 @@
-{
-    "tagName": "input",
-    "attributes": {
-        "name": "voucherNumber",
-        "type": "text",
-        "value": "VCH-2026-008",
-        "placeholder": "e.g. VCH-2026-001",
-        "class": "form-control"
+[
+    {
+        "tagName": "label",
+        "attributes": {
+            "class": "form-label"
+        },
+        "textContent": "${name}"
+    },
+    {
+        "tagName": "input",
+        "attributes": {
+            "type": "text",
+            "class": "form-control",
+            "value": "${value}",
+            "readonly": "true"
+        }
     }
-}
+]
