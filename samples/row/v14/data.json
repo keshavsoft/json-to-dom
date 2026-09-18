@@ -1,20 +1,20 @@
 {
     "id": "dl2",
-    "columns1": [
+    "columns": [
         {
-            "columnName": "LedgerName",
-            "title": "LedgerName",
-            "field": "LedgerName",
+            "columnName": "NAME",
+            "title": "NAME",
+            "field": "NAME",
             "isVisible": true
         },
         {
-            "columnName": "LedgerParentName",
-            "title": "LedgerParentName",
-            "field": "LedgerParentName",
+            "columnName": "PARENT",
+            "title": "PARENT",
+            "field": "PARENT",
             "isVisible": true
         }
     ],
-    "data1": [
+    "data2": [
         {
             "LedgerName": "360 one Quant Fund on 20.08.24",
             "LedgerParentName": "Investments"
@@ -28,9 +28,219 @@
             "LedgerParentName": "Investments"
         }
     ],
-    "data": [
+    "data1": [
         {
             "LedgerName": "360 one Quant Fund on 20.08.24"
+        }
+    ],
+    "data": [
+        {
+            "PARENT": " Primary",
+            "NAME": "ANCHOR HOOKS"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "BAT (WOODEN)"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "Blk Line"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "CHECK TRAY"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "CHINESE LURE"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "CISCO"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "COVERS"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "DUCT TAPES"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "DYES"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "ENGINES"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "E.P.S.SHEETS"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "FISHING FLOATS"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "FISHING HOOKS"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "FISHINGROD"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "FISH  KNITTED FABRIC"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "FLASH LIGHT"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "FLEX"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "HALCO"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "KNIFE"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "LEAD"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "LIFE BUOY"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "LIFE JACKETS"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "LOOP"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "LURES"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "Mosquito Mesh"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "MOSQUITO NET"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "M.S.HOOP"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "NEEDLES"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "NETLON"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "NIWAR"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "NYLON FISHNET"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "PLASTIC FLOATS"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "POLYTHIN SHEET"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "RAFIA"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "RIBBONS"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "RINGS"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "RODMACHINE"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "ROPE"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "SILPAULIN"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "SQUID"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "STEEL WIRE"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "STRAP"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "SUTALI"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "SWIVELS"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "TARPAULIN"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "Trays"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "TWINE"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "VELCRO"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "Wire Rope"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "WORK WEST"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "WOVEN FABRIC"
+        },
+        {
+            "PARENT": " Primary",
+            "NAME": "YOZURI"
         }
     ]
 }

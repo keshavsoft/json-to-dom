@@ -1,9 +1,9 @@
 {
   "name": "json-to-dom",
-  "version": "1.31.1",
+  "version": "1.39.1",
   "description": "Zero-dependency Custom HTML Web Components and Tailwind CSS tokens for high-performance forms and tables.",
   "main": "index.js",
-  "module": "./src/v31/index.js",
+  "module": "./src/v39/index.js",
   "bin": {
     "json-to-dom": "bin/cli.js"
   },

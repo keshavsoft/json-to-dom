@@ -1,3 +1,26 @@
+{
+    "tagName": "table",
+    "attributes": {
+        "class": "table table-hover table-striped mb-0"
+    },
+    "children": [
+        {
+            "tagName": "thead",
+            "children": [
+                {
+                    "tagName": "tr",
+                    "jsonToSpec": {
+                        "operation": "loopArray",
+                        "source": "columns",
+                        "template": {
+                            "tagName": "th",
+                            "textContent": "${title}"
+                        }
+                    },
+                    "children": []
+                }
+            ]
+        },
         {
             "tagName": "tbody",
             "jsonToSpec": {
@@ -7,6 +30,7 @@
                     "tagName": "tr",
                     "jsonToSpec": {
                         "operation": "loopObject",
+                        "source": "data",
                         "template": {
                             "tagName": "td",
                             "textContent": "${value}"
@@ -17,3 +41,5 @@
             },
             "children": []
         }
+    ]
+}
