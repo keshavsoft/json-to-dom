@@ -1,14 +1,11 @@
 import registerGlobal from "./registerGlobal.js";
-import inspect from "./chapters/chapter1_inspection/index.js";
-import construct from "./chapters/chapter2_construction/index.js";
+import buildSpec from "./chapters/buildSpec/index.js";
 import activate from "./chapters/chapter3_activation/index.js";
 
 export const buildSpecElement = ({ spec, domIdToPushTo,
     showLog, output = { type: "dom" } }) => {
     try {
-        // inspect(inArgs);
-
-        const element = construct({
+        const element = buildSpec({
             raka: spec,
             inShowLog: showLog, poka: output
         });

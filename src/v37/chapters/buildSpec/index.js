@@ -2,9 +2,9 @@ import { isNullOrUndefined, isDomNode, isSpecArray, isSpecObject } from "./guard
 import buildSpecArray from "./buildSpecArray.js";
 import buildSingleElement from "./buildSingleElement.js";
 
-export const dispatchSpec = ({ raka, inShowLog = false, poka } = {}) => {
+const dispatchSpec = ({ raka, inShowLog = false, poka } = {}) => {
     console.log("11111 :", raka, poka);
-
+    debugger
     if (isNullOrUndefined({ inSpec: raka })) return null;
     if (isDomNode({ inSpec: raka })) return raka;
 
@@ -21,11 +21,6 @@ export const dispatchSpec = ({ raka, inShowLog = false, poka } = {}) => {
     return buildSingleElement({
         raka, inShowLog, poka
     });
-};
-
-export {
-    buildSingleElement,
-    buildSpecArray
 };
 
 export default dispatchSpec;

@@ -1,6 +1,6 @@
 export const meta = {
-    version: "v36.0",
-    description: "Pure DOM engine (v36)"
+    version: "v37.0",
+    description: "Pure DOM engine only from json"
 };
 
 export default meta;
