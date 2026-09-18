@@ -1,5 +1,5 @@
-import spec from "./spec.json" with { type: "json" };
-import data from "./data.json" with { type: "json" };
+import specJson from "./spec.json" with { type: "json" };
+import dataJson from "./data.json" with { type: "json" };
 
 const startFunc = async () => {
     try {
@@ -7,9 +7,7 @@ const startFunc = async () => {
 
         // 1. Output 1: Live DOM Node
         const jsonSpec = window.ks['json-to-spec'].buildSpecElement({
-            spec,
-            domIdToPushTo: "form-container",
-            output: { type: "spec", data }
+            specJson, dataJson
         });
 
         const k2 = window.ks['json-to-dom'].buildSpecElement({

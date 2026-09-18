@@ -33,27 +33,26 @@ const resolveTemplate = (template, data) => {
     });
 };
 
-const startFunc = ({ raka, inData }) => {
+const startFunc = ({ inSpecJson, inData }) => {
+    console.log("inSpecJson2222------- : ", inSpecJson, inData);
 
-    raka.textContent = resolveTemplate(
-        raka.textContent,
+    inSpecJson.textContent = resolveTemplate(
+        inSpecJson.textContent,
         inData
     );
 
-    if ("attributes" in raka) {
-
-        raka.attributes = Object.fromEntries(
-            Object.entries(raka.attributes).map(
+    if ("attributes" in inSpecJson) {
+        inSpecJson.attributes = Object.fromEntries(
+            Object.entries(inSpecJson.attributes).map(
                 ([attributeName, attributeValue]) => [
                     attributeName,
                     resolveTemplate(attributeValue, inData)
                 ]
             )
         );
+    };
 
-    }
-
-    return raka;
+    return inSpecJson;
 };
 
 export default startFunc;
