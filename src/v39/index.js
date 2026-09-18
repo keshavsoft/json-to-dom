@@ -12,7 +12,7 @@ export const buildSpecElement = ({ spec, domIdToPushTo, showLog }) => {
         });
 
         const targetHtmlId = domIdToPushTo;
-        console.log("element :", element);
+        // console.log("element :", element);
 
         return activate({ element, targetHtmlId });
 

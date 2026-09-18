@@ -3,22 +3,16 @@
     "attributes": {
         "class": "mb-3"
     },
-    "children": [
-        {
+    "jsonToSpec": {
+        "operation": "iterate",
+        "source": "columns",
+        "template": {
             "tagName": "label",
             "attributes": {
                 "class": "form-label"
             },
             "textContent": "${label}"
-        },
-        {
-            "tagName": "input",
-            "attributes": {
-                "type": "text",
-                "class": "form-control",
-                "value": "${value}",
-                "readonly": "true"
-            }
         }
-    ]
+    },
+    "children": []
 }

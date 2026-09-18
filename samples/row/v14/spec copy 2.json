@@ -1,0 +1,24 @@
+{
+    "tagName": "div",
+    "attributes": {
+        "class": "mb-3"
+    },
+    "children": [
+        {
+            "tagName": "label",
+            "attributes": {
+                "class": "form-label"
+            },
+            "textContent": "${label}"
+        },
+        {
+            "tagName": "input",
+            "attributes": {
+                "type": "text",
+                "class": "form-control",
+                "value": "${value}",
+                "readonly": "true"
+            }
+        }
+    ]
+}

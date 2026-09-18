@@ -1,4 +1,16 @@
 {
     "name": "Keshav",
-    "mobile": 98481
+    "mobile": 98481,
+    "columns": [
+        {
+            "label": "Name",
+            "key": "name",
+            "type": "text"
+        },
+        {
+            "label": "Mobile",
+            "key": "mobile",
+            "type": "number"
+        }
+    ]
 }
