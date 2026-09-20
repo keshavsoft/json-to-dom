@@ -1,12 +1,11 @@
 import mountToContainer from "./mountToContainer.js";
 
-const activate = (inArgs = {}) => {
-    const localArgs = inArgs;
-    const localElement = localArgs.element;
-    const localTargetHtmlId = localArgs.targetHtmlId;
+const activate = ({ inElement, inTargetHtmlId, element, targetHtmlId } = {}) => {
+    const localElement = inElement ?? element;
+    const localTargetHtmlId = inTargetHtmlId ?? targetHtmlId;
 
     if (localTargetHtmlId && typeof document !== "undefined") {
-        mountToContainer({ element: localElement, targetHtmlId: localTargetHtmlId });
+        mountToContainer({ inElement: localElement, inTargetHtmlId: localTargetHtmlId });
     }
 
     return localElement;

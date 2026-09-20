@@ -11,7 +11,7 @@ export const appendChildren = ({ inElement, inChildren, inAllowsChildren = true,
 
     if (!localAllowsChildren) {
         if (localShowLog) {
-            console.warn(`[json-to-dom v11] Children are not allowed on void tag <${localTagName}>; discarded ${localChildren.length} child nodes.`);
+            console.warn(`[json-to-dom v40] Children are not allowed on void tag <${localTagName}>; discarded ${localChildren.length} child nodes.`);
         }
         return localElement;
     }

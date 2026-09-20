@@ -15,7 +15,7 @@ export const buildSpecElement = (inArgs = {}) => {
             inShowLog: localShowLog
         });
 
-        return activate({ element, targetHtmlId: localTargetHtmlId });
+        return activate({ inElement: element, inTargetHtmlId: localTargetHtmlId });
     } catch (error) {
         console.error("error : ", error);
         throw error;
@@ -25,6 +25,6 @@ export const buildSpecElement = (inArgs = {}) => {
 export const specToDom = buildSpecElement;
 export { meta, buildSpec };
 
-registerGlobal(buildSpecElement);
+registerGlobal({ inFuncDefinition: buildSpecElement });
 
 export default buildSpecElement;

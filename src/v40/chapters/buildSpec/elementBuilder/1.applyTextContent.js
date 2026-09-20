@@ -9,7 +9,7 @@ export const applyTextContent = ({ inElement, inTextContent, inAllowsTextContent
 
     if (!localAllowsTextContent) {
         if (localShowLog) {
-            console.warn(`[json-to-dom v11] textContent is not allowed on <${localTagName}>; discarded "${localTextContent}"`);
+            console.warn(`[json-to-dom v40] textContent is not allowed on <${localTagName}>; discarded "${localTextContent}"`);
         }
         return localElement;
     }

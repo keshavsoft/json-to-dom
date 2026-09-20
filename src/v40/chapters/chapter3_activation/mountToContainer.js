@@ -6,9 +6,9 @@
  * @param {HTMLElement|Array<HTMLElement>|Node} options.element - Element(s) to mount
  * @param {string} options.targetHtmlId - HTML ID of container
  */
-const mountToContainer = ({ element, targetHtmlId } = {}) => {
-    const localElement = element;
-    const localTargetHtmlId = targetHtmlId;
+const mountToContainer = ({ inElement, inTargetHtmlId, element, targetHtmlId } = {}) => {
+    const localElement = inElement ?? element;
+    const localTargetHtmlId = inTargetHtmlId ?? targetHtmlId;
 
     if (!localTargetHtmlId || typeof document === "undefined") return;
 
