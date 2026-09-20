@@ -50,7 +50,8 @@
   },
   "homepage": "https://keshavsoft.github.io/json-to-dom/",
   "devDependencies": {
-    "vite": "^8.2.1"
+    "vite": "^8.2.1",
+    "jsdom": "^29.1.1"
   },
   "dependencies": {}
 }
