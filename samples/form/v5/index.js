@@ -15,7 +15,7 @@ const startFunc = async () => {
         });
         console.log("k1: ", k1[0]);
 
-        console.log(k1.outerHTML);
+        console.log(k1[0].outerHTML);
 
         // const c1 = document.getElementById("form-container");
         // c1.appendChild(k1[0]);
