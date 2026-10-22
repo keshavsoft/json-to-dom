@@ -1,6 +1,6 @@
 {
   "name": "@keshavsoft/json-to-dom",
-  "version": "1.41.3",
+  "version": "1.41.5",
   "description": "Zero-dependency Custom HTML Web Components and Tailwind CSS tokens for high-performance forms and tables.",
   "publishConfig": {
     "access": "public"
@@ -14,16 +14,9 @@
       "default": "./src/index.js"
     }
   },
-  "bin": {
-    "json-to-dom": "bin/cli.js"
-  },
   "files": [
-    "bin",
-    "index.js",
-    "src/v41",
-    "LICENSE",
-    "README.md",
-    "DETAILS.md"
+    "src/index.js",
+    "src/v41"
   ],
   "scripts": {
     "dev": "vite",
