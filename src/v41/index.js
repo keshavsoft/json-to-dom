@@ -1,30 +1,40 @@
-import registerGlobal from "./registerGlobal.js";
-import buildSpec from "./chapters/buildSpec/index.js";
-import activate from "./chapters/chapter3_activation/index.js";
-import meta from "./meta.js";
+import registerGlobal from "./register/index.js";
 
-export const buildSpecElement = (inArgs = {}) => {
-    try {
-        const localArgs = inArgs;
-        const localSpec = localArgs.spec ?? localArgs.inSpec;
-        const localTargetHtmlId = localArgs.domIdToPushTo ?? localArgs.targetHtmlId ?? localArgs.inDomIdToPushTo ?? localArgs.inTargetHtmlId;
-        const localShowLog = localArgs.showLog ?? localArgs.inShowLog ?? false;
+const appendToDom = ({ buildSpec, targetHtmlId, appendPosition, showLog }) => {
+    const content = buildSpec;
+    const localTargetHtmlId = targetHtmlId;
+    const localAppendPosition = appendPosition;
+    const localShowLog = showLog;
 
-        const element = buildSpec({
-            inSpec: localSpec,
-            inShowLog: localShowLog
-        });
+    if (localShowLog) console.log("renderToDom 1 (content):", content);
 
-        return activate({ inElement: element, inTargetHtmlId: localTargetHtmlId });
-    } catch (error) {
-        console.error("error : ", error);
-        throw error;
-    }
+    const container = document.getElementById(localTargetHtmlId);
+    if (!container) return null;
+
+    const isCollection = Array.isArray(content) ||
+        content instanceof NodeList ||
+        content instanceof HTMLCollection;
+
+    if (isCollection) {
+        if (localAppendPosition === "prepend") {
+            container.prepend(...content);
+        } else {
+            container.append(...content);
+        };
+    } else {
+        if (localAppendPosition === "prepend") {
+            container.prepend(content);
+        } else {
+            container.innerHTML = "";
+            container.append(content);
+        };
+    };
+
+    if (localShowLog) console.log("renderToDom 2 (mounted):", container);
+
+    return container;
 };
 
-export const specToDom = buildSpecElement;
-export { meta, buildSpec };
+registerGlobal(appendToDom);
 
-registerGlobal({ inFuncDefinition: buildSpecElement });
-
-export default buildSpecElement;
+export default appendToDom;
