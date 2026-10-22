@@ -28,8 +28,7 @@
   "scripts": {
     "dev": "vite",
     "test": "node --test \"test/*.test.js\"",
-    "build": "vite build",
-    "prepublishOnly": "npm run build && npm test"
+    "build": "vite build"
   },
   "repository": {
     "type": "git",
