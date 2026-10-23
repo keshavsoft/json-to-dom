@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JSON Upload &amp; Rendering Hub • @keshavsoft/json-to-tag</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+  <style>
+    :root {
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --bg-page: #f8fafc;
+      --card-border: #e2e8f0;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      font-family: var(--font-sans);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hub-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      transition: all 0.22s ease-in-out;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+    }
+
+    .hub-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.08);
+      border-color: #cbd5e1;
+    }
+
+    .hub-card.featured {
+      border: 2px solid #0284c7;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.12);
+    }
+
+    .icon-wrapper {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .pill-feature {
+      font-size: 0.75rem;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: #f1f5f9;
+      color: #475569;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+  </style>
+</head>
+
+<body class="p-3 p-md-4">
+  <div class="container-fluid" style="max-width: 1080px;">
+
+    <!-- Top Navigation Header -->
+    <header
+      class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom flex-wrap flex-md-nowrap gap-2">
+      <div class="d-flex align-items-center gap-2 flex-shrink-0">
+        <h1 class="h4 fw-bold mb-0 text-dark d-flex align-items-center gap-2" title="JSON Upload &amp; Rendering Hub">
+          <i class="bi bi-cloud-arrow-up-fill text-primary fs-3"></i> JSON Upload Hub
+        </h1>
+      </div>
+      <div class="d-flex align-items-center gap-2 ms-auto flex-nowrap">
+        <a href="../index.html" class="btn btn-outline-secondary btn-sm" title="Back to Documentation Home">
+          <i class="bi bi-house-door me-1"></i> Home
+        </a>
+      </div>
+    </header>
+
+    <!-- Main Navigation Grid -->
+    <div class="row g-4 mb-4">
+
+      <!-- Card 1: Live Monaco Editor -->
+      <div class="col-12 col-md-6 col-xl-3">
+        <div class="hub-card featured p-4">
+          <div class="d-flex justify-content-between align-items-start mb-3">
+            <div class="icon-wrapper bg-primary-subtle text-primary">
+              <i class="bi bi-layout-split"></i>
+            </div>
+            <span class="badge bg-primary text-white px-2 py-1 small fw-semibold">Recommended</span>
+          </div>
+
+          <h3 class="h5 fw-bold text-dark mb-1">Live Monaco Editor</h3>
+          <span
+            class="badge bg-light text-secondary border font-monospace small mb-3 align-self-start">editor.html</span>
+
+          <p class="text-secondary small mb-3 flex-grow-1">
+            Side-by-side split workspace. Upload any JSON file to edit with embedded VS Code Monaco Editor and live DOM
+            rendering.
+          </p>
+
+          <div class="mb-3 d-flex flex-wrap gap-1">
+            <span class="pill-feature"><i class="bi bi-code-slash text-primary"></i> Monaco Editor</span>
+            <span class="pill-feature"><i class="bi bi-arrow-repeat text-success"></i> Live Sync</span>
+          </div>
+
+          <a href="./editor.html" class="btn btn-primary w-100 fw-semibold mt-auto">
+            <i class="bi bi-play-circle me-1"></i> Open Editor
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 2: Visual DOM Renderer -->
+      <div class="col-12 col-md-6 col-xl-3">
+        <div class="hub-card p-4">
+          <div class="d-flex justify-content-between align-items-start mb-3">
+            <div class="icon-wrapper bg-success-subtle text-success">
+              <i class="bi bi-display"></i>
+            </div>
+            <span
+              class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1 small fw-semibold">Single
+              View</span>
+          </div>
+
+          <h3 class="h5 fw-bold text-dark mb-1">Visual Renderer</h3>
+          <span class="badge bg-light text-secondary border font-monospace small mb-3 align-self-start">show.html</span>
+
+          <p class="text-secondary small mb-3 flex-grow-1">
+            Clean, distraction-free DOM rendering canvas. Upload or load JSON specifications directly into live native
+            HTML DOM elements.
+          </p>
+
+          <div class="mb-3 d-flex flex-wrap gap-1">
+            <span class="pill-feature"><i class="bi bi-box text-success"></i> Full Canvas</span>
+            <span class="pill-feature"><i class="bi bi-lightning text-primary"></i> Fast Mount</span>
+          </div>
+
+          <a href="./show.html" class="btn btn-outline-success w-100 fw-semibold mt-auto">
+            <i class="bi bi-display me-1"></i> Open Renderer
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 3: Tag Analysis Summary -->
+      <div class="col-12 col-md-6 col-xl-3">
+        <div class="hub-card p-4">
+          <div class="d-flex justify-content-between align-items-start mb-3">
+            <div class="icon-wrapper bg-info-subtle text-info">
+              <i class="bi bi-journal-check"></i>
+            </div>
+            <span class="badge bg-info-subtle text-info border border-info-subtle px-2 py-1 small fw-semibold">Audit
+              Mode</span>
+          </div>
+
+          <h3 class="h5 fw-bold text-dark mb-1">Tag Analysis Summary</h3>
+          <span
+            class="badge bg-light text-secondary border font-monospace small mb-3 align-self-start">summery.html</span>
+
+          <p class="text-secondary small mb-3 flex-grow-1">
+            Audit your JSON specification structure. Inspect total tag counts, structural flavors, unrecognized tags,
+            and catalog compliance.
+          </p>
+
+          <div class="mb-3 d-flex flex-wrap gap-1">
+            <span class="pill-feature"><i class="bi bi-pie-chart text-info"></i> Tag Counts</span>
+            <span class="pill-feature"><i class="bi bi-check2-circle text-success"></i> Catalog Audit</span>
+          </div>
+
+          <a href="./summery.html" class="btn btn-outline-info w-100 fw-semibold mt-auto">
+            <i class="bi bi-journal-text me-1"></i> Open Analysis
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 4: Spec Samples & Downloads -->
+      <div class="col-12 col-md-6 col-xl-3">
+        <div class="hub-card p-4">
+          <div class="d-flex justify-content-between align-items-start mb-3">
+            <div class="icon-wrapper bg-warning-subtle text-warning-emphasis">
+              <i class="bi bi-collection-fill"></i>
+            </div>
+            <span
+              class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle px-2 py-1 small fw-semibold">Downloads</span>
+          </div>
+
+          <h3 class="h5 fw-bold text-dark mb-1">Spec Samples &amp; Downloads</h3>
+          <span
+            class="badge bg-light text-secondary border font-monospace small mb-3 align-self-start">samples/index.html</span>
+
+          <p class="text-secondary small mb-3 flex-grow-1">
+            Browse ready-to-use JSON specification templates (Tables, Cards, Forms, Alerts). Preview live DOM, copy
+            JSON, or download directly.
+          </p>
+
+          <div class="mb-3 d-flex flex-wrap gap-1">
+            <span class="pill-feature"><i class="bi bi-download text-warning"></i> .JSON Download</span>
+            <span class="pill-feature"><i class="bi bi-eye text-primary"></i> Live Preview</span>
+          </div>
+
+          <a href="../samples/index.html" class="btn btn-warning w-100 fw-semibold mt-auto">
+            <i class="bi bi-download me-1"></i> View &amp; Download
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Navigation Breadcrumbs & Quick Footer -->
+    <div
+      class="p-3 bg-white rounded border shadow-sm d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <div class="small text-muted">
+        <i class="bi bi-compass me-1"></i>Explore more documentation:
+        <a href="../index.html" class="text-decoration-none fw-semibold ms-1 me-2 text-dark">Home Index</a> •
+        <a href="../tags/index.html" class="text-decoration-none fw-semibold mx-2 text-dark">Tags Catalog</a> •
+        <a href="../menu/index.html" class="text-decoration-none fw-semibold mx-2 text-dark">Headers Catalog</a> •
+        <a href="../menuHub.html" class="text-decoration-none fw-semibold ms-2 text-dark">Menu Hub</a>
+      </div>
+      <div class="small text-secondary fw-semibold">
+        @keshavsoft/json-to-tag
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
