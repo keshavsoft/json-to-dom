@@ -1,6 +1,6 @@
 {
   "name": "@keshavsoft/json-to-dom",
-  "version": "42.1.3",
+  "version": "42.1.4",
   "description": "Zero-dependency Custom HTML Web Components and Tailwind CSS tokens for high-performance forms and tables.",
   "publishConfig": {
     "access": "public"
@@ -46,6 +46,6 @@
   },
   "dependencies": {
     "spec-to-dom": "^1.2.2",
-    "@keshavsoft/json-to-tag": "^1.10.3"
+    "@keshavsoft/json-to-tag": "^1.12.2"
   }
 }
