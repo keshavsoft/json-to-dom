@@ -1,89 +1,69 @@
-import { describe, test } from "node:test";
+import { describe, test, beforeEach, afterEach } from "node:test";
 import assert from "node:assert/strict";
+import { JSDOM } from "jsdom";
 
-import buildSpecElement, {
-    specToDom,
-    meta
-} from "../index.js";
+import jsonToDom from "../index.js";
 
-class MockNode {}
+describe("@keshavsoft/json-to-dom v42 orchestrator", () => {
+    let dom;
+    let originalDocument;
 
-class MockElement extends MockNode {
-    constructor(tagName) {
-        super();
-        this.tagName = tagName.toUpperCase();
-        this._className = "";
-        this.dataset = {};
-        this.attributes = {};
-        this.children = [];
-        this.textContent = "";
-
-        this.classList = {
-            classes: [],
-            add: (...classNames) => {
-                this.classList.classes.push(...classNames);
-            },
-            remove: (...classNames) => {
-                this.classList.classes = this.classList.classes.filter(c => !classNames.includes(c));
-            },
-            contains: (className) => this.classList.classes.includes(className)
-        };
-    }
-
-    setAttribute(key, value) {
-        this.attributes[key] = value;
-    }
-
-    appendChild(child) {
-        this.children.push(child);
-        child.parentElement = this;
-    }
-
-    append(...children) {
-        children.forEach(c => this.appendChild(c));
-    }
-}
-
-const installMockDocument = () => {
-    const originalNode = globalThis.Node;
-    const originalDocument = globalThis.document;
-
-    globalThis.Node = MockNode;
-
-    globalThis.document = {
-        createElement: (tagName) => new MockElement(tagName),
-        createTextNode: (text) => ({ nodeType: 3, textContent: text }),
-        getElementById: () => new MockElement("div")
-    };
-
-    return () => {
-        globalThis.Node = originalNode;
-        globalThis.document = originalDocument;
-    };
-};
-
-describe("json-to-dom root index.js package entry", () => {
-    test("Root exports correspond to v39", () => {
-        assert.equal(typeof buildSpecElement, "function");
-        assert.equal(typeof specToDom, "function");
-        assert.ok(meta, "meta is exported");
-        assert.equal(meta.version, "v39.0");
+    beforeEach(() => {
+        dom = new JSDOM(`<!DOCTYPE html><html><body><div id="app"></div></body></html>`);
+        originalDocument = globalThis.document;
+        globalThis.document = dom.window.document;
+        globalThis.window = dom.window;
+        globalThis.Node = dom.window.Node;
+        globalThis.NodeList = dom.window.NodeList;
+        globalThis.HTMLCollection = dom.window.HTMLCollection;
     });
 
-    test("Builds element through root export", () => {
-        const uninstall = installMockDocument();
-        try {
-            const el = buildSpecElement({
-                spec: {
-                    tagName: "div",
-                    textContent: "Package root works!"
-                }
-            });
+    afterEach(() => {
+        globalThis.document = originalDocument;
+    });
 
-            assert.equal(el.tagName, "DIV");
-            assert.equal(el.textContent, "Package root works!");
-        } finally {
-            uninstall();
-        }
+    test("Exports orchestrator start function as default", () => {
+        assert.equal(typeof jsonToDom, "function", "jsonToDom default export is a function");
+    });
+
+    test("Registers globalThis.ks.jsonToDom metadata", () => {
+        assert.ok(globalThis.ks, "globalThis.ks exists");
+        assert.ok(globalThis.ks.jsonToDom, "globalThis.ks.jsonToDom exists");
+        assert.equal(globalThis.ks.jsonToDom.meta.name, "json-to-dom");
+        assert.equal(globalThis.ks.jsonToDom.meta.version, "42.1.4");
+    });
+
+    test("Compiles JSON specification and mounts to target HTML ID", () => {
+        const spec = {
+            tagName: "div",
+            classList: "card",
+            children: [
+                {
+                    tagName: "h1",
+                    textContent: "Hello Orchestrator"
+                },
+                {
+                    tagName: "button",
+                    textContent: "Click Me"
+                }
+            ]
+        };
+
+        const container = jsonToDom({
+            jsonSpec: spec,
+            targetHtmlId: "app"
+        });
+
+        assert.ok(container, "container returned");
+        assert.equal(container.id, "app");
+        assert.equal(container.children.length, 1);
+        const card = container.children[0];
+        assert.equal(card.tagName, "DIV");
+        assert.ok(card.classList.contains("card"));
+        assert.equal(card.children.length, 2);
+        assert.equal(card.children[0].tagName, "H1");
+        assert.equal(card.children[0].textContent, "Hello Orchestrator");
+        assert.equal(card.children[1].tagName, "BUTTON");
+        assert.equal(card.children[1].textContent, "Click Me");
     });
 });

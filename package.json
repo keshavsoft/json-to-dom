@@ -1,7 +1,7 @@
 {
   "name": "@keshavsoft/json-to-dom",
-  "version": "42.1.4",
-  "description": "Zero-dependency Custom HTML Web Components and Tailwind CSS tokens for high-performance forms and tables.",
+  "version": "42.1.5",
+  "description": "Zero-dependency DOM orchestrator compiling JSON specifications into live browser DOM by orchestrating @keshavsoft/json-to-tag and spec-to-dom.",
   "publishConfig": {
     "access": "public"
   },
@@ -28,10 +28,13 @@
     "url": "git+https://github.com/keshavsoft/json-to-dom.git"
   },
   "keywords": [
-    "web-components",
-    "table-cell-content",
-    "tailwind-tokens",
-    "custom-elements"
+    "json-to-dom",
+    "dom-orchestrator",
+    "json-to-tag",
+    "spec-to-dom",
+    "declarative-ui",
+    "dom-builder",
+    "zero-dependency"
   ],
   "author": "KeshavSoft",
   "license": "ISC",

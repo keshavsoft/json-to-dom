@@ -1,5 +1,5 @@
 export const meta = {
-    version: "1.41.0",
+    version: "42.1.4",
     name: "json-to-dom"
 };
 

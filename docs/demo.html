@@ -49,10 +49,10 @@
                     <span class="text-slate-800 font-medium">Live Compiler Playground</span>
                 </nav>
                 <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                    v7 Interactive Compiler Playground
+                    v42 Live Orchestrator Playground
                 </h1>
                 <p class="text-xs sm:text-sm text-slate-600 mt-1">
-                    Edit declarative JSON on the left &mdash; watch <code>dist/v7/min.js</code> compile it into native DOM nodes with zero Virtual DOM overhead.
+                    Edit declarative JSON on the left &mdash; watch <code>@keshavsoft/json-to-dom</code> orchestrate compilation and mounting into the DOM with zero Virtual DOM overhead.
                 </p>
             </div>
             <div class="flex items-center gap-2 flex-wrap">
@@ -108,7 +108,7 @@
 
     <!-- Playground Controller -->
     <script type="module">
-        import { buildSpecElement } from "./dist/min.js";
+        import jsonToDom from "./dist/min.js";
 
         const PRESETS = {
             form: {
@@ -201,15 +201,8 @@
             try {
                 const spec = JSON.parse(localSpecJson);
                 app.innerHTML = "";
-                const builder = window.ks?.["json-to-dom"]?.buildSpecElement || buildSpecElement;
-                const domNode = builder({ inSpec: spec });
-                if (domNode) {
-                    if (Array.isArray(domNode)) {
-                        app.append(...domNode);
-                    } else {
-                        app.appendChild(domNode);
-                    }
-                }
+                const orchestrator = window.ks?.jsonToDom?.appendToDom || jsonToDom;
+                orchestrator({ jsonSpec: spec, targetHtmlId: "app" });
             } catch (err) {
                 app.innerHTML = `<div class="p-4 bg-red-50 text-red-700 rounded-lg text-xs font-mono"><strong>Syntax / Compilation Error:</strong><br>${err.message}</div>`;
             }

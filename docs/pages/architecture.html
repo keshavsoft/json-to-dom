@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Architecture | json-to-dom</title>
+  <title>Architecture | @keshavsoft/json-to-dom</title>
   <link rel="stylesheet" href="../site.css" />
 </head>
 <body>
@@ -29,69 +29,61 @@
   <main class="container hero">
     <section class="hero-card">
       <div class="hero-header">
-        <span class="kicker">Compiler architecture</span>
-        <h1>Architecture & pipeline.</h1>
+        <span class="kicker">Orchestrator Architecture</span>
+        <h1>Two-Engine Orchestration Pipeline.</h1>
         <p>
-          <code>json-to-dom</code> is organized around a strictly layered, zero-dependency compiler pipeline.
+          <code>@keshavsoft/json-to-dom</code> (v42) is the master orchestrator coordinating two specialized engines:
+          tag synthesis via <code>@keshavsoft/json-to-tag</code> and native container mounting via <code>spec-to-dom</code>.
         </p>
       </div>
       <div class="hero-body">
         <div class="grid">
           <article class="card col-12">
-            <h2>The v28 3-Chapter Story Architecture</h2>
+            <h2>The v42 Orchestration Pipeline</h2>
             <div class="codebox">
-<pre><code>buildSpecElement({ spec, outputType = "dom", validate = false })
+<pre><code>jsonToDom({ jsonSpec, targetHtmlId, appendPosition, showLog })
   │
-  ├─► Chapter 1: Inspection & Standards (chapter1_inspection/)
-  │     ├─► standards/                  ──► W3C tags & allowed attributes reference data
-  │     └─► validate/                   ──► Pre-flight HTML grammar & void tag inspector
+  ├─► Engine 1: jsonToTag(jsonSpec)
+  │     └─► @keshavsoft/json-to-tag (W3C Node Synthesis)
+  │           ├─► json-traversal           ──► Recursive AST walker
+  │           ├─► json-to-tag-validate      ──► W3C tag & attribute grammar checking
+  │           └─► buildElement             ──► Native DOM node & SVG namespace creation
   │
-  ├─► Chapter 2: Construction Line (chapter2_construction/)
-  │     ├─► normalizeInput.js           ──► Options & flag normalization
-  │     ├─► dispatchSpec.js             ──► Routes single element vs spec array
-  │     └─► elementBuilder/             ──► ⭐ 100% Preserved Assembly Steps (0 to 5):
-  │           0. createElement.js       ──► Native document.createElement
-  │           1. applyTextContent.js    ──► textContent & innerHTML injection
-  │           2. applyProperties.js     ──► Native DOM properties
-  │           3. applyAttributes.js     ──► HTML attributes & datasets
-  │           4. applyClassList.js      ──► CSS class tokens
-  │           5. appendChildren.js      ──► Recursive child node attachment
-  │
-  └─► Chapter 3: Activation & Interactivity (chapter3_activation/)
-        ├─► listeners/                  ──► Versioned event delegation suites (v1 & v2)
-        ├─► bindActions.js              ──► Action binder for forms & interactive cards
-        ├─► formOperations.js           ──► extractFormValues & resetForm helpers
-        └─► mountToContainer.js         ──► Direct container mounting by HTML ID (specToDom)</code></pre>
+  └─► Engine 2: specToDom({ buildSpec, targetHtmlId, appendPosition, showLog })
+        └─► spec-to-dom (Target Mount Engine)
+              ├─► document.getElementById  ──► Target container resolution
+              ├─► Collection & Node check  ──► Array, NodeList, HTMLCollection routing
+              ├─► Safe Native Mount        ──► append / prepend without innerHTML risk
+              └─► Returns container        ──► Live mounted browser HTMLElement</code></pre>
             </div>
           </article>
 
           <article class="card col-6">
-            <h2>Key Subsystems</h2>
+            <h2>Engine 1: @keshavsoft/json-to-tag</h2>
             <ul class="checks">
-              <li><strong>Story-Driven Chapters</strong>: Clear 3-chapter narrative from inspection to construction to activation.</li>
-              <li><strong>Preserved Assembly Line</strong>: 6 fine-grained steps (0 to 5) in <code>elementBuilder/</code> intact.</li>
-              <li><strong>Versioned Listeners</strong>: Advanced action delegation (v1 row actions, v2 form footer actions).</li>
-              <li><strong>Clean Outside API</strong>: <code>{ spec, targetHtmlId, outputType, validate }</code> without <code>in-</code> prefixes for callers.</li>
+              <li><strong>Tag Validation</strong>: Validates against W3C HTML5 tag dictionaries and allowed attributes.</li>
+              <li><strong>SVG Namespace Support</strong>: Transparently creates elements with proper XMLNS namespaces.</li>
+              <li><strong>Zero Mount Side Effects</strong>: Pure function returning element trees without mutating the page.</li>
+              <li><strong>NPM Package</strong>: <a href="https://www.npmjs.com/package/@keshavsoft/json-to-tag" target="_blank" style="color: #2563eb; font-weight: 600;">@keshavsoft/json-to-tag &rarr;</a></li>
             </ul>
           </article>
 
           <article class="card col-6">
-            <h2>Evolutionary Progression</h2>
-            <p>Version folders document the architectural journey:</p>
+            <h2>Engine 2: spec-to-dom</h2>
             <ul class="checks">
-              <li><code>v1-v11</code>: Early grammar research, attribute resolution, and sleek orchestration.</li>
-              <li><code>v26</code>: Row-scoped action delegation (v1 listeners).</li>
-              <li><code>v27</code>: Form footer actions & versioned event delegation.</li>
-              <li><code>v28</code>: 3-Chapter Story-Driven Architecture with preserved 0–5 elementBuilder.</li>
+              <li><strong>Target Container Resolution</strong>: Safely resolves target container by ID.</li>
+              <li><strong>Collection Flexibility</strong>: Mounts single elements, arrays, NodeLists, or collections.</li>
+              <li><strong>Mount Positions</strong>: Supports clean replace, <code>append</code>, or <code>prepend</code>.</li>
+              <li><strong>NPM Package</strong>: <a href="https://www.npmjs.com/package/spec-to-dom" target="_blank" style="color: #2563eb; font-weight: 600;">spec-to-dom &rarr;</a></li>
             </ul>
           </article>
 
           <article class="card col-12">
-            <h2>Core Design Intent</h2>
+            <h2>Architectural Evolution</h2>
             <ul class="checks">
-              <li><strong>Zero Dependencies</strong>: Pure Web Standards (<code>document.createElement</code>, <code>addEventListener</code>).</li>
-              <li><strong>KeshavSoft Conventions</strong>: 100% adherence to <code>{ in... }</code> / <code>local...</code> parameter mappings.</li>
-              <li><strong>Clean Decoupling</strong>: Static DOM rendering carries zero event overhead unless explicitly required.</li>
+              <li><code>v1–v38</code>: Monolithic experimentation combining parser, element creation, and mounting in a single library.</li>
+              <li><code>v39–v41</code>: Layered chapter separation identifying the boundary between tag synthesis and DOM mounting.</li>
+              <li><code>v42 (Current)</code>: Complete architectural separation &mdash; <code>@keshavsoft/json-to-dom</code> orchestrates <code>@keshavsoft/json-to-tag</code> and <code>spec-to-dom</code> as modular, independently testable packages.</li>
             </ul>
           </article>
         </div>
@@ -99,8 +91,14 @@
     </section>
   </main>
 
-  <footer class="footer container">
-    json-to-dom • declarative zero-dependency DOM compiler
+  <footer class="footer container" style="display: flex; justify-content: space-between; align-items: center;">
+    <div>json-to-dom • KeshavSoft Declarative DOM Architecture</div>
+    <div>
+      <a href="https://www.npmjs.com/package/@keshavsoft/json-to-dom" target="_blank" style="margin-right: 12px; color: inherit;">json-to-dom (npm)</a>
+      <a href="https://www.npmjs.com/package/@keshavsoft/json-to-tag" target="_blank" style="margin-right: 12px; color: inherit;">@keshavsoft/json-to-tag</a>
+      <a href="https://www.npmjs.com/package/spec-to-dom" target="_blank" style="margin-right: 12px; color: inherit;">spec-to-dom</a>
+      <a href="https://keshavsoft.github.io/dom-builder/" target="_blank" style="color: inherit;">dom-builder</a>
+    </div>
   </footer>
 </body>
 </html>

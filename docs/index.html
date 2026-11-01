@@ -58,15 +58,15 @@
                 <span>•</span>
                 <span>Zero Dependencies</span>
                 <span>•</span>
-                <span>src's Highest Version</span>
+                <span>Orchestrator v42</span>
             </div>
             <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
-                Writing HTML is Tough.<br>
-                <span class="text-blue-600">We Made It Declarative.</span>
+                Two Specialized Engines.<br>
+                <span class="text-blue-600">One Master Orchestrator.</span>
             </h1>
             <p class="text-base sm:text-lg text-slate-600 leading-relaxed mb-6 max-w-2xl mx-auto">
-                Handwriting verbose HTML string concatenations and nested trees is exhausting and error-prone. 
-                <code>json-to-dom</code> translates pure, portable JSON specifications into native browser DOM nodes with blistering speed.
+                                <code>@keshavsoft/json-to-dom</code> orchestrates declarative UI compilation by coordinating <a href="https://www.npmjs.com/package/@keshavsoft/json-to-tag" target="_blank" class="text-blue-600 font-semibold hover:underline">@keshavsoft/json-to-tag</a> (W3C synthesis) and <a href="https://www.npmjs.com/package/spec-to-dom" target="_blank" class="text-blue-600 font-semibold hover:underline">spec-to-dom</a> (mounting engine). 
+                
             </p>
             <div class="flex items-center justify-center gap-3 flex-wrap">
                 <a href="tags/html/index.html" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-xl shadow-sm transition flex items-center gap-2">
@@ -84,8 +84,8 @@
 
             <!-- CLI Fast Scaffold Callout -->
             <div class="mt-8 max-w-md mx-auto bg-slate-900 text-slate-100 text-xs font-mono py-2.5 px-4 rounded-xl shadow-md flex items-center justify-between border border-slate-800">
-                <span class="text-blue-400">npx json-to-dom [destination]</span>
-                <span class="text-slate-400 text-[11px]"># Copies v10 engine</span>
+                <span class="text-blue-400">npm install @keshavsoft/json-to-dom</span>
+                <span class="text-slate-400 text-[11px]">v42.1.4 (Orchestrator)</span>
             </div>
         </div>
     </section>
@@ -242,23 +242,27 @@
                     <span class="text-xs uppercase font-bold text-slate-400 tracking-wider">30-Second Integration</span>
                     <h3 class="text-base font-bold text-white">How It Works in Your App</h3>
                 </div>
-                <span class="text-xs text-emerald-400 font-mono">Modular Engine</span>
+                <span class="text-xs text-emerald-400 font-mono">v42 Orchestrator</span>
             </div>
             <div class="bg-slate-950 p-4 rounded-xl font-mono text-xs overflow-x-auto text-slate-200 leading-relaxed border border-slate-800">
-<span class="text-slate-500">// 1. Import the zero-dependency compiler (or copy via `npx json-to-dom`)</span>
-<span class="text-blue-400">import</span> { buildSpecElement, buildSpecElementWithEvents } <span class="text-blue-400">from</span> <span class="text-amber-300">"json-to-dom"</span>;
+<span class="text-slate-500">// 1. Import the master orchestrator</span>
+<span class="text-blue-400">import</span> jsonToDom <span class="text-blue-400">from</span> <span class="text-amber-300">"@keshavsoft/json-to-dom"</span>;
 
-<span class="text-slate-500">// 2. Declare your element specification</span>
-<span class="text-blue-400">const</span> spec = {
+<span class="text-slate-500">// 2. Orchestrates: @keshavsoft/json-to-tag (synthesis) + spec-to-dom (mount)</span>
+<span class="text-blue-400">const</span> container = jsonToDom({
+    jsonSpec: {
     tagName: <span class="text-emerald-400">"button"</span>,
     textContent: <span class="text-emerald-400">"Save Voucher"</span>,
-    attributes: { type: <span class="text-emerald-400">"button"</span>, class: <span class="text-emerald-400">"btn btn-primary px-4 py-2"</span> },
-    events: { click: () => alert(<span class="text-emerald-400">"Saved!"</span>) }
-};
+        attributes: { type: <span class="text-emerald-400">"button"</span> },
+        classList: <span class="text-emerald-400">"btn btn-primary px-4 py-2"</span>
 
-<span class="text-slate-500">// 3. Compile instantly into a native browser DOM node (events optional)</span>
-<span class="text-blue-400">const</span> domNode = buildSpecElementWithEvents({ inSpec: spec });
-document.getElementById(<span class="text-amber-300">"container"</span>).appendChild(domNode);
+    },
+    targetHtmlId: <span class="text-amber-300">"container"</span>
+});
+
+
+
+
             </div>
         </div>
     </main>
@@ -272,6 +276,10 @@ document.getElementById(<span class="text-amber-300">"container"</span>).appendC
                 <span>KeshavSoft Declarative UI Architecture</span>
             </div>
             <div class="flex items-center space-x-4">
+                <a href="https://www.npmjs.com/package/@keshavsoft/json-to-dom" target="_blank" class="hover:text-blue-600 font-semibold transition">npm: json-to-dom</a>
+                <a href="https://www.npmjs.com/package/@keshavsoft/json-to-tag" target="_blank" class="hover:text-blue-600 font-semibold transition">@keshavsoft/json-to-tag</a>
+                <a href="https://www.npmjs.com/package/spec-to-dom" target="_blank" class="hover:text-blue-600 font-semibold transition">spec-to-dom</a>
+                <a href="https://keshavsoft.github.io/dom-builder/" target="_blank" class="hover:text-blue-600 font-semibold transition">dom-builder</a>
                 <a href="tags/html/index.html" class="hover:text-blue-600 transition">Tag Guides</a>
                 <a href="tags/html/label.html" class="hover:text-blue-600 transition">&lt;label&gt; Guide</a>
                 <a href="pages/how-it-works.html" class="hover:text-blue-600 transition">Spec Schema</a>
