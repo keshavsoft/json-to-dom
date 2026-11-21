@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture | json-to-dom</title>
+    <meta name="description"
+        content="Deep dive into the 2-Engine architecture of @keshavsoft/json-to-dom: coordinating @keshavsoft/json-to-tag and spec-to-dom.">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        code, pre { font-family: 'JetBrains Mono', monospace; }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased selection:bg-blue-100 selection:text-blue-900">
+
+    <!-- Top Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="../index.html" class="flex items-center space-x-2.5 font-bold text-lg text-slate-900 hover:text-blue-600 transition">
+                    <span class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-black text-sm shadow-sm">JD</span>
+                    <span>json-to-dom</span>
+                </a>
+                <span class="text-xs bg-blue-50 text-blue-700 font-semibold px-2.5 py-0.5 rounded-full border border-blue-200">v42 (Latest)</span>
+            </div>
+                                    <nav class="flex items-center space-x-2 sm:space-x-5 text-sm font-medium">
+                <a href="../index.html" class="text-slate-600 hover:text-blue-600 transition">Overview</a>
+                <a href="features.html" class="text-slate-600 hover:text-blue-600 transition">Features</a>
+                <a href="cdn.html" class="text-slate-600 hover:text-blue-600 transition">CDN Guide</a>
+                <a href="architecture.html" class="text-blue-600 font-bold border-b-2 border-blue-600 pb-0.5">Architecture</a>
+                <a href="api.html" class="text-slate-600 hover:text-blue-600 transition">API</a>
+                <a href="download.html" class="text-slate-600 hover:text-blue-600 transition">Download min.js</a>
+                <a href="demo.html" class="px-3.5 py-1.5 bg-blue-600 text-white text-xs font-semibold rounded-lg hover:bg-blue-700 shadow-sm transition flex items-center gap-1.5">
+                    <span>Playground</span>
+                    <span>&rarr;</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="bg-white border-b border-slate-200 py-10 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-semibold mb-3">
+                <span>🏗️ System Design</span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Two-Engine Architecture</h1>
+            <p class="text-slate-600 text-sm sm:text-base mt-2">
+                How <code>json-to-dom</code> orchestrates tag synthesis and target mounting into a clean, zero-bloat pipeline.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1 w-full space-y-12">
+
+        <!-- Visual Flow Diagram -->
+        <section class="p-6 bg-slate-900 text-slate-100 rounded-2xl border border-slate-800 shadow-sm space-y-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Pipeline Flow Diagram</span>
+            <pre class="bg-slate-950 p-4 rounded-xl text-xs font-mono text-emerald-400 leading-relaxed overflow-x-auto border border-slate-800"><code>          JSON Specification (Declarative Blueprint)
+                         │
+                         ▼
+   ┌─────────────────────────────────────────────────────────┐
+   │            @keshavsoft/json-to-dom                      │
+   │                                                         │
+   │  1. jsonToTag(jsonSpec)                                 │
+   │     └──► @keshavsoft/json-to-tag                        │
+   │          (W3C Node Synthesis & Tag Grammar Validation)  │
+   │                                                         │
+   │  2. specToDom({ buildSpec, targetHtmlId, ... })         │
+   │     └──► spec-to-dom                                    │
+   │          (Target Container Resolution & Safe Mounting)  │
+   └─────────────────────────────────────────────────────────┘
+                         │
+                         ▼
+              Native Browser DOM Tree
+            (Zero Virtual DOM Overhead)</code></pre>
+        </section>
+
+        <!-- Detailed Engines Breakdown -->
+        <section class="space-y-6">
+            <h2 class="text-xl font-bold text-slate-900">The Two Subordinate Micro-Engines</h2>
+
+            <div class="grid sm:grid-cols-2 gap-6">
+                <!-- Engine 1 -->
+                <div class="p-6 bg-white rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg font-bold mb-4">
+                            1
+                        </div>
+                        <h3 class="text-base font-bold text-slate-900 mb-1">Tag Synthesis Engine</h3>
+                        <p class="text-xs font-mono text-blue-600 mb-3">@keshavsoft/json-to-tag</p>
+                        <ul class="text-xs text-slate-600 space-y-2 leading-relaxed">
+                            <li>• <strong>W3C Validation:</strong> Checks tag names, allowed attributes, and HTML5 grammar.</li>
+                            <li>• <strong>SVG Namespaces:</strong> Generates SVG, path, and polygon nodes with proper XMLNS namespaces.</li>
+                            <li>• <strong>Pure Synthesis:</strong> Creates real browser DOM element trees in-memory without touching the live page.</li>
+                        </ul>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-xs">
+                        <a href="https://www.npmjs.com/package/@keshavsoft/json-to-tag" target="_blank" class="text-blue-600 font-semibold hover:underline">npm: @keshavsoft/json-to-tag &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Engine 2 -->
+                <div class="p-6 bg-white rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg font-bold mb-4">
+                            2
+                        </div>
+                        <h3 class="text-base font-bold text-slate-900 mb-1">Target Mounting Engine</h3>
+                        <p class="text-xs font-mono text-emerald-600 mb-3">spec-to-dom</p>
+                        <ul class="text-xs text-slate-600 space-y-2 leading-relaxed">
+                            <li>• <strong>Container Resolution:</strong> Safely resolves target container elements by HTML ID (<code class="text-slate-800">document.getElementById</code>).</li>
+                            <li>• <strong>Collection Routing:</strong> Supports single elements, arrays, NodeLists, or DocumentFragments.</li>
+                            <li>• <strong>Safe Mounting:</strong> Appends, prepends, or replaces content natively without risky <code class="text-slate-800">innerHTML</code> injection.</li>
+                        </ul>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-xs">
+                        <a href="https://www.npmjs.com/package/spec-to-dom" target="_blank" class="text-emerald-600 font-semibold hover:underline">npm: spec-to-dom &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 16-Line Orchestrator Walkthrough -->
+        <section class="p-6 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-4">
+            <div>
+                <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">The Source Code</span>
+                <h3 class="text-lg font-bold text-slate-900">A 16-Line Orchestrator (`src/v42/index.js`)</h3>
+                <p class="text-xs text-slate-600 mt-1">
+                    At v42, all legacy bloat and internal parsing logic has graduated into specialized sibling packages. The orchestrator itself is minimal, robust, and transparent:
+                </p>
+            </div>
+            <pre class="bg-slate-950 p-4 rounded-xl text-xs text-slate-300 font-mono leading-relaxed overflow-x-auto border border-slate-800"><code><span class="text-blue-400">import</span> registerGlobal <span class="text-blue-400">from</span> <span class="text-amber-300">"./register/index.js"</span>;
+<span class="text-blue-400">import</span> jsonToTag <span class="text-blue-400">from</span> <span class="text-amber-300">"@keshavsoft/json-to-tag"</span>;
+<span class="text-blue-400">import</span> specToDom <span class="text-blue-400">from</span> <span class="text-amber-300">"spec-to-dom"</span>;
+
+<span class="text-blue-400">const</span> startFunc = ({ jsonSpec, targetHtmlId, appendPosition, showLog }) => {
+
+    <span class="text-slate-500">// 1. Synthesize native DOM nodes via jsonToTag</span>
+    <span class="text-blue-400">const</span> buildSpec = jsonToTag(jsonSpec);
+
+    <span class="text-slate-500">// 2. Mount synthesized nodes into target container via specToDom</span>
+    <span class="text-blue-400">const</span> container = specToDom({ buildSpec, targetHtmlId, appendPosition, showLog });
+
+    <span class="text-blue-400">return</span> container;
+};
+
+<span class="text-slate-500">// Register onto globalThis.ks.jsonToDom.appendToDom for CDN browser use</span>
+registerGlobal(startFunc);
+
+<span class="text-blue-400">export default</span> startFunc;</code></pre>
+        </section>
+
+    </main>
+
+    <!-- Clean Footer -->
+    <footer class="bg-white border-t border-slate-200 py-8 mt-auto">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+            <div class="flex items-center space-x-2">
+                <span class="font-bold text-slate-800">json-to-dom</span>
+                <span>&bull;</span>
+                <span>KeshavSoft Declarative UI</span>
+            </div>
+                                    <div class="flex items-center space-x-5 flex-wrap gap-y-2">
+                <a href="../index.html" class="hover:text-blue-600 transition">Overview</a>
+                <a href="features.html" class="hover:text-blue-600 transition">Features</a>
+                <a href="cdn.html" class="hover:text-blue-600 transition">CDN</a>
+                <a href="architecture.html" class="text-blue-600 font-medium">Architecture</a>
+                <a href="api.html" class="hover:text-blue-600 transition">API</a>
+                <a href="download.html" class="hover:text-blue-600 transition">Download min.js</a>
+                <a href="demo.html" class="hover:text-blue-600 transition">Playground</a>
+                <a href="https://github.com/keshavsoft/json-to-dom" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 transition font-medium">GitHub &rarr;</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

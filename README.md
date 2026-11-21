@@ -5,6 +5,8 @@
 [![npm version](https://img.shields.io/npm/v/@keshavsoft/json-to-dom.svg)](https://www.npmjs.com/package/@keshavsoft/json-to-dom)
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 [![Zero Dependencies](https://img.shields.io/badge/dependencies-0-success.svg)](https://www.npmjs.com/package/@keshavsoft/json-to-dom)
+[![Live Documentation](https://img.shields.io/badge/docs-live%20site-emerald.svg)](https://keshavsoft.github.io/json-to-dom/)
+
 
 ---
 

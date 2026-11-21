@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features & Comparison | json-to-dom</title>
+    <meta name="description"
+        content="Deep dive into the 6 superpowers of @keshavsoft/json-to-dom, industry comparison matrix, and developer quickstart.">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom Style Sheet with Hover Zoom & Border Glow -->
+    <link rel="stylesheet" href="../site.css">
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Engine Module (Latest v42 Standalone Bundle) -->
+    <script type="module" src="../dist/v42/min.js"></script>
+</head>
+
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased selection:bg-blue-100 selection:text-blue-900">
+
+    <!-- Top Sticky Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="../index.html" class="flex items-center space-x-2.5 font-extrabold text-lg text-slate-900 hover:text-blue-600 transition">
+                    <span class="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-700 to-blue-500 text-white flex items-center justify-center font-black text-sm shadow-md">JD</span>
+                    <span>json-to-dom</span>
+                </a>
+                <span class="text-xs bg-blue-50 text-blue-700 font-semibold px-2.5 py-0.5 rounded-full border border-blue-200">v42.1.5 (Latest)</span>
+            </div>
+                                    <nav class="flex items-center space-x-2 sm:space-x-5 text-sm font-medium">
+                <a href="../index.html" class="text-slate-600 hover:text-blue-600 transition">Overview</a>
+                <a href="features.html" class="text-blue-600 font-bold border-b-2 border-blue-600 pb-0.5">Features</a>
+                <a href="cdn.html" class="text-slate-600 hover:text-blue-600 transition">CDN Guide</a>
+                <a href="architecture.html" class="text-slate-600 hover:text-blue-600 transition">Architecture</a>
+                <a href="api.html" class="text-slate-600 hover:text-blue-600 transition">API</a>
+                <a href="download.html" class="text-slate-600 hover:text-blue-600 transition">Download min.js</a>
+                <a href="demo.html" class="px-3.5 py-1.5 bg-blue-600 text-white text-xs font-semibold rounded-lg hover:bg-blue-700 shadow-sm transition flex items-center gap-1.5">
+                    <span>Playground</span>
+                    <span>&rarr;</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="bg-gradient-to-b from-white to-slate-50 border-b border-slate-200 pt-12 pb-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <nav class="text-xs text-slate-500 mb-3 flex items-center justify-center gap-2">
+                <a href="../index.html" class="hover:underline">Docs Hub</a>
+                <span>/</span>
+                <span class="text-slate-800 font-semibold">Features & Comparison</span>
+            </nav>
+            <h1 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-3">
+                Capabilities & Technical Advantage
+            </h1>
+            <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                Discover the 6 core superpowers of <code class="text-blue-600 font-mono text-sm bg-blue-50 px-1 rounded">@keshavsoft/json-to-dom</code>, see how it compares against React and innerHTML, and try the interactive compiler.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Container -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1 w-full space-y-16">
+
+        <!-- ========================================================
+             SECTION 1: WHAT CAN THIS REPO DO? (6 SUPERPOWERS)
+             ======================================================== -->
+        <section>
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">Capabilities</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 mt-3">The 6 Superpowers</h2>
+                <p class="text-slate-600 mt-2 text-sm">
+                    Move your cursor over each card below to inspect how engineering teams leverage this engine in production.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Capability 1 -->
+                <div class="zoom-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm cursor-pointer flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl mb-4 shadow-2xs">
+                            📱
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">Server-Driven UI (SDUI)</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Change your layout, button colors, and banners directly from your backend database or API responses without deploying a single line of frontend code or waiting for app store reviews.
+                        </p>
+                    </div>
+                    <span class="mt-4 text-[11px] font-bold text-blue-600 uppercase tracking-wider">&rarr; Backend Controlled UI</span>
+                </div>
+
+                <!-- Capability 2 -->
+                <div class="zoom-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm cursor-pointer flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-violet-50 text-violet-600 flex items-center justify-center text-xl mb-4 shadow-2xs">
+                            🤖
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">AI & LLM Safe UI Generation</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Instruct OpenAI, Gemini, or Claude to output structured JSON UI. Render it safely in the browser with guaranteed protection against harmful script injections or broken HTML tags.
+                        </p>
+                    </div>
+                    <span class="mt-4 text-[11px] font-bold text-violet-600 uppercase tracking-wider">&rarr; 100% XSS Protection</span>
+                </div>
+
+                <!-- Capability 3 -->
+                <div class="zoom-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm cursor-pointer flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl mb-4 shadow-2xs">
+                            🎨
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">Native SVG & Vector Graphics</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Properly generates SVG namespaces (<code class="bg-slate-100 px-1 py-0.5 rounded font-mono text-[10px]">createElementNS</code>) for paths, circles, and polygons. Render dynamic charts and custom vector icons seamlessly from data.
+                        </p>
+                    </div>
+                    <span class="mt-4 text-[11px] font-bold text-emerald-600 uppercase tracking-wider">&rarr; W3C SVG Compliant</span>
+                </div>
+
+                <!-- Capability 4 -->
+                <div class="zoom-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm cursor-pointer flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl mb-4 shadow-2xs">
+                            🧩
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">Micro-Frontends & Embeds</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Inject dynamic widgets, comment boxes, or shopping carts into third-party websites without polluting the global scope or forcing host sites to install heavy framework dependencies.
+                        </p>
+                    </div>
+                    <span class="mt-4 text-[11px] font-bold text-amber-600 uppercase tracking-wider">&rarr; Framework Agnostic</span>
+                </div>
+
+                <!-- Capability 5 -->
+                <div class="zoom-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm cursor-pointer flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center text-xl mb-4 shadow-2xs">
+                            📊
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">Dynamic Forms & Data Tables</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Generate complex forms, data tables, and modal dialogues dynamically from schema definitions. Handle deep nested child components with arrays of element specifications.
+                        </p>
+                    </div>
+                    <span class="mt-4 text-[11px] font-bold text-cyan-600 uppercase tracking-wider">&rarr; Schema-Driven Rendering</span>
+                </div>
+
+                <!-- Capability 6 -->
+                <div class="zoom-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm cursor-pointer flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-xl mb-4 shadow-2xs">
+                            🌐
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">Zero-Build CDN Integration</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            No Webpack, no Vite, no node_modules required! Simply import via JSDelivr CDN into any standard browser or HTML page. Automatically attaches to global <code class="bg-slate-100 px-1 py-0.5 rounded font-mono text-[10px]">window.ks.jsonToDom</code>.
+                        </p>
+                    </div>
+                    <span class="mt-4 text-[11px] font-bold text-rose-600 uppercase tracking-wider">&rarr; Plug and Play CDN</span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================
+             SECTION 2: LIVE INTERACTIVE DEMO (REAL ENGINE)
+             ======================================================== -->
+        <section id="live-playground" class="bg-white rounded-2xl border border-slate-200 shadow-md overflow-hidden scroll-mt-20">
+            <div class="px-6 py-4 bg-slate-900 text-white flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-slate-800">
+                <div class="flex items-center space-x-2">
+                    <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-slate-300">Live Interactive Compiler</span>
+                </div>
+                <div class="flex items-center gap-2 flex-wrap">
+                    <span class="text-xs text-slate-400">Load Preset:</span>
+                    <button id="btn-preset-card" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs rounded font-medium transition">Profile Card</button>
+                    <button id="btn-preset-table" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs rounded font-medium transition">Data Table</button>
+                    <button id="btn-preset-alert" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs rounded font-medium transition">Alert Banner</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-slate-200">
+                <!-- Editor Column -->
+                <div class="p-5 flex flex-col bg-slate-950">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-mono text-slate-400 uppercase tracking-wider">Declarative JSON Spec:</span>
+                        <button id="btn-run" class="px-3 py-1 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded shadow transition flex items-center gap-1.5">
+                            <span>Compile to DOM</span>
+                            <span>⚡</span>
+                        </button>
+                    </div>
+                    <textarea id="json-input" rows="14" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-3 text-xs font-mono text-slate-200 focus:outline-none focus:ring-1 focus:ring-blue-500 leading-relaxed resize-none"></textarea>
+                    <div class="mt-2 text-[11px] text-slate-500 flex items-center justify-between">
+                        <span>Edit JSON above and click Compile to render immediately</span>
+                        <span id="compile-status" class="text-emerald-400 font-medium">Ready</span>
+                    </div>
+                </div>
+
+                <!-- Preview Column -->
+                <div class="p-5 flex flex-col bg-slate-50">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Live DOM Mount Target (#live-target):</span>
+                        <button id="btn-clear" class="text-xs text-slate-400 hover:text-slate-600 transition">Clear DOM</button>
+                    </div>
+                    <div id="live-target" class="flex-1 min-h-[260px] p-4 bg-white rounded-xl border border-dashed border-slate-300 flex items-center justify-center shadow-inner overflow-auto">
+                        <!-- Dynamic DOM gets mounted here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================
+             SECTION 3: INDUSTRY COMPARISON TABLE
+             ======================================================== -->
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+            <div class="max-w-2xl mb-6">
+                <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200">Comparison Matrix</span>
+                <h3 class="text-2xl font-bold text-slate-900 mt-2">Why Choose <span class="text-blue-600">json-to-dom</span>?</h3>
+                <p class="text-sm text-slate-500 mt-1">See how this approach stacks up against conventional web development techniques.</p>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs sm:text-sm">
+                    <thead>
+                        <tr class="border-b border-slate-200 text-slate-400 uppercase text-[11px] tracking-wider">
+                            <th class="py-3 px-4 font-semibold">Approach</th>
+                            <th class="py-3 px-4 font-semibold">Bundle Size</th>
+                            <th class="py-3 px-4 font-semibold">Security (XSS)</th>
+                            <th class="py-3 px-4 font-semibold">Virtual DOM Lag</th>
+                            <th class="py-3 px-4 font-semibold">Build Tooling</th>
+                            <th class="py-3 px-4 font-semibold">Code Readability</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-slate-700">
+                        <tr class="hover:bg-slate-50 transition">
+                            <td class="py-3.5 px-4 font-bold text-slate-900">Raw Imperative DOM</td>
+                            <td class="py-3.5 px-4 text-emerald-600 font-semibold">0 KB</td>
+                            <td class="py-3.5 px-4 text-emerald-600 font-medium">Safe</td>
+                            <td class="py-3.5 px-4 text-emerald-600 font-medium">None</td>
+                            <td class="py-3.5 px-4 text-slate-500">None required</td>
+                            <td class="py-3.5 px-4 text-rose-600 font-medium">Very Low (Spaghetti)</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition">
+                            <td class="py-3.5 px-4 font-bold text-slate-900">innerHTML Strings</td>
+                            <td class="py-3.5 px-4 text-emerald-600 font-semibold">0 KB</td>
+                            <td class="py-3.5 px-4 text-rose-600 font-bold bg-rose-50/50">High XSS Vulnerability</td>
+                            <td class="py-3.5 px-4 text-amber-600 font-medium">Layout Reflows</td>
+                            <td class="py-3.5 px-4 text-slate-500">None required</td>
+                            <td class="py-3.5 px-4 text-amber-600 font-medium">Moderate</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition">
+                            <td class="py-3.5 px-4 font-bold text-slate-900">React / Vue</td>
+                            <td class="py-3.5 px-4 text-rose-600 font-semibold">45 KB – 140 KB</td>
+                            <td class="py-3.5 px-4 text-emerald-600 font-medium">Safe</td>
+                            <td class="py-3.5 px-4 text-amber-600 font-medium">Diffing Overhead</td>
+                            <td class="py-3.5 px-4 text-amber-600 font-medium">Webpack / Vite required</td>
+                            <td class="py-3.5 px-4 text-emerald-600 font-medium">High (JSX)</td>
+                        </tr>
+                        <tr class="bg-blue-50/60 font-semibold border-2 border-blue-300 rounded-xl">
+                            <td class="py-4 px-4 font-extrabold text-blue-900 flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+                                @keshavsoft/json-to-dom
+                            </td>
+                            <td class="py-4 px-4 text-blue-900 font-bold">&lt; 1.5 KB</td>
+                            <td class="py-4 px-4 text-emerald-700 font-bold">100% Safe (W3C Node APIs)</td>
+                            <td class="py-4 px-4 text-emerald-700 font-bold">Zero ms (Direct Native DOM)</td>
+                            <td class="py-4 px-4 text-emerald-700 font-bold">Zero Required (CDN / ESM)</td>
+                            <td class="py-4 px-4 text-blue-900 font-bold">Clean Declarative JSON</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ========================================================
+             SECTION 4: QUICK START FOR STUDENTS & NEW DEVELOPERS
+             ======================================================== -->
+        <section class="bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-2xl p-6 sm:p-8 shadow-lg">
+            <div class="max-w-2xl mb-6">
+                <span class="text-xs font-bold uppercase tracking-wider text-blue-400 bg-blue-950 px-2.5 py-1 rounded-full border border-blue-800">Developer Quickstart</span>
+                <h3 class="text-2xl font-bold mt-2">Get Started in 60 Seconds</h3>
+                <p class="text-sm text-slate-400 mt-1">Whether you love NPM or prefer a pure HTML file with zero build tools, you're covered.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Method 1: CDN -->
+                <div class="zoom-card bg-slate-950 p-5 rounded-xl border border-slate-700/80 cursor-pointer">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Option 1: Direct CDN (No Bundler)</span>
+                        <span class="text-[10px] bg-emerald-950 text-emerald-300 px-2 py-0.5 rounded border border-emerald-800">Fastest</span>
+                    </div>
+                    <pre class="text-xs text-slate-300 font-mono leading-relaxed overflow-x-auto bg-slate-900 p-3 rounded-lg border border-slate-800"><code>&lt;div id="app"&gt;&lt;/div&gt;
+
+&lt;script type="module"&gt;
+  import jsonToDom from "https://cdn.jsdelivr.net/npm/@keshavsoft/json-to-dom/docs/dist/v42/min.js";
+
+  jsonToDom({
+    jsonSpec: {
+      tagName: "h1",
+      classList: "text-2xl font-bold text-blue-600",
+      textContent: "Hello from json-to-dom!"
+    },
+    targetHtmlId: "app"
+  });
+&lt;/script&gt;</code></pre>
+                </div>
+
+                <!-- Method 2: NPM -->
+                <div class="zoom-card bg-slate-950 p-5 rounded-xl border border-slate-700/80 cursor-pointer">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold text-blue-400 uppercase tracking-wider">Option 2: Modern NPM / ESM</span>
+                        <span class="text-[10px] bg-blue-950 text-blue-300 px-2 py-0.5 rounded border border-blue-800">Node & Vite</span>
+                    </div>
+                    <pre class="text-xs text-slate-300 font-mono leading-relaxed overflow-x-auto bg-slate-900 p-3 rounded-lg border border-slate-800"><code># Install via terminal:
+npm install @keshavsoft/json-to-dom
+
+# In your JavaScript / TypeScript:
+import jsonToDom from "@keshavsoft/json-to-dom";
+
+jsonToDom({
+  jsonSpec: {
+    tagName: "div",
+    textContent: "Compiled dynamically"
+  },
+  targetHtmlId: "container"
+});</code></pre>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-10 mt-16 text-center text-xs text-slate-500">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-2">
+                <span class="w-5 h-5 rounded bg-blue-600 text-white flex items-center justify-center font-bold text-[10px]">JD</span>
+                <span class="font-semibold text-slate-700">@keshavsoft/json-to-dom</span>
+                <span>• Licensed under ISC</span>
+            </div>
+                                    <div class="flex items-center space-x-5 flex-wrap gap-y-2">
+                <a href="../index.html" class="hover:text-blue-600 transition">Overview</a>
+                <a href="features.html" class="text-blue-600 font-medium">Features</a>
+                <a href="cdn.html" class="hover:text-blue-600 transition">CDN</a>
+                <a href="architecture.html" class="hover:text-blue-600 transition">Architecture</a>
+                <a href="api.html" class="hover:text-blue-600 transition">API</a>
+                <a href="download.html" class="hover:text-blue-600 transition">Download min.js</a>
+                <a href="demo.html" class="hover:text-blue-600 transition">Playground</a>
+                <a href="https://github.com/keshavsoft/json-to-dom" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 transition font-medium">GitHub &rarr;</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Live Demo Script -->
+    <script type="module">
+        import jsonToDom from "../dist/v42/min.js";
+
+        const presets = {
+            card: {
+                tagName: "div",
+                classList: "p-6 bg-white rounded-xl shadow-lg border border-slate-100 max-w-sm w-full mx-auto text-center transform transition duration-300 hover:scale-105",
+                children: [
+                    {
+                        tagName: "div",
+                        classList: "w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto text-2xl font-bold mb-3 shadow-md",
+                        textContent: "JD"
+                    },
+                    {
+                        tagName: "h4",
+                        classList: "text-lg font-bold text-slate-800",
+                        textContent: "Alex Morgan"
+                    },
+                    {
+                        tagName: "p",
+                        classList: "text-xs font-semibold text-blue-600 mb-2 uppercase tracking-wide",
+                        textContent: "Senior Frontend Architect"
+                    },
+                    {
+                        tagName: "p",
+                        classList: "text-xs text-slate-500 mb-4 leading-relaxed",
+                        textContent: "Building ultra-lean, high performance web apps without the overhead of heavy frameworks."
+                    },
+                    {
+                        tagName: "button",
+                        classList: "px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-lg shadow-sm transition w-full",
+                        textContent: "Connect on GitHub"
+                    }
+                ]
+            },
+            table: {
+                tagName: "div",
+                classList: "w-full overflow-hidden border border-slate-200 rounded-lg shadow-sm bg-white",
+                children: [
+                    {
+                        tagName: "table",
+                        classList: "w-full text-left text-xs",
+                        children: [
+                            {
+                                tagName: "thead",
+                                classList: "bg-slate-50 border-b border-slate-200 text-slate-500 font-semibold",
+                                children: [
+                                    {
+                                        tagName: "tr",
+                                        children: [
+                                            { tagName: "th", classList: "p-3", textContent: "Engine" },
+                                            { tagName: "th", classList: "p-3", textContent: "Role" },
+                                            { tagName: "th", classList: "p-3", textContent: "Status" }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                tagName: "tbody",
+                                classList: "divide-y divide-slate-100 text-slate-700",
+                                children: [
+                                    {
+                                        tagName: "tr",
+                                        children: [
+                                            { tagName: "td", classList: "p-3 font-semibold", textContent: "json-to-tag" },
+                                            { tagName: "td", classList: "p-3 text-slate-500", textContent: "Node Synthesis & W3C" },
+                                            { tagName: "td", classList: "p-3 text-emerald-600 font-bold", textContent: "Active (v1.12)" }
+                                        ]
+                                    },
+                                    {
+                                        tagName: "tr",
+                                        children: [
+                                            { tagName: "td", classList: "p-3 font-semibold", textContent: "spec-to-dom" },
+                                            { tagName: "td", classList: "p-3 text-slate-500", textContent: "Safe Container Mount" },
+                                            { tagName: "td", classList: "p-3 text-emerald-600 font-bold", textContent: "Active (v1.2)" }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            alert: {
+                tagName: "div",
+                classList: "p-4 bg-emerald-50 border-l-4 border-emerald-500 rounded-r-lg shadow-sm text-emerald-900 flex items-center space-x-3 w-full",
+                children: [
+                    {
+                        tagName: "span",
+                        classList: "text-xl",
+                        textContent: "⚡"
+                    },
+                    {
+                        tagName: "div",
+                        children: [
+                            {
+                                tagName: "strong",
+                                classList: "block font-bold text-sm",
+                                textContent: "Compilation Successful!"
+                            },
+                            {
+                                tagName: "span",
+                                classList: "text-xs text-emerald-700",
+                                textContent: "DOM node synthesized and securely mounted into targetHtmlId in 0.2ms."
+                            }
+                        ]
+                    }
+                ]
+            }
+        };
+
+        const textarea = document.getElementById("json-input");
+        const status = document.getElementById("compile-status");
+
+        function setPreset(type) {
+            textarea.value = JSON.stringify(presets[type], null, 2);
+            render();
+        }
+
+        function render() {
+            try {
+                const parsed = JSON.parse(textarea.value);
+                const target = document.getElementById("live-target");
+                target.innerHTML = ""; // clean mount target
+                jsonToDom({
+                    jsonSpec: parsed,
+                    targetHtmlId: "live-target"
+                });
+                status.textContent = "Compiled Successfully ✓";
+                status.className = "text-emerald-400 font-semibold";
+            } catch (err) {
+                status.textContent = "Error: " + err.message;
+                status.className = "text-rose-400 font-semibold";
+            }
+        }
+
+        document.getElementById("btn-preset-card").addEventListener("click", () => setPreset("card"));
+        document.getElementById("btn-preset-table").addEventListener("click", () => setPreset("table"));
+        document.getElementById("btn-preset-alert").addEventListener("click", () => setPreset("alert"));
+
+        document.getElementById("btn-run").addEventListener("click", render);
+        document.getElementById("btn-clear").addEventListener("click", () => {
+            document.getElementById("live-target").innerHTML = "<p class='text-xs text-slate-400 italic'>Mount target is currently empty.</p>";
+            status.textContent = "Cleared";
+            status.className = "text-slate-400 font-medium";
+        });
+
+        // Initialize default preset on page load
+        setPreset("card");
+    </script>
+</body>
+
+</html>

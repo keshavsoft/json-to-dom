@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Reference | json-to-dom</title>
+    <meta name="description"
+        content="API documentation for @keshavsoft/json-to-dom: function signature, options, and parameters.">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        code, pre { font-family: 'JetBrains Mono', monospace; }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased selection:bg-blue-100 selection:text-blue-900">
+
+    <!-- Top Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="flex items-center space-x-2.5 font-bold text-lg text-slate-900 hover:text-blue-600 transition">
+                    <span class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-black text-sm shadow-sm">JD</span>
+                    <span>json-to-dom</span>
+                </a>
+                <span class="text-xs bg-blue-50 text-blue-700 font-semibold px-2.5 py-0.5 rounded-full border border-blue-200">v42 (Latest)</span>
+            </div>
+            <nav class="flex items-center space-x-5 text-sm font-medium">
+                <a href="index.html" class="text-slate-600 hover:text-blue-600 transition">Overview</a>
+                <a href="cdn.html" class="text-slate-600 hover:text-blue-600 transition">CDN Guide</a>
+                <a href="architecture.html" class="text-slate-600 hover:text-blue-600 transition">Architecture</a>
+                <a href="api.html" class="text-blue-600 font-semibold">API</a>
+                <a href="demo.html" class="px-3.5 py-1.5 bg-blue-600 text-white text-xs font-semibold rounded-lg hover:bg-blue-700 shadow-sm transition flex items-center gap-1.5">
+                    <span>Playground</span>
+                    <span>&rarr;</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="bg-white border-b border-slate-200 py-10 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold mb-3">
+                <span>📖 Developer Reference</span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">API Documentation</h1>
+            <p class="text-slate-600 text-sm sm:text-base mt-2">
+                Detailed parameters, return values, mount positions, and practical code recipes.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1 w-full space-y-12">
+
+        <!-- Function Signature -->
+        <section class="space-y-4">
+            <h2 class="text-xl font-bold text-slate-900">1. Master Function Signature</h2>
+            <div class="p-5 bg-slate-900 text-slate-100 rounded-xl border border-slate-800 shadow-xs">
+                <pre class="text-xs font-mono text-slate-300 leading-relaxed overflow-x-auto"><code><span class="text-slate-500">// Global window call:</span>
+<span class="text-blue-400">window</span>.ks.jsonToDom.appendToDom({ <span class="text-purple-400">jsonSpec</span>, <span class="text-purple-400">targetHtmlId</span>, <span class="text-purple-400">appendPosition</span>, <span class="text-purple-400">showLog</span> });
+
+<span class="text-slate-500">// Direct ESM default import:</span>
+<span class="text-blue-400">import</span> jsonToDom <span class="text-blue-400">from</span> <span class="text-amber-300">"@keshavsoft/json-to-dom"</span>;
+<span class="text-blue-400">const</span> container = jsonToDom({ <span class="text-purple-400">jsonSpec</span>, <span class="text-purple-400">targetHtmlId</span>, <span class="text-purple-400">appendPosition</span>, <span class="text-purple-400">showLog</span> });</code></pre>
+            </div>
+        </section>
+
+        <!-- Parameters Table -->
+        <section class="space-y-4">
+            <h2 class="text-xl font-bold text-slate-900">2. Parameters Reference</h2>
+            <div class="bg-white rounded-xl border border-slate-200 shadow-xs overflow-hidden">
+                <table class="w-full text-left text-xs border-collapse">
+                    <thead>
+                        <tr class="bg-slate-100 border-b border-slate-200 text-slate-700 font-semibold uppercase tracking-wider">
+                            <th class="py-3 px-4">Parameter</th>
+                            <th class="py-3 px-4">Type</th>
+                            <th class="py-3 px-4">Default</th>
+                            <th class="py-3 px-4">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-slate-600">
+                        <tr>
+                            <td class="py-3.5 px-4 font-mono font-bold text-slate-900">jsonSpec</td>
+                            <td class="py-3.5 px-4 font-mono text-purple-600">Object | Array</td>
+                            <td class="py-3.5 px-4 text-red-500 font-semibold">required</td>
+                            <td class="py-3.5 px-4">Declarative JSON element specification or an array of specifications.</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3.5 px-4 font-mono font-bold text-slate-900">targetHtmlId</td>
+                            <td class="py-3.5 px-4 font-mono text-purple-600">String</td>
+                            <td class="py-3.5 px-4 text-red-500 font-semibold">required</td>
+                            <td class="py-3.5 px-4">The HTML ID attribute of the DOM container to mount the elements into.</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3.5 px-4 font-mono font-bold text-slate-900">appendPosition</td>
+                            <td class="py-3.5 px-4 font-mono text-purple-600">String</td>
+                            <td class="py-3.5 px-4 font-mono">"append"</td>
+                            <td class="py-3.5 px-4">
+                                <code class="text-slate-800 font-semibold">"replace"</code> empties container before inserting;
+                                <code class="text-slate-800 font-semibold">"append"</code> appends children to end;
+                                <code class="text-slate-800 font-semibold">"prepend"</code> inserts at the start.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="py-3.5 px-4 font-mono font-bold text-slate-900">showLog</td>
+                            <td class="py-3.5 px-4 font-mono text-purple-600">Boolean</td>
+                            <td class="py-3.5 px-4 font-mono">false</td>
+                            <td class="py-3.5 px-4">When enabled, logs tag synthesis and mounting activity to console.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Mount Positions Detailed -->
+        <section class="space-y-4">
+            <h2 class="text-xl font-bold text-slate-900">3. Mount Position Behaviors</h2>
+            <div class="grid sm:grid-cols-3 gap-4">
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-xs">
+                    <span class="text-xs font-mono font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">"replace"</span>
+                    <h3 class="text-sm font-bold text-slate-900 mt-2 mb-1">Clean State Replace</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Clears the target element's existing contents (<code class="text-slate-700">container.replaceChildren()</code>) before mounting. Best for data tables, lists, and forms refreshed by user actions.
+                    </p>
+                </div>
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-xs">
+                    <span class="text-xs font-mono font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">"append"</span>
+                    <h3 class="text-sm font-bold text-slate-900 mt-2 mb-1">Default Append</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Appends the synthesized element(s) at the bottom of the container without disturbing existing children.
+                    </p>
+                </div>
+                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-xs">
+                    <span class="text-xs font-mono font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">"prepend"</span>
+                    <h3 class="text-sm font-bold text-slate-900 mt-2 mb-1">Top Prepend</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Inserts the synthesized node(s) as the very first child of the container. Ideal for live notification banners or feeds.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Metadata Object -->
+        <section class="p-6 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-3">
+            <h2 class="text-base font-bold text-slate-900">4. Metadata Inspection</h2>
+            <p class="text-xs text-slate-600">
+                You can query orchestrator version and metadata at runtime:
+            </p>
+            <pre class="bg-slate-950 p-4 rounded-xl text-xs text-slate-300 font-mono overflow-x-auto border border-slate-800"><code><span class="text-blue-400">console</span>.log(<span class="text-blue-400">window</span>.ks.jsonToDom.meta);
+<span class="text-slate-500">// Output:</span>
+<span class="text-slate-500">// { version: "42.1.4", name: "json-to-dom" }</span></code></pre>
+        </section>
+
+    </main>
+
+    <!-- Clean Footer -->
+    <footer class="bg-white border-t border-slate-200 py-8 mt-auto">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+            <div class="flex items-center space-x-2">
+                <span class="font-bold text-slate-800">json-to-dom</span>
+                <span>&bull;</span>
+                <span>KeshavSoft Declarative UI</span>
+            </div>
+            <div class="flex items-center space-x-5">
+                <a href="index.html" class="hover:text-blue-600 font-medium transition">Overview</a>
+                <a href="cdn.html" class="hover:text-blue-600 font-medium transition">CDN Guide</a>
+                <a href="architecture.html" class="hover:text-blue-600 font-medium transition">Architecture</a>
+                <a href="demo.html" class="hover:text-blue-600 font-medium transition">Playground</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

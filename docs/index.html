@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>json-to-dom | Zero-Dependency Declarative DOM Orchestrator</title>
+    <title>json-to-dom | The Zero-Dependency Declarative DOM Orchestrator</title>
     <meta name="description"
         content="Zero-dependency DOM orchestrator compiling declarative JSON specifications into live browser DOM elements by coordinating @keshavsoft/json-to-tag and spec-to-dom.">
 
@@ -14,36 +14,35 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom Style Sheet with Hover Zoom & Border Glow -->
+    <link rel="stylesheet" href="./style.css">
 
     <!-- Engine Module (Latest v42 Standalone Bundle) -->
     <script type="module" src="./dist/v42/min.js"></script>
-
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        code, pre, textarea { font-family: 'JetBrains Mono', monospace; }
-    </style>
 </head>
 
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased selection:bg-blue-100 selection:text-blue-900">
 
-    <!-- Top Navigation Bar -->
+    <!-- Top Sticky Navigation Bar -->
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <a href="index.html" class="flex items-center space-x-2.5 font-bold text-lg text-slate-900 hover:text-blue-600 transition">
-                    <span class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-black text-sm shadow-sm">JD</span>
+                <a href="index.html" class="flex items-center space-x-2.5 font-extrabold text-lg text-slate-900 hover:text-blue-600 transition">
+                    <span class="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-700 to-blue-500 text-white flex items-center justify-center font-black text-sm shadow-md">JD</span>
                     <span>json-to-dom</span>
                 </a>
-                <span class="text-xs bg-blue-50 text-blue-700 font-semibold px-2.5 py-0.5 rounded-full border border-blue-200">v42 (Latest)</span>
+                <span class="text-xs bg-blue-50 text-blue-700 font-semibold px-2.5 py-0.5 rounded-full border border-blue-200">v42.1.5 (Latest)</span>
             </div>
-            <nav class="flex items-center space-x-5 text-sm font-medium">
-                <a href="index.html" class="text-blue-600 font-semibold">Overview</a>
-                <a href="cdn.html" class="text-slate-600 hover:text-blue-600 transition">CDN Guide</a>
-                <a href="architecture.html" class="text-slate-600 hover:text-blue-600 transition">Architecture</a>
-                <a href="api.html" class="text-slate-600 hover:text-blue-600 transition">API</a>
-                <a href="monaco/index.html" class="text-slate-600 hover:text-blue-600 transition">Monaco Studio</a>
-                <a href="demo.html" class="px-3.5 py-1.5 bg-blue-600 text-white text-xs font-semibold rounded-lg hover:bg-blue-700 shadow-sm transition flex items-center gap-1.5">
+                        <nav class="flex items-center space-x-2 sm:space-x-5 text-sm font-medium">
+                <a href="index.html" class="text-blue-600 font-bold border-b-2 border-blue-600 pb-0.5">Overview</a>
+                <a href="pages/features.html" class="text-slate-600 hover:text-blue-600 transition">Features</a>
+                <a href="pages/cdn.html" class="text-slate-600 hover:text-blue-600 transition">CDN Guide</a>
+                <a href="pages/architecture.html" class="text-slate-600 hover:text-blue-600 transition">Architecture</a>
+                <a href="pages/api.html" class="text-slate-600 hover:text-blue-600 transition">API</a>
+                <a href="pages/download.html" class="text-slate-600 hover:text-blue-600 transition">Download min.js</a>
+                <a href="pages/demo.html" class="px-3.5 py-1.5 bg-blue-600 text-white text-xs font-semibold rounded-lg hover:bg-blue-700 shadow-sm transition flex items-center gap-1.5">
                     <span>Playground</span>
                     <span>&rarr;</span>
                 </a>
@@ -51,314 +50,236 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-b from-white to-slate-50 border-b border-slate-200 pt-16 pb-14 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl mx-auto text-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold mb-5 shadow-xs">
-                <span>⚡ Zero Dependencies</span>
-                <span>•</span>
-                <span>Zero Virtual DOM</span>
-                <span>•</span>
-                <span>Two Micro-Engines</span>
-            </div>
-            <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
-                Declarative JSON <span class="text-blue-600">&rarr;</span> Live DOM
-            </h1>
-            <p class="text-base sm:text-lg text-slate-600 leading-relaxed mb-8 max-w-2xl mx-auto">
-                A lean browser orchestrator compiling declarative JSON specifications into live native elements by coordinating <code class="text-xs bg-slate-100 text-slate-800 px-1.5 py-0.5 rounded border border-slate-200">@keshavsoft/json-to-tag</code> and <code class="text-xs bg-slate-100 text-slate-800 px-1.5 py-0.5 rounded border border-slate-200">spec-to-dom</code>.
-            </p>
-            <div class="flex items-center justify-center gap-3 flex-wrap">
-                <a href="cdn.html" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-xl shadow-sm transition flex items-center gap-2">
-                    <span>CDN Integration Guide</span>
-                    <span>&rarr;</span>
-                </a>
-                <a href="architecture.html" class="px-5 py-2.5 bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 text-sm font-semibold rounded-xl shadow-sm transition flex items-center gap-2">
-                    <span>Architecture Deep-Dive</span>
-                    <span>&rarr;</span>
-                </a>
-                <a href="demo.html" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-medium rounded-xl transition">
-                    Live Playground
-                </a>
-            </div>
-        </div>
-    </section>
+    <!-- Main Content Container -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1 w-full space-y-12">
 
-    <!-- Main Content Area -->
-    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1 w-full space-y-12">
-
-        <!-- Live Interactive Demo Card -->
-        <section class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-            <div class="px-6 py-4 bg-slate-900 text-white flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-slate-800">
-                <div class="flex items-center space-x-2">
-                    <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
-                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-300">Live Interactive Demo</span>
+        <!-- ========================================================
+             STORY SECTION ABOVE: THE STORY BEHIND THIS REPO
+             ======================================================== -->
+        <section class="zoom-card bg-white rounded-2xl border border-slate-200 p-8 sm:p-10 shadow-sm">
+            
+            <!-- Story Header Badge & Title -->
+            <div class="max-w-3xl mb-8">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold uppercase tracking-wider mb-3 shadow-2xs">
+                    <span>📖 The Story of This Repository</span>
+                    <span>•</span>
+                    <span class="text-emerald-600 font-bold">Why json-to-dom Was Created</span>
                 </div>
-                <div class="flex items-center gap-2">
-                    <span class="text-xs text-slate-400">Preset:</span>
-                    <button id="btn-preset-card" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs rounded font-medium transition">Profile Card</button>
-                    <button id="btn-preset-table" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs rounded font-medium transition">Data Table</button>
-                    <button id="btn-preset-alert" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs rounded font-medium transition">Alert Banner</button>
-                </div>
+                <h1 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+                    From Frontend Bloat to <span class="text-gradient-blue">Pure Native DOM</span>
+                </h1>
+                <p class="text-sm sm:text-base text-slate-600 mt-3 leading-relaxed">
+                    Every web developer, student, and tech company hits the same wall: how do you build dynamic user interfaces without drowning in complex frameworks or opening dangerous security holes? Here is the story of how <strong>@keshavsoft/json-to-dom</strong> solved that dilemma.
+                </p>
             </div>
 
-            <div class="grid lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-slate-200">
-                <!-- JSON Input Column -->
-                <div class="p-5 bg-slate-950 flex flex-col">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="text-xs font-mono text-slate-400">declarative-spec.json</span>
-                        <button id="btn-run" class="px-3 py-1 bg-blue-600 hover:bg-blue-500 text-white rounded text-xs font-semibold flex items-center gap-1 transition">
-                            <span>Execute Render</span>
-                            <span>&rarr;</span>
-                        </button>
-                    </div>
-                    <textarea id="live-spec-editor" class="w-full h-72 bg-slate-900 text-emerald-400 p-3 rounded-lg text-xs leading-relaxed focus:outline-none resize-none font-mono border border-slate-800" spellcheck="false"></textarea>
-                </div>
+            <!-- The 3 Narrative Chapters (Hover Zoom with Glowing Borders) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-                <!-- Live DOM Output Column -->
-                <div class="p-6 bg-slate-50 flex flex-col justify-between">
+                <!-- Story Card 1: The Struggle -->
+                <div class="zoom-card bg-slate-50/70 p-6 rounded-2xl border border-slate-200 shadow-2xs cursor-pointer flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-xs font-bold text-slate-500 uppercase tracking-wide">Native DOM Container</span>
-                            <span class="text-[11px] font-mono px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded font-semibold">Mounted Live</span>
+                        <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center font-black text-sm mb-4 shadow-2xs">
+                            01
                         </div>
-                        <div id="live-demo-output" class="p-4 bg-white rounded-xl border border-slate-200 shadow-xs min-h-[200px] flex items-center justify-center">
-                            <!-- Live DOM Mount Target -->
+                        <h2 class="text-lg font-bold text-slate-900 mb-2">The Web Development Trap</h2>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">
+                            Historically, building dynamic web pages required painful compromises:
+                        </p>
+                        <ul class="text-xs text-slate-600 space-y-2">
+                            <li class="flex items-start gap-1.5">
+                                <span class="text-rose-500 font-bold">&times;</span>
+                                <span><strong>Imperative DOM:</strong> Writing 50+ lines of <code class="bg-white px-1 py-0.5 rounded border border-slate-200 font-mono text-[11px]">document.createElement</code> for a simple card.</span>
+                            </li>
+                            <li class="flex items-start gap-1.5">
+                                <span class="text-rose-500 font-bold">&times;</span>
+                                <span><strong>Risky innerHTML:</strong> Fast, but wipes event listeners and exposes sites to fatal Cross-Site Scripting (XSS).</span>
+                            </li>
+                            <li class="flex items-start gap-1.5">
+                                <span class="text-rose-500 font-bold">&times;</span>
+                                <span><strong>Heavy Frameworks:</strong> Bundling 100KB+ runtimes with complex Virtual DOM diffing just to display API data.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-200/70 text-[11px] font-bold text-rose-600 uppercase tracking-wide">
+                        The Problem: Too heavy & insecure
+                    </div>
+                </div>
+
+                <!-- Story Card 2: The Core Epiphany -->
+                <div class="zoom-card bg-slate-50/70 p-6 rounded-2xl border border-slate-200 shadow-2xs cursor-pointer flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-black text-sm mb-4 shadow-2xs">
+                            02
+                        </div>
+                        <h2 class="text-lg font-bold text-slate-900 mb-2">The Data Epiphany</h2>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">
+                            Modern systems (REST APIs, GraphQL, cloud databases, and AI LLMs like ChatGPT or Gemini) already speak one universal language: <strong>pure JSON</strong>.
+                        </p>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            Why convert that JSON into JSX, pass it through Webpack/Vite bundlers, simulate it in a Virtual DOM, and then render? 
+                            <strong>What if the data contract IS directly the UI contract?</strong>
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-200/70 text-[11px] font-bold text-blue-600 uppercase tracking-wide">
+                        The Insight: Cut out the middleman
+                    </div>
+                </div>
+
+                <!-- Story Card 3: The 2-Engine Invention -->
+                <div class="zoom-card bg-slate-50/70 p-6 rounded-2xl border border-slate-200 shadow-2xs cursor-pointer flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-black text-sm mb-4 shadow-2xs">
+                            03
+                        </div>
+                        <h2 class="text-lg font-bold text-slate-900 mb-2">The 2-Engine Conductor</h2>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">
+                            KeshavSoft designed a zero-dependency orchestrator under <strong>1.5 KB</strong> coordinating two specialized engines:
+                        </p>
+                        <div class="space-y-2 text-xs">
+                            <div class="p-2 rounded bg-white border border-slate-200">
+                                <strong class="text-emerald-700">1. @keshavsoft/json-to-tag:</strong> Synthesizes real W3C DOM and SVG elements safely.
+                            </div>
+                            <div class="p-2 rounded bg-white border border-slate-200">
+                                <strong class="text-blue-700">2. spec-to-dom:</strong> Discovers target IDs and mounts nodes (append, prepend, or replace).
+                            </div>
                         </div>
                     </div>
-                    <p class="text-[11px] text-slate-500 text-center mt-4">
-                        Rendered instantly via <code class="text-slate-700 font-mono">window.ks.jsonToDom.appendToDom()</code>.
-                    </p>
+                    <div class="mt-4 pt-3 border-t border-slate-200/70 text-[11px] font-bold text-emerald-600 uppercase tracking-wide">
+                        The Result: Zero build & 100% native
+                    </div>
                 </div>
+
             </div>
         </section>
 
-        <!-- Documentation Hub Grid (Individual Split Pages) -->
-        <section>
-            <div class="mb-6 flex items-center justify-between border-b border-slate-200 pb-3">
+        <!-- ========================================================
+             THE STORY CARD: HOW IT WORKS IN 3 SIMPLE STEPS
+             ======================================================== -->
+        <section class="zoom-card bg-white rounded-2xl border border-slate-200 p-8 sm:p-10 shadow-sm">
+            
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-100">
                 <div>
-                    <h2 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Documentation Modules</h2>
-                    <p class="text-sm font-semibold text-slate-800">Explore dedicated topics</p>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">How It Works in 3 Simple Steps</h2>
+                    <p class="text-sm sm:text-base text-slate-500 mt-1.5">From a plain JavaScript object to a live rendered browser DOM element.</p>
                 </div>
-                <span class="text-xs text-slate-400 font-mono">Clean Architecture</span>
+                <div>
+                    <a href="pages/architecture.html" class="inline-flex items-center text-xs sm:text-sm font-bold text-blue-600 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 px-4 py-2 rounded-xl border border-blue-200 transition gap-1.5 shadow-2xs">
+                        <span>View Full Architecture Diagram</span>
+                        <span>&rarr;</span>
+                    </a>
+                </div>
             </div>
 
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <!-- 3 Simple Steps Grid with Cursor Zoom & Glowing Borders -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-                <!-- Hub 1: CDN Guide -->
-                <a href="cdn.html" class="group p-5 bg-white rounded-2xl border border-slate-200 hover:border-blue-500 hover:shadow-lg transition flex flex-col justify-between">
+                <!-- STEP 1 -->
+                <div class="zoom-card bg-slate-50/80 p-6 rounded-2xl border border-slate-200 shadow-2xs cursor-pointer flex flex-col justify-between">
                     <div>
-                        <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg font-bold group-hover:bg-blue-600 group-hover:text-white transition mb-3">
-                            🌐
-                        </div>
-                        <h3 class="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition mb-1.5 flex items-center justify-between">
-                            <span>CDN Quickstart</span>
-                            <span class="text-blue-500 group-hover:translate-x-1 transition">&rarr;</span>
-                        </h3>
-                        <p class="text-[11px] text-slate-600 leading-relaxed mb-3">
-                            Add via GitHub Pages or jsDelivr. Global script registration, ESM imports, and the pipeline.
+                        <span class="inline-block text-xs font-black uppercase tracking-wider text-blue-600 bg-white px-2.5 py-1 rounded-md border border-blue-200 shadow-2xs mb-4">
+                            STEP 1
+                        </span>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Write or Stream JSON Spec</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+                            Define tag names, classes, attributes, events, or child nodes in clean, standardized JSON or JavaScript objects.
                         </p>
                     </div>
-                    <div class="pt-2.5 border-t border-slate-100 text-xs font-semibold text-blue-600">
-                        View CDN Guide &rarr;
+                    <div class="p-3 bg-slate-950 rounded-xl font-mono text-xs text-blue-300 overflow-x-auto shadow-inner border border-slate-800">
+                        <code>{ tagName: "button", textContent: "Submit" }</code>
                     </div>
-                </a>
+                </div>
 
-                <!-- Hub 2: Architecture -->
-                <a href="architecture.html" class="group p-5 bg-white rounded-2xl border border-slate-200 hover:border-indigo-500 hover:shadow-lg transition flex flex-col justify-between">
+                <!-- STEP 2 -->
+                <div class="zoom-card bg-slate-50/80 p-6 rounded-2xl border border-slate-200 shadow-2xs cursor-pointer flex flex-col justify-between">
                     <div>
-                        <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-lg font-bold group-hover:bg-indigo-600 group-hover:text-white transition mb-3">
-                            🏗️
-                        </div>
-                        <h3 class="text-sm font-bold text-slate-900 group-hover:text-indigo-600 transition mb-1.5 flex items-center justify-between">
-                            <span>Architecture</span>
-                            <span class="text-indigo-500 group-hover:translate-x-1 transition">&rarr;</span>
-                        </h3>
-                        <p class="text-[11px] text-slate-600 leading-relaxed mb-3">
-                            Deep dive into the 2-Engine design: W3C synthesis with <code>@keshavsoft/json-to-tag</code> and mounting with <code>spec-to-dom</code>.
+                        <span class="inline-block text-xs font-black uppercase tracking-wider text-indigo-600 bg-white px-2.5 py-1 rounded-md border border-indigo-200 shadow-2xs mb-4">
+                            STEP 2
+                        </span>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Execute Single Master Call</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+                            Pass the JSON spec and the target element ID. The orchestrator validates W3C rules and compiles native nodes.
                         </p>
                     </div>
-                    <div class="pt-2.5 border-t border-slate-100 text-xs font-semibold text-indigo-600">
-                        View Architecture &rarr;
+                    <div class="p-3 bg-slate-950 rounded-xl font-mono text-xs text-indigo-300 overflow-x-auto shadow-inner border border-slate-800">
+                        <code>jsonToDom({ jsonSpec, targetHtmlId: "app" })</code>
                     </div>
-                </a>
+                </div>
 
-                <!-- Hub 3: API Reference -->
-                <a href="api.html" class="group p-5 bg-white rounded-2xl border border-slate-200 hover:border-emerald-500 hover:shadow-lg transition flex flex-col justify-between">
+                <!-- STEP 3 -->
+                <div class="zoom-card bg-slate-50/80 p-6 rounded-2xl border border-slate-200 shadow-2xs cursor-pointer flex flex-col justify-between">
                     <div>
-                        <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg font-bold group-hover:bg-emerald-600 group-hover:text-white transition mb-3">
-                            📖
-                        </div>
-                        <h3 class="text-sm font-bold text-slate-900 group-hover:text-emerald-600 transition mb-1.5 flex items-center justify-between">
-                            <span>API Reference</span>
-                            <span class="text-emerald-500 group-hover:translate-x-1 transition">&rarr;</span>
-                        </h3>
-                        <p class="text-[11px] text-slate-600 leading-relaxed mb-3">
-                            Function signatures, parameters, <code>appendPosition</code> options, and usage recipes.
+                        <span class="inline-block text-xs font-black uppercase tracking-wider text-emerald-600 bg-white px-2.5 py-1 rounded-md border border-emerald-200 shadow-2xs mb-4">
+                            STEP 3
+                        </span>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Live DOM Tree Appears</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+                            The live browser DOM receives authentic HTML/SVG elements. No Virtual DOM lag, no XSS vulnerability.
                         </p>
                     </div>
-                    <div class="pt-2.5 border-t border-slate-100 text-xs font-semibold text-emerald-600">
-                        View API Reference &rarr;
+                    <div class="p-3 bg-emerald-950 rounded-xl font-mono text-xs text-emerald-300 overflow-x-auto shadow-inner border border-emerald-900">
+                        <code>&lt;button class="..."&gt;Submit&lt;/button&gt;</code>
                     </div>
-                </a>
-
-                <!-- Hub 4: Monaco Studio -->
-                <a href="monaco/index.html" class="group p-5 bg-white rounded-2xl border border-slate-200 hover:border-sky-500 hover:shadow-lg transition flex flex-col justify-between">
-                    <div>
-                        <div class="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-lg font-bold group-hover:bg-sky-600 group-hover:text-white transition mb-3">
-                            💻
-                        </div>
-                        <h3 class="text-sm font-bold text-slate-900 group-hover:text-sky-600 transition mb-1.5 flex items-center justify-between">
-                            <span>Monaco Studio</span>
-                            <span class="text-sky-500 group-hover:translate-x-1 transition">&rarr;</span>
-                        </h3>
-                        <p class="text-[11px] text-slate-600 leading-relaxed mb-3">
-                            Interactive workspaces across V1–V4 studio generations: instruction-driven two-tab live staging.
-                        </p>
-                    </div>
-                    <div class="pt-2.5 border-t border-slate-100 text-xs font-semibold text-sky-600">
-                        Open Monaco Hub &rarr;
-                    </div>
-                </a>
+                </div>
 
             </div>
+
+            <!-- Story Navigation Cards (Next Steps) -->
+            <div class="mt-10 pt-8 border-t border-slate-100">
+                <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4 text-center sm:text-left">
+                    Explore More Documentation & Tools:
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-5 gap-4">
+                    
+                    <a href="pages/features.html" class="zoom-card p-4 rounded-xl bg-blue-50/70s border border-blueblue-200 hover:border-blue-400 text-center transition block">
+                        <div class="text-blue-600 font-bold text-sm">Features & Matrix</div>
+                        <div class="text-[11px] text-slate-500 mt-1">Capabilities & Comparisons &rarr;</div>
+                    </a>
+                    <a href="pages/cdn.html" class="zoom-card p-4 rounded-xl bg-white border border-slate-200 hover:border-blue-400 text-center transition block">
+                        <div class="text-blue-600 font-bold text-sm">CDN Guide</div>
+                        <div class="text-[11px] text-slate-500 mt-1">Zero-build browser setup &rarr;</div>
+                    </a>
+                    <a href="pages/architecture.html" class="zoom-card p-4 rounded-xl bg-white border border-slate-200 hover:border-blue-400 text-center transition block">
+                        <div class="text-blue-600 font-bold text-sm">Architecture</div>
+                        <div class="text-[11px] text-slate-500 mt-1">Two-engine deep dive &rarr;</div>
+                    </a>
+                    <a href="pages/download.html" class="zoom-card p-4 rounded-xl bg-white border border-blue-200 hover:border-blue-500 text-center transition block">
+                        <div class="text-blue-700 font-bold text-sm">Download min.js</div>
+                        <div class="text-[11px] text-blue-600 mt-1">Single file & ZIP bundle &rarr;</div>
+                    </a>
+                    <a href="pages/demo.html" class="zoom-card p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-blue-400 text-center transition block">
+                        <div class="text-slate-800 font-bold text-sm">Playground</div>
+                        <div class="text-[11px] text-slate-500 mt-1">Test code directly &rarr;</div>
+                    </a>
+                </div>
+            </div>
+
         </section>
 
     </main>
 
-    <!-- Clean Footer -->
-    <footer class="bg-white border-t border-slate-200 py-8 mt-auto">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-8 text-center text-xs text-slate-500">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="flex items-center space-x-2">
-                <span class="font-bold text-slate-800">json-to-dom</span>
-                <span>&bull;</span>
-                <span>KeshavSoft Declarative UI</span>
+                <span class="w-5 h-5 rounded bg-blue-600 text-white flex items-center justify-center font-bold text-[10px]">JD</span>
+                <span class="font-semibold text-slate-700">@keshavsoft/json-to-dom</span>
+                <span>• Licensed under ISC</span>
             </div>
-            <div class="flex items-center space-x-5">
-                <a href="cdn.html" class="hover:text-blue-600 font-medium transition">CDN Guide</a>
-                <a href="architecture.html" class="hover:text-blue-600 font-medium transition">Architecture</a>
-                <a href="api.html" class="hover:text-blue-600 font-medium transition">API</a>
-                <a href="demo.html" class="hover:text-blue-600 font-medium transition">Playground</a>
-                <a href="https://github.com/keshavsoft/json-to-dom" target="_blank" class="hover:text-blue-600 font-medium transition">GitHub</a>
-                <a href="https://www.npmjs.com/package/@keshavsoft/json-to-dom" target="_blank" class="hover:text-blue-600 font-medium transition">npm</a>
+                        <div class="flex items-center space-x-5 flex-wrap gap-y-2">
+                <a href="index.html" class="text-blue-600 font-medium">Overview</a>
+                <a href="pages/features.html" class="hover:text-blue-600 transition">Features</a>
+                <a href="pages/cdn.html" class="hover:text-blue-600 transition">CDN</a>
+                <a href="pages/architecture.html" class="hover:text-blue-600 transition">Architecture</a>
+                <a href="pages/api.html" class="hover:text-blue-600 transition">API</a>
+                <a href="pages/download.html" class="hover:text-blue-600 transition">Download min.js</a>
+                <a href="pages/demo.html" class="hover:text-blue-600 transition">Playground</a>
+                <a href="https://github.com/keshavsoft/json-to-dom" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 transition font-medium">GitHub &rarr;</a>
             </div>
         </div>
     </footer>
 
-    <!-- Interactive Demo Controller Script -->
-    <script type="module">
-        import jsonToDom from "./dist/v42/min.js";
-
-        const PRESETS = {
-            card: {
-                tagName: "div",
-                classList: "p-4 bg-white rounded-xl border border-slate-200 shadow-sm text-center max-w-xs mx-auto",
-                children: [
-                    {
-                        tagName: "div",
-                        classList: "w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-2",
-                        textContent: "JD"
-                    },
-                    { tagName: "h3", classList: "font-bold text-slate-900 text-sm", textContent: "Declarative UI" },
-                    { tagName: "p", classList: "text-xs text-slate-500 mt-1", textContent: "Zero virtual DOM, pure browser speed." },
-                    {
-                        tagName: "button",
-                        classList: "mt-3 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-lg transition",
-                        textContent: "Active Element"
-                    }
-                ]
-            },
-            table: {
-                tagName: "table",
-                classList: "w-full text-xs text-left border-collapse border border-slate-200 rounded-lg overflow-hidden",
-                children: [
-                    {
-                        tagName: "thead",
-                        classList: "bg-slate-100 text-slate-700 font-semibold",
-                        children: [
-                            {
-                                tagName: "tr",
-                                children: [
-                                    { tagName: "th", classList: "p-2 border-b", textContent: "Item" },
-                                    { tagName: "th", classList: "p-2 border-b", textContent: "Category" },
-                                    { tagName: "th", classList: "p-2 border-b text-right", textContent: "Qty" }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        tagName: "tbody",
-                        children: [
-                            {
-                                tagName: "tr",
-                                classList: "border-b hover:bg-slate-50",
-                                children: [
-                                    { tagName: "td", classList: "p-2", textContent: "Bolt 30mm" },
-                                    { tagName: "td", classList: "p-2 text-slate-500", textContent: "Fasteners" },
-                                    { tagName: "td", classList: "p-2 text-right font-mono", textContent: "100 pcs" }
-                                ]
-                            },
-                            {
-                                tagName: "tr",
-                                classList: "hover:bg-slate-50",
-                                children: [
-                                    { tagName: "td", classList: "p-2", textContent: "Steel Rod" },
-                                    { tagName: "td", classList: "p-2 text-slate-500", textContent: "Raw Material" },
-                                    { tagName: "td", classList: "p-2 text-right font-mono", textContent: "25 kgs" }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            },
-            alert: {
-                tagName: "div",
-                classList: "p-4 bg-emerald-50 border border-emerald-200 text-emerald-900 rounded-xl flex items-center gap-3",
-                children: [
-                    { tagName: "span", classList: "text-lg", textContent: "✅" },
-                    {
-                        tagName: "div",
-                        children: [
-                            { tagName: "div", classList: "font-bold text-xs", textContent: "Mounted Successfully" },
-                            { tagName: "div", classList: "text-[11px] text-emerald-700", textContent: "Compiled directly via json-to-dom v42 orchestrator." }
-                        ]
-                    }
-                ]
-            }
-        };
-
-        const editor = document.getElementById("live-spec-editor");
-        const btnRun = document.getElementById("btn-run");
-        const outputContainer = document.getElementById("live-demo-output");
-
-        const executeRender = () => {
-            try {
-                const spec = JSON.parse(editor.value);
-                outputContainer.innerHTML = "";
-                const renderFunc = window.ks?.jsonToDom?.appendToDom || jsonToDom;
-                renderFunc({
-                    jsonSpec: spec,
-                    targetHtmlId: "live-demo-output",
-                    appendPosition: "replace",
-                    showLog: false
-                });
-            } catch (err) {
-                outputContainer.innerHTML = `<div class="p-3 bg-red-50 text-red-700 rounded-lg text-xs font-mono"><strong>Error:</strong> ${err.message}</div>`;
-            }
-        };
-
-        const loadPreset = (key) => {
-            editor.value = JSON.stringify(PRESETS[key], null, 2);
-            executeRender();
-        };
-
-        document.getElementById("btn-preset-card").addEventListener("click", () => loadPreset("card"));
-        document.getElementById("btn-preset-table").addEventListener("click", () => loadPreset("table"));
-        document.getElementById("btn-preset-alert").addEventListener("click", () => loadPreset("alert"));
-        btnRun.addEventListener("click", executeRender);
-
-        // Initial default preset load
-        loadPreset("card");
-    </script>
 </body>
 
 </html>

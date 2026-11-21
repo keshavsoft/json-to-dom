@@ -42,7 +42,6 @@
                 <a href="cdn.html" class="text-blue-600 font-semibold">CDN Guide</a>
                 <a href="architecture.html" class="text-slate-600 hover:text-blue-600 transition">Architecture</a>
                 <a href="api.html" class="text-slate-600 hover:text-blue-600 transition">API</a>
-                <a href="monaco/index.html" class="text-slate-600 hover:text-blue-600 transition">Monaco Studio</a>
                 <a href="demo.html" class="px-3.5 py-1.5 bg-blue-600 text-white text-xs font-semibold rounded-lg hover:bg-blue-700 shadow-sm transition flex items-center gap-1.5">
                     <span>Playground</span>
                     <span>&rarr;</span>
@@ -173,11 +172,11 @@
 &lt;body class="p-4 bg-light"&gt;
     &lt;div id="dom-render-container"&gt;&lt;/div&gt;
 
-    <!-- 1. Pipeline CDNs: Declarative instructions, definitions, spec, and v5 runner -->
-    <script type="module" src="https://keshavsoft.github.io/declarative-instructions/dist/v2/min.js"></script>
-    <script type="module" src="https://keshavsoft.github.io/declarative-definitions/dist/v2/min.js"></script>
-    <script type="module" src="https://keshavsoft.github.io/declarative-spec/dist/v2/min.js"></script>
-    <script type="module" src="https://keshavsoft.github.io/json-renderers-run-instructions-steps/dist/v5/min.js"></script>
+    <span class="text-slate-500">&lt;!-- 1. Pipeline CDNs: Declarative instructions, definitions, and spec --&gt;</span>
+    &lt;script type="module" src="https://keshavsoft.github.io/declarative-instructions/dist/v2/min.js"&gt;&lt;/script&gt;
+    &lt;script type="module" src="https://keshavsoft.github.io/declarative-definitions/dist/v2/min.js"&gt;&lt;/script&gt;
+    &lt;script type="module" src="https://keshavsoft.github.io/declarative-spec/dist/v2/min.js"&gt;&lt;/script&gt;
+    &lt;script type="module" src="https://keshavsoft.github.io/json-renderers-run-instructions-steps/dist/v4/min.js"&gt;&lt;/script&gt;
 
     <span class="text-slate-500">&lt;!-- 2. Master DOM Orchestrator CDN --&gt;</span>
     &lt;script type="module" src="https://keshavsoft.github.io/json-to-dom/dist/v42/min.js"&gt;&lt;/script&gt;
